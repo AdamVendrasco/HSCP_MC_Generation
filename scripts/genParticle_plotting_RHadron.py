@@ -1,38 +1,49 @@
 import ROOT
 import matplotlib.pyplot as plt
+import mplhep as hep 
+import matplotlib as mpl
+import numpy as np  # Import numpy for creating common bin edges
+
+# Apply CMS style and update rcParams for official CMS plots
+hep.style.use("CMS")
+mpl.rcParams['font.family'] = 'sans-serif'
+mpl.rcParams['font.size'] = 12
+mpl.rcParams['axes.labelsize'] = 12
+mpl.rcParams['axes.titlesize'] = 12
+mpl.rcParams['xtick.labelsize'] = 14
+mpl.rcParams['ytick.labelsize'] = 14
+mpl.rcParams['legend.fontsize'] = 14
+mpl.rcParams['lines.linewidth'] = 2
+mpl.rcParams['figure.figsize'] = (8, 6)
 
 # ========================================
 # Setup and ROOT File Initialization
 # ========================================
-output_directory = "/eos/user/a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_jetmatching_plots/"
-root_file_path = "/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-jet_matching_ON.root"
+OUTPUT_DIRECTORY = "//eos/home-a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_JetMatching_ON/"
+ROOT_FILE_PATH = "/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-Jet_matching_ON-test.root"
+PLOT_IDENTIFIER = "JetMatching_ON"
 
 # Open the ROOT file and access the tree
-f = ROOT.TFile.Open(root_file_path)
+f = ROOT.TFile.Open(ROOT_FILE_PATH)
 tree = f.Get("Events")
 n_entries = tree.GetEntries()
 print("Total entries in tree:", n_entries)
 
 # ========================================
-# List All Branches in the Tree
+# Utility Functions for Inspection and Listing
 # ========================================
 def list_branches():
+    """List all branches in the tree."""
     branches = tree.GetListOfBranches()
     print("\nList of branches in the tree:")
     for branch in branches:
         print(branch.GetName())
 
-list_branches()
-
-# ========================================
-# Define Target RHadron pdgId Range
-# ========================================
-target_pdgIds = set(range(1000000, 1010000)) 
-
-# ========================================
-# Debug: Inspection of reco::GenParticle
-# ========================================
 def inspect_gen_particles(event_index=0):
+    """
+    Debug: Inspection of reco::GenParticle.
+    Prints the methods and attributes of the first gen particle in the event.
+    """
     tree.GetEntry(event_index)
     gen_particles_wrapper = getattr(tree, "recoGenParticles_genParticles__GEN", None)
     if gen_particles_wrapper:
@@ -42,12 +53,11 @@ def inspect_gen_particles(event_index=0):
             print("\nMethods and attributes of reco::GenParticle:")
             print(dir(first_gen))
 
-inspect_gen_particles()
-
-# ========================================
-# Inspecting recoGenJets_ak4GenJets__GEN Branch Contents
-# ========================================
 def inspect_jet_branches():
+    """
+    Inspecting recoGenJets_ak4GenJets__GEN Branch Contents.
+    Checks for both AK4 and AK8 jet branches.
+    """
     ak4_branch = tree.GetBranch("recoGenJets_ak4GenJets__GEN.")
     if ak4_branch:
         print("\nFound branch using GetBranch:", ak4_branch.GetName())
@@ -60,17 +70,55 @@ def inspect_jet_branches():
     else:
         print("Branch recoGenJets_ak8GenJets__GEN not found using GetBranch.")
 
+# Uncomment the following function to debug jet statuses for a given event
+# def inspect_jet_statuses(event_index=0):
+#     """
+#     Debug function to print the pT and status of each AK4 and AK8 jet in a given event.
+#     """
+#     tree.GetEntry(event_index)
+#     ak4jets_wrapper = getattr(tree, "recoGenJets_ak4GenJets__GEN", None)
+#     if ak4jets_wrapper:
+#         ak4jets = ak4jets_wrapper.product()
+#         print(f"\nAK4 Jets in event {event_index}:")
+#         for j in range(ak4jets.size()):
+#             jet = ak4jets.at(j)
+#             print(f"Jet {j}: pT = {jet.pt()}, status = {jet.status()}")
+#     ak8jets_wrapper = getattr(tree, "recoGenJets_ak8GenJets__GEN", None)
+#     if ak8jets_wrapper:
+#         ak8jets = ak8jets_wrapper.product()
+#         print(f"\nAK8 Jets in event {event_index}:")
+#         for j in range(ak8jets.size()):
+#             jet = ak8jets.at(j)
+#             print(f"Jet {j}: pT = {jet.pt()}, status = {jet.status()}")
+
+# Run inspection utilities early on
+list_branches()
+inspect_gen_particles()
 inspect_jet_branches()
 
 # ========================================
-# Extract RHadron pT Information
+# Define Target RHadron pdgId Range
 # ========================================
-all_gen_pt = []  # all_gen -> RHadron ### NEED TO redefine this for better var name
-all_gen_eta = []
-leading_gen_pt = []  # leading_gen -> leading RHadron pT per event ### NEED TO redefine this for better var name
+target_pdgIds = set(range(1000000, 1010000)) 
 
+# ========================================
+# Data Containers for Extraction
+# ========================================
+all_gen_pt = []       # All Gen RHadron pT values
+all_gen_eta = []      # All Gen RHadron eta values
+leading_gen_pt = []   # Leading Gen RHadron pT per event
+leading_jet_pt_from_gen = []  # Leading jet pT from gen particles (using isJet flag)
+leading_ak4_pt = []   # Leading AK4 jet pT from recoGenJets_ak4GenJets__GEN branch
+leading_ak8_pt = []   # Leading AK8 jet pT from recoGenJets_ak8GenJets__GEN branch
+
+# ========================================
+# Extraction Functions
+# ========================================
 def extract_gen_particles(event_index):
-    """Extracts leading gen particle pT for a given event (for target RHadrons)."""
+    """
+    Extracts leading gen particle pT for a given event (for target RHadrons).
+    Also collects all gen particle pT and eta values.
+    """
     tree.GetEntry(event_index)
     gen_particles_wrapper = getattr(tree, "recoGenParticles_genParticles__GEN", None)
     if not gen_particles_wrapper:
@@ -83,22 +131,14 @@ def extract_gen_particles(event_index):
     leading_pt = 0
     for j in range(gen_particles.size()):
         gen = gen_particles.at(j)
-        if 1000600 <= abs(gen.pdgId()) <= 1100000:
+        # Check if the particle's pdgId falls within the target range
+        if 1000600 <= abs(gen.pdgId()) <= 1100000 and gen.status() == 1:
             all_gen_pt.append(gen.pt())
             all_gen_eta.append(gen.eta())
             if gen.pt() > leading_pt:
                 leading_pt = gen.pt()
     if leading_pt > 0:
         leading_gen_pt.append(leading_pt)
-
-# Process each event for RHadron information
-for i in range(n_entries):
-    extract_gen_particles(i)
-
-# ========================================
-# Extract Leading Jet pT from GenParticles (using isJet flag)
-# ========================================
-leading_jet_pt_from_gen = []
 
 def extract_leading_jet_pt_from_gen(event_index):
     """
@@ -119,19 +159,11 @@ def extract_leading_jet_pt_from_gen(event_index):
     if max_pt > 0:
         leading_jet_pt_from_gen.append(max_pt)
 
-# Process each event for leading jet pT
-for i in range(n_entries):
-    extract_leading_jet_pt_from_gen(i)
-
-print(f"\nExtracted leading jet (from gen particles) pT for {len(leading_jet_pt_from_gen)} events.")
-
-# ========================================
-# Extract Leading AK4 Jet pT from recoGenJets_ak4GenJets__GEN branch
-# ========================================
-leading_ak4_pt = []
-
 def extract_leading_ak4_pt(event_index):
-    """Extracts the leading AK4 jet pT from the recoGenJets_ak4GenJets__GEN branch."""
+    """
+    Extracts the leading AK4 jet pT from the recoGenJets_ak4GenJets__GEN branch.
+    Note: The 'jet.status() == 1' condition has been removed to avoid filtering out valid jets.
+    """
     tree.GetEntry(event_index)
     ak4jets_wrapper = getattr(tree, "recoGenJets_ak4GenJets__GEN", None)
     if not ak4jets_wrapper:
@@ -142,24 +174,16 @@ def extract_leading_ak4_pt(event_index):
     max_pt = 0.0
     for j in range(ak4jets.size()):
         jet = ak4jets.at(j)
-        if jet.pt() > max_pt and jet.status() == 1:
+        # Removed the jet.status() check here
+        if jet.pt() > max_pt:
             max_pt = jet.pt()
     if max_pt > 0:
         leading_ak4_pt.append(max_pt)
 
-# Process each event for leading AK4 jet pT
-for i in range(n_entries):
-    extract_leading_ak4_pt(i)
-
-print(f"\nExtracted leading AK4 jet pT for {len(leading_ak4_pt)} events.")
-
-# ========================================
-# Extract Leading AK8 Jet pT from recoGenJets_ak8GenJets__GEN branch
-# ========================================
-leading_ak8_pt = []
-
 def extract_leading_ak8_pt(event_index):
-    """Extracts the leading AK8 jet pT from the recoGenJets_ak8GenJets__GEN branch."""
+    """
+    Extracts the leading AK8 jet pT from the recoGenJets_ak8GenJets__GEN branch.
+    """
     tree.GetEntry(event_index)
     ak8jets_wrapper = getattr(tree, "recoGenJets_ak8GenJets__GEN", None)
     if not ak8jets_wrapper:
@@ -175,11 +199,13 @@ def extract_leading_ak8_pt(event_index):
     if max_pt > 0:
         leading_ak8_pt.append(max_pt)
 
-# Process each event for leading AK8 jet pT
-for i in range(n_entries):
-    extract_leading_ak8_pt(i)
-
-print(f"\nExtracted leading AK8 jet pT for {len(leading_ak8_pt)} events.")
+def process_events():
+    """Process each event to extract all RHadron and jet information."""
+    for i in range(n_entries):
+        extract_gen_particles(i)
+        extract_leading_jet_pt_from_gen(i)
+        extract_leading_ak4_pt(i)
+        extract_leading_ak8_pt(i)
 
 # ========================================
 # Plotting Functions
@@ -195,129 +221,159 @@ def plot_histogram(data, xlabel, title, filename, bins=20, x_range=None, color="
     plt.ylabel("Counts")
     plt.title(title)
     plt.yscale("log")
-
     if xlabel == "Gen RHadron Eta":
         plt.ylim(1, max(plt.ylim()[1], 1e6))
     
-    plt.savefig(f"{output_directory}{filename}")
-    print(f"Histogram saved as {filename}")
+    base, ext = filename.rsplit('.', 1)
+    final_filename = f"{base}_{PLOT_IDENTIFIER}.{ext}"
+    plt.savefig(f"{OUTPUT_DIRECTORY}{final_filename}")
+    print(f"Histogram saved as {final_filename}")
     plt.close()
 
 def plot_overlay_histograms(data_dict, xlabel, title, filename, bins=50, x_range=None):
-    """Generates and saves an overlay of histograms for multiple datasets."""
+    """
+    Generates and saves an overlay of histograms for multiple datasets.
+    If bins is given as an integer, compute common bin edges across all datasets.
+    """
     plt.clf()
     plt.figure(figsize=(8, 6))
+    
+    # Compute common bins if an integer is provided
+    if isinstance(bins, int):
+        # Ensure that each dataset is non-empty before computing global min/max
+        non_empty_data = [data for data in data_dict.values() if len(data) > 0]
+        if non_empty_data:
+            global_min = min(min(data) for data in non_empty_data)
+            global_max = max(max(data) for data in non_empty_data)
+            common_bins = np.linspace(global_min, global_max, bins + 1)
+        else:
+            common_bins = bins
+    else:
+        common_bins = bins
+
     for label, data in data_dict.items():
-        plt.hist(data, bins=bins, histtype="step", label=label)
+        plt.hist(data, bins=common_bins, histtype="step", label=label)
     if x_range is not None:
         plt.xlim(x_range)
     plt.xlabel(xlabel)
     plt.ylabel("Counts")
     plt.title(title)
     plt.yscale("log")
-
     if xlabel == "Gen RHadron Eta":
         plt.ylim(1, max(plt.ylim()[1], 1e6))
-    
     plt.legend()
-    plt.savefig(f"{output_directory}{filename}")
-    print(f"Overlay histogram saved as {filename}")
+
+    # Modify the filename to include the identifier.
+    base, ext = filename.rsplit('.', 1)
+    final_filename = f"{base}_{PLOT_IDENTIFIER}.{ext}"
+    plt.savefig(f"{OUTPUT_DIRECTORY}{final_filename}")
+    print(f"Overlay histogram saved as {final_filename}")
     plt.close()
 
-# ========================================
-# Plotting RHadron pT Distributions
-# ========================================
-# Overlay of RHadron pT distributions
-overlay_data = {
-    "Leading Gen RHadron pT": leading_gen_pt,
-    "All Gen RHadron pT": all_gen_pt,
-}
-plot_overlay_histograms(
-    overlay_data,
-    xlabel="Gen RHadron pT (GeV)",
-    title="Overlay of Leading and All Gen_1800_RHadron pT Distributions",
-    filename="overlay_gen_RHadron_pt_histogram.png",
-    bins=50
-)
-
-# Individual RHadron pT histograms
-hist_params = {
-    "leading_pt": {
-        "xlabel": "Leading Gen RHadron pT (GeV)",
-        "title": "Leading Gen_1800_RHadron pT Distribution",
-        "filename": "leading_gen_RHadron_pt_histogram.png",
-        "bins": 50,
-        "color": "blue"
-    },
-    "all_pt": {
-        "xlabel": "All Gen RHadron pT (GeV)",
-        "title": "All Gen_1800_RHadron pT Distribution",
-        "filename": "all_gen_RHadron_pt_histogram.png",
-        "bins": 50,
-        "color": "orange"
-    },
-    "all_gen_eta": {
-        "xlabel": "All Gen RHadron Eta",
-        "title": "All 1800_Gen_RHadron Eta",
-        
-        "filename": "gen_RHadron_eta_histogram.png",
-        "bins": 50,
-        "color": "orange"
-    }  
-}
-
-gen_particle_data = {
-    "leading_pt": leading_gen_pt,
-    "all_pt": all_gen_pt,
-    "all_gen_eta": all_gen_eta  
-}
-
-for key, params in hist_params.items():
-    plot_histogram(
-        gen_particle_data[key],
-        xlabel=params["xlabel"],
-        title=params["title"],
-        filename=params["filename"],
-        bins=params["bins"],
-        color=params["color"]
+def plot_all_histograms():
+    """Plot all the histograms as required."""
+    # ========================================
+    # Plotting RHadron pT Distributions
+    # ========================================
+    overlay_data = {
+        "Leading Gen RHadron pT": leading_gen_pt,
+        "All Gen RHadron pT": all_gen_pt,
+    }
+    plot_overlay_histograms(
+        overlay_data,
+        xlabel="Gen RHadron pT (GeV)",
+        title="Overlay of Leading and All Gen_1800_RHadron pT Distributions",
+        filename="overlay_gen_RHadron_pt_histogram.png",
+        bins=50
     )
 
+    hist_params = {
+        "leading_pt": {
+            "xlabel": "Leading Gen_1800_RHadron pT (GeV)",
+            "title": "Leading Gen_1800_RHadron pT Distribution",
+            "filename": "leading_gen_RHadron_pt_histogram.png",
+            "bins": 50,
+            "color": "blue"
+        },
+        "all_pt": {
+            "xlabel": "All Gen_1800_RHadron pT (GeV)",
+            "title": "All Gen_1800_RHadron pT Distribution",
+            "filename": "all_gen_RHadron_pt_histogram.png",
+            "bins": 50,
+            "color": "orange"
+        },
+        "all_gen_eta": {
+            "xlabel": "All Gen_1800_RHadron Eta",
+            "title": "All 1800_Gen_RHadron Eta",
+            "filename": "gen_RHadron_eta_histogram.png",
+            "bins": 50,
+            "color": "orange"
+        }  
+    }
+    gen_particle_data = {
+        "leading_pt": leading_gen_pt,
+        "all_pt": all_gen_pt,
+        "all_gen_eta": all_gen_eta  
+    }
+    for key, params in hist_params.items():
+        plot_histogram(
+            gen_particle_data[key],
+            xlabel=params["xlabel"],
+            title=params["title"],
+            filename=params["filename"],
+            bins=params["bins"],
+            color=params["color"]
+        )
+
+    # ========================================
+    # Plotting Leading AK4 Jet pT Distribution
+    # ========================================
+    plot_histogram(
+        leading_ak4_pt,
+        xlabel="Leading AK4 Jet pT (GeV)",
+        title="Leading recoGen AK4 Jet pT Distribution",
+        filename="leading_ak4_jet_pt_histogram.png",
+        bins=50,
+        color="blue"
+    )
+
+    # ========================================
+    # Plotting Leading AK8 Jet pT Distribution
+    # ========================================
+    plot_histogram(
+        leading_ak8_pt,
+        xlabel="Leading AK8 Jet pT (GeV)",
+        title="Leading recoGen AK8 Jet pT Distribution",
+        filename="leading_ak8_jet_pt_histogram.png",
+        bins=50,
+        color="orange"
+    )
+
+    # ========================================
+    # Plotting Overlay of Leading AK4 and AK8 Jet pT Distributions
+    # ========================================
+    overlay_ak_jets = {
+        "Leading AK4 Jet": leading_ak4_pt,
+        "Leading AK8 Jet": leading_ak8_pt
+    }
+    plot_overlay_histograms(
+        overlay_ak_jets,
+        xlabel="Jet pT (GeV)",
+        title="Overlay of Leading recoGen AK4 and AK8 Jet pT Distributions",
+        filename="overlay_leading_ak4_ak8_jet_pt_histogram.png",
+        bins=50
+    )
 
 # ========================================
-# Plotting Leading AK4 Jet pT Distribution
+# Main Execution Block
 # ========================================
-plot_histogram(
-    leading_ak4_pt,
-    xlabel="Leading AK4 Jet pT (GeV)",
-    title="Leading AK4 Jet pT Distribution",
-    filename="leading_ak4_jet_pt_histogram.png",
-    bins=50,
-    color="blue"
-)
-
-# ========================================
-# Plotting Leading AK8 Jet pT Distribution
-# ========================================
-plot_histogram(
-    leading_ak8_pt,
-    xlabel="Leading AK8 Jet pT (GeV)",
-    title="Leading AK8 Jet pT Distribution",
-    filename="leading_ak8_jet_pt_histogram.png",
-    bins=50,
-    color="orange"
-)
-
-# ========================================
-# Plotting Overlay of Leading AK4 and AK8 Jet pT Distributions
-# ========================================
-overlay_ak_jets = {
-    "Leading AK4 Jet": leading_ak4_pt,
-    "Leading AK8 Jet": leading_ak8_pt
-}
-plot_overlay_histograms(
-    overlay_ak_jets,
-    xlabel="Jet pT (GeV)",
-    title="Overlay of Leading AK4 and AK8 Jet pT Distributions",
-    filename="overlay_leading_ak4_ak8_jet_pt_histogram.png",
-    bins=50
-)
+if __name__ == "__main__":
+    # Process each event to extract RHadron and jet information
+    process_events()
+    
+    print(f"\nExtracted leading jet (from gen particles) pT for {len(leading_jet_pt_from_gen)} events.")
+    print(f"\nExtracted leading AK4 jet pT for {len(leading_ak4_pt)} events.")
+    print(f"\nExtracted leading AK8 jet pT for {len(leading_ak8_pt)} events.")
+    
+    # Generate and save all histograms
+    plot_all_histograms()

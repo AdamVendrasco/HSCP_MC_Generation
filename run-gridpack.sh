@@ -8,8 +8,14 @@ nevents="${3:-100}"
 debug_tag="${4:-}"
 parent_dir_name=$(basename "$PWD")
 
-config_in_filename="$run-fragment.py"
 
+#fragment_type="Jet_matching_OFF" to run a non-jetmatching fragment
+#fragment_type="Jet_matching_ON" a jetmatching fragment
+
+fragment_type="Jet_matching_ON"
+
+
+config_in_filename="${run}-fragment_${fragment_type}.py"
 if [[ $cmssw_version == "" ]]; then
 	echo "No CMSSW version declared. Exiting"
 	exit 1
@@ -20,9 +26,9 @@ else
 	exit 1
 fi
 
-config_out_filename="$run/output-configs/$run-$cmssw_version-n$nevents-$debug_tag-1_cfg.py"
-root_out_filename="$run/root-files/$run-$cmssw_version-n$nevents-$debug_tag.root"
-debug_out_filename="$run/text-logs/$run-$cmssw_version-n$nevents-$debug_tag.debug"
+config_out_filename="$run/output-configs/$run-$cmssw_version-n$nevents-$fragment_type-$debug_tag-1_cfg.py"
+root_out_filename="$run/root-files/$run-$cmssw_version-n$nevents-$fragment_type-$debug_tag.root"
+debug_out_filename="$run/text-logs/$run-$cmssw_version-n$nevents-$fragment_type-$debug_tag.debug"
 
 
 echo "Storing log file in $debug_out_filename"
