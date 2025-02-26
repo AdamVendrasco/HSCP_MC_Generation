@@ -19,18 +19,17 @@ mpl.rcParams['figure.figsize'] = (8, 6)
 # ========================================
 # Setup and ROOT File Initialization
 # ========================================
-OUTPUT_DIRECTORY = "//eos/home-a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_JetMatching_ON/"
+OUTPUT_DIRECTORY = "/eos/home-a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_JetMatching_ON/"
 ROOT_FILE_PATH = "/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-Jet_matching_ON-test.root"
 PLOT_IDENTIFIER = "JetMatching_ON"
 
-# Open the ROOT file and access the tree
 f = ROOT.TFile.Open(ROOT_FILE_PATH)
 tree = f.Get("Events")
 n_entries = tree.GetEntries()
 print("Total entries in tree:", n_entries)
 
 # ========================================
-# Utility Functions for Inspection and Listing
+# Functions for Inspection and Listing
 # ========================================
 def list_branches():
     """List all branches in the tree."""
@@ -91,7 +90,7 @@ def inspect_jet_branches():
 #             jet = ak8jets.at(j)
 #             print(f"Jet {j}: pT = {jet.pt()}, status = {jet.status()}")
 
-# Run inspection utilities early on
+# for debugging
 list_branches()
 inspect_gen_particles()
 inspect_jet_branches()
@@ -131,8 +130,9 @@ def extract_gen_particles(event_index):
     leading_pt = 0
     for j in range(gen_particles.size()):
         gen = gen_particles.at(j)
-        # Check if the particle's pdgId falls within the target range
+        # Check if the particle's pdgId code range for RHadrons
         if 1000600 <= abs(gen.pdgId()) <= 1100000 and gen.status() == 1:
+            print(gen.pdgId())
             all_gen_pt.append(gen.pt())
             all_gen_eta.append(gen.eta())
             if gen.pt() > leading_pt:
