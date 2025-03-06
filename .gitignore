@@ -1,0 +1,6 @@
+CMSSW_12_4_8/
+genproductions/
+*.lhe
+plot_archive/
+mg-Rhadron_mGl-1800/input-configs/*.xz
+mg-Rhadron_mGl-1800/root-files/

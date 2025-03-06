@@ -21,22 +21,11 @@ mpl.rcParams.update({
     'figure.figsize': (8, 6)
 })
 
-def extract_top3_ak4_pt_from_file_no_isolation(root_file_path):
+def extract_top6_ak4_pt_from_file_no_isolation(root_file_path):
     """
-    Extract the leading, second, and third AK4 jet pT values from each event in a ROOT file.
+    Extract the leading, second, third, fourth, and fifth AK4 jet pT values 
+    from each event in a ROOT file.
     (No ΔR isolation is applied.)
-    
-    This version:
-      - Reads the "Events" tree and retrieves the jet collection stored as
-        "recoGenJets_ak4GenJets__GEN".
-      - Also extracts generated particle information (for debugging purposes).
-      - Sorts each event’s jet pT values in descending order and records the top three.
-    
-    Args:
-        root_file_path (str): Path to the ROOT file.
-    
-    Returns:
-        dict: Dictionary with keys "leading", "second", and "third" containing lists of jet pT values.
     """
     f = ROOT.TFile.Open(root_file_path)
     tree = f.Get("Events")
@@ -45,6 +34,9 @@ def extract_top3_ak4_pt_from_file_no_isolation(root_file_path):
     leading = []  # Highest pT jet per event
     second = []   # Second highest pT jet per event
     third = []    # Third highest pT jet per event
+    fourth = []   # Fourth highest pT jet per event
+    fifth = []    # Fifth highest pT jet per event
+    sixth = []    # Sixth highest pT jet per event 
     count = 0     # Debug counter for gen particles
 
     jet_pts, jet_eta, jet_phi = [], [], []
@@ -80,7 +72,7 @@ def extract_top3_ak4_pt_from_file_no_isolation(root_file_path):
             jet_eta.append(jet.eta())
             jet_phi.append(jet.phi())
 
-        # Sort jet pT values in descending order and record the top three
+        # Sort jet pT values in descending order and record the top jets
         jet_pts.sort(reverse=True)
         if len(jet_pts) >= 1:
             leading.append(jet_pts[0])
@@ -88,41 +80,37 @@ def extract_top3_ak4_pt_from_file_no_isolation(root_file_path):
             second.append(jet_pts[1])
         if len(jet_pts) >= 3:
             third.append(jet_pts[2])
+        if len(jet_pts) >= 4:
+            fourth.append(jet_pts[3])
+        if len(jet_pts) >= 5:
+            fifth.append(jet_pts[4])
+        if len(jet_pts) >= 6:
+            sixth.append(jet_pts[5])
 
-    return {"leading": leading, "second": second, "third": third}
-
+    return {
+        "leading": leading,
+        "second": second,
+        "third": third,
+        "fourth": fourth,
+        "fifth": fifth,
+        "sixth": sixth
+    }
 
 def deltaR(eta1, phi1, eta2, phi2):
     """
     Compute the ΔR separation between two objects given their eta and phi coordinates.
-    
-    Parameters:
-        eta1 (float): Eta of the first object.
-        phi1 (float): Phi of the first object.
-        eta2 (float): Eta of the second object.
-        phi2 (float): Phi of the second object.
-    
-    Returns:
-        float: The ΔR separation.
     """
     dphi = abs(phi1 - phi2)
     if dphi > math.pi:
         dphi = 2 * math.pi - dphi
     return math.sqrt((eta1 - eta2) ** 2 + dphi ** 2)
 
-
-def extract_top3_ak4_pt_from_file_with_isolation(root_file_path):
+def extract_top6_ak4_pt_from_file_with_isolation(root_file_path):
     """
-    Extract the leading, second, and third AK4 jet pT values from each event in a ROOT file.
-    Applies a jet isolation requirement:
-      - If an RHadron (with pdgId between 1000600 and 1100000 and status == 1)
-        is found within ΔR < 0.4 of a jet, that jet is excluded.
-    
-    Args:
-        root_file_path (str): Path to the ROOT file.
-    
-    Returns:
-        dict: Dictionary with keys "leading", "second", "third" containing lists of jet pT values.
+    Extract the leading, second, third, fourth, and fifth AK4 jet pT values 
+    from each event in a ROOT file.
+    Applies a jet isolation requirement: jets with an RHadron (pdgId between 1000600 and 1100000, status==1)
+    within ΔR < 0.4 are excluded.
     """
     f = ROOT.TFile.Open(root_file_path)
     tree = f.Get("Events")
@@ -131,6 +119,9 @@ def extract_top3_ak4_pt_from_file_with_isolation(root_file_path):
     leading = []  # Highest pT jet per event
     second = []   # Second highest pT jet per event
     third = []    # Third highest pT jet per event
+    fourth = []   # Fourth highest pT jet per event
+    fifth = []    # Fifth highest pT jet per event
+    sixth = []    # Sixth highest pT jet per event    
 
     for i in range(n_entries):
         tree.GetEntry(i)
@@ -161,7 +152,7 @@ def extract_top3_ak4_pt_from_file_with_isolation(root_file_path):
             if passes_isolation:
                 jet_candidates.append((jet.pt(), jet.eta(), jet.phi()))
 
-        # Sort jets by pT in descending order and record the top three
+        # Sort jets by pT in descending order and record the top jets
         jet_candidates.sort(key=lambda x: x[0], reverse=True)
         if len(jet_candidates) >= 1:
             leading.append(jet_candidates[0][0])
@@ -169,9 +160,20 @@ def extract_top3_ak4_pt_from_file_with_isolation(root_file_path):
             second.append(jet_candidates[1][0])
         if len(jet_candidates) >= 3:
             third.append(jet_candidates[2][0])
-
-    return {"leading": leading, "second": second, "third": third}
-
+        if len(jet_candidates) >= 4:
+            fourth.append(jet_candidates[3][0])
+        if len(jet_candidates) >= 5:
+            fifth.append(jet_candidates[4][0])
+        if len(jet_candidates) >= 6:
+            sixth.append(jet_candidates[5][0])
+    return {
+        "leading": leading,
+        "second": second,
+        "third": third,
+        "fourth": fourth,
+        "fifth": fifth,
+        "sixth": sixth
+    }
 
 def plot_overlay_histograms(data_dict, xlabel, title, filename, bins, x_range=None):
     """
@@ -187,19 +189,18 @@ def plot_overlay_histograms(data_dict, xlabel, title, filename, bins, x_range=No
     """
     plt.figure(figsize=(8, 6))
     for label, data in data_dict.items():
-        plt.hist(data, bins=bins, histtype="step", label=label)
+        plt.hist(data, bins=bins, histtype="step", label=label, density=True)
 
     if x_range is not None:
         plt.xlim(x_range)
     plt.xlabel(xlabel)
-    plt.ylabel("Counts")
+    plt.ylabel("Normalized Counts")
     plt.title(title)
     plt.yscale("log")
     plt.legend()
     plt.savefig(filename)
     print(f"Overlay histogram saved as {filename}")
     plt.close()
-
 
 def main(args):
     # Define file paths for jet-matching OFF and ON datasets
@@ -212,21 +213,22 @@ def main(args):
         "root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-Jet_matching_ON-test.root"
     )
 
-    # Choose the extraction function based on the --isolation flag.
-    # If isolation is enabled, we use the ΔR-based jet selection.
+    # Choose extraction function and output directory based on the --isolation flag.
     if args.isolation:
-        extraction_function = extract_top3_ak4_pt_from_file_with_isolation
-        file_suffix = "_withDeltaR_"
+        extraction_function = extract_top6_ak4_pt_from_file_with_isolation
+        file_suffix = "_isolation_"
+        output_dir = "/eos/user/a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_JetMatcing_ONandOFF/isolation_cut/"
     else:
-        extraction_function = extract_top3_ak4_pt_from_file_no_isolation
+        extraction_function = extract_top6_ak4_pt_from_file_no_isolation
         file_suffix = ""
+        output_dir = "/eos/user/a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_JetMatcing_ONandOFF/no_isolation_cut/"
 
     # Extract jet pT data from both ROOT files
     data_off = extraction_function(file_off)
     data_on = extraction_function(file_on)
 
-    # Loop over the three jet ranks and generate overlay histograms
-    for rank in ["leading", "second", "third"]:
+    # Loop over the jet ranks and generate overlay histograms
+    for rank in ["leading", "second", "third", "fourth", "fifth", "sixth"]:
         if not data_off[rank] or not data_on[rank]:
             print(f"Skipping {rank} jet plot due to insufficient data in one of the datasets.")
             continue
@@ -234,7 +236,7 @@ def main(args):
         # Determine common binning based on global min and max
         global_min = min(min(data_off[rank]), min(data_on[rank]))
         global_max = max(max(data_off[rank]), max(data_on[rank]))
-        common_bins = np.linspace(global_min, global_max, 21)
+        common_bins = np.linspace(global_min, global_max, 51)
 
         overlay_data = {
             "Jet Matching OFF": data_off[rank],
@@ -242,8 +244,7 @@ def main(args):
         }
 
         output_filename = (
-            f"/eos/user/a/avendras/mg-Rhadron/plot_archive/gen_RHadron_1800_JetMatcing_ONandOFF/"
-            f"overlay_ak4_jet_pt_comparison_{rank}{file_suffix}.png"
+            f"{output_dir.rstrip('/')}/overlay_ak4_jet_pt_comparison_{rank}{file_suffix}.png"
         )
         plot_overlay_histograms(
             overlay_data,
@@ -252,7 +253,6 @@ def main(args):
             filename=output_filename,
             bins=common_bins
         )
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

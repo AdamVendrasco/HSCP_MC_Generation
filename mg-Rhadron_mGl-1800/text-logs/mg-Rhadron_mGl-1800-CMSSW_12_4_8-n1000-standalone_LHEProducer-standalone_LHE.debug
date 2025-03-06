@@ -1,0 +1,269 @@
+nohup: ignoring input
+%MSG-w CondDBESSource:  (NoModuleName) 03-Mar-2025 17:18:09 CET pre-events
+Plugin for Record PGeometricDetExtraRcd has not been found.
+%MSG
+   ______________________________________     
+         Running Generic Tarball/Gridpack     
+   ______________________________________     
+gridpack tarball path = /eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_slc7_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz
+%MSG-MG5 number of events requested = 1000
+%MSG-MG5 random seed used for the run = 234567
+%MSG-MG5 thread count requested = 1
+%MSG-MG5 residual/optional arguments = 
+%MSG-MG5 number of events requested = 1000
+%MSG-MG5 random seed used for the run = 234567
+%MSG-MG5 number of cpus = 1
+%MSG-MG5 SCRAM_ARCH version = slc7_amd64_gcc10
+%MSG-MG5 CMSSW version = CMSSW_12_4_8
+WARNING: In non-interactive mode release checks e.g. deprecated releases, production architectures are disabled.
+Running MG5_aMC for the 1 time
+produced_lhe  0 nevt  1000 submitting_event  1000  remaining_event  1000
+run.sh 1000 2345670
+Now generating 1000 events with random seed 2345670 and granularity 1
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.13                20xx-xx-xx         *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/process/madevent/Cards/me5_configuration.txt  
+INFO: load configuration from /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/mgbasedir/input/mg5_configuration.txt  
+INFO: load configuration from /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/process/madevent/Cards/me5_configuration.txt  
+No valid eps viewer found. Please set in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+WRITE GRIDCARD /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/process/madevent
+generate 1000 events
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+P3_gg_gogobbx
+P3_gb_gogogb
+P3_bbx_gogogg
+P3_gg_gogoqq
+P3_gq_gogogq
+P3_qq_gogogg
+P3_bb_gogobb
+P3_qq_gogoqq
+P3_gg_gogogg
+P3_qq_gogobbx
+P3_qb_gogoqb
+P3_bbx_gogoqq
+P2_gb_gogob
+P2_bbx_gogog
+P2_gq_gogoq
+P2_qq_gogog
+P2_gg_gogog
+P1_qq_gogo
+P1_bbx_gogo
+P1_gg_gogo
+Using random number seed offset = 2345670
+INFO: Generating 1000.0 unweighted events. 
+sum of cpu time of last step: 20h47m17s
+INFO: need to improve 67 channels 
+combine_events
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+store_events
+  === Results Summary for run: GridRun_2345670 tag: mg-Rhadron_mGl-1800 ===
+
+     Cross-section :   0 +- 0 pb
+     Nb of events :  1000
+ 
+decay_events -from_cards
+DONE
+write ./events.lhe.gz
+run 1 finished, total number of produced events: 1000/1000
+
+-rw-r--r--. 1 avendras zh 217546 Mar  3 17:35 events_1.lhe.gz
+run finished, produced number of events:
+1000
+/eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/process/madevent /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.13                20xx-xx-xx         *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/process/madevent/Cards/me5_configuration.txt  
+INFO: load configuration from /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/mgbasedir/input/mg5_configuration.txt  
+INFO: load configuration from /eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent/process/madevent/Cards/me5_configuration.txt  
+No valid eps viewer found. Please set in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+madevent>INFO: Running Systematics computation 
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+INFO: # events generated with PDF: NNPDF31_nnlo_as_0118_mc_hessian_pdfas (325300) 
+INFO: #Will Compute 926 weights per event. 
+INFO: # currently at event 0 [elapsed time: 0.051 s] 
+INFO: #***************************************************************************
+#
+# original cross-section: 0.0038844449000000666
+#     scale variation: +40.4% -26.9%
+#     emission scale variation: +13.8% -10.2%
+#     central scheme variation: + 0% -31.1%
+# PDF variation: +36.5% -36.5%
+#
+#PDF NNPDF31_nnlo_as_0118_mc: 0.0029582 +26.7% -26.7%
+#PDF NNPDF31_nlo_hessian_pdfas: 0.00333431 +23.4% -23.4%
+#PDF NNPDF40_nnlo_pdfas: 0.00362649 +7.19% -7.19%
+#PDF NNPDF40_nnlo_hessian_pdfas: 0.00362157 +5.99% -5.99%
+#PDF NNPDF40_nnlo_pch_as_01180: 0.00381391 +5.85% -5.85%
+#PDF CT18NNLO: 0.00454055 +33.7% -18.4%
+#PDF CT18ZNNLO: 0.00493259 +32.3% -20.8%
+#PDF MSHT20nnlo_as118: 0.0046521 +14.3% -14%
+#PDF PDF4LHC21_40_pdfas: 0.0051893 +40% -40%
+#PDF HERAPDF20_NNLO_EIG: 0.00297807 +2.08% -11.9%
+#PDF ABMP16als118_5_nnlo: 0.00304924 +8.13% -8.13%
+# dynamical scheme # 1 : 0.0033787 +39.7% -26.4% # \sum ET
+# dynamical scheme # 2 : 0.00279583 +36.5% -25.1% # \sum\sqrt{m^2+pt^2}
+# dynamical scheme # 3 : 0.00381767 +40.2% -26.8% # 0.5 \sum\sqrt{m^2+pt^2}
+# dynamical scheme # 4 : 0.00267778 +36% -24.9% # \sqrt{\hat s}
+# PDF 263000 : 0.004366877531234746
+#***************************************************************************
+ 
+INFO: End of systematics computation 
+madevent>INFO:  
+launch in debug mode
+/eos/home-a/avendras/mg-Rhadron/CMSSW_12_4_8/lheevent
+
+Run xml check
+Number of weights that are NaN:
+0
+All checks passed 
+
+total 36279
+drwxr-xr-x. 2 avendras zh     4096 Mar  3 17:22 CMSSW_12_4_8
+drwxr-xr-x. 2 avendras zh     4096 Mar  3 17:22 InputCards
+-rw-r--r--. 1 avendras zh 36703795 Mar  3 17:36 cmsgrid_final.lhe
+-rw-r--r--. 1 avendras zh   174629 Sep  1  2023 gridpack_generation.log
+-rw-r--r--. 1 avendras zh   233620 Sep  1  2023 gridpack_generation_codegen.log
+-rwxr-xr-x. 1 avendras zh    11617 Sep  1  2023 merge.pl
+drwxr-xr-x. 2 avendras zh     4096 Sep  1  2023 mgbasedir
+drwxr-xr-x. 1 avendras zh     4096 Mar  3 17:36 process
+-rwxr-xr-x. 1 avendras zh     7866 Sep  1  2023 runcmsgrid.sh
+03-Mar-2025 17:39:40 CET  Initiating request to open LHE file cmsgrid_final.lhe
+03-Mar-2025 17:39:40 CET  Successfully opened LHE file cmsgrid_final.lhe
+03-Mar-2025 17:39:40 CET  Initiating request to open LHE file cmsgrid_final.lhe
+03-Mar-2025 17:39:40 CET  Successfully opened LHE file cmsgrid_final.lhe
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 on stream 0 at 03-Mar-2025 17:39:41.040 CET
+----- Begin Fatal Exception 03-Mar-2025 17:39:41 CET-----------------------
+An exception of category 'ProductNotFound' occurred while
+   [0] Processing  Event run: 1 lumi: 1 event: 1 stream: 0
+   [1] Running path 'generation_step'
+   [2] Calling method for module BetafuncEvtVtxGenerator/'VtxSmeared'
+Exception Message:
+Principal::getByToken: Found zero products matching all criteria
+Looking for type: edm::HepMCProduct
+Looking for module label: generator
+Looking for productInstanceName: unsmeared
+
+   Additional Info:
+      [a] If you wish to continue processing events after a ProductNotFound exception,
+add "SkipEvent = cms.untracked.vstring('ProductNotFound')" to the "options" PSet in the configuration.
+
+----- End Fatal Exception -------------------------------------------------
+      0.001012      0.000007      0.000004             1
+      0.001476      0.000019      0.000004             2
+      0.001396      0.000018      0.000004             3
+ 
+Another exception was caught while trying to clean up runs after the primary fatal exception.
+Another exception was caught while trying to clean up files after the primary fatal exception.
+
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Overall cross-section summary 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Process		xsec_before [pb]		passed	nposw	nnegw	tried	nposw	nnegw 	xsec_match [pb]			accepted [%]	 event_eff [%]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Total		0.000e+00 +/- 0.000e+00		0	0	0	0	0	0	-0.000e+00 +/- 0.000e+00		-100.0 +/- -100.0	-100.0 +/- -100.0
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Before matching: total cross section = 0.000e+00 +- 0.000e+00 pb
+After matching: total cross section = -0.000e+00 +- 0.000e+00 pb
+Matching efficiency = -1.0 +/- -1.0   [TO BE USED IN MCM]
+
+After filter: final cross section = 0.000e+00 +- 0.000e+00 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 0.000e+00 +- 0.000e+00
+TimeReport> Time report complete in 1303.34 seconds
+ Time Summary: 
+ - Min event:   0.1594
+ - Max event:   0.1594
+ - Avg event:   0.1594
+ - Total loop:  1289.9
+ - Total init:  13.4357
+ - Total job:   1303.34
+ - EventSetup Lock: 0
+ - EventSetup Get:  0
+ Event Throughput: 0.000775253 ev/s
+ CPU Summary: 
+ - Total loop:     101.74
+ - Total init:     4.51788
+ - Total extra:    0
+ - Total children: 101.403
+ - Total job:      106.258
+ Processing Summary: 
+ - Number of Events:  1
+ - Number of Global Begin Lumi Calls:  1
+ - Number of Global Begin Run Calls: 1
+
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 CondDBESSource       -w (NoModuleName)                         1        1
+    2 GenXSecAnalyzer      -w GenXSecAnalyzer:                      12       12
+    3 TimeReport           -e AfterModEndJob                         1        1
+    4 Additional Exception -s PostEndProcessBl                       2        2
+    5 Fatal Exception      -s PostProcessPath                        1        1
+    6 fileAction           -s ExternalLHEProdu                       4        4
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 CondDBESSource       pre-events                        
+    2 GenXSecAnalyzer      EndJob           EndJob           EndJob
+    3 TimeReport           EndJob                            
+    4 Additional Exceptions PostEndProcessBl PostEndProcessBl 
+    5 Fatal Exception      1/1                               
+    6 fileAction           Run: 1           Run: 1           Run: 1
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning                13                  13
+Error                   1                   1
+System                  7                   7
+
+dropped waiting message count 0

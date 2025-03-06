@@ -10,10 +10,9 @@ parent_dir_name=$(basename "$PWD")
 
 
 #fragment_type="Jet_matching_OFF" to run a non-jetmatching fragment
-#fragment_type="Jet_matching_ON" a jetmatching fragment
-
+#fragment_type="Jet_matching_ON" to run a jetmatching fragment
+#fragment_type="standalone_LHEProducer"
 fragment_type="Jet_matching_ON"
-
 
 config_in_filename="${run}-fragment_${fragment_type}.py"
 if [[ $cmssw_version == "" ]]; then
