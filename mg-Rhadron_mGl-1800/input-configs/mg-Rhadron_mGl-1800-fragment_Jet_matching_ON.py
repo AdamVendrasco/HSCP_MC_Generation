@@ -1,91 +1,69 @@
-import FWCore.ParameterSet.Config as cms
+ import FWCore.ParameterSet.Config as cms
 
-from Configuration.Generator.Pythia8CommonSettings_cfi import *
-from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
-print("STARTING ExternalLHEProducer STUFF LOOK FOR ME!!!!!")
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring("/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_slc7_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz"),
-    nEvents = cms.untracked.uint32(1000),
+    args = cms.vstring('/eos/user/a/avendras/mg-Rhadron_v6/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz'),
+    nEvents = cms.untracked.uint32(15000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
 )
 
-import math
-print("STARTING PYTHIA8 STUFF LOOK FOR ME!!!!!")
+from Configuration.Generator.Pythia8CommonSettings_cfi import *
+from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
+
 generator = cms.EDFilter("Pythia8HadronizerFilter",
-  maxEventsToPrint = cms.untracked.int32(5),  # Increase the number of events printed for debugging
-  pythiaPylistVerbosity = cms.untracked.int32(3),  # Increase verbosity for Pythia parameter listing
-  filterEfficiency = cms.untracked.double(1.0),
-  # Changed pythiaHepMCVerbosity to true
-  pythiaHepMCVerbosity = cms.untracked.bool(True),
-  comEnergy = cms.double(13000.),
-  PythiaParameters = cms.PSet(
-    pythia8CommonSettingsBlock,
-    pythia8CP5SettingsBlock,
-    JetMatchingParameters = cms.vstring(
-      # Scheme and Usage
-      'JetMatching:setMad = on', #When on, the merging parameters are set according to the values in the LHEF header...should this be on? 
-      'JetMatching:scheme = 1',  # Madgraph scheme for merging.
-      'JetMatching:merge = on',  # This is the master switch for parton jet matching.
-    
-      #Jet algorithm
-      'JetMatching:jetAlgorithm = 2', # Does SlowJet clustering. Only slowJet with kT-algo is supported for Madgraph-style merging.
-      'JetMatching:slowJetPower = 1', # I want to use kT-algo
-      
-      # Merging parameters
-      'JetMatching:etaJetMax = 5.', # maximum pseudorapidity that the detector is assumed to cover. Tied to the phase space region in which partons have been generated.
-      'JetMatching:eTjetMin = 30', # For SlowJet clustering, this is the minimum transverse momentum required for a cluster to be accepted.
-      'JetMatching:coneRadius = .7', # For SlowJet algorithm, this gives the R parameter.
-
-      # Exclusive mode parameter
-      'JetMatching:exclusive = 0' #All partons must match jets, and no additional jets are allowed. This option of 2 is dynamic though.  
-      'JetMatching:nJet = 2' #When JetMatching:exclusive = 2, nJet indicates the minimum number of additional light jets in the incoming process.
-      'JetMatching:nJetMax = 2', #Max number of jets
-      
-      # Madgraph specific parameters
-      'JetMatching:doShowerKt = off', 
-      'JetMatching:qCut = 30', 
-      #'JetMatching:nQmatch = 5'
-      #6:m0 = 172.5',
-      #'24:mMin = 7',
-      #'Check:abortIfVeto = on',
-      #'JetMatching:doVeto = off ' 
+    maxEventsToPrint = cms.untracked.int32(10),
+    pythiaPylistVerbosity = cms.untracked.int32(11),
+    filterEfficiency = cms.untracked.double(1.0),
+    pythiaHepMCVerbosity = cms.untracked.bool(True),
+    comEnergy = cms.double(13600.),
+    PythiaParameters = cms.PSet(
+        pythia8CommonSettingsBlock,
+        pythia8CP5SettingsBlock,
+        processParameters = cms.vstring(
+            'JetMatching:setMad = on',
+            'JetMatching:scheme = 1',
+            'JetMatching:merge = on',
+            'JetMatching:jetAlgorithm = 2',
+            'JetMatching:etaJetMax = 5.',
+            'JetMatching:coneRadius = 1.',
+            'JetMatching:slowJetPower = 1',
+            'JetMatching:qCut = 100.', #this is the actual merging scale
+             'JetMatching:clFact = 1', # determines jet-to parton matching
+            'JetMatching:nQmatch = 5', #5 for 5-flavour scheme (matching of b-quarks)
+            'JetMatching:nJetMax = 1', #number of partons in born matrix element for highest multiplicity
+            'JetMatching:doShowerKt = off',
+            
+            # Enable Rhadrons
+            'RHadrons:allow  = on',
+            'RHadrons:allowDecay = off',
+            'RHadrons:setMasses = on',
+            'RHadrons:probGluinoball = 0.1',
 
 
- 
-    ),
-    processParameters = cms.vstring(
-      # Enable R-Hadron settings
-      'RHadrons:allow  = on',
-      'RHadrons:allowDecay = off',
-      'RHadrons:setMasses = on',
-      'RHadrons:probGluinoball = 0.1',
-
-      # Additional hadronization and debug information
-      'HadronLevel:Hadronize = on',  # Ensure hadronization is enabled
-      'PartonLevel:ISR = on',  # Enable Initial State Radiation
-      'PartonLevel:FSR = on',  # Enable Final State Radiation
-      'PartonLevel:MPI = on',  # Enable Multi-Parton Interactions
-      'Check:particleData = on',  # Check particle properties
-      
-
-      # Extended verbosity for debugging
-      'Main:timesAllowErrors = 100',  # Allow more errors before stopping
-      'Init:showChangedSettings = on',  # Show all settings that differ from the default
-      'Init:showAllSettings = on',  # Show all settings
-      'Next:numberCount = 100',  # Print event info every 100 events
-      'Next:numberShowInfo = 1',  # Print initialization info for first 5 events
-      'Next:numberShowProcess = 5',  # Print process-level info for first 5 events
-      'Next:numberShowEvent = 5',  # Print event-level info for first 5 events
-    ),
-    parameterSets = cms.vstring('pythia8CommonSettings',
-      'pythia8CP5Settings',
-      'JetMatchingParameters',
-      'processParameters'
+           # Additional hadronization and debug information
+           'HadronLevel:Hadronize = on',  # Ensure hadronization is enabled
+           'PartonLevel:ISR = on',  # Enable Initial State Radiation
+           'PartonLevel:FSR = on',  # Enable Final State Radiation
+           'PartonLevel:MPI = on',  # Enable Multi-Parton Interactions
+           'Check:particleData = on',  # Check particle properties
+           
+           # Extended verbosity for debugging
+           'Main:timesAllowErrors = 10000',  # how many aborts before run stops
+           'Init:showChangedSettings = on',  # list changed settings that differ from default
+           'Init:showChangedParticleData = on', # list changed particle data
+           'Init:showAllSettings = on',  # Show all settings
+           'Next:numberCount = 1',  # print message every n events
+           'Next:numberShowInfo = 1',  # print event information n times
+           'Next:numberShowProcess = 1',  # print process record n times
+           'Next:numberShowEvent = 10',  # print event record n times
+       ),
+        
+        parameterSets = cms.vstring('pythia8CommonSettings',
+                                    'pythia8CP5Settings',
+                                    'processParameters',
+                                    )
     )
-  ),
-  # SLHATableForPythia8 = cms.string(baseSLHATable),
 )
 
 # We would like to change the particleID lists to be more inclusive of all RHadrons.
@@ -100,4 +78,4 @@ dirhadrongenfilter = cms.EDFilter("MCParticlePairFilter",
     ParticleID2 = cms.untracked.vint32(1000993,1009213,1009313,1009323,1009113,1009223,1009333,1091114,1092114,1092214,1092224,1093114,1093214,1093224,1093314,1093324,1093334)
 )
 
-ProductionFilterSequence = cms.Sequence(generator * dirhadrongenfilter)
+ProductionFilterSequence = cms.Sequence(generator* dirhadrongenfilter)
