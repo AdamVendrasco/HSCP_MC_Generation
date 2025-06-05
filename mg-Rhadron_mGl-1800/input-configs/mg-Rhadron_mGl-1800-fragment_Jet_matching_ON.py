@@ -1,8 +1,8 @@
- import FWCore.ParameterSet.Config as cms
+import FWCore.ParameterSet.Config as cms
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('/eos/user/a/avendras/mg-Rhadron_v6/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz'),
-    nEvents = cms.untracked.uint32(15000),
+    nEvents = cms.untracked.uint32(20000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
@@ -12,10 +12,10 @@ from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
 
 generator = cms.EDFilter("Pythia8HadronizerFilter",
-    maxEventsToPrint = cms.untracked.int32(10),
-    pythiaPylistVerbosity = cms.untracked.int32(11),
+    maxEventsToPrint = cms.untracked.int32(1),
+    pythiaPylistVerbosity = cms.untracked.int32(1),
     filterEfficiency = cms.untracked.double(1.0),
-    pythiaHepMCVerbosity = cms.untracked.bool(True),
+    pythiaHepMCVerbosity = cms.untracked.bool(False),
     comEnergy = cms.double(13600.),
     PythiaParameters = cms.PSet(
         pythia8CommonSettingsBlock,
@@ -29,7 +29,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:coneRadius = 1.',
             'JetMatching:slowJetPower = 1',
             'JetMatching:qCut = 100.', #this is the actual merging scale
-             'JetMatching:clFact = 1', # determines jet-to parton matching
+            'JetMatching:clFact = 1', # determines jet-to parton matching
             'JetMatching:nQmatch = 5', #5 for 5-flavour scheme (matching of b-quarks)
             'JetMatching:nJetMax = 1', #number of partons in born matrix element for highest multiplicity
             'JetMatching:doShowerKt = off',
@@ -39,7 +39,6 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'RHadrons:allowDecay = off',
             'RHadrons:setMasses = on',
             'RHadrons:probGluinoball = 0.1',
-
 
            # Additional hadronization and debug information
            'HadronLevel:Hadronize = on',  # Ensure hadronization is enabled
@@ -51,12 +50,14 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
            # Extended verbosity for debugging
            'Main:timesAllowErrors = 10000',  # how many aborts before run stops
            'Init:showChangedSettings = on',  # list changed settings that differ from default
+           'Init:showProcesses = on',
            'Init:showChangedParticleData = on', # list changed particle data
            'Init:showAllSettings = on',  # Show all settings
-           'Next:numberCount = 1',  # print message every n events
+           'Next:numberCount = 100',  # print message every n events
+           'Next:numberShowEvent = 0',# set to 0 here (we do events separately)
            'Next:numberShowInfo = 1',  # print event information n times
            'Next:numberShowProcess = 1',  # print process record n times
-           'Next:numberShowEvent = 10',  # print event record n times
+           'Next:numberShowEvent = 1',  # print event record n times
        ),
         
         parameterSets = cms.vstring('pythia8CommonSettings',
@@ -78,4 +79,4 @@ dirhadrongenfilter = cms.EDFilter("MCParticlePairFilter",
     ParticleID2 = cms.untracked.vint32(1000993,1009213,1009313,1009323,1009113,1009223,1009333,1091114,1092114,1092214,1092224,1093114,1093214,1093224,1093314,1093324,1093334)
 )
 
-ProductionFilterSequence = cms.Sequence(generator* dirhadrongenfilter)
+ProductionFilterSequence = cms.Sequence(generator * dirhadrongenfilter)

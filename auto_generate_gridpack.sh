@@ -19,25 +19,25 @@ TEMPLATES_DIR="/eos/user/a/avendras/templates/${RUN}/fragments"
 ###############################################################################
 #                           Cleanup Previous Run Data                         #
 #####################s##########################################################
-TARGET_DIR="${MG_DIR}/${RUN}"
-if [ -d "${TARGET_DIR}" ]; then
-  echo "Cleaning ${TARGET_DIR} directory"
-  rm -rf "${TARGET_DIR}"
-fi
-
-if [ ! -d "${TARGET_DIR}" ]; then
-  echo "Recreating the directory ${TARGET_DIR}"
-  mkdir -p "${TARGET_DIR}"
-else
-  echo "Directory ${TARGET_DIR} already exists."
-fi
+#TARGET_DIR="${MG_DIR}/${RUN}"
+#if [ -d "${TARGET_DIR}" ]; then
+#  echo "Cleaning ${TARGET_DIR} directory"
+#  rm -rf "${TARGET_DIR}"
+#fi
+#
+#if [ ! -d "${TARGET_DIR}" ]; then
+#  echo "Recreating the directory ${TARGET_DIR}"
+#  mkdir -p "${TARGET_DIR}"
+#else
+#  echo "Directory ${TARGET_DIR} already exists."
+#fi
 
 
 ###############################################################################
 #                      Step 1: Initial Setup Invocation                       #
 ###############################################################################
-echo "Running initial setup with CMSSW version ${CMSSW_VERSION} and run directory ${RUN}"
-bash ./initial-setup.sh "${CMSSW_VERSION}" "${RUN}"
+#echo "Running initial setup with CMSSW version ${CMSSW_VERSION} and run directory ${RUN}"
+#bash ./initial-setup.sh "${CMSSW_VERSION}" "${RUN}"
 
 ###############################################################################
 #                     Step 2: Prepare Input Configuration                     #
