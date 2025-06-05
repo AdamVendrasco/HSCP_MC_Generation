@@ -1,38 +1,50 @@
-#! /usr/bin/bash
+#!/usr/bin/env bash
 
-cmssw_version=$1
-run=${2:-}
+# usage:   ./initial-setup.sh <CMSSW_VERSION> <RUN_NAME>
+# example: ./initial-setup.sh CMSSW_13_2_9 mg-Rhadron_mGl-1800
 
-if [[ ! -z $(ls | grep "genproductions") ]]; then
-	echo "genproductions already installed."
-	sleep 2
+set -euo pipefail
+
+cmssw_version="$1"
+run="$2"
+
+# checks/clones genproductions in the current directory
+if [[ -d "genproductions" ]]; then
+    echo "genproductions already exists."
 else
-	echo "genproductions not found. Cloning."
-	sleep 2
-	git clone git@github.com:cms-sw/genproductions.git
+    echo "genproductions not found. Cloning into $(pwd)/genproductions..."
+    git clone git@github.com:cms-sw/genproductions.git
 fi
 
-if [[ ! -z $(ls | grep "$cmssw_version") ]]; then
-        echo "$cmssw_version already installed."
-        sleep 2
+# checks/creates the CMSSW release is under ../CMSSW_Releases/
+cmssw_base="../CMSSW_Releases/${cmssw_version}"
+if [[ -d "${cmssw_base}" ]]; then
+    echo "${cmssw_version} already present under ../CMSSW_Releases/."
 else
-        echo "$cmssw_version not found. Installing..."
-        sleep 2
-	cmsrel $cmssw_version
-	echo "creating path for pythia config fragment in $cmssw_version directory"
-	sleep 2
-	mkdir -vp $cmssw_version/src/Configuration/GenProduction/python/
+    echo "${cmssw_version} not found under ../CMSSW_Releases/. Creating..."
+    cd ../CMSSW_Releases
+    cmsrel "${cmssw_version}"
+    cd - >/dev/null
+    echo "Created ${cmssw_version}. Now creating Configuration/GenProduction/python/…"
+    mkdir -pv "${cmssw_base}/src/Configuration/GenProduction/python/"
 fi
 
-if [[ $run == "" ]]; then
-	echo "no run specified. Exiting."
-	exit 1	
+# checks/creates that the run directory in the current folder
+if [[ -d "${run}" ]]; then
+    echo "Run directory '${run}' already exists. Ensuring subfolders exist…"
 else
-	if [[ ! -z $(ls | grep "$run") ]]; then
-		echo "$run directory already exists. Exiting."
-		exit 1
-	else		
-		echo "$run directory does not exist. Building directory structure."
-		mkdir -vp $run/input-cards/ $run/output-configs/ $run/root-files/ $run/text-logs/ $run/input-configs
-	fi
+    echo "Creating run directory '${run}'…"
+    mkdir -v "${run}"
 fi
+
+# creates the four subdirectories under <RUN_NAME>/ dir
+for sub in input-cards input-configs output-configs text-logs; do
+    if [[ -d "${run}/${sub}" ]]; then
+        echo "'${run}/${sub}' already exists."
+    else
+        echo " Creating '${run}/${sub}'"
+        mkdir -v "${run}/${sub}"
+    fi
+done
+
+echo "Setup complete."
