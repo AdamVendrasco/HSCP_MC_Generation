@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f lib/el9_amd64_gcc11/pluginGeneratorInterfacePythia8HepMC3Filters.so lib/el9_amd64_gcc11/GeneratorInterfacePythia8HepMC3Filters.edmplugin
+90:edmPluginRefresh lib/el9_amd64_gcc11

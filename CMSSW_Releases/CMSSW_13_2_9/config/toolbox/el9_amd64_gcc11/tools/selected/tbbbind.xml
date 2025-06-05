@@ -1,0 +1,11 @@
+<tool name="tbbbind" version="v2021.8.0-773163d034c959bd5f1d09fb7bd9ef8a">
+  <info url="http://threadingbuildingblocks.org"/>
+  <use name="tbb"/>
+  <lib name="tbbbind_2_0"/>
+  <client>
+    <environment name="TBBBIND_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/tbb/v2021.8.0-773163d034c959bd5f1d09fb7bd9ef8a"/>
+    <environment name="LIBDIR"       default="$TBBBIND_BASE/lib"/>
+    <environment name="INCLUDE"      default="$TBBBIND_BASE/include"/>
+  </client>
+  <flags SYSTEM_INCLUDE="1"/>
+</tool>

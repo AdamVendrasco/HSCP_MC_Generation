@@ -1,0 +1,11 @@
+<tool name="curl" version="7.79.0-639c75cb2c36dac1daa9f13cb5b6668e">
+  <lib name="curl"/>
+  <client>
+    <environment name="CURL_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/curl/7.79.0-639c75cb2c36dac1daa9f13cb5b6668e"/>
+    <environment name="INCLUDE"      default="$CURL_BASE/include"/>
+    <environment name="LIBDIR"       default="$CURL_BASE/lib"/>
+  </client>
+  <runtime name="PATH" value="$CURL_BASE/bin" type="path"/>
+  <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path"/>
+  <use name="root_cxxdefaults"/>
+</tool>

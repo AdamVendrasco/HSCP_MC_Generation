@@ -1,0 +1,13 @@
+{
+  "PY3_HATCHLING_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/py3-hatchling/1.14.0-cecd4780d0527b138aca36ac42968cd2",
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/py3-hatchling/1.14.0-cecd4780d0527b138aca36ac42968cd2/bin"
+    ]
+  },
+  "TOOLNAME": "py3-hatchling",
+  "TOOLVERSION": "1.14.0-cecd4780d0527b138aca36ac42968cd2",
+  "VARIABLES": [
+    "PY3_HATCHLING_BASE"
+  ]
+}

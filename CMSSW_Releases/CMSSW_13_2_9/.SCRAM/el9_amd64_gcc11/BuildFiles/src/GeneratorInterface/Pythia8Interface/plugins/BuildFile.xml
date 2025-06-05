@@ -1,0 +1,80 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "GeneratorInterfacePythia8Filters": {
+        "FILES": "Pythia8Hadronizer.cc,Py8toJetInput.cc,*Hook*.cc,LHA*.cc,PythiaDumpParticles.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "GeneratorInterface/PartonShowerVeto",
+          "GeneratorInterface/ExternalDecays",
+          "FWCore/Concurrency",
+          "FWCore/MessageLogger",
+          "FWCore/ParameterSet",
+          "FWCore/ServiceRegistry",
+          "FWCore/Utilities",
+          "GeneratorInterface/Core",
+          "hepmc",
+          "pythia8",
+          "SimDataFormats/GeneratorProducts"
+        ]
+      },
+      "GeneratorInterfacePythia8Guns": {
+        "FILES": "Py*Gun.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "GeneratorInterface/ExternalDecays"
+        ]
+      },
+      "GeneratorInterfacePythia8HepMC3Filters": {
+        "FILES": "Pythia8HepMC3Hadronizer.cc,Py8toJetInput.cc,*Hook*.cc,LHA*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "GeneratorInterface/PartonShowerVeto",
+          "GeneratorInterface/ExternalDecays",
+          "FWCore/Concurrency",
+          "FWCore/MessageLogger",
+          "FWCore/ParameterSet",
+          "FWCore/ServiceRegistry",
+          "FWCore/Utilities",
+          "GeneratorInterface/Core",
+          "hepmc3",
+          "pythia8",
+          "SimDataFormats/GeneratorProducts"
+        ]
+      },
+      "GeneratorInterfacePythia8JetMatchingFxFxHook": {
+        "FILES": "JetMatchingEWK*.cc",
+        "TYPE": "lib"
+      },
+      "GeneratorInterfacePythia8SLHAReader": {
+        "FILES": "SLHA*.cc",
+        "TYPE": "lib",
+        "USE": [
+          "root"
+        ]
+      },
+      "GeneratorInterfacePythia8SUEPHook": {
+        "FILES": "Suep*.cc",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "GeneratorInterface/Pythia8Interface"
+  ]
+}

@@ -1,0 +1,6 @@
+<tool name="catch2" version="2.13.6-50550c0815765afe10948e33896b3b37">
+  <client>
+    <environment name="CATCH2_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/catch2/2.13.6-50550c0815765afe10948e33896b3b37"/>
+    <environment name="INCLUDE"      default="$CATCH2_BASE/include"/>
+  </client>
+</tool>

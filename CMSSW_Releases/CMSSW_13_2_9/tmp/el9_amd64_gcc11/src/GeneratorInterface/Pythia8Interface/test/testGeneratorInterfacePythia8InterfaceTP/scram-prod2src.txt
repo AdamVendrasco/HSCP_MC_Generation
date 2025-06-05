@@ -1,0 +1,1 @@
+testGeneratorInterfacePythia8InterfaceTP GeneratorInterface/Pythia8Interface/test/test_catch2_External_Pythia8GeneratorFilter.cc GeneratorInterface/Pythia8Interface/test/test_catch2_Pythia8GeneratorFilter.cc GeneratorInterface/Pythia8Interface/test/test_catch2_main.cc

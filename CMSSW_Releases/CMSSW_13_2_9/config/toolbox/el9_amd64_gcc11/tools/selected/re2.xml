@@ -1,0 +1,10 @@
+<tool name="re2" version="2021-06-01-304a391b869df8b3cccfb93c22361c5a">
+  <info url="https://github.com/google/re2"/>
+  <lib name="re2"/>
+  <client>
+    <environment name="RE2_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/re2/2021-06-01-304a391b869df8b3cccfb93c22361c5a"/>
+    <environment name="LIBDIR" default="$RE2_BASE/lib"/>
+    <environment name="INCLUDE" default="$RE2_BASE/include"/>
+  </client>
+</tool>
+

@@ -1,0 +1,5 @@
+<tool name="hdf5-cpp" version="1.14.1-daffcefa1a887776fed5980621358638">
+  <use name="hdf5"/>
+  <lib name="hdf5_cpp"/>
+  <lib name="hdf5_hl_cpp"/>
+</tool>

@@ -1,0 +1,30 @@
+{
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/lz4/1.9.2-9d28b0ce2b953bcb372016192753a787/include"
+  ],
+  "LIB": [
+    "lz4"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/lz4/1.9.2-9d28b0ce2b953bcb372016192753a787/lib"
+  ],
+  "LZ4_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/lz4/1.9.2-9d28b0ce2b953bcb372016192753a787",
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/lz4/1.9.2-9d28b0ce2b953bcb372016192753a787/bin"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/lz4/1.9.2-9d28b0ce2b953bcb372016192753a787/include"
+    ]
+  },
+  "TOOLNAME": "lz4",
+  "TOOLVERSION": "1.9.2-9d28b0ce2b953bcb372016192753a787",
+  "USE": [
+    "root_cxxdefaults"
+  ],
+  "VARIABLES": [
+    "LZ4_BASE",
+    "LIBDIR",
+    "INCLUDE"
+  ]
+}

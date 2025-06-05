@@ -1,0 +1,4 @@
+<tool name="qd_f_main" version="2.3.13-361a2314d47868c6c5955ae6af8f0c46">
+  <lib name="qd_f_main"/>
+  <use name="qd"/>
+</tool>

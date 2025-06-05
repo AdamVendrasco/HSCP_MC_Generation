@@ -1,0 +1,6 @@
+<tool name="glimpse" version="4.18.7-6-14889c0f1f310efb92d81f2d6845eacf">
+  <client>
+    <environment name="GLIMPSE_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/glimpse/4.18.7-6-14889c0f1f310efb92d81f2d6845eacf"/>
+  </client>
+  <runtime name="PATH" value="$GLIMPSE_BASE/bin" type="path"/>
+</tool>

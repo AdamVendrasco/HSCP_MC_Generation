@@ -1,0 +1,3 @@
+ALL_SUBSYSTEMS+=Configuration
+subdirs_src_Configuration = src_Configuration_GenProduction
+subdirs_src += src_Configuration
