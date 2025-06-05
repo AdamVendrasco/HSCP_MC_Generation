@@ -35,7 +35,7 @@ public:
       outAll.close();
     }
 
-   //searches for 
+   //searches for Rhadrons with "R" need to add ~g search too.
     std::ofstream outR("Pythia8_RhadronParticleDataTable.dat");
     if (outR) {
       outR << "Block MASS   #\n";
