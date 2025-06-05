@@ -12,6 +12,7 @@ from Configuration.Generator.Pythia8CommonSettings_cfi import *
 from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
 
 generator = cms.EDFilter("Pythia8HadronizerFilter",
+    
     maxEventsToPrint = cms.untracked.int32(1),
     pythiaPylistVerbosity = cms.untracked.int32(1),
     filterEfficiency = cms.untracked.double(1.0),
@@ -64,7 +65,9 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                                     'pythia8CP5Settings',
                                     'processParameters',
                                     )
-    )
+                                    
+    ),
+    UserCustomization = cms.VPSet(cms.PSet(pluginName = cms.string("DumpPythia8ParticleData")))
 )
 
 # We would like to change the particleID lists to be more inclusive of all RHadrons.

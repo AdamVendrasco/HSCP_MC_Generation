@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/GenProduction/python/mg-Rhadron_mGl-1800-fragment.py --python_filename ../mg-Rhadron_mGl-1800/output-configs/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-test-1_cfg.py --eventcontent RAWSIM,LHE --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN,LHE --fileout file:../mg-Rhadron_mGl-1800/root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-test.root --conditions 106X_upgrade2018_realistic_v4 --beamspot Realistic25ns13TeVEarly2018Collision --step LHE,GEN --geometry DB:Extended --era Run2_2018 --mc -n 1000
+# with command line options: Configuration/GenProduction/python/mg-Rhadron_mGl-1800-fragment_Jet_matching_ON.py --python_filename /afs/cern.ch/user/a/avendras/work/mg-Rhadron/mg-Rhadron_mGl-1800/output-configs/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n1-Jet_matching_ON-testing_new_ouptut2-1_cfg.py --eventcontent RAWSIM,LHE --customise Configuration/DataProcessing/Utils.addMonitoring --customise_commands             process.load('IOMC.RandomEngine.IOMC_cff');             process.RandomNumberGeneratorService.generator.initialSeed = cms.untracked.uint32(123456789);             process.RandomNumberGeneratorService.g4SimHits.initialSeed = cms.untracked.uint32(987654321);             process.RandomNumberGeneratorService.VtxSmeared.initialSeed = cms.untracked.uint32(192837465);             process.rndmStore = cms.EDProducer('RandomEngineStateProducer') --datatier GEN,LHE --fileout file:/eos/user/a/avendras/root_files/HSCP/mg-Rhadron_mGl-1800/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n1-Jet_matching_ON-testing_new_ouptut2.root --conditions 106X_upgrade2018_realistic_v4 --beamspot Realistic25ns13TeVEarly2018Collision --step LHE,GEN --geometry DB:Extended --era Run2_2018 --mc -n 1
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Run2_2018_cff import Run2_2018
@@ -24,7 +24,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000),
+    input = cms.untracked.int32(1),
     output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
@@ -50,7 +50,9 @@ process.options = cms.untracked.PSet(
     ),
     fileMode = cms.untracked.string('FULLMERGE'),
     forceEventSetupCacheClearOnNewRun = cms.untracked.bool(False),
+    holdsReferencesToDeleteEarly = cms.untracked.VPSet(),
     makeTriggerResults = cms.obsolete.untracked.bool,
+    modulesToIgnoreForDeleteEarly = cms.untracked.vstring(),
     numberOfConcurrentLuminosityBlocks = cms.untracked.uint32(0),
     numberOfConcurrentRuns = cms.untracked.uint32(1),
     numberOfStreams = cms.untracked.uint32(0),
@@ -63,7 +65,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/GenProduction/python/mg-Rhadron_mGl-1800-fragment.py nevts:1000'),
+    annotation = cms.untracked.string('Configuration/GenProduction/python/mg-Rhadron_mGl-1800-fragment_Jet_matching_ON.py nevts:1'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -81,7 +83,7 @@ process.RAWSIMoutput = cms.OutputModule("PoolOutputModule",
         filterName = cms.untracked.string('')
     ),
     eventAutoFlushCompressedSize = cms.untracked.int32(20971520),
-    fileName = cms.untracked.string('file:/eos/home-a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-test.root'),
+    fileName = cms.untracked.string('file:/eos/user/a/avendras/root_files/HSCP/mg-Rhadron_mGl-1800/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n1-Jet_matching_ON-testing_new_ouptut2.root'),
     outputCommands = process.RAWSIMEventContent.outputCommands,
     splitLevel = cms.untracked.int32(0)
 )
@@ -91,7 +93,7 @@ process.LHEoutput = cms.OutputModule("PoolOutputModule",
         dataTier = cms.untracked.string('LHE'),
         filterName = cms.untracked.string('')
     ),
-    fileName = cms.untracked.string('file:/eos/home-a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-test_inLHE.root'),
+    fileName = cms.untracked.string('file:/eos/user/a/avendras/root_files/HSCP/mg-Rhadron_mGl-1800/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n1-Jet_matching_ON-testing_new_ouptut2_inLHE.root'),
     outputCommands = process.LHEEventContent.outputCommands,
     splitLevel = cms.untracked.int32(0)
 )
@@ -127,36 +129,43 @@ process.dirhadrongenfilter = cms.EDFilter("MCParticlePairFilter",
 
 process.generator = cms.EDFilter("Pythia8HadronizerFilter",
     PythiaParameters = cms.PSet(
-        JetMatchingParameters = cms.vstring(),
         parameterSets = cms.vstring(
             'pythia8CommonSettings',
             'pythia8CP5Settings',
-            'JetMatchingParameters',
             'processParameters'
         ),
         processParameters = cms.vstring(
+            'JetMatching:setMad = on',
+            'JetMatching:scheme = 1',
+            'JetMatching:merge = on',
+            'JetMatching:jetAlgorithm = 2',
+            'JetMatching:etaJetMax = 5.',
+            'JetMatching:coneRadius = 1.',
+            'JetMatching:slowJetPower = 1',
+            'JetMatching:qCut = 100.',
+            'JetMatching:clFact = 1',
+            'JetMatching:nQmatch = 5',
+            'JetMatching:nJetMax = 1',
+            'JetMatching:doShowerKt = off',
             'RHadrons:allow  = on',
             'RHadrons:allowDecay = off',
             'RHadrons:setMasses = on',
             'RHadrons:probGluinoball = 0.1',
-
-
-            # Additional hadronization and debug information
-            'HadronLevel:Hadronize = on',  # Ensure hadronization is enabled
-            'PartonLevel:ISR = on',  # Enable Initial State Radiation
-            'PartonLevel:FSR = on',  # Enable Final State Radiation
-            'PartonLevel:MPI = on',  # Enable Multi-Parton Interactions
-            'Check:particleData = on',  # Check particle properties
-
-            # Extended verbosity for debugging
-            'Main:timesAllowErrors = 100',  # Allow more errors before stopping
-            'Init:showChangedSettings = on',  # Show all settings that differ from the default
-            'Init:showAllSettings = on',  # Show all settings
-            'Next:numberCount = 100',  # Print event info every 100 events
-            'Next:numberShowInfo = 1',  # Print initialization info for first event 
-            'Next:numberShowProcess = 5',  # Print process-level info for first 5 events
-            'Next:numberShowEvent = 5'  # Print event-level info for first 5 events
-            
+            'HadronLevel:Hadronize = on',
+            'PartonLevel:ISR = on',
+            'PartonLevel:FSR = on',
+            'PartonLevel:MPI = on',
+            'Check:particleData = on',
+            'Main:timesAllowErrors = 10000',
+            'Init:showChangedSettings = on',
+            'Init:showProcesses = on',
+            'Init:showChangedParticleData = on',
+            'Init:showAllSettings = on',
+            'Next:numberCount = 100',
+            'Next:numberShowEvent = 0',
+            'Next:numberShowInfo = 1',
+            'Next:numberShowProcess = 1',
+            'Next:numberShowEvent = 1'
         ),
         pythia8CP5Settings = cms.vstring(
             'Tune:pp 14',
@@ -192,17 +201,17 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
             'ParticleDecays:allowPhotonRadiation = on'
         )
     ),
-    comEnergy = cms.double(13000.0),
+    comEnergy = cms.double(13600.0),
     filterEfficiency = cms.untracked.double(1.0),
     maxEventsToPrint = cms.untracked.int32(1),
-    pythiaHepMCVerbosity = cms.untracked.bool(True),
+    pythiaHepMCVerbosity = cms.untracked.bool(False),
     pythiaPylistVerbosity = cms.untracked.int32(1)
 )
 
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_slc7_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz'),
-    nEvents = cms.untracked.uint32(1000),
+    args = cms.vstring('/eos/user/a/avendras/mg-Rhadron_v6/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz'),
+    nEvents = cms.untracked.uint32(1),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
@@ -219,17 +228,6 @@ process.endjob_step = cms.EndPath(process.endOfProcess)
 process.RAWSIMoutput_step = cms.EndPath(process.RAWSIMoutput)
 process.LHEoutput_step = cms.EndPath(process.LHEoutput)
 
-process.MessageLogger = cms.Service(
-    "MessageLogger",
-    destinations = cms.untracked.vstring(
-        'detailedInfo',
-         ),
-    detailedInfo = cms.untracked.PSet(
-        threshold  = cms.untracked.string('DEBUG') 
-         ),
-    debugModules = cms.untracked.vstring('*')
- 
-    )
 # Schedule definition
 process.schedule = cms.Schedule(process.lhe_step,process.generation_step,process.genfiltersummary_step,process.endjob_step,process.RAWSIMoutput_step,process.LHEoutput_step)
 from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
@@ -256,6 +254,7 @@ process = addMonitoring(process)
 
 # Customisation from command line
 
+process.load('IOMC.RandomEngine.IOMC_cff');             process.RandomNumberGeneratorService.generator.initialSeed = cms.untracked.uint32(123456789);             process.RandomNumberGeneratorService.g4SimHits.initialSeed = cms.untracked.uint32(987654321);             process.RandomNumberGeneratorService.VtxSmeared.initialSeed = cms.untracked.uint32(192837465);             process.rndmStore = cms.EDProducer('RandomEngineStateProducer')
 # Add early deletion of temporary data products to reduce peak memory need
 from Configuration.StandardSequences.earlyDeleteSettings_cff import customiseEarlyDelete
 process = customiseEarlyDelete(process)
