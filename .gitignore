@@ -5,7 +5,6 @@ mg-Rhadron_mGl-1800/input-configs/*.xz
 mg-Rhadron_mGl-1800/root-files/
 *.pdf
 *.png
-CMSSW*/
 plot_archive/
 mg-Rhadron_mGl-1800/plots/
 SMS-StopStop_mStop-1400/
