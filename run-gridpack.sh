@@ -17,14 +17,13 @@ base_dir="$(pwd)"
 cmssw_base="${base_dir}/CMSSW_Releases/${cmssw_version}"
 run_dir="${base_dir}/${run}"
 
-# Construct filenames (absolute paths)
 config_in_filename="${run}-fragment_${fragment_type}.py"
 config_in_path="${run_dir}/input-configs/${config_in_filename}"
 
 config_out_filename="${run}-""${cmssw_version}""-n""${nevents}""-""${fragment_type}""-""${debug_tag}""-1_cfg.py"
 config_out_path="${run_dir}/output-configs/${config_out_filename}"
 
-# Debug log path (absolute)
+
 debug_out_filename="${run}-""${cmssw_version}""-n""${nevents}""-""${fragment_type}""-""${debug_tag}"".debug"
 debug_out_path="${run_dir}/text-logs/${debug_out_filename}"
 
@@ -33,10 +32,8 @@ eos_base="/eos/user/a/avendras/root_files/HSCP/${run}"
 root_out_filename="${run}-""${cmssw_version}""-n""${nevents}""-""${fragment_type}""-""${debug_tag}"".root"
 root_out_path="${eos_base}/${root_out_filename}"
 
-# Ensure EOS run-specific directory exists
 mkdir -p "${eos_base}"
 
-# 1) Check CMSSW version under ../CMSSW_Releases/
 if [[ -z "${cmssw_version}" ]]; then
     echo "ERROR: No CMSSW version declared. Exiting."
     exit 1
@@ -47,7 +44,6 @@ else
     exit 1
 fi
 
-# 2) Check input config exists
 if [[ ! -f "${config_in_path}" ]]; then
     echo "ERROR: Input file not found: ${config_in_path}. Exiting."
     exit 1
@@ -57,7 +53,7 @@ echo "Storing log file in ${debug_out_path}"
 echo "Copying ${config_in_filename} from input-configs to CMSSW area..."
 cp -v "${config_in_path}" "${cmssw_base}/src/Configuration/GenProduction/python/"
 
-# 3) Verify CMSSW version is referenced in fragment
+
 if grep -Fq "${cmssw_version}" "${cmssw_base}/src/Configuration/GenProduction/python/${config_in_filename}"; then
     echo "Fragment's CMSSW version matches ${cmssw_version}."
 else
@@ -65,7 +61,6 @@ else
     exit 1
 fi
 
-# Function: run cmsDriver to generate LHE/GEN output
 genStart() {
     cd "${cmssw_base}"
     echo "Setting up cmsenv in ${cmssw_base}"
