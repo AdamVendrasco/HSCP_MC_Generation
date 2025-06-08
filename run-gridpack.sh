@@ -1,48 +1,84 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-run=$1
+# usage:   ./run_gridpack.sh <RUN_NAME> <CMSSW_VERSION> <NEVENTS> <DEBUG_TAG>
+# example: ./run_gridpack.sh mg-Rhadron_mGl-1800 CMSSW_13_2_9 20000 seeded_withFilter_20k
+
+set -euo pipefail
+
+run="$1"
 cmssw_version="${2:-}"
 nevents="${3:-100}"
 debug_tag="${4:-}"
+
 fragment_type="Jet_matching_ON"
 
-# Define base paths
-eos_base="/eos/home-a/avendras/mg-Rhadron_v6"
-work_dir="${eos_base}/${run}"
-input_configs="${work_dir}/input-configs"
-output_configs="${work_dir}/output-configs"
-root_files="${work_dir}/root-files"
-text_logs="${work_dir}/text-logs"
+# Paths (assuming this script lives in /afs/cern.ch/user/a/avendras/work/mg-Rhadron)
+base_dir="$(pwd)"
+cmssw_base="${base_dir}/CMSSW_Releases/${cmssw_version}"
+run_dir="${base_dir}/${run}"
 
-# Ensure required directories exist
-mkdir -p "$output_configs" "$root_files" "$text_logs"
-
+# Construct filenames (absolute paths)
 config_in_filename="${run}-fragment_${fragment_type}.py"
-config_in_path="${input_configs}/${config_in_filename}"
-config_out_filename="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-1_cfg.py"
-root_out_filename="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}.root"
-debug_out_filename="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}.debug"
+config_in_path="${run_dir}/input-configs/${config_in_filename}"
 
-echo "Storing log file in $text_logs/$debug_out_filename"
-echo "Copying $config_in_path to $cmssw_version/src/Configuration/GenProduction/python/"
-cp -v "$config_in_path" "$cmssw_version/src/Configuration/GenProduction/python/"
+config_out_filename="${run}-""${cmssw_version}""-n""${nevents}""-""${fragment_type}""-""${debug_tag}""-1_cfg.py"
+config_out_path="${run_dir}/output-configs/${config_out_filename}"
 
-if grep -Fq "$cmssw_version" "$cmssw_version/src/Configuration/GenProduction/python/$config_in_filename"; then
-    echo "Gridpack CMSSW version matches declared CMSSW version."
+# Debug log path (absolute)
+debug_out_filename="${run}-""${cmssw_version}""-n""${nevents}""-""${fragment_type}""-""${debug_tag}"".debug"
+debug_out_path="${run_dir}/text-logs/${debug_out_filename}"
+
+# EOS output path for root file (based on run name)
+eos_base="/eos/user/a/avendras/root_files/HSCP/${run}"
+root_out_filename="${run}-""${cmssw_version}""-n""${nevents}""-""${fragment_type}""-""${debug_tag}"".root"
+root_out_path="${eos_base}/${root_out_filename}"
+
+# Ensure EOS run-specific directory exists
+mkdir -p "${eos_base}"
+
+# 1) Check CMSSW version under ../CMSSW_Releases/
+if [[ -z "${cmssw_version}" ]]; then
+    echo "ERROR: No CMSSW version declared. Exiting."
+    exit 1
+elif [[ -d "${cmssw_base}" ]]; then
+    echo "CMSSW release found at ${cmssw_base}."
 else
-    echo "Gridpack CMSSW version does not match declared CMSSW version. Exiting."
+    echo "ERROR: CMSSW release not found under ../CMSSW_Releases/${cmssw_version}. Exiting."
     exit 1
 fi
 
-genStart() {
-    cd "$cmssw_version"
-    echo "Setting up cmsenv"
-    cmsenv
-    echo "Scram step"
-    scram b
+# 2) Check input config exists
+if [[ ! -f "${config_in_path}" ]]; then
+    echo "ERROR: Input file not found: ${config_in_path}. Exiting."
+    exit 1
+fi
 
-    nohup cmsDriver.py Configuration/GenProduction/python/$config_in_filename \
-        --python_filename "${output_configs}/${config_out_filename}" \
+echo "Storing log file in ${debug_out_path}"
+echo "Copying ${config_in_filename} from input-configs to CMSSW area..."
+cp -v "${config_in_path}" "${cmssw_base}/src/Configuration/GenProduction/python/"
+
+# 3) Verify CMSSW version is referenced in fragment
+if grep -Fq "${cmssw_version}" "${cmssw_base}/src/Configuration/GenProduction/python/${config_in_filename}"; then
+    echo "Fragment's CMSSW version matches ${cmssw_version}."
+else
+    echo "ERROR: Fragment CMSSW version mismatch. Exiting."
+    exit 1
+fi
+
+# Function: run cmsDriver to generate LHE/GEN output
+genStart() {
+    cd "${cmssw_base}"
+    echo "Setting up cmsenv in ${cmssw_base}"
+    cmsenv
+    echo "Checking for project rename..."
+    scramv1 b ProjectRename || true
+    echo "Building CMSSW project"
+    scram b -j8
+
+    echo "Running cmsDriver to produce LHE/GEN..."
+    nohup cmsDriver.py \
+        Configuration/GenProduction/python/${config_in_filename} \
+        --python_filename ${config_out_path} \
         --eventcontent RAWSIM,LHE \
         --customise Configuration/DataProcessing/Utils.addMonitoring \
         --customise_commands "\
@@ -52,84 +88,17 @@ genStart() {
             process.RandomNumberGeneratorService.VtxSmeared.initialSeed = cms.untracked.uint32(192837465); \
             process.rndmStore = cms.EDProducer('RandomEngineStateProducer')" \
         --datatier GEN,LHE \
-        --fileout file:${root_files}/${root_out_filename} \
+        --fileout file:${root_out_path} \
         --conditions 106X_upgrade2018_realistic_v4 \
         --beamspot Realistic25ns13TeVEarly2018Collision \
         --step LHE,GEN \
         --geometry DB:Extended \
         --era Run2_2018 \
-        --mc -n $nevents \
-        2>&1 | tee "${text_logs}/${debug_out_filename}"
-    cd ..
+        --mc -n ${nevents} \
+        2>&1 | tee ${debug_out_path}
+
+    cd - >/dev/null
 }
 
+# Execute the generation
 genStart
-
-
-#run=$1
-#cmssw_version="${2:-}"
-#nevents="${3:-100}"
-#debug_tag="${4:-}"
-#parent_dir_name=$(basename "$PWD")
-#
-#fragment_type="Jet_matching_ON"
-#
-#config_in_filename="${run}-fragment_${fragment_type}.py"
-#
-#if [[ $cmssw_version == "" ]]; then
-#    echo "No CMSSW version declared. Exiting"
-#    exit 1
-#elif [[ ! -z $(ls | grep "$cmssw_version") ]]; then
-#    echo "Declared CMSSW version $cmssw_version installed."
-#else
-#    echo "Declared CMSSW version $cmssw_version not found. Exiting."
-#    exit 1
-#fi
-#
-#config_out_filename="$run/output-configs/$run-$cmssw_version-n$nevents-$fragment_type-$debug_tag-1_cfg.py"
-#root_out_filename="$run/root-files/$run-$cmssw_version-n$nevents-$fragment_type-$debug_tag.root"
-#debug_out_filename="$run/text-logs/$run-$cmssw_version-n$nevents-$fragment_type-$debug_tag.debug"
-#
-#echo "Storing log file in $debug_out_filename"
-#echo "Copying $config_in_filename from $run/input-configs/ to src/Configuration/GenProduction/python/"
-#cp -v $run/input-configs/$config_in_filename $cmssw_version/src/Configuration/GenProduction/python/
-#
-#if [[ ! -z $(grep -F "$cmssw_version" "$cmssw_version/src/Configuration/GenProduction/python/$config_in_filename") ]]; then
-#    echo "Gridpack CMSSW version matches declared CMSSW version."
-#else
-#    echo "Gridpack CMSSW version does not match declared CMSSW version. Exiting."
-#    exit 1
-#fi
-#
-#genStart() {
-#    cd $cmssw_version
-#    echo "Setting up cmsenv"
-#    cmsenv
-#    echo "Scram step"
-#    scram b
-#
-#    # Inline the random seed settings using --customise_commands
-#    nohup cmsDriver.py Configuration/GenProduction/python/$config_in_filename \
-#        --python_filename ../$config_out_filename \
-#        --eventcontent RAWSIM,LHE \
-#        --customise Configuration/DataProcessing/Utils.addMonitoring \
-#        --customise_commands "\
-#			process.load('IOMC.RandomEngine.IOMC_cff'); \
-#			process.RandomNumberGeneratorService.generator.initialSeed = cms.untracked.uint32(123456789); \
-#			process.RandomNumberGeneratorService.g4SimHits.initialSeed = cms.untracked.uint32(987654321); \
-#			process.RandomNumberGeneratorService.VtxSmeared.initialSeed = cms.untracked.uint32(192837465); \
-#			process.rndmStore = cms.EDProducer('RandomEngineStateProducer')" \
-#        --datatier GEN,LHE \
-#        --fileout file:../$root_out_filename \
-#        --conditions 106X_upgrade2018_realistic_v4 \
-#        --beamspot Realistic25ns13TeVEarly2018Collision \
-#        --step LHE,GEN \
-#        --geometry DB:Extended \
-#        --era Run2_2018 \
-#        --mc -n $nevents \
-#        2>&1 | tee ../$debug_out_filename
-#    cd ..
-#}
-#
-#genStart
-#

@@ -1,14 +1,41 @@
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/EmissionVetoHook1.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/EmissionVetoHook1.cc \
+ src/GeneratorInterface/Pythia8Interface/plugins/EmissionVetoHook1.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/PowhegHooksBB4L.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/JetMatchingHook.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/JetMatchingHook.cc \
+ src/GeneratorInterface/Pythia8Interface/plugins/JetMatchingHook.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/Py8toJetInput.h
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/LHAupLesHouches.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/LHAupLesHouches.cc \
+ src/GeneratorInterface/Pythia8Interface/plugins/LHAupLesHouches.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/PowhegResHook.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/PowhegResHook.cc \
+ src/GeneratorInterface/Pythia8Interface/plugins/PowhegResHook.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/PowhegHooksBB4L.h
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/Py8toJetInput.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/Py8toJetInput.cc \
+ src/GeneratorInterface/Pythia8Interface/plugins/Py8toJetInput.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/Pythia8Hadronizer.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/Pythia8Hadronizer.cc \
+ src/GeneratorInterface/Pythia8Interface/interface/Py8InterfaceBase.h \
+ src/GeneratorInterface/Pythia8Interface/interface/P8RndmEngine.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/ReweightUserHooks.h \
+ src/GeneratorInterface/Pythia8Interface/interface/CustomHook.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/TopRecoilHook.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/JetMatchingHook.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/EmissionVetoHook1.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/PowhegHooksBB4L.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/PowhegResHook.h \
+ src/GeneratorInterface/Pythia8Interface/interface/BiasedTauDecayer.h \
+ src/GeneratorInterface/Pythia8Interface/interface/ResonanceDecayFilterHook.h \
+ src/GeneratorInterface/Pythia8Interface/interface/PTFilterHook.h \
+ src/GeneratorInterface/Pythia8Interface/plugins/LHAupLesHouches.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/PythiaDumpParticles.cc.o: \
  src/GeneratorInterface/Pythia8Interface/plugins/PythiaDumpParticles.cc \

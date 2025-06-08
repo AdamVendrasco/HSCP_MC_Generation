@@ -34,6 +34,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:nQmatch = 5', #5 for 5-flavour scheme (matching of b-quarks)
             'JetMatching:nJetMax = 1', #number of partons in born matrix element for highest multiplicity
             'JetMatching:doShowerKt = off',
+            #'LesHouches:idRenameBeams = 1000021)',
             
             # Enable Rhadrons
             'RHadrons:allow  = on',
