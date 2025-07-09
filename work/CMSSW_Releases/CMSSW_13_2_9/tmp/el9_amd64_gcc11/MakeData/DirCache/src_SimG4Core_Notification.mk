@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/Notification
-subdirs_src_SimG4Core_Notification := src_SimG4Core_Notification_src src_SimG4Core_Notification_test

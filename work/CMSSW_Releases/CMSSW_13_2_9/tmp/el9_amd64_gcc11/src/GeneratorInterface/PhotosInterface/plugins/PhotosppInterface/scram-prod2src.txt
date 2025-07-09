@@ -1,1 +1,0 @@
-PhotosppInterface GeneratorInterface/PhotosInterface/plugins/PhotosppInterface.cc

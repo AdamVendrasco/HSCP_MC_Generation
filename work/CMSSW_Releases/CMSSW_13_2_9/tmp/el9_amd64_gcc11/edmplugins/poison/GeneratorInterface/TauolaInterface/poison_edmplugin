@@ -1,5 +1,0 @@
-plugin-poisoned-TauSpinnerInterface.so TauSpinnerCMS CMS%EDM%Framework%Module
-plugin-poisoned-TauSpinnerInterface.so TauSpinnerCMS CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-TauSpinnerInterface.so TauSpinnerFilter CMS%EDM%Framework%Module
-plugin-poisoned-TauSpinnerInterface.so TauSpinnerFilter CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-TauolappInterface.so Tauolapp114 TauolaFactory

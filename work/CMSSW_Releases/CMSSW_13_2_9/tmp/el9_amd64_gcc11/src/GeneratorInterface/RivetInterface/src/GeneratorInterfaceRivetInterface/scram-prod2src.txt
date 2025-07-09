@@ -1,1 +1,0 @@
-GeneratorInterfaceRivetInterface GeneratorInterface/RivetInterface/src/CMS_2013_I1224539_DIJET.cc GeneratorInterface/RivetInterface/src/HiggsTemplateCrossSections.cc

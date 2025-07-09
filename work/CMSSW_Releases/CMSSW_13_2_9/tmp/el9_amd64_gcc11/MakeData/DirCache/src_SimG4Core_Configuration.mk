@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/Configuration
-subdirs_src_SimG4Core_Configuration := src_SimG4Core_Configuration_python src_SimG4Core_Configuration_test

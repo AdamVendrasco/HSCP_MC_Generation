@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/Watcher
-subdirs_src_SimG4Core_Watcher := src_SimG4Core_Watcher_src src_SimG4Core_Watcher_test

@@ -1,6 +1,0 @@
-tmp/el9_amd64_gcc11/src/GeneratorInterface/RivetInterface/src/GeneratorInterfaceRivetInterface/CMS_2013_I1224539_DIJET.cc.o: \
- src/GeneratorInterface/RivetInterface/src/CMS_2013_I1224539_DIJET.cc \
-
-tmp/el9_amd64_gcc11/src/GeneratorInterface/RivetInterface/src/GeneratorInterfaceRivetInterface/HiggsTemplateCrossSections.cc.o: \
- src/GeneratorInterface/RivetInterface/src/HiggsTemplateCrossSections.cc \
-

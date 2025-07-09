@@ -1,3 +1,0 @@
-plugin-poisoned-EvtGenInterface.so EvtGen130 EvtGenFactory
-plugin-poisoned-GenDataCardFileWriter.so DataCardFileWriter CMS%EDM%Framework%Module
-plugin-poisoned-GenDataCardFileWriter.so DataCardFileWriter CMS%EDM%Framework%ParameterSet%Description

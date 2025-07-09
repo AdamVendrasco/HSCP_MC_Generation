@@ -1,4 +1,0 @@
-plugin-poisoned-AMPTAnalyzer.so AMPTAnalyzer CMS%EDM%Framework%Module
-plugin-poisoned-AMPTAnalyzer.so AMPTAnalyzer CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-GeneratorInterfaceAMPTInterfacePlugins.so AMPTGeneratorFilter CMS%EDM%Framework%Module
-plugin-poisoned-GeneratorInterfaceAMPTInterfacePlugins.so AMPTGeneratorFilter CMS%EDM%Framework%ParameterSet%Description

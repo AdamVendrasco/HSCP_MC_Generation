@@ -1,4 +1,0 @@
-plugin-poisoned-SimG4CoreHelpfulWatchers.so BeginOfTrackCounter CMS%Simulation%SimWatcherFactory
-plugin-poisoned-SimG4CoreHelpfulWatchers.so G4StepStatistics CMS%Simulation%SimWatcherFactory
-plugin-poisoned-SimG4CoreHelpfulWatchers.so MonopoleSteppingAction CMS%Simulation%SimWatcherFactory
-plugin-poisoned-SimG4CoreHelpfulWatchers.so SimTracer CMS%Simulation%SimWatcherFactory

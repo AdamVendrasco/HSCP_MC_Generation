@@ -1,2 +1,0 @@
-plugin-poisoned-SimG4CoreGFlashPlugins.so GflashG4Watcher CMS%Simulation%SimWatcherFactory
-plugin-poisoned-SimG4CoreGFlashPlugins.so SimG4Core/Physics/GFlash CMS%Simulation%PhysicsListFactory

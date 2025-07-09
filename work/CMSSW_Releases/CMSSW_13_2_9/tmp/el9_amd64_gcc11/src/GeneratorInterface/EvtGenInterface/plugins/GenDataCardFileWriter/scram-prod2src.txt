@@ -1,1 +1,0 @@
-GenDataCardFileWriter GeneratorInterface/EvtGenInterface/plugins/DataCardFileWriter.cc

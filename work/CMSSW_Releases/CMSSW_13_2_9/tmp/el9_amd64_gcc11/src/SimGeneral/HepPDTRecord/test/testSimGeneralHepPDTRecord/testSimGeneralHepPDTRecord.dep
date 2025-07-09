@@ -1,7 +1,0 @@
-tmp/el9_amd64_gcc11/src/SimGeneral/HepPDTRecord/test/testSimGeneralHepPDTRecord/testPdtEntry.cc.o: \
- src/SimGeneral/HepPDTRecord/test/testPdtEntry.cc \
- src/SimGeneral/HepPDTRecord/interface/PdtEntry.h \
-
-tmp/el9_amd64_gcc11/src/SimGeneral/HepPDTRecord/test/testSimGeneralHepPDTRecord/testRunner.cpp.o: \
- src/SimGeneral/HepPDTRecord/test/testRunner.cpp \
-

@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimGeneral/Configuration
-subdirs_src_SimGeneral_Configuration := src_SimGeneral_Configuration_python

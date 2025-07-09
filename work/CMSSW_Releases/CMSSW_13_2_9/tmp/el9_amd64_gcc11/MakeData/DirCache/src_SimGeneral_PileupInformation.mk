@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimGeneral/PileupInformation
-subdirs_src_SimGeneral_PileupInformation := src_SimGeneral_PileupInformation_plugins src_SimGeneral_PileupInformation_python

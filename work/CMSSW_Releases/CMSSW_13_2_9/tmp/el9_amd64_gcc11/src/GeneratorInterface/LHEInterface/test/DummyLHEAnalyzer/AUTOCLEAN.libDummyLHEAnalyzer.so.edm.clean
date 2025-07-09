@@ -1,2 +1,0 @@
-01:/usr/bin/rm -f lib/el9_amd64_gcc11/pluginDummyLHEAnalyzer.so lib/el9_amd64_gcc11/DummyLHEAnalyzer.edmplugin
-90:edmPluginRefresh lib/el9_amd64_gcc11

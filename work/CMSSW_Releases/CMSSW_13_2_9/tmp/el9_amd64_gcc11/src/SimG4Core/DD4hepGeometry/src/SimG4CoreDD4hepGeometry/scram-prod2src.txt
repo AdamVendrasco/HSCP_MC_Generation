@@ -1,1 +1,0 @@
-SimG4CoreDD4hepGeometry SimG4Core/DD4hepGeometry/src/DD4hep_DDDWorld.cc

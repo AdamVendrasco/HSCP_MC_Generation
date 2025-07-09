@@ -1,1 +1,0 @@
-Torus_ SimG4Core/Geometry/test/Torus_.cpp

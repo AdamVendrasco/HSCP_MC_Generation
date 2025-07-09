@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/SensitiveDetector
-subdirs_src_SimG4Core_SensitiveDetector := src_SimG4Core_SensitiveDetector_src

@@ -1,5 +1,0 @@
-plugin-poisoned-SimGeneralPileupInformationPlugins.so GenPUProtonProducer CMS%EDM%Framework%Module
-plugin-poisoned-SimGeneralPileupInformationPlugins.so GenPUProtonProducer CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-SimGeneralPileupInformationPlugins.so PileupInformation CMS%EDM%Framework%Module
-plugin-poisoned-SimGeneralPileupInformationPlugins.so PileupInformation CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-SimGeneralPileupInformationPlugins.so PileupVertexAccumulator DigiAccumulator

@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/PrintGeomInfo
-subdirs_src_SimG4Core_PrintGeomInfo := src_SimG4Core_PrintGeomInfo_plugins src_SimG4Core_PrintGeomInfo_python src_SimG4Core_PrintGeomInfo_test

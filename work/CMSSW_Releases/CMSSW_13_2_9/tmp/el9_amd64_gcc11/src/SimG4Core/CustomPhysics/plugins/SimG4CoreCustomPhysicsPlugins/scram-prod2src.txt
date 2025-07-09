@@ -1,1 +1,0 @@
-SimG4CoreCustomPhysicsPlugins SimG4Core/CustomPhysics/plugins/DBremWatcher.cc SimG4Core/CustomPhysics/plugins/RHStopDump.cc SimG4Core/CustomPhysics/plugins/RHStopTracer.cc SimG4Core/CustomPhysics/plugins/module.cc

@@ -1,2 +1,0 @@
-ALL_PACKAGES += GeneratorInterface/SherpaInterface
-subdirs_src_GeneratorInterface_SherpaInterface := src_GeneratorInterface_SherpaInterface_python src_GeneratorInterface_SherpaInterface_src

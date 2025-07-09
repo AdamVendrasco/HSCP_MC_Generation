@@ -1,2 +1,0 @@
-ALL_PACKAGES += GeneratorInterface/HiGenCommon
-subdirs_src_GeneratorInterface_HiGenCommon := src_GeneratorInterface_HiGenCommon_plugins src_GeneratorInterface_HiGenCommon_python src_GeneratorInterface_HiGenCommon_src

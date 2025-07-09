@@ -1,1 +1,0 @@
-BcGenerator GeneratorInterface/GenExtensions/bin/BCVEGPY/main.cc

@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/GeometryProducer
-subdirs_src_SimG4Core_GeometryProducer := src_SimG4Core_GeometryProducer_src

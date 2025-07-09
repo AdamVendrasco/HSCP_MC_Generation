@@ -1,2 +1,0 @@
-01:/usr/bin/rm -f biglib/el9_amd64_gcc11/Simulation.edmplugin biglib/el9_amd64_gcc11/pluginSimulation.so
-90:edmPluginRefresh biglib/el9_amd64_gcc11

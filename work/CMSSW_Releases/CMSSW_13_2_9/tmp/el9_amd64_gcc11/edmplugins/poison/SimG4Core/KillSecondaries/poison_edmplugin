@@ -1,2 +1,0 @@
-plugin-poisoned-SimG4CoreKillSecondaries.so KillSecondariesRunAction CMS%Simulation%SimWatcherFactory
-plugin-poisoned-SimG4CoreKillSecondaries.so KillSecondariesTrackAction CMS%Simulation%SimWatcherFactory
