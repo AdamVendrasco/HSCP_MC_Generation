@@ -1,0 +1,51 @@
+nohup: ignoring input
+LHE,GEN,SIM,ENDJOB
+with DB:
+Step: LHE Spec: 
+Loading lhe fragment from Configuration.GenProduction.mg-Rhadron_mGl-1800-fragment_Jet_matching_ON
+Step: GEN Spec: 
+Loading generator fragment from Configuration.GenProduction.mg-Rhadron_mGl-1800-fragment_Jet_matching_ON
+Setting numberOfConcurrentLuminosityBlocks=1 because of generator Pythia8HadronizerFilter
+Step: SIM Spec: 
+Step: ENDJOB Spec: 
+customising the process with addMonitoring from Configuration/DataProcessing/Utils
+Starting  cmsRun  /afs/cern.ch/user/a/avendras/work/mg-Rhadron_mGl-1800/output-configs/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n100-Jet_matching_ON-newSimCore-GEN-SIM_cfg.py
+%MSG-w CondDBESSource:  (NoModuleName) 02-Jul-2025 15:58:13 CEST pre-events
+Plugin for Record PGeometricDetExtraRcd has not been found.
+%MSG
+OscarMTProducer::initializeGlobalCache
+OscarMTMasterThread: creating master thread DD4hep: 0
+OscarMTMasterThread: initializing RunManagerMT
+
+**************************************************************
+ Geant4 version Name: geant4-11-01-patch-01 [MT]   (10-February-2023)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+OscarMTMasterThread: Master thread is constructed
+RunManagerMTWorker for the thread 0
+RunManagerMTWorker is constructed for the thread 0
+SD[0] TkAccumulatingSensitiveDetector
+SD[1] CaloTrkProcessing
+SD[2] CastorSensitiveDetector
+SD[3] BHMSensitiveDetector
+SD[4] ZdcSensitiveDetector
+SD[5] EcalSensitiveDetector
+SD[6] TotemSensitiveDetector
+SD[7] MtdSensitiveDetector
+SD[8] RomanPotSensitiveDetector
+SD[9] MuonSensitiveDetector
+SD[10] HcalSensitiveDetector
+SD[11] FP420SensitiveDetector
+SD[12] BCM1FSensitiveDetector
+SD[13] TotemT2ScintSensitiveDetector
+SD[14] PLTSensitiveDetector
+SD[15] CTPPSSensitiveDetector
+SD[16] BSCSensitiveDetector
+SD[17] CTPPSDiamondSensitiveDetector
+OscarMTProducer is constructed
