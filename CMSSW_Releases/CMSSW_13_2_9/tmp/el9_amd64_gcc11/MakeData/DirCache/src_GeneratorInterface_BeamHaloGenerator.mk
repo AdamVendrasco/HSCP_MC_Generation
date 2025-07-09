@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/BeamHaloGenerator
+subdirs_src_GeneratorInterface_BeamHaloGenerator := src_GeneratorInterface_BeamHaloGenerator_src src_GeneratorInterface_BeamHaloGenerator_test

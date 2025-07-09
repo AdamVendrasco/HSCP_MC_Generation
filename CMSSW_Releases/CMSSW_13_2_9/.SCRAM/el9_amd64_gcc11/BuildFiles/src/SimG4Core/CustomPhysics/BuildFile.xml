@@ -1,0 +1,21 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreCustomPhysics",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/MessageLogger",
+    "SimG4Core/Notification",
+    "SimG4Core/Physics",
+    "SimG4Core/PhysicsLists",
+    "SimG4Core/Watcher",
+    "geant4core",
+    "clhep",
+    "boost",
+    "rootmath",
+    "root"
+  ]
+}

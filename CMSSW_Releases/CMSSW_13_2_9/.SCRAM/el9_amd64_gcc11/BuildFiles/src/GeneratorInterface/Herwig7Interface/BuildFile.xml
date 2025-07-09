@@ -1,0 +1,15 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "GeneratorInterfaceHerwig7Interface"
+    ]
+  },
+  "NAME": "GeneratorInterfaceHerwig7Interface",
+  "USE": [
+    "GeneratorInterface/Core",
+    "boost",
+    "hepmc",
+    "thepeg",
+    "herwig7"
+  ]
+}

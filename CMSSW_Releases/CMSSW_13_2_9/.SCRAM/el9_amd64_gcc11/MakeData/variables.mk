@@ -752,7 +752,7 @@ SCRAM_CXX11_ABI:=1
 SCRAM_RTBOURNE_SET:=CMSSW:CMSSW_13_2_9:el9_amd64_gcc11:V3_00_82:SRT_
 SCRAM_GMAKE_PATH:=/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/gmake/4.3-b9e85a7be51f3ef5e5e752603ce8be1f/bin/
 SCRAM_BUILDFILE:=BuildFile
-SCRAM_INIT_LOCALTOP:=/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9
+SCRAM_INIT_LOCALTOP:=/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9
 ################ ALL SCRAM Stores #######################
 ALL_PRODUCT_STORES:=
 SCRAMSTORENAME_LIB:=lib/el9_amd64_gcc11

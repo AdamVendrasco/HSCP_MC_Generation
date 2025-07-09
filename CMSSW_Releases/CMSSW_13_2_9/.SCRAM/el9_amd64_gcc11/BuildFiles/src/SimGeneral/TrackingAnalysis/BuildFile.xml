@@ -1,0 +1,29 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimGeneralTrackingAnalysis",
+  "USE": [
+    "clhep",
+    "CalibFormats/SiStripObjects",
+    "CalibTracker/Records",
+    "CondFormats/CSCObjects",
+    "CondFormats/SiPixelObjects",
+    "DataFormats/SiStripDetId",
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "SimDataFormats/Track",
+    "SimDataFormats/TrackingAnalysis",
+    "SimDataFormats/TrackingHit",
+    "SimTracker/Common",
+    "CondFormats/DataRecord",
+    "DataFormats/Common",
+    "DataFormats/L1TrackTrigger",
+    "DataFormats/TrackerCommon",
+    "FWCore/Utilities",
+    "SimDataFormats/CrossingFrame",
+    "SimDataFormats/EncodedEventId"
+  ]
+}

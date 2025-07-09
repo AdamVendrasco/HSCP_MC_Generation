@@ -1,0 +1,1 @@
+cmsExternalGenerator GeneratorInterface/Core/bin/externalGenerator.cc

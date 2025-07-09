@@ -1,0 +1,28 @@
+tmp/el9_amd64_gcc11/src/SimG4Core/GeometryProducer/src/SimG4CoreGeometryProducer/GeometryProducer.cc.o: \
+ src/SimG4Core/GeometryProducer/src/GeometryProducer.cc \
+ src/SimG4Core/GeometryProducer/interface/GeometryProducer.h \
+ src/SimG4Core/Notification/interface/SimActivityRegistry.h \
+ src/SimG4Core/Notification/interface/Signaler.h \
+ src/SimG4Core/Notification/interface/Observer.h \
+ src/SimG4Core/SensitiveDetector/interface/SensitiveCaloDetector.h \
+ src/SimG4Core/SensitiveDetector/interface/SensitiveDetector.h \
+ src/SimG4Core/Geometry/interface/SensitiveDetectorCatalog.h \
+ src/SimG4Core/Notification/interface/TrackInformation.h \
+ src/SimG4Core/SensitiveDetector/interface/SensitiveTkDetector.h \
+ src/SimG4Core/Geometry/interface/DDDWorld.h \
+ src/SimG4Core/Geometry/interface/G4LogicalVolumeToDDLogicalPartMap.h \
+ src/SimG4Core/MagneticField/interface/CMSFieldManager.h \
+ src/SimG4Core/MagneticField/interface/Field.h \
+ src/SimG4Core/MagneticField/interface/FieldBuilder.h \
+ src/SimG4Core/Notification/interface/SimTrackManager.h \
+ src/SimG4Core/Notification/interface/TrackWithHistory.h \
+ src/SimG4Core/Watcher/interface/SimProducer.h \
+ src/SimG4Core/Watcher/interface/SimWatcher.h \
+ src/SimG4Core/Watcher/interface/SimWatcherFactory.h \
+ src/SimG4Core/Watcher/interface/SimWatcherMaker.h \
+ src/SimG4Core/Notification/interface/SimActivityRegistryEnroller.h \
+ src/SimG4Core/Watcher/interface/SimWatcherMakerBase.h \
+ src/SimG4Core/SensitiveDetector/interface/sensitiveDetectorMakers.h \
+ src/SimG4Core/SensitiveDetector/interface/SensitiveDetectorMakerBase.h \
+ src/SimG4Core/SensitiveDetector/interface/AttachSD.h \
+

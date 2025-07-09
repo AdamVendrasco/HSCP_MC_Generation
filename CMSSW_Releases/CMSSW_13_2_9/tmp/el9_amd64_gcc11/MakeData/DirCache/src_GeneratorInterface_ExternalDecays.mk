@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/ExternalDecays
+subdirs_src_GeneratorInterface_ExternalDecays := src_GeneratorInterface_ExternalDecays_python src_GeneratorInterface_ExternalDecays_src src_GeneratorInterface_ExternalDecays_test

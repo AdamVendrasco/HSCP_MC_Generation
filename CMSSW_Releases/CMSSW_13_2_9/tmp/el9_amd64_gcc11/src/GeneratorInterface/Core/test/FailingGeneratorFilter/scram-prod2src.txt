@@ -1,0 +1,1 @@
+FailingGeneratorFilter GeneratorInterface/Core/test/FailingGeneratorFilter.cc

@@ -1,0 +1,7 @@
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintG4Solids CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintGeomInfoAction CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintGeomSolids CMS%EDM%Framework%Module
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintGeomSolids CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintGeomSummary CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintMaterialBudgetInfo CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CorePrintGeomInfoPlugins.so PrintSensitive CMS%Simulation%SimWatcherFactory

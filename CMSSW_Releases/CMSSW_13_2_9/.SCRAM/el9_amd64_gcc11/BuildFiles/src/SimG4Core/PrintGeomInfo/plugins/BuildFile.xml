@@ -1,0 +1,26 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimG4CorePrintGeomInfoPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "DetectorDescription/Core",
+    "DetectorDescription/DDCMS",
+    "SimG4Core/Notification",
+    "SimG4Core/Watcher",
+    "FWCore/ParameterSet",
+    "Geometry/Records",
+    "geant4core",
+    "dd4hep",
+    "boost"
+  ]
+}

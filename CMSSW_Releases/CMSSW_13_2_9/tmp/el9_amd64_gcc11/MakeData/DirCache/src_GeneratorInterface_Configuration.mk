@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/Configuration
+subdirs_src_GeneratorInterface_Configuration := src_GeneratorInterface_Configuration_python

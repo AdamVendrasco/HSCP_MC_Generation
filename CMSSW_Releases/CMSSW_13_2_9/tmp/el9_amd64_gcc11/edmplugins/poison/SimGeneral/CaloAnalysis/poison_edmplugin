@@ -1,0 +1,3 @@
+plugin-poisoned-SimGeneralCaloAnalysisPlugins.so CaloTruthAccumulator DigiAccumulator
+plugin-poisoned-SimGeneralCaloAnalysisPlugins.so MtdTruthAccumulator DigiAccumulator
+plugin-poisoned-SimGeneralCaloAnalysisPlugins.so PreMixingCaloParticleWorker PreMixingWorkerFactory

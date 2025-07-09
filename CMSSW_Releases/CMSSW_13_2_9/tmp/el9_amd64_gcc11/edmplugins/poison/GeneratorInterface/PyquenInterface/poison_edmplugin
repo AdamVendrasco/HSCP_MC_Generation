@@ -1,0 +1,4 @@
+plugin-poisoned-GeneratorInterfacePyquenInterfacePlugins.so PyquenGeneratorFilter CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfacePyquenInterfacePlugins.so PyquenGeneratorFilter CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-PyquenAnalyzer.so PyquenAnalyzer CMS%EDM%Framework%Module
+plugin-poisoned-PyquenAnalyzer.so PyquenAnalyzer CMS%EDM%Framework%ParameterSet%Description

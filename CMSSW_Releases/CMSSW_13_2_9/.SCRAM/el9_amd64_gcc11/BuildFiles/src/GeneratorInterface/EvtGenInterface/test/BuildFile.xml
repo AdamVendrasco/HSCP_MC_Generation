@@ -1,0 +1,18 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "GeneratorInterfaceEvtGenInterfaceTest": {
+        "COMMAND": "runevtgentests.sh",
+        "TYPE": "test"
+      },
+      "TestGeneratorInterfaceEvtGenInterface_bplus": {
+        "COMMAND": "cmsRun ${LOCALTOP}/src/GeneratorInterface/EvtGenInterface/test/Py8_bplus_evtgen1_cfg.py",
+        "TYPE": "test"
+      },
+      "TestGeneratorInterfaceEvtGenInterface_external_bplus": {
+        "COMMAND": "cmsRun ${LOCALTOP}/src/GeneratorInterface/EvtGenInterface/test/external_Py8_bplus_evtgen1_cfg.py",
+        "TYPE": "test"
+      }
+    }
+  }
+}

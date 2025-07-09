@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/CheckSecondary
+subdirs_src_SimG4Core_CheckSecondary := src_SimG4Core_CheckSecondary_python src_SimG4Core_CheckSecondary_src src_SimG4Core_CheckSecondary_test

@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/SaveSimTrackAction
+subdirs_src_SimG4Core_SaveSimTrackAction := src_SimG4Core_SaveSimTrackAction_src

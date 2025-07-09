@@ -1,0 +1,23 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/TauolaInterface/plugins/TauSpinnerInterface/TauSpinner/read_particles_from_HepMC.cc.o: \
+ /afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/src/GeneratorInterface/TauolaInterface/plugins/TauSpinner/read_particles_from_HepMC.cc \
+ /afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/src/GeneratorInterface/TauolaInterface/interface/read_particles_from_HepMC.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/GenEvent.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/GenVertex.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/WeightContainer.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/SimpleVector.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/enable_if.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/is_arithmetic.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/SimpleVector.icc \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/IteratorRange.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/GenParticle.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/Flow.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/Polarization.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/GenCrossSection.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/HeavyIon.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/PdfInfo.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/Units.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/HepMCDefs.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/IO_GenEvent.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/IO_BaseClass.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc/2.06.10-85bd895bb097aa1637e1468b4ed8f785/include/HepMC/IO_Exception.h \
+ /cvmfs/cms.cern.ch/el9_amd64_gcc11/external/tauolapp/1.1.8-8a04189bce80a242daba2584c42030f4/include/TauSpinner/SimpleParticle.h

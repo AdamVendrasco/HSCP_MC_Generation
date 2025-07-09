@@ -1,0 +1,24 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "ExhumeAnalyzer": {
+        "FILES": "ExhumeAnalyzer.cc",
+        "TYPE": "lib",
+        "USE": [
+          "DataFormats/HepMCCandidate",
+          "CommonTools/UtilAlgos",
+          "roothistmatrix"
+        ]
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet"
+  ]
+}

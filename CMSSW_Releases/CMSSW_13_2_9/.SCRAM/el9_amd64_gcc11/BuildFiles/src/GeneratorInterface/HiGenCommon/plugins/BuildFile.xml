@@ -1,0 +1,26 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "GeneratorInterfaceHiGenCommonPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ServiceRegistry",
+    "FWCore/Utilities",
+    "SimDataFormats/GeneratorProducts",
+    "SimGeneral/HepPDTRecord",
+    "hepmc",
+    "heppdt",
+    "clhep",
+    "root"
+  ]
+}

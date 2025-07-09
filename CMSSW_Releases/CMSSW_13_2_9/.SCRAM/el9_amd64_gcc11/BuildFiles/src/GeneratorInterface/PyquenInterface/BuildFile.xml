@@ -1,0 +1,22 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfacePyquenInterface",
+  "USE": [
+    "boost",
+    "FWCore/Concurrency",
+    "FWCore/Framework",
+    "GeneratorInterface/Core",
+    "GeneratorInterface/HiGenCommon",
+    "SimDataFormats/GeneratorProducts",
+    "clhep",
+    "f77compiler",
+    "GeneratorInterface/Pythia6Interface",
+    "GeneratorInterface/ExternalDecays",
+    "pyquen",
+    "hepmc"
+  ]
+}

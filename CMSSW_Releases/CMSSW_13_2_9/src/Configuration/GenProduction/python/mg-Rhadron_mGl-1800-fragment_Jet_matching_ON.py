@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('/eos/user/a/avendras/mg-Rhadron_v6/mg-Rhadron_mGl-1800/input-configs/mg-Rhadron_mGl-1800_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz'),
+    args = cms.vstring('/eos/user/a/avendras/gridpack_output/HSCP/mg-Rhadron_mGl-1800/tarball/mg-Rhadron_mGl-1800_el9_amd64_gcc11_CMSSW_13_2_9_tarball_100.tar.xz'),
     nEvents = cms.untracked.uint32(20000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
@@ -17,12 +17,11 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
     pythiaPylistVerbosity = cms.untracked.int32(1),
     filterEfficiency = cms.untracked.double(1.0),
     pythiaHepMCVerbosity = cms.untracked.bool(False),
-    comEnergy = cms.double(13600.),
+    comEnergy = cms.double(13000.),
     PythiaParameters = cms.PSet(
         pythia8CommonSettingsBlock,
         pythia8CP5SettingsBlock,
         processParameters = cms.vstring(
-            'JetMatching:setMad = on',
             'JetMatching:scheme = 1',
             'JetMatching:merge = on',
             'JetMatching:jetAlgorithm = 2',
@@ -32,9 +31,8 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:qCut = 100.', #this is the actual merging scale
             'JetMatching:clFact = 1', # determines jet-to parton matching
             'JetMatching:nQmatch = 5', #5 for 5-flavour scheme (matching of b-quarks)
-            'JetMatching:nJetMax = 1', #number of partons in born matrix element for highest multiplicity
+            'JetMatching:nJetMax = 2', #number of partons in born matrix element for highest multiplicity
             'JetMatching:doShowerKt = off',
-            #'LesHouches:idRenameBeams = 1000021)',
             
             # Enable Rhadrons
             'RHadrons:allow  = on',
@@ -42,13 +40,6 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
             'RHadrons:setMasses = on',
             'RHadrons:probGluinoball = 0.1',
 
-           # Additional hadronization and debug information
-           'HadronLevel:Hadronize = on',  # Ensure hadronization is enabled
-           'PartonLevel:ISR = on',  # Enable Initial State Radiation
-           'PartonLevel:FSR = on',  # Enable Final State Radiation
-           'PartonLevel:MPI = on',  # Enable Multi-Parton Interactions
-           'Check:particleData = on',  # Check particle properties
-           
            # Extended verbosity for debugging
            'Main:timesAllowErrors = 10000',  # how many aborts before run stops
            'Init:showChangedSettings = on',  # list changed settings that differ from default
@@ -68,7 +59,10 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                                     )
                                     
     ),
-    UserCustomization = cms.VPSet(cms.PSet(pluginName = cms.string("DumpPythia8ParticleData")))
+    UserCustomization = cms.VPSet(
+        cms.PSet(pluginName = cms.string("DumpPythia8ParticleData")),
+        cms.PSet(pluginName = cms.string("DumpPythia8RhadronData_Full"))
+        )   
 )
 
 # We would like to change the particleID lists to be more inclusive of all RHadrons.
@@ -84,3 +78,4 @@ dirhadrongenfilter = cms.EDFilter("MCParticlePairFilter",
 )
 
 ProductionFilterSequence = cms.Sequence(generator * dirhadrongenfilter)
+

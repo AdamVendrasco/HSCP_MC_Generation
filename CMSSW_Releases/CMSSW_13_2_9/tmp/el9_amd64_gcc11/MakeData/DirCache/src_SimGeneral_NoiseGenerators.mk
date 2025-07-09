@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimGeneral/NoiseGenerators
+subdirs_src_SimGeneral_NoiseGenerators := src_SimGeneral_NoiseGenerators_src src_SimGeneral_NoiseGenerators_test

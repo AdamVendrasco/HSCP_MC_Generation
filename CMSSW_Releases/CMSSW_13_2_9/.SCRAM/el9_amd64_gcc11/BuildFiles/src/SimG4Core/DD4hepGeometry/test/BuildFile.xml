@@ -1,0 +1,34 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "DD4hepGeometryTestDriver": {
+        "COMMAND": "runTest.sh",
+        "TYPE": "test"
+      }
+    },
+    "LIBRARY": {
+      "DD4hepGeometryTestPlugins": {
+        "FILES": "plugins/*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "LIB": [
+          "Geom"
+        ],
+        "TYPE": "lib",
+        "USE": [
+          "SimG4Core/DD4hepGeometry",
+          "geant4core",
+          "Geometry/Records"
+        ]
+      }
+    }
+  },
+  "USE": [
+    "FWCore/Framework",
+    "dd4hep-geant4",
+    "DetectorDescription/DDCMS"
+  ]
+}

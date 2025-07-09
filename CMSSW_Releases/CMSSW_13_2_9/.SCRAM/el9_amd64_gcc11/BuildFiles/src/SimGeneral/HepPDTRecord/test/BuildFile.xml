@@ -1,0 +1,14 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "testSimGeneralHepPDTRecord": {
+        "FILES": "testPdtEntry.cc,testRunner.cpp",
+        "TYPE": "bin",
+        "USE": [
+          "SimGeneral/HepPDTRecord",
+          "cppunit"
+        ]
+      }
+    }
+  }
+}

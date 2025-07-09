@@ -1,0 +1,17 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/TauolaInterface/plugins/TauolappInterface/Tauolapp/TauolappInterface.cc.o: \
+ src/GeneratorInterface/TauolaInterface/plugins/Tauolapp/TauolappInterface.cc \
+ src/GeneratorInterface/TauolaInterface/interface/TauolappInterface.h \
+ src/GeneratorInterface/TauolaInterface/interface/TauolaInterfaceBase.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/SimGeneral/HepPDTRecord/interface/ParticleDataTable.h \
+ src/SimGeneral/HepPDTRecord/interface/PDTRecord.h \
+
+tmp/el9_amd64_gcc11/src/GeneratorInterface/TauolaInterface/plugins/TauolappInterface/Tauolapp/module.cc.o: \
+ src/GeneratorInterface/TauolaInterface/plugins/Tauolapp/module.cc \
+ src/GeneratorInterface/TauolaInterface/interface/TauolaFactory.h \
+ src/GeneratorInterface/TauolaInterface/interface/TauolaInterfaceBase.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/GeneratorInterface/TauolaInterface/interface/TauolappInterface.h \
+

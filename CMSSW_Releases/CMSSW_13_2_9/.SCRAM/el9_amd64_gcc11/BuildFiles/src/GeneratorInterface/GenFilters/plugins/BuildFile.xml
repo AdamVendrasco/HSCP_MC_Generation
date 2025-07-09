@@ -1,0 +1,44 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "GeneratorInterfaceGenFiltersPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "FWCore/ParameterSet",
+          "FWCore/Framework",
+          "FWCore/Utilities",
+          "SimDataFormats/GeneratorProducts",
+          "GeneratorInterface/Core",
+          "SimGeneral/HepPDTRecord",
+          "DataFormats/GeometryVector",
+          "DataFormats/GeometrySurface",
+          "TrackPropagation/SteppingHelixPropagator",
+          "MagneticField/Records",
+          "TrackingTools/TrajectoryState",
+          "TrackingTools/TrajectoryParametrization",
+          "TrackingTools/Records",
+          "CommonTools/UtilAlgos",
+          "FWCore/ServiceRegistry",
+          "TrackingTools/GeomPropagators",
+          "DataFormats/HepMCCandidate",
+          "DataFormats/JetReco",
+          "DataFormats/Math",
+          "SimDataFormats/HTXS",
+          "fastjet",
+          "boost",
+          "heppdt",
+          "clhep",
+          "rootcore",
+          "pythia6",
+          "pythia8"
+        ]
+      }
+    }
+  }
+}

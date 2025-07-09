@@ -1,0 +1,20 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreHelpfulWatchers",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "SimG4Core/Watcher",
+    "SimG4Core/Notification",
+    "boost",
+    "geant4core",
+    "CommonTools/UtilAlgos",
+    "MagneticField/Engine",
+    "MagneticField/Records",
+    "SimG4Core/Physics"
+  ]
+}

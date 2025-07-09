@@ -1,0 +1,18 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceExhumeInterface",
+  "USE": [
+    "FWCore/Concurrency",
+    "GeneratorInterface/Core",
+    "GeneratorInterface/Pythia6Interface",
+    "boost",
+    "clhep",
+    "f77compiler",
+    "heppdt",
+    "hepmc"
+  ]
+}

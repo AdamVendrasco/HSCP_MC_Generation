@@ -1,0 +1,18 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceBeamHaloGenerator",
+  "USE": [
+    "boost",
+    "hepmc",
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "SimDataFormats/GeneratorProducts",
+    "clhep",
+    "root",
+    "f77compiler"
+  ]
+}

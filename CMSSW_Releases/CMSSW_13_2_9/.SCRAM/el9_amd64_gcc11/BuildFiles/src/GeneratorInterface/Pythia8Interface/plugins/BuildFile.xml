@@ -2,7 +2,7 @@
   "BUILDPRODUCTS": {
     "LIBRARY": {
       "GeneratorInterfacePythia8Filters": {
-        "FILES": "Pythia8Hadronizer.cc,Py8toJetInput.cc,*Hook*.cc,LHA*.cc,PythiaDumpParticles.cc",
+        "FILES": "Pythia8Hadronizer.cc,Py8toJetInput.cc,*Hook*.cc,LHA*.cc,Pythia8DumpParticles.cc, Pythia8_RhadronParticleDump_Full.cc",
         "FLAGS": {
           "EDM_PLUGIN": [
             "1"

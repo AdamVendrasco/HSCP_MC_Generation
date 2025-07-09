@@ -1,0 +1,10 @@
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so BetaBoostEvtVtxGenerator CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so BetaBoostEvtVtxGenerator CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so GenHIEventProducer CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so GenHIEventProducer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so HiCentralityBiasFilter CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so HiCentralityBiasFilter CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so HighMultiplicityGenFilter CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so HighMultiplicityGenFilter CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so MixBoostEvtVtxGenerator CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceHiGenCommonPlugins.so MixBoostEvtVtxGenerator CMS%EDM%Framework%ParameterSet%Description

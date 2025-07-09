@@ -1,0 +1,16 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfacePythia6Interface",
+  "USE": [
+    "boost",
+    "GeneratorInterface/Core",
+    "clhep",
+    "pythia6",
+    "f77compiler",
+    "hepmc"
+  ]
+}

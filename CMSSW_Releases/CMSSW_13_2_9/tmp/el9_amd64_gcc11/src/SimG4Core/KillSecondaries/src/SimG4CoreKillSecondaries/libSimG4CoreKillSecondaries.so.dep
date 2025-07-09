@@ -1,0 +1,35 @@
+tmp/el9_amd64_gcc11/src/SimG4Core/KillSecondaries/src/SimG4CoreKillSecondaries/KillSecondariesRunAction.cc.o: \
+ src/SimG4Core/KillSecondaries/src/KillSecondariesRunAction.cc \
+ src/SimG4Core/KillSecondaries/interface/KillSecondariesRunAction.h \
+ src/SimG4Core/Notification/interface/Observer.h \
+ src/SimG4Core/Watcher/interface/SimWatcher.h \
+ src/SimG4Core/KillSecondaries/interface/KillSecondariesStackingAction.h \
+ src/SimG4Core/Notification/interface/BeginOfRun.h \
+
+tmp/el9_amd64_gcc11/src/SimG4Core/KillSecondaries/src/SimG4CoreKillSecondaries/KillSecondariesStackingAction.cc.o: \
+ src/SimG4Core/KillSecondaries/src/KillSecondariesStackingAction.cc \
+ src/SimG4Core/KillSecondaries/interface/KillSecondariesStackingAction.h \
+ src/SimG4Core/Notification/interface/CurrentG4Track.h \
+ src/SimG4Core/Notification/interface/MCTruthUtil.h
+
+tmp/el9_amd64_gcc11/src/SimG4Core/KillSecondaries/src/SimG4CoreKillSecondaries/KillSecondariesTrackAction.cc.o: \
+ src/SimG4Core/KillSecondaries/src/KillSecondariesTrackAction.cc \
+ src/SimG4Core/KillSecondaries/interface/KillSecondariesTrackAction.h \
+ src/SimG4Core/Notification/interface/Observer.h \
+ src/SimG4Core/Watcher/interface/SimWatcher.h \
+ src/SimG4Core/Notification/interface/BeginOfTrack.h \
+ src/SimG4Core/Notification/interface/TrackInformation.h \
+
+tmp/el9_amd64_gcc11/src/SimG4Core/KillSecondaries/src/SimG4CoreKillSecondaries/module.cc.o: \
+ src/SimG4Core/KillSecondaries/src/module.cc \
+ src/SimG4Core/KillSecondaries/interface/KillSecondariesRunAction.h \
+ src/SimG4Core/Notification/interface/Observer.h \
+ src/SimG4Core/Watcher/interface/SimWatcher.h \
+ src/SimG4Core/KillSecondaries/interface/KillSecondariesTrackAction.h \
+ src/SimG4Core/Watcher/interface/SimWatcherFactory.h \
+ src/SimG4Core/Watcher/interface/SimWatcherMaker.h \
+ src/SimG4Core/Notification/interface/SimActivityRegistryEnroller.h \
+ src/SimG4Core/Notification/interface/SimActivityRegistry.h \
+ src/SimG4Core/Notification/interface/Signaler.h \
+ src/SimG4Core/Watcher/interface/SimWatcherMakerBase.h \
+

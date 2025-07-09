@@ -18,18 +18,30 @@ tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/src/GeneratorInterfa
  src/GeneratorInterface/Pythia8Interface/src/Py8GunBase.cc \
  src/GeneratorInterface/Pythia8Interface/interface/Py8GunBase.h \
  src/GeneratorInterface/Pythia8Interface/interface/Py8InterfaceBase.h \
+ src/GeneratorInterface/Core/interface/ParameterCollector.h \
  src/GeneratorInterface/Pythia8Interface/interface/P8RndmEngine.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/src/GeneratorInterfacePythia8Interface/Py8HMC3InterfaceBase.cc.o: \
  src/GeneratorInterface/Pythia8Interface/src/Py8HMC3InterfaceBase.cc \
  src/GeneratorInterface/Pythia8Interface/interface/Py8HMC3InterfaceBase.h \
+ src/GeneratorInterface/Core/interface/ParameterCollector.h \
  src/GeneratorInterface/Pythia8Interface/interface/P8RndmEngine.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
  src/GeneratorInterface/Pythia8Interface/interface/SLHAReaderBase.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/src/GeneratorInterfacePythia8Interface/Py8InterfaceBase.cc.o: \
  src/GeneratorInterface/Pythia8Interface/src/Py8InterfaceBase.cc \
  src/GeneratorInterface/Pythia8Interface/interface/Py8InterfaceBase.h \
+ src/GeneratorInterface/Core/interface/ParameterCollector.h \
  src/GeneratorInterface/Pythia8Interface/interface/P8RndmEngine.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
  src/GeneratorInterface/Pythia8Interface/interface/SLHAReaderBase.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/src/GeneratorInterfacePythia8Interface/ResonanceDecayFilterHook.cc.o: \

@@ -1,0 +1,1 @@
+GeneratorInterfaceAMPTInterfacePlugins GeneratorInterface/AMPTInterface/plugins/plugin.cc

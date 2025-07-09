@@ -1,0 +1,18 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceSherpaInterface",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "GeneratorInterface/Core",
+    "GeneratorInterface/ExternalDecays",
+    "Utilities/OpenSSL",
+    "clhep",
+    "sherpa",
+    "zlib"
+  ]
+}

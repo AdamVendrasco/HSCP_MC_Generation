@@ -1,0 +1,20 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreCheckSecondary",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "FWCore/MessageLogger",
+    "geant4core",
+    "boost",
+    "root",
+    "SimG4Core/Notification",
+    "SimG4Core/Watcher",
+    "SimG4Core/Physics",
+    "DataFormats/Math"
+  ]
+}

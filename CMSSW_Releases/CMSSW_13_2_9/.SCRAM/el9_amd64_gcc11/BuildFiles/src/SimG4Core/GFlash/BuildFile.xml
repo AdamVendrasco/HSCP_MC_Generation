@@ -1,0 +1,17 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreGFlash",
+  "USE": [
+    "FWCore/ParameterSet",
+    "FWCore/MessageLogger",
+    "SimG4Core/PhysicsLists",
+    "SimGeneral/GFlash",
+    "geant4core",
+    "clhep",
+    "root"
+  ]
+}

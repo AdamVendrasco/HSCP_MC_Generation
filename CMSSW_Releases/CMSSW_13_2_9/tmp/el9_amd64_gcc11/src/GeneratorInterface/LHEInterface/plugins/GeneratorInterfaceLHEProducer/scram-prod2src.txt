@@ -1,0 +1,1 @@
+GeneratorInterfaceLHEProducer GeneratorInterface/LHEInterface/plugins/ExternalLHEAsciiDumper.cc GeneratorInterface/LHEInterface/plugins/ExternalLHEProducer.cc GeneratorInterface/LHEInterface/plugins/LHE2HepMCConverter.cc GeneratorInterface/LHEInterface/plugins/LHEFilter.cc

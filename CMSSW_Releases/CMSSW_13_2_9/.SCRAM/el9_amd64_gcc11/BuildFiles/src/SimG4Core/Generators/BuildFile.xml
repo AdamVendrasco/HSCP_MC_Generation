@@ -1,0 +1,18 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreGenerators",
+  "USE": [
+    "FWCore/ParameterSet",
+    "FWCore/MessageLogger",
+    "boost",
+    "hepmc",
+    "heppdt",
+    "geant4core",
+    "rootmath",
+    "expat"
+  ]
+}

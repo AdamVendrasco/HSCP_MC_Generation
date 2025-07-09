@@ -1,0 +1,38 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "TestGeneratorInterfaceLHEInterfaceFileReading": {
+        "COMMAND": "testMerging.sh",
+        "TYPE": "test"
+      },
+      "testGeneratorInterfaceLHEInterface_TP": {
+        "FILES": "test_catch2_*.cc",
+        "TYPE": "bin",
+        "USE": [
+          "FWCore/TestProcessor",
+          "SimDataFormats/GeneratorProducts",
+          "catch2"
+        ]
+      },
+      "test_cmsLHEtoEOSManager": {
+        "COMMAND": "test_cmsLHEtoEOSManager.sh",
+        "TYPE": "test"
+      }
+    },
+    "LIBRARY": {
+      "DummyLHEAnalyzer": {
+        "FILES": "DummyLHEAnalyzer.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "SimDataFormats/GeneratorProducts",
+          "FWCore/Framework"
+        ]
+      }
+    }
+  }
+}

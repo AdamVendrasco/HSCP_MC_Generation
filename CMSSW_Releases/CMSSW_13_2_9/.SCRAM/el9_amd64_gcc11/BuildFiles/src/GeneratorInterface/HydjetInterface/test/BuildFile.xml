@@ -1,0 +1,28 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "HydjetAnalyzer": {
+        "FILES": "HydjetAnalyzer.cc",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "boost",
+    "root",
+    "heppdt",
+    "FWCore/Framework",
+    "SimDataFormats/Vertex",
+    "SimDataFormats/GeneratorProducts",
+    "SimDataFormats/HiGenData",
+    "SimGeneral/HepPDTRecord",
+    "CommonTools/UtilAlgos",
+    "FWCore/ServiceRegistry",
+    "FWCore/Utilities"
+  ]
+}

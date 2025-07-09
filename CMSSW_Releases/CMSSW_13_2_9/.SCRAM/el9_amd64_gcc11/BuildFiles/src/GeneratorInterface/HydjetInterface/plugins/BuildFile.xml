@@ -1,0 +1,19 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "GeneratorInterfaceHydjetInterfacePlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "GeneratorInterface/HydjetInterface",
+    "pydata"
+  ]
+}

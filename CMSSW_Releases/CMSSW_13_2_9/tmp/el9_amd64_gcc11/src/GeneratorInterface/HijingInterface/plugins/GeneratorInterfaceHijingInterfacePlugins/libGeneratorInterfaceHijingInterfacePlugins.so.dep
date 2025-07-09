@@ -1,0 +1,10 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/HijingInterface/plugins/GeneratorInterfaceHijingInterfacePlugins/plugin.cc.o: \
+ src/GeneratorInterface/HijingInterface/plugins/plugin.cc \
+ src/GeneratorInterface/HijingInterface/interface/HijingGeneratorFilter.h \
+ src/GeneratorInterface/HijingInterface/interface/HijingHadronizer.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/GeneratorInterface/Core/interface/GeneratorFilter.h \
+ src/GeneratorInterface/ExternalDecays/interface/ExternalDecayDriver.h
+

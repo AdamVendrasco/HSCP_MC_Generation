@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimGeneral/Debugging
+subdirs_src_SimGeneral_Debugging := src_SimGeneral_Debugging_plugins src_SimGeneral_Debugging_python src_SimGeneral_Debugging_test

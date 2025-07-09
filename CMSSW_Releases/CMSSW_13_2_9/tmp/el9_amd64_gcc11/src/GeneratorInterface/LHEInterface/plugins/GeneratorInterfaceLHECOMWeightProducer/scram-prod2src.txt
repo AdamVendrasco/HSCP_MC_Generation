@@ -1,0 +1,1 @@
+GeneratorInterfaceLHECOMWeightProducer GeneratorInterface/LHEInterface/plugins/LHECOMWeightProducer.cc

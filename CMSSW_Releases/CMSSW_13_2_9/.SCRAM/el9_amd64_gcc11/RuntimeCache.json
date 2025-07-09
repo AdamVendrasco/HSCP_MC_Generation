@@ -14,9 +14,9 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hepmc3/3.2.5-9caf29326adf44098bd76d819db17013/include"
     ],
     "CMSSW_SEARCH_PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/poison",
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/src",
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/external/el9_amd64_gcc11/data",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/poison",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/src",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/external/el9_amd64_gcc11/data",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/src",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/external/el9_amd64_gcc11/data"
     ],
@@ -69,9 +69,9 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hwloc/2.9.2-0a500f3aec9190abdbf36be0e8b6ca93/lib/hwloc"
     ],
     "LD_LIBRARY_PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/biglib/el9_amd64_gcc11",
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/lib/el9_amd64_gcc11",
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/external/el9_amd64_gcc11/lib",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/biglib/el9_amd64_gcc11",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/lib/el9_amd64_gcc11",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/external/el9_amd64_gcc11/lib",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/biglib/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/lib/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/external/el9_amd64_gcc11/lib",
@@ -83,8 +83,8 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/numactl/2.0.14-d0d3193fcc5045dbd030086be584a9d6/share/man"
     ],
     "PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/bin/el9_amd64_gcc11",
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/external/el9_amd64_gcc11/bin",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/bin/el9_amd64_gcc11",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/external/el9_amd64_gcc11/bin",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/bin/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/external/el9_amd64_gcc11/bin",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/llvm/16.0.3-d5387186335b0dd85e1c294a1fd64dd0/bin",
@@ -97,8 +97,8 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/git/2.38.1-f1008fc0ce99c3bfca37d05ed7281ca5/share/perl5"
     ],
     "PYTHON3PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/python",
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/lib/el9_amd64_gcc11",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/python",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/lib/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/python",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/lib/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/coral/CORAL_2_3_21-915ec5066abd0fe143bf0f6f3cc15c07/el9_amd64_gcc11/python",
@@ -106,7 +106,7 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw-tool-conf/57.0-3c685eb3e463a8274a2f85f0111d7ed0/lib/python3.9/site-packages"
     ],
     "RIVET_ANALYSIS_PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/lib/el9_amd64_gcc11",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/lib/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/lib/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/lib/Rivet"
     ],
@@ -117,7 +117,7 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/gcc/11.4.1-30ebdc301ebd200f2ae0e3d880258e65"
     ],
     "ROOT_INCLUDE_PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/src",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/src",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/src",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/mctester/1.25.1-82d68156c489a0f99c1fcdca339861a3/include",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/hydjet2/2.4.3-696f150f268fdb40151c45d073cc6274/include",
@@ -218,7 +218,7 @@
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/sherpa/2.2.15-3b8bf31f3e9510bc02d046766937faca/share/SHERPA-MC"
     ],
     "TEST_SRTOPT_PATH": [
-      "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9/test/el9_amd64_gcc11",
+      "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9/test/el9_amd64_gcc11",
       "/cvmfs/cms.cern.ch/el9_amd64_gcc11/cms/cmssw/CMSSW_13_2_9/test/el9_amd64_gcc11"
     ],
     "TEXMFHOME": [
@@ -231,7 +231,7 @@
   "variables": [
     {
       "CMSSW_BASE": [
-        "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9"
+        "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9"
       ]
     },
     {
@@ -256,7 +256,7 @@
     },
     {
       "LOCALRT": [
-        "/afs/cern.ch/user/a/avendras/work/mg-Rhadron/CMSSW_Releases/CMSSW_13_2_9"
+        "/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/CMSSW_13_2_9"
       ]
     },
     {

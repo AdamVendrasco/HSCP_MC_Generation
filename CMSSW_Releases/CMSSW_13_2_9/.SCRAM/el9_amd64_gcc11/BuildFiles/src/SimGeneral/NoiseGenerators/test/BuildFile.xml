@@ -1,0 +1,30 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "CorrelatedNoisifierTest": {
+        "FILES": "CorrelatedNoisifierTest.cpp",
+        "TYPE": "bin"
+      }
+    },
+    "LIBRARY": {
+      "GaussianTailNoiseGeneratorTest": {
+        "FILES": "GaussianTailNoiseGeneratorTest.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "clhep",
+    "root",
+    "FWCore/Framework",
+    "FWCore/ServiceRegistry",
+    "FWCore/Utilities",
+    "SimGeneral/NoiseGenerators",
+    "CommonTools/Statistics"
+  ]
+}

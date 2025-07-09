@@ -1,0 +1,17 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceCosmicMuonGenerator",
+  "USE": [
+    "boost",
+    "FWCore/Framework",
+    "FWCore/ServiceRegistry",
+    "SimDataFormats/GeneratorProducts",
+    "clhep",
+    "root",
+    "hepmc"
+  ]
+}

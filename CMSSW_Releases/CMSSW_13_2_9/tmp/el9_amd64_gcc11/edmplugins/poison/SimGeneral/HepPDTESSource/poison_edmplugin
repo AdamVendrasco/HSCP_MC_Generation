@@ -1,0 +1,4 @@
+plugin-poisoned-HepPDTAnalyzer.so HepPDTAnalyzer CMS%EDM%Framework%Module
+plugin-poisoned-HepPDTAnalyzer.so HepPDTAnalyzer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-SimGeneralHepPDTESSource.so HepPDTESSource CMS%EDM%Framework%ESSource
+plugin-poisoned-SimGeneralHepPDTESSource.so HepPDTESSource CMS%EDM%Framework%ParameterSet%Description

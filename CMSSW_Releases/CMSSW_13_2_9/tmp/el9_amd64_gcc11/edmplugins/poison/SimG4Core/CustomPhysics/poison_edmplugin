@@ -1,0 +1,5 @@
+plugin-poisoned-SimG4CoreCustomPhysicsPlugins.so DBremWatcher CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CoreCustomPhysicsPlugins.so RHStopDump CMS%EDM%Framework%Module
+plugin-poisoned-SimG4CoreCustomPhysicsPlugins.so RHStopDump CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-SimG4CoreCustomPhysicsPlugins.so RHStopTracer CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CoreCustomPhysicsPlugins.so SimG4Core/Physics/CustomPhysics CMS%Simulation%PhysicsListFactory

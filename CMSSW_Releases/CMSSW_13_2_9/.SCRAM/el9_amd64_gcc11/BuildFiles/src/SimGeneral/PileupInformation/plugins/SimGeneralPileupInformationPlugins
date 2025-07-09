@@ -1,0 +1,1 @@
+SimGeneralPileupInformationPlugins_PACKAGE := self/src/SimGeneral/PileupInformation/plugins

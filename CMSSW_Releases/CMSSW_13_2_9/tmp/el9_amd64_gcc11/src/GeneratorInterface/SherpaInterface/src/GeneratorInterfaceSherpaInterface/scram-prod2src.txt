@@ -1,0 +1,1 @@
+GeneratorInterfaceSherpaInterface GeneratorInterface/SherpaInterface/src/SherpaHadronizer.cc GeneratorInterface/SherpaInterface/src/SherpackFetcher.cc GeneratorInterface/SherpaInterface/src/SherpackUtilities.cc

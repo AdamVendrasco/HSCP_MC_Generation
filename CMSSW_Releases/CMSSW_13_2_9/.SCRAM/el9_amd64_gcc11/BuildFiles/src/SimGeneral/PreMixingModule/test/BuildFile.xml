@@ -1,0 +1,28 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "runtestSimGeneralPreMixingModule": {
+        "COMMAND": "run_testPremixPileupAdjustment.sh",
+        "TYPE": "test"
+      }
+    },
+    "LIBRARY": {
+      "SimGeneralPreMixingModuleTestPlugins": {
+        "FILES": "TestPreMixingPileupAnalyzer.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "DataFormats/Common",
+          "FWCore/Framework",
+          "FWCore/ParameterSet",
+          "FWCore/Utilities",
+          "SimDataFormats/PileupSummaryInfo"
+        ]
+      }
+    }
+  }
+}

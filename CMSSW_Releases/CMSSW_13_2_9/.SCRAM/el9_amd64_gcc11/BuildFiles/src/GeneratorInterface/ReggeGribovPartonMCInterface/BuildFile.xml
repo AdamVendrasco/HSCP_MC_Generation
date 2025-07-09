@@ -1,0 +1,25 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "FLAGS": {
+    "CPPDEFINES": [
+      "__SIBYLL__",
+      "__QGSJET01__",
+      "__QGSJETII04__"
+    ]
+  },
+  "NAME": "GeneratorInterfaceReggeGribovPartonMCInterface",
+  "USE": [
+    "clhep",
+    "boost",
+    "GeneratorInterface/Core",
+    "FWCore/Framework",
+    "SimDataFormats/GeneratorProducts",
+    "GeneratorInterface/ExternalDecays",
+    "f77compiler",
+    "hepmc"
+  ]
+}

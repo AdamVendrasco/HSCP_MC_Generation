@@ -1,0 +1,13 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimGeneralNoiseGenerators",
+  "USE": [
+    "clhep",
+    "gsl",
+    "DataFormats/Math"
+  ]
+}

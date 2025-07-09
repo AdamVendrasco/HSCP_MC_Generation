@@ -6,11 +6,18 @@ tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInt
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/JetMatchingHook.cc.o: \
  src/GeneratorInterface/Pythia8Interface/plugins/JetMatchingHook.cc \
  src/GeneratorInterface/Pythia8Interface/plugins/JetMatchingHook.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/GeneratorInterface/PartonShowerVeto/interface/JetMatching.h \
+ src/GeneratorInterface/PartonShowerVeto/interface/JetMatchingMadgraph.h \
+ src/GeneratorInterface/PartonShowerVeto/interface/JetMatchingMGFastJet.h \
  src/GeneratorInterface/Pythia8Interface/plugins/Py8toJetInput.h
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/LHAupLesHouches.cc.o: \
  src/GeneratorInterface/Pythia8Interface/plugins/LHAupLesHouches.cc \
  src/GeneratorInterface/Pythia8Interface/plugins/LHAupLesHouches.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/PowhegResHook.cc.o: \
  src/GeneratorInterface/Pythia8Interface/plugins/PowhegResHook.cc \
@@ -20,24 +27,42 @@ tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInt
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/Py8toJetInput.cc.o: \
  src/GeneratorInterface/Pythia8Interface/plugins/Py8toJetInput.cc \
  src/GeneratorInterface/Pythia8Interface/plugins/Py8toJetInput.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+
+tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/Pythia8DumpParticles.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/Pythia8DumpParticles.cc \
+ src/GeneratorInterface/Pythia8Interface/interface/CustomHook.h \
 
 tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/Pythia8Hadronizer.cc.o: \
  src/GeneratorInterface/Pythia8Interface/plugins/Pythia8Hadronizer.cc \
  src/GeneratorInterface/Pythia8Interface/interface/Py8InterfaceBase.h \
+ src/GeneratorInterface/Core/interface/ParameterCollector.h \
  src/GeneratorInterface/Pythia8Interface/interface/P8RndmEngine.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
  src/GeneratorInterface/Pythia8Interface/plugins/ReweightUserHooks.h \
  src/GeneratorInterface/Pythia8Interface/interface/CustomHook.h \
  src/GeneratorInterface/Pythia8Interface/plugins/TopRecoilHook.h \
  src/GeneratorInterface/Pythia8Interface/plugins/JetMatchingHook.h \
+ src/GeneratorInterface/PartonShowerVeto/interface/JetMatching.h \
  src/GeneratorInterface/Pythia8Interface/plugins/EmissionVetoHook1.h \
  src/GeneratorInterface/Pythia8Interface/plugins/PowhegHooksBB4L.h \
  src/GeneratorInterface/Pythia8Interface/plugins/PowhegResHook.h \
  src/GeneratorInterface/Pythia8Interface/interface/BiasedTauDecayer.h \
  src/GeneratorInterface/Pythia8Interface/interface/ResonanceDecayFilterHook.h \
  src/GeneratorInterface/Pythia8Interface/interface/PTFilterHook.h \
+ src/GeneratorInterface/Core/interface/GeneratorFilter.h \
+ src/GeneratorInterface/Core/interface/HadronizerFilter.h \
+ src/GeneratorInterface/Core/interface/HepMCFilterDriver.h \
+ src/GeneratorInterface/Core/interface/ConcurrentGeneratorFilter.h \
+ src/GeneratorInterface/Core/interface/ConcurrentHadronizerFilter.h \
  src/GeneratorInterface/Pythia8Interface/plugins/LHAupLesHouches.h \
+ src/GeneratorInterface/ExternalDecays/interface/ExternalDecayDriver.h \
+ src/GeneratorInterface/ExternalDecays/interface/ConcurrentExternalDecayDriver.h
 
-tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/PythiaDumpParticles.cc.o: \
- src/GeneratorInterface/Pythia8Interface/plugins/PythiaDumpParticles.cc \
+tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8Filters/Pythia8_RhadronParticleDump_Full.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/Pythia8_RhadronParticleDump_Full.cc \
  src/GeneratorInterface/Pythia8Interface/interface/CustomHook.h \
 

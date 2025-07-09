@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimGeneral/DataMixingModule
+subdirs_src_SimGeneral_DataMixingModule := src_SimGeneral_DataMixingModule_plugins src_SimGeneral_DataMixingModule_python src_SimGeneral_DataMixingModule_test

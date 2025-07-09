@@ -1,0 +1,13 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreTrackingVerbose",
+  "USE": [
+    "SimG4Core/Application",
+    "geant4core",
+    "boost"
+  ]
+}

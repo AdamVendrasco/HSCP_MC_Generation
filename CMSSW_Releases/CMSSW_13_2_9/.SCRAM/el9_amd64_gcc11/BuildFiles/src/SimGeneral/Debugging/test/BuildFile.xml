@@ -1,0 +1,28 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimDigiDumper": {
+        "FILES": "SimDigiDumper.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "DataFormats/Common",
+    "DataFormats/EcalDigi",
+    "DataFormats/HcalDigi",
+    "DataFormats/SiStripDigi",
+    "DataFormats/SiPixelDigi",
+    "DataFormats/DTDigi",
+    "DataFormats/CSCDigi",
+    "DataFormats/RPCDigi",
+    "DataFormats/FTLDigi",
+    "FWCore/Framework",
+    "FWCore/MessageLogger"
+  ]
+}
