@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/TrackingVerbose
+subdirs_src_SimG4Core_TrackingVerbose := src_SimG4Core_TrackingVerbose_src

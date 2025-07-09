@@ -1,0 +1,12 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "SimGeneralHepPDTESSource",
+  "USE": [
+    "SimGeneral/HepPDTRecord",
+    "heppdt"
+  ]
+}

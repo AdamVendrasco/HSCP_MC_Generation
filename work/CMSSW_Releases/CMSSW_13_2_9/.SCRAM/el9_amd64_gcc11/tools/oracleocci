@@ -1,0 +1,10 @@
+{
+  "LIB": [
+    "occi"
+  ],
+  "TOOLNAME": "oracleocci",
+  "TOOLVERSION": "19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e",
+  "USE": [
+    "oracle"
+  ]
+}

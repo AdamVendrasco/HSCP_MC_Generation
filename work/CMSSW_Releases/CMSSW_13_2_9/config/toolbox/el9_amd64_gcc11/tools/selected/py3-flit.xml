@@ -1,0 +1,6 @@
+<tool name="py3-flit" version="3.8.0-88722d3adee1a0f4ba155a8da6622cb1">
+  <client>
+    <environment name="PY3_FLIT_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/py3-flit/3.8.0-88722d3adee1a0f4ba155a8da6622cb1"/>
+  </client>
+  <runtime name="PATH" value="$PY3_FLIT_BASE/bin" type="path"/>
+</tool>

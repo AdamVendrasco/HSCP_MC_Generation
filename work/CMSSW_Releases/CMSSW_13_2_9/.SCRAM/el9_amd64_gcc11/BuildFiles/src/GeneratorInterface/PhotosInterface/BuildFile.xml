@@ -1,0 +1,15 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfacePhotosInterface",
+  "USE": [
+    "FWCore/ParameterSet",
+    "FWCore/Framework",
+    "FWCore/PluginManager",
+    "hepmc",
+    "clhep"
+  ]
+}

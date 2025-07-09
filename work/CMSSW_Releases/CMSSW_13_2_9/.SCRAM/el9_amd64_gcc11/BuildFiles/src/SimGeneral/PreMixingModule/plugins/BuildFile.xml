@@ -1,0 +1,29 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimGeneralPreMixingModulePlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "DataFormats/HepMCCandidate",
+    "FWCore/Framework",
+    "FWCore/MessageLogger",
+    "FWCore/ParameterSet",
+    "FWCore/PluginManager",
+    "FWCore/ServiceRegistry",
+    "Mixing/Base",
+    "SimDataFormats/CrossingFrame",
+    "SimDataFormats/PileupSummaryInfo",
+    "SimGeneral/MixingModule",
+    "SimGeneral/PreMixingModule",
+    "clhep"
+  ]
+}

@@ -1,0 +1,7 @@
+<tool name="tcmalloc" version="2.9.1-f56bcbe138675f6035861a033afdc0de">
+  <lib name="tcmalloc"/>
+  <client>
+    <environment name="TCMALLOC_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/gperftools/2.9.1-f56bcbe138675f6035861a033afdc0de"/>
+    <environment name="LIBDIR"        default="$TCMALLOC_BASE/lib"/>
+  </client>
+</tool>

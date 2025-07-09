@@ -1,0 +1,24 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimGeneralTrackingAnalysis_test": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "FWCore/Framework",
+          "SimDataFormats/TrackingAnalysis",
+          "SimDataFormats/Track",
+          "SimDataFormats/GeneratorProducts"
+        ]
+      }
+    }
+  },
+  "USE": [
+    "clhep"
+  ]
+}

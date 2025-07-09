@@ -1,0 +1,41 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "test-rivet-list": {
+        "COMMAND": "test-rivet-list.sh",
+        "TYPE": "test"
+      },
+      "test-rivet-nan": {
+        "COMMAND": "test-rivet-nan.sh",
+        "FLAGS": {
+          "PRE_TEST": [
+            "test-rivet-run"
+          ]
+        },
+        "TYPE": "test"
+      },
+      "test-rivet-run": {
+        "COMMAND": "test-rivet-run.sh",
+        "TYPE": "test"
+      },
+      "test-yoda-merge": {
+        "COMMAND": "test-yoda-merge.sh",
+        "FLAGS": {
+          "PRE_TEST": [
+            "test-rivet-run"
+          ]
+        },
+        "TYPE": "test"
+      },
+      "test-yoda-root": {
+        "COMMAND": "test-yoda-root.sh",
+        "FLAGS": {
+          "PRE_TEST": [
+            "test-rivet-run"
+          ]
+        },
+        "TYPE": "test"
+      }
+    }
+  }
+}

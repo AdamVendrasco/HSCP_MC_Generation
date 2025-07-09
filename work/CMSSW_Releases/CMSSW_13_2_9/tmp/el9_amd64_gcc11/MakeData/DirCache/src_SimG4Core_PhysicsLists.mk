@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/PhysicsLists
+subdirs_src_SimG4Core_PhysicsLists := src_SimG4Core_PhysicsLists_plugins src_SimG4Core_PhysicsLists_python src_SimG4Core_PhysicsLists_src src_SimG4Core_PhysicsLists_test

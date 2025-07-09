@@ -1,0 +1,23 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "GeneratorInterfaceExhumeFilter": {
+        "FILES": "ExhumeGeneratorFilter.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "GeneratorInterface/Core",
+          "GeneratorInterface/ExternalDecays"
+        ]
+      }
+    }
+  },
+  "USE": [
+    "GeneratorInterface/ExhumeInterface",
+    "pydata"
+  ]
+}

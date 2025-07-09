@@ -1,0 +1,12 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreWatcher",
+  "USE": [
+    "FWCore/Framework",
+    "boost"
+  ]
+}

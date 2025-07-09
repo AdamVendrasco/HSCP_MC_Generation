@@ -1,0 +1,6 @@
+<tool name="py3-jsonschema" version="4.17.3-61b03f87a8a9612094dd0f82d449325d">
+  <client>
+    <environment name="PY3_JSONSCHEMA_BASE" default="/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/py3-jsonschema/4.17.3-61b03f87a8a9612094dd0f82d449325d"/>
+  </client>
+  <runtime name="PATH" value="$PY3_JSONSCHEMA_BASE/bin" type="path"/>
+</tool>

@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/PrintTrackNumber
+subdirs_src_SimG4Core_PrintTrackNumber := src_SimG4Core_PrintTrackNumber_src

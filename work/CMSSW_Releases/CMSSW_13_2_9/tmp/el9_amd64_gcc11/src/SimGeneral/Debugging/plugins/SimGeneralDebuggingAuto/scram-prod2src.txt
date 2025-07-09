@@ -1,0 +1,1 @@
+SimGeneralDebuggingAuto SimGeneral/Debugging/plugins/CaloParticleDebugger.cc

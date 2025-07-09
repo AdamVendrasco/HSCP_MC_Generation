@@ -1,0 +1,14 @@
+plugin-poisoned-FailingGeneratorFilter.so FailingGeneratorFilter CMS%EDM%Framework%Module
+plugin-poisoned-FailingGeneratorFilter.so FailingGeneratorFilter CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceCore_plugins.so CompareGeneratorResultsAnalyzer CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceCore_plugins.so CompareGeneratorResultsAnalyzer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceCore_plugins.so ExternalGeneratorFilter CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceCore_plugins.so ExternalGeneratorFilter CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GenFilterEfficiencyAnalyzer CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GenFilterEfficiencyAnalyzer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GenFilterEfficiencyProducer CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GenFilterEfficiencyProducer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GenXSecAnalyzer CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GenXSecAnalyzer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GeneratorSmearedProducer CMS%EDM%Framework%Module
+plugin-poisoned-GeneratorInterfaceCore_plugins.so GeneratorSmearedProducer CMS%EDM%Framework%ParameterSet%Description

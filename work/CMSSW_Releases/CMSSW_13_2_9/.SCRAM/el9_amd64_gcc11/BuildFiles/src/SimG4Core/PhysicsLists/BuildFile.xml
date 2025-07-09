@@ -1,0 +1,18 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CorePhysicsLists",
+  "USE": [
+    "boost",
+    "clhep",
+    "geant4core",
+    "g4hepemcore",
+    "heppdt",
+    "FWCore/MessageLogger",
+    "SimG4Core/MagneticField",
+    "SimG4Core/Physics"
+  ]
+}

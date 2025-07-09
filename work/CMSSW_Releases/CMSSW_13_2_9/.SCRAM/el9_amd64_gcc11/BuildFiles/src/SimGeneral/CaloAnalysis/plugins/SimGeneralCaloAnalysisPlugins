@@ -1,0 +1,1 @@
+SimGeneralCaloAnalysisPlugins_PACKAGE := self/src/SimGeneral/CaloAnalysis/plugins

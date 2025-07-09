@@ -1,0 +1,27 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimG4CoreGFlashPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/MessageLogger",
+    "FWCore/PluginManager",
+    "SimG4Core/PhysicsLists",
+    "SimG4Core/Notification",
+    "SimG4Core/Watcher",
+    "SimG4Core/GFlash",
+    "geant4core",
+    "clhep",
+    "root"
+  ]
+}

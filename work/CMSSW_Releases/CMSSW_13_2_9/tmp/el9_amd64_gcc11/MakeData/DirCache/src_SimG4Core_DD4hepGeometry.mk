@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/DD4hepGeometry
+subdirs_src_SimG4Core_DD4hepGeometry := src_SimG4Core_DD4hepGeometry_src src_SimG4Core_DD4hepGeometry_test

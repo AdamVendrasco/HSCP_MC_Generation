@@ -1,0 +1,19 @@
+{
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/md5/1.0.0-6bede1cf43db82355b3835c81f384d05/include"
+  ],
+  "LIB": [
+    "cms-md5"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/md5/1.0.0-6bede1cf43db82355b3835c81f384d05/lib"
+  ],
+  "MD5_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/md5/1.0.0-6bede1cf43db82355b3835c81f384d05",
+  "TOOLNAME": "md5",
+  "TOOLVERSION": "1.0.0-6bede1cf43db82355b3835c81f384d05",
+  "VARIABLES": [
+    "MD5_BASE",
+    "LIBDIR",
+    "INCLUDE"
+  ]
+}

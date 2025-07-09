@@ -1,0 +1,2 @@
+plugin-poisoned-SimG4CoreCheckSecondary.so CheckSecondary CMS%Simulation%SimWatcherFactory
+plugin-poisoned-SimG4CoreCheckSecondary.so StoreSecondary CMS%Simulation%SimWatcherFactory

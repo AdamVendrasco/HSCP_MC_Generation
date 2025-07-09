@@ -1,0 +1,18 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "SimFileCompare": {
+        "FILES": "SimFileCompare.cpp",
+        "TYPE": "bin"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "SimG4Core/Geometry"
+  ]
+}

@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f lib/el9_amd64_gcc11/pluginSimGeneralPileupInformationPlugins.so lib/el9_amd64_gcc11/SimGeneralPileupInformationPlugins.edmplugin
+90:edmPluginRefresh lib/el9_amd64_gcc11

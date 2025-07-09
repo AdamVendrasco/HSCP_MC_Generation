@@ -1,0 +1,1 @@
+DD4hepGeometryTestPlugins SimG4Core/DD4hepGeometry/test/plugins/DD4hepTestDDDWorld.cc SimG4Core/DD4hepGeometry/test/plugins/DD4hepTestG4Geometry.cc

@@ -1,0 +1,6 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/PhotosInterface/plugins/PhotosppInterface/PhotosppInterface.cc.o: \
+ src/GeneratorInterface/PhotosInterface/plugins/PhotosppInterface.cc \
+ src/GeneratorInterface/PhotosInterface/interface/PhotosppInterface.h \
+ src/GeneratorInterface/PhotosInterface/interface/PhotosInterfaceBase.h \
+ src/GeneratorInterface/PhotosInterface/interface/PhotosFactory.h \
+

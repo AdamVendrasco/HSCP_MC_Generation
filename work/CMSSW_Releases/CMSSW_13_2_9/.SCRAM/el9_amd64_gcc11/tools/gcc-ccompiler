@@ -1,0 +1,20 @@
+{
+  "CC": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/gcc/11.4.1-30ebdc301ebd200f2ae0e3d880258e65/bin/gcc",
+  "FLAGS": {
+    "CFLAGS": [
+      "-O2",
+      "-pthread"
+    ],
+    "CSHAREDOBJECTFLAGS": [
+      "-fPIC"
+    ]
+  },
+  "GCC_CCOMPILER_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/gcc/11.4.1-30ebdc301ebd200f2ae0e3d880258e65",
+  "SCRAM_COMPILER": 1,
+  "TOOLNAME": "gcc-ccompiler",
+  "TOOLVERSION": "11.4.1",
+  "VARIABLES": [
+    "GCC_CCOMPILER_BASE",
+    "CC"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreDD4hepGeometry",
+  "USE": [
+    "dd4hep-core",
+    "dd4hep-geant4",
+    "geant4core",
+    "FWCore/MessageLogger",
+    "rootgeom",
+    "rootmath"
+  ]
+}

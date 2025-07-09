@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f lib/el9_amd64_gcc11/pluginExhumeAnalyzer.so lib/el9_amd64_gcc11/ExhumeAnalyzer.edmplugin
+90:edmPluginRefresh lib/el9_amd64_gcc11

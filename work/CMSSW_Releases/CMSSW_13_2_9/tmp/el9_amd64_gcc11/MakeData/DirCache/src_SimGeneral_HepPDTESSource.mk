@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimGeneral/HepPDTESSource
+subdirs_src_SimGeneral_HepPDTESSource := src_SimGeneral_HepPDTESSource_python src_SimGeneral_HepPDTESSource_src src_SimGeneral_HepPDTESSource_test

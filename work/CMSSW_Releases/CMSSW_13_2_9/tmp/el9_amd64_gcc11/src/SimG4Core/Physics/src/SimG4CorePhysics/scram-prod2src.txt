@@ -1,0 +1,1 @@
+SimG4CorePhysics SimG4Core/Physics/src/G4ProcessTypeEnumerator.cc SimG4Core/Physics/src/Monopole.cc SimG4Core/Physics/src/PhysicsList.cc SimG4Core/Physics/src/PhysicsListFactory.cc

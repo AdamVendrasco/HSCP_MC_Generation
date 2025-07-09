@@ -1,0 +1,30 @@
+{
+  "CURL_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/curl/7.79.0-639c75cb2c36dac1daa9f13cb5b6668e",
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/curl/7.79.0-639c75cb2c36dac1daa9f13cb5b6668e/include"
+  ],
+  "LIB": [
+    "curl"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/curl/7.79.0-639c75cb2c36dac1daa9f13cb5b6668e/lib"
+  ],
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/curl/7.79.0-639c75cb2c36dac1daa9f13cb5b6668e/bin"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/curl/7.79.0-639c75cb2c36dac1daa9f13cb5b6668e/include"
+    ]
+  },
+  "TOOLNAME": "curl",
+  "TOOLVERSION": "7.79.0-639c75cb2c36dac1daa9f13cb5b6668e",
+  "USE": [
+    "root_cxxdefaults"
+  ],
+  "VARIABLES": [
+    "CURL_BASE",
+    "INCLUDE",
+    "LIBDIR"
+  ]
+}

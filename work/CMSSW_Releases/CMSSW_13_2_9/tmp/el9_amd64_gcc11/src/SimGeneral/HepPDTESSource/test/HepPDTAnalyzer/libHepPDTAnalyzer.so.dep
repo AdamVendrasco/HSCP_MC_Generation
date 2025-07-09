@@ -1,0 +1,6 @@
+tmp/el9_amd64_gcc11/src/SimGeneral/HepPDTESSource/test/HepPDTAnalyzer/HepPDTAnalyzer.cc.o: \
+ src/SimGeneral/HepPDTESSource/test/HepPDTAnalyzer.cc \
+ src/SimGeneral/HepPDTESSource/test/HepPDTAnalyzer.h \
+ src/SimGeneral/HepPDTRecord/interface/ParticleDataTable.h \
+ src/SimGeneral/HepPDTRecord/interface/PDTRecord.h \
+

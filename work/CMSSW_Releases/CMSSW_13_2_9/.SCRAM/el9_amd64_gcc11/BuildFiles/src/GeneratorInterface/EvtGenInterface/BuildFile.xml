@@ -1,0 +1,17 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceEvtGenInterface",
+  "USE": [
+    "FWCore/ParameterSet",
+    "FWCore/Framework",
+    "FWCore/PluginManager",
+    "hepmc",
+    "clhep",
+    "heppdt",
+    "evtgen"
+  ]
+}

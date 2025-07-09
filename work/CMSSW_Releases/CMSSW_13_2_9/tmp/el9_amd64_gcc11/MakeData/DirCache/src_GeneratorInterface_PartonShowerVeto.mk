@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/PartonShowerVeto
+subdirs_src_GeneratorInterface_PartonShowerVeto := src_GeneratorInterface_PartonShowerVeto_src src_GeneratorInterface_PartonShowerVeto_test

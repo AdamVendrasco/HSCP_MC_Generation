@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/Core
+subdirs_src_GeneratorInterface_Core := src_GeneratorInterface_Core_bin src_GeneratorInterface_Core_plugins src_GeneratorInterface_Core_python src_GeneratorInterface_Core_src src_GeneratorInterface_Core_test

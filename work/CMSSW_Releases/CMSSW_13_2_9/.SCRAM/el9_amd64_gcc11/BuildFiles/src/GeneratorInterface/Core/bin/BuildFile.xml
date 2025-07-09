@@ -1,0 +1,18 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "cmsExternalGenerator": {
+        "FILES": "externalGenerator.cc",
+        "TYPE": "bin",
+        "USE": [
+          "boost",
+          "boost_program_options",
+          "FWCore/TestProcessor",
+          "FWCore/SharedMemory",
+          "FWCore/Services",
+          "SimDataFormats/GeneratorProducts"
+        ]
+      }
+    }
+  }
+}

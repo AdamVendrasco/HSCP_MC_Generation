@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/GenExtensions
+subdirs_src_GeneratorInterface_GenExtensions := src_GeneratorInterface_GenExtensions_bin src_GeneratorInterface_GenExtensions_test

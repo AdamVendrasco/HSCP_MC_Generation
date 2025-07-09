@@ -1,0 +1,46 @@
+{
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/include"
+  ],
+  "LIB": [
+    "Rivet"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/lib"
+  ],
+  "RIVET_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2",
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/bin"
+    ],
+    "PATH:PDFPATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/share"
+    ],
+    "PATH:RIVET_ANALYSIS_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/lib/Rivet"
+    ],
+    "PATH:RIVET_DATA_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/share/Rivet"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/include"
+    ],
+    "PATH:TEXMFHOME": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/rivet/3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2/share/Rivet/texmf"
+    ]
+  },
+  "TOOLNAME": "rivet",
+  "TOOLVERSION": "3.1.8-c51fbf2c5c98e3e4d5ecfbe51be6ece2",
+  "USE": [
+    "hepmc",
+    "fastjet",
+    "fastjet-contrib",
+    "gsl",
+    "yoda"
+  ],
+  "VARIABLES": [
+    "RIVET_BASE",
+    "LIBDIR",
+    "INCLUDE"
+  ]
+}

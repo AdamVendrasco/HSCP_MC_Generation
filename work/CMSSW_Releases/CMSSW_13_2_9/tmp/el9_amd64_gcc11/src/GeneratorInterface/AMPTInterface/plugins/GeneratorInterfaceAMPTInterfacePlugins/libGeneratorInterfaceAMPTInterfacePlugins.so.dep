@@ -1,0 +1,10 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/plugins/GeneratorInterfaceAMPTInterfacePlugins/plugin.cc.o: \
+ src/GeneratorInterface/AMPTInterface/plugins/plugin.cc \
+ src/GeneratorInterface/AMPTInterface/interface/AMPTGeneratorFilter.h \
+ src/GeneratorInterface/AMPTInterface/interface/AMPTHadronizer.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/GeneratorInterface/Core/interface/GeneratorFilter.h \
+ src/GeneratorInterface/ExternalDecays/interface/ExternalDecayDriver.h
+

@@ -1,0 +1,30 @@
+{
+  "GIFLIB_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/giflib/5.2.0-b1a4768d7234821f81c32a9f4191a17a",
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/giflib/5.2.0-b1a4768d7234821f81c32a9f4191a17a/include"
+  ],
+  "LIB": [
+    "gif"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/giflib/5.2.0-b1a4768d7234821f81c32a9f4191a17a/lib"
+  ],
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/giflib/5.2.0-b1a4768d7234821f81c32a9f4191a17a/bin"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/giflib/5.2.0-b1a4768d7234821f81c32a9f4191a17a/include"
+    ]
+  },
+  "TOOLNAME": "giflib",
+  "TOOLVERSION": "5.2.0-b1a4768d7234821f81c32a9f4191a17a",
+  "USE": [
+    "root_cxxdefaults"
+  ],
+  "VARIABLES": [
+    "GIFLIB_BASE",
+    "LIBDIR",
+    "INCLUDE"
+  ]
+}

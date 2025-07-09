@@ -1,0 +1,18 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "GeneratorInterfaceReggeGribovPartonMCInterfacePlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "GeneratorInterface/ReggeGribovPartonMCInterface"
+  ]
+}

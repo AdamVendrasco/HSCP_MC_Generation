@@ -1,0 +1,20 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceHydjetInterface",
+  "USE": [
+    "boost",
+    "GeneratorInterface/Core",
+    "FWCore/Concurrency",
+    "FWCore/Framework",
+    "SimDataFormats/GeneratorProducts",
+    "GeneratorInterface/Pythia6Interface",
+    "GeneratorInterface/ExternalDecays",
+    "f77compiler",
+    "hydjet",
+    "hepmc"
+  ]
+}

@@ -1,0 +1,1 @@
+testSimG4CoreFieldStepWatcher SimG4Core/MagneticField/test/FieldStepWatcher.cc

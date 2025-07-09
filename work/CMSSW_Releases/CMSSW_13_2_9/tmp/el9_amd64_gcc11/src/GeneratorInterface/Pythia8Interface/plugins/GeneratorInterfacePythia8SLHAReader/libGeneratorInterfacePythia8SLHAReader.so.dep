@@ -1,0 +1,4 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/Pythia8Interface/plugins/GeneratorInterfacePythia8SLHAReader/SLHAReaderpMSSM.cc.o: \
+ src/GeneratorInterface/Pythia8Interface/plugins/SLHAReaderpMSSM.cc \
+ src/GeneratorInterface/Pythia8Interface/interface/SLHAReaderBase.h \
+

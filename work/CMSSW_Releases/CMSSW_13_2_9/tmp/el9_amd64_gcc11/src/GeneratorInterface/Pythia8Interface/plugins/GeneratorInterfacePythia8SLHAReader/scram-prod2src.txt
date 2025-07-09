@@ -1,0 +1,1 @@
+GeneratorInterfacePythia8SLHAReader GeneratorInterface/Pythia8Interface/plugins/SLHAReaderpMSSM.cc

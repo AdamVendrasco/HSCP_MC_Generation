@@ -1,0 +1,4 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/EvtGenInterface/plugins/GenDataCardFileWriter/DataCardFileWriter.cc.o: \
+ src/GeneratorInterface/EvtGenInterface/plugins/DataCardFileWriter.cc \
+ src/GeneratorInterface/EvtGenInterface/interface/DataCardFileWriter.h \
+

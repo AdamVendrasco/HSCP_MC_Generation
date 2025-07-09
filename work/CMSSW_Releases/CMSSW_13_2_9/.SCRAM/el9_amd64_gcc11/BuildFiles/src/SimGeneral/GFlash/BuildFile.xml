@@ -1,0 +1,14 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimGeneralGFlash",
+  "USE": [
+    "FWCore/ParameterSet",
+    "FWCore/MessageLogger",
+    "clhep",
+    "root"
+  ]
+}

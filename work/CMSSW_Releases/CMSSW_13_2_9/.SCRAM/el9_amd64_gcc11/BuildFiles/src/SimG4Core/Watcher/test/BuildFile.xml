@@ -1,0 +1,20 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimG4CoreWatcherTest": {
+        "FILES": "IntSimProducer.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "FWCore/Framework",
+    "SimG4Core/Watcher",
+    "boost"
+  ]
+}

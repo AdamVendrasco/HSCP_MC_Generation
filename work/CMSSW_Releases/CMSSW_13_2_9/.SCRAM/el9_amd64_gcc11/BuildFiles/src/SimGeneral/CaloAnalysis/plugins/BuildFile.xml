@@ -1,0 +1,42 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimGeneralCaloAnalysisPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "clhep",
+    "DataFormats/Math",
+    "DataFormats/SiStripDetId",
+    "DataFormats/SiPixelDetId",
+    "FWCore/Framework",
+    "FWCore/MessageLogger",
+    "FWCore/ParameterSet",
+    "FWCore/Utilities",
+    "SimDataFormats/GeneratorProducts",
+    "SimDataFormats/CaloAnalysis",
+    "SimDataFormats/Vertex",
+    "SimDataFormats/TrackingHit",
+    "DataFormats/HepMCCandidate",
+    "SimGeneral/MixingModule",
+    "SimGeneral/PreMixingModule",
+    "SimDataFormats/CaloTest",
+    "DataFormats/ForwardDetId",
+    "DataFormats/HcalDetId",
+    "Geometry/Records",
+    "Geometry/MTDCommonData",
+    "Geometry/HGCalGeometry",
+    "Geometry/HcalTowerAlgo",
+    "Geometry/HcalCommonData",
+    "Geometry/MTDGeometryBuilder",
+    "Geometry/MTDNumberingBuilder"
+  ]
+}

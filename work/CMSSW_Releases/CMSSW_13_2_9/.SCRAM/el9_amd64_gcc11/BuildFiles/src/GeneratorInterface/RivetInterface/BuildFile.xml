@@ -1,0 +1,17 @@
+{
+  "FLAGS": {
+    "RIVET_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceRivetInterface",
+  "USE": [
+    "rivet",
+    "yoda",
+    "fastjet",
+    "clhep",
+    "boost",
+    "gsl",
+    "root"
+  ]
+}

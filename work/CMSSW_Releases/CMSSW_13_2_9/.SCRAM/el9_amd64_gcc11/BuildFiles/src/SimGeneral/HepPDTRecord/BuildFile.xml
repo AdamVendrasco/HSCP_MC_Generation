@@ -1,0 +1,13 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimGeneralHepPDTRecord",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "heppdt"
+  ]
+}

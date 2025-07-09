@@ -1,0 +1,19 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "GeneratorInterfaceAlpgenInterface"
+    ],
+    "USE": [
+      "boost",
+      "root"
+    ]
+  },
+  "NAME": "GeneratorInterfaceAlpgenInterface",
+  "USE": [
+    "boost",
+    "root",
+    "DataFormats/Math",
+    "SimDataFormats/GeneratorProducts",
+    "f77compiler"
+  ]
+}

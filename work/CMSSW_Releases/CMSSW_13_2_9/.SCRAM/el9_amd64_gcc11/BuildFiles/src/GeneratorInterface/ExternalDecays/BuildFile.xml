@@ -1,0 +1,22 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "GeneratorInterfaceExternalDecays",
+  "USE": [
+    "FWCore/Concurrency",
+    "FWCore/ParameterSet",
+    "FWCore/Framework",
+    "heppdt",
+    "clhep",
+    "hepmc",
+    "GeneratorInterface/Core",
+    "GeneratorInterface/LHEInterface",
+    "GeneratorInterface/EvtGenInterface",
+    "GeneratorInterface/PhotosInterface",
+    "GeneratorInterface/TauolaInterface",
+    "SimDataFormats/GeneratorProducts"
+  ]
+}

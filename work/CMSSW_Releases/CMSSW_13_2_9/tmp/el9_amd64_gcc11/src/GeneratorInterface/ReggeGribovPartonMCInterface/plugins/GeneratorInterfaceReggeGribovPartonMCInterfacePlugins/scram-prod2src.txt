@@ -1,0 +1,1 @@
+GeneratorInterfaceReggeGribovPartonMCInterfacePlugins GeneratorInterface/ReggeGribovPartonMCInterface/plugins/plugin.cc

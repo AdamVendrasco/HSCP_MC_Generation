@@ -1,0 +1,19 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreGeometry",
+  "USE": [
+    "DetectorDescription/Core",
+    "geant4core",
+    "DetectorDescription/DDCMS",
+    "dd4hep-core",
+    "dd4hep-geant4",
+    "FWCore/MessageLogger",
+    "FWCore/Utilities",
+    "xerces-c",
+    "expat"
+  ]
+}

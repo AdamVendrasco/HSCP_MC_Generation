@@ -1,0 +1,14 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "SimG4CoreMagneticField",
+  "USE": [
+    "FWCore/ParameterSet",
+    "boost",
+    "geant4core",
+    "expat"
+  ]
+}

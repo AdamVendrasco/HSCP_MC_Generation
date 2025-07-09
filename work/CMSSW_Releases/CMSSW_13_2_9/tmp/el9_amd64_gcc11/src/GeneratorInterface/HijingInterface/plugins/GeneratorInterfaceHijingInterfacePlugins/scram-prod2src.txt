@@ -1,0 +1,1 @@
+GeneratorInterfaceHijingInterfacePlugins GeneratorInterface/HijingInterface/plugins/plugin.cc

@@ -1,0 +1,14 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "testSimG4CoreNotifications": {
+        "FILES": "simactivityregistry_t.cppunit.cpp",
+        "TYPE": "bin"
+      }
+    }
+  },
+  "USE": [
+    "cppunit",
+    "SimG4Core/Notification"
+  ]
+}

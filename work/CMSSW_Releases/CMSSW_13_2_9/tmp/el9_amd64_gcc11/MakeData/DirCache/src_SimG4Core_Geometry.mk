@@ -1,0 +1,2 @@
+ALL_PACKAGES += SimG4Core/Geometry
+subdirs_src_SimG4Core_Geometry := src_SimG4Core_Geometry_src src_SimG4Core_Geometry_test

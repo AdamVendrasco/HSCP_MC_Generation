@@ -1,0 +1,1 @@
+SimG4CoreMagneticField SimG4Core/MagneticField/src/CMSFieldManager.cc SimG4Core/MagneticField/src/Field.cc SimG4Core/MagneticField/src/FieldBuilder.cc SimG4Core/MagneticField/src/FieldStepper.cc SimG4Core/MagneticField/src/LocalFieldManager.cc SimG4Core/MagneticField/src/MonopoleEquation.cc

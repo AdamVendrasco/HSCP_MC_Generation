@@ -1,0 +1,32 @@
+{
+  "FRONTIER_CLIENT_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/frontier_client/2.10.2-e809d8fc1868bd0ab7d17cf02129bbff",
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/frontier_client/2.10.2-e809d8fc1868bd0ab7d17cf02129bbff/include"
+  ],
+  "LIB": [
+    "frontier_client"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/frontier_client/2.10.2-e809d8fc1868bd0ab7d17cf02129bbff/lib"
+  ],
+  "RUNTIME": {
+    "FRONTIER_CLIENT": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/frontier_client/2.10.2-e809d8fc1868bd0ab7d17cf02129bbff/"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/frontier_client/2.10.2-e809d8fc1868bd0ab7d17cf02129bbff/include"
+    ]
+  },
+  "TOOLNAME": "frontier_client",
+  "TOOLVERSION": "2.10.2-e809d8fc1868bd0ab7d17cf02129bbff",
+  "USE": [
+    "root_cxxdefaults",
+    "zlib",
+    "expat"
+  ],
+  "VARIABLES": [
+    "FRONTIER_CLIENT_BASE",
+    "INCLUDE",
+    "LIBDIR"
+  ]
+}

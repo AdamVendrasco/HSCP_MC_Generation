@@ -1,0 +1,40 @@
+{
+  "BINDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/oracle/19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e/bin"
+  ],
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/oracle/19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e/include"
+  ],
+  "LIB": [
+    "clntsh"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/oracle/19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e/lib"
+  ],
+  "ORACLE_ADMINDIR": "/etc",
+  "ORACLE_BASE": "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/oracle/19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e",
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/oracle/19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e/bin"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/el9_amd64_gcc11/external/oracle/19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e/include"
+    ],
+    "TNS_ADMIN": [
+      "/etc"
+    ]
+  },
+  "TOOLNAME": "oracle",
+  "TOOLVERSION": "19.11.0.0.0dbru-d78b873b6f23ccd82b2fba6b96e8a07e",
+  "USE": [
+    "root_cxxdefaults",
+    "sockets"
+  ],
+  "VARIABLES": [
+    "ORACLE_BASE",
+    "ORACLE_ADMINDIR",
+    "LIBDIR",
+    "BINDIR",
+    "INCLUDE"
+  ]
+}

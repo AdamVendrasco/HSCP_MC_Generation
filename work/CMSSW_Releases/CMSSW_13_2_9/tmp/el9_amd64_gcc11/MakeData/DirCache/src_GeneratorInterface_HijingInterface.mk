@@ -1,0 +1,2 @@
+ALL_PACKAGES += GeneratorInterface/HijingInterface
+subdirs_src_GeneratorInterface_HijingInterface := src_GeneratorInterface_HijingInterface_plugins src_GeneratorInterface_HijingInterface_src src_GeneratorInterface_HijingInterface_test

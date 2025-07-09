@@ -1,0 +1,47 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/AMPTGeneratorFilter.cc.o: \
+ src/GeneratorInterface/AMPTInterface/src/AMPTGeneratorFilter.cc \
+ src/GeneratorInterface/AMPTInterface/interface/AMPTHadronizer.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+
+tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/AMPTHadronizer.cc.o: \
+ src/GeneratorInterface/AMPTInterface/src/AMPTHadronizer.cc \
+ src/GeneratorInterface/AMPTInterface/interface/AMPTHadronizer.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/GeneratorInterface/AMPTInterface/interface/AMPTWrapper.h
+
+HepEvt.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/HepEvt.F.o: \
+ src/GeneratorInterface/AMPTInterface/src/HepEvt.F \
+
+amptsub.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/amptsub.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/amptsub.f \
+
+art1f.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/art1f.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/art1f.f \
+
+hijing1.383_ampt.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/hijing1.383_ampt.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/hijing1.383_ampt.f \
+
+hipyset1.35.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/hipyset1.35.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/hipyset1.35.f \
+
+linana.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/linana.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/linana.f \
+
+main.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/main.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/main.f \
+
+zpc.o \
+ tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/src/GeneratorInterfaceAMPTInterface/zpc.f.o: \
+ src/GeneratorInterface/AMPTInterface/src/zpc.f \
+

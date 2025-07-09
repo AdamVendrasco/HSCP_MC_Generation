@@ -1,0 +1,11 @@
+{
+  "LIB": [
+    "hdf5_cpp",
+    "hdf5_hl_cpp"
+  ],
+  "TOOLNAME": "hdf5-cpp",
+  "TOOLVERSION": "1.14.1-daffcefa1a887776fed5980621358638",
+  "USE": [
+    "hdf5"
+  ]
+}

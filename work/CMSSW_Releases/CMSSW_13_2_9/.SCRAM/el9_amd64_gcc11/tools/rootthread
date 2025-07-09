@@ -1,0 +1,10 @@
+{
+  "LIB": [
+    "Thread"
+  ],
+  "TOOLNAME": "rootthread",
+  "TOOLVERSION": "6.26.11-2d3ac1bc6499bcdecfb936cdaff61a09",
+  "USE": [
+    "rootrio"
+  ]
+}

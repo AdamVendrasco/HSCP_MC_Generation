@@ -1,0 +1,27 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "SimGeneralPileupInformationPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/MessageLogger",
+    "FWCore/ParameterSet",
+    "SimDataFormats/GeneratorProducts",
+    "SimDataFormats/PileupSummaryInfo",
+    "SimDataFormats/Track",
+    "SimDataFormats/TrackingAnalysis",
+    "SimGeneral/MixingModule",
+    "SimGeneral/HepPDTRecord",
+    "clhep"
+  ]
+}

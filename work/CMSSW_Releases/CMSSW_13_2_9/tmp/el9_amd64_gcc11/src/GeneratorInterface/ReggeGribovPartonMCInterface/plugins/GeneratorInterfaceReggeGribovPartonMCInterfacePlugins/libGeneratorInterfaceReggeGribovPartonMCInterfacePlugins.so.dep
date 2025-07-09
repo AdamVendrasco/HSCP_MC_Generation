@@ -1,0 +1,10 @@
+tmp/el9_amd64_gcc11/src/GeneratorInterface/ReggeGribovPartonMCInterface/plugins/GeneratorInterfaceReggeGribovPartonMCInterfacePlugins/plugin.cc.o: \
+ src/GeneratorInterface/ReggeGribovPartonMCInterface/plugins/plugin.cc \
+ src/GeneratorInterface/ReggeGribovPartonMCInterface/interface/ReggeGribovPartonMCGeneratorFilter.h \
+ src/GeneratorInterface/ReggeGribovPartonMCInterface/interface/ReggeGribovPartonMCHadronizer.h \
+ src/GeneratorInterface/Core/interface/BaseHadronizer.h \
+ src/GeneratorInterface/LHEInterface/interface/LHERunInfo.h \
+ src/GeneratorInterface/LHEInterface/interface/LHEEvent.h \
+ src/GeneratorInterface/Core/interface/GeneratorFilter.h \
+ src/GeneratorInterface/ExternalDecays/interface/ExternalDecayDriver.h
+
