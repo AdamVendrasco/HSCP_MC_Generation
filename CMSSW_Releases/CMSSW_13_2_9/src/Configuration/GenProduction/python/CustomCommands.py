@@ -35,9 +35,7 @@ def addCustomisation(process):
 
     # —— Custom Geant4 physics and particle dump ——  
     process.load('SimG4Core.CustomPhysics.CustomPhysics_cfi')
-    process.customPhysicsSetup.particlesDef = cms.FileInPath(
-        'SimGeneral/HepPDTESSource/data/Pythia8_RhadronParticleDataTable.dat'
-    )
+    #process.customPhysicsSetup.particlesDef = cms.FileInPath('SimGeneral/HepPDTESSource/data/Pythia8_RhadronParticleDataTable.dat')
     process.g4SimHits.Physics.type = cms.string('SimG4Core/Physics/CustomPhysics')
     process.g4SimHits.Physics = cms.PSet(
         process.g4SimHits.Physics,
