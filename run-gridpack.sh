@@ -15,7 +15,7 @@ base_dir="$(pwd)"
 run_dir="${base_dir}/${run}"
 cmssw_base="/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/${cmssw_version}"
 
-# Paths for your fragment & custom commands
+# Paths fragment & custom commands
 config_in_filename="${run}-fragment_${fragment_type}.py"
 config_in_path="${run_dir}/input-configs/${config_in_filename}"
 custom_commands_src="${run_dir}/input-configs/CustomCommands.py"
@@ -35,7 +35,7 @@ debug_out_path="${run_dir}/text-logs/${debug_out_filename}"
 root_out_filename="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}"
 root_out_path="${eos_base}/${root_out_filename}"
 
-# --- Sanity checks ---
+# Sanity checks 
 if [[ -z "${cmssw_version}" ]]; then
   echo "ERROR: No CMSSW version declared. Exiting."
   exit 1
@@ -61,7 +61,7 @@ echo "[2/6] Setting up CMSSW and building ..."
 cmsenv
 scram b -j8
 
-# ---- PHASE 1: LHE → GEN (produce rhadron_pythia8.dat) ----
+# Step 1: LHE & GEN 
 echo "[3/6] Phase 1: running LHE and GEN only"
 cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
   --python_filename "${gen_cfg_path}" \
@@ -80,13 +80,13 @@ cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
 cmsRun "${gen_cfg_path}"
 
 
-# ---- Install the freshly produced table ----
+# Install the produced pythia8 particle table 
 echo "[4/6] Installing rhadron_pythia8.dat into CMSSW data area"
 mkdir -p "${cmssw_base}/src/SimGeneral/HepPDTESSource/data/"
 cp -v ${cmssw_base}/Pythia8_RhadronParticleDataTable.dat \
       "${cmssw_base}/src/SimGeneral/HepPDTESSource/data/Pythia8_RhadronParticleDataTable.dat"
 
-# ---- PHASE 2: SIM only ----
+# Step 2: SIM only 
 echo "[5/6] Phase 2: running SIM with custom .dat"
 cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
   --python_filename "${sim_cfg_path}" \
@@ -105,6 +105,5 @@ cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
 
 cmsRun "${sim_cfg_path}" 2>&1 | tee "${debug_out_path}"
 
-# Done
 cd - >/dev/null
 echo "[6/6] Finished. GEN-SIM output at: ${root_out_path}"
