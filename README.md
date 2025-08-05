@@ -1,6 +1,19 @@
 # mg-Rhadron
-
-After cloning, run ```bash initial-setup.sh <cmssw_version> <run (optional)>``` in the root of the repo. Example: ```bash initial-setup.sh CMSSW_12_4_8 mg-Rhadron_mGl-1800```  
-To gen, run ```bash run-gridpack.sh <run> <cmssw_version> <nevents> <debug_tag>``` in the root of the repo. Example: ```bash run-gridpack.sh mg-Rhadron_mGl-1800 CMSSW_12_4_8 1000 test```  
-
-Note, scripts require you to have a configured github ssh-key.
+1) After cloning this repo run the follwoing command
+   ```
+   ./initial-setup.sh <CMSSW_VERSION> <MIN_MASS> <MAX_MASS> <INCREMENT>
+   ```
+   This will create all run directories needed based on the mass spectrum you are intreseted in running.
+   For example:
+   ```
+   ./initial-setup.sh CMSSW_13_2_9 1000 2000 100
+   ```
+   This will automatically cmsrel CMSSW_13_2_9, clone genproductions repo and then create the different run directories that varies based the mass range you wish to analyze.
+3) To generate a gridpack run the following command:
+   ```
+   python3 generate_gridpack.py   --in <INPUT CARD DIR>  --out <TARBALL OUTPUT LOCATION>   --tag <TAG>   --queue <HTcondor RUNTIME> -j <#CORES REQUESTED>
+   ```
+3) To run a gridpack edit the run_directories relevant python fragment file and type the following:
+   ```
+   ./run-gridpack.sh <RUN_NAME> <CMSSW_VERSION> [NEVENTS] [DEBUG_TAG]
+   ```
