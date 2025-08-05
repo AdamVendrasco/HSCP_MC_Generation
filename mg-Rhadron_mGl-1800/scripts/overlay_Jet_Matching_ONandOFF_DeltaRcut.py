@@ -2,9 +2,6 @@
 import argparse
 import math
 import ROOT
-import matplotlib.pyplot as plt
-#import mplhep as hep
-import matplotlib as mpl
 import numpy as np
 
 # Set plotting style
@@ -204,13 +201,11 @@ def plot_overlay_histograms(data_dict, xlabel, title, filename, bins, x_range=No
 
 def main(args):
     # Define file paths for jet-matching OFF and ON datasets
-    #file_off = (
-     #   "/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/"
-     #   "root-files/mg-Rhadron_mGl-1800-CMSSW_12_4_8-n1000-Jet_matching_OFF-test.root"
-    #)
+    file_off = (
+        "/eos/user/a/avendras/gridpack_output/HSCP/mg-Rhadron_mGl-1800/root_files/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n20000-Jet_matching_ON-20k_100qcut_NewFragment.root"
+    )
     file_on = (
-      #  "/eos/user/a/avendras/mg-Rhadron/mg-Rhadron_mGl-1800/"
-        "root-files/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n1000-Jet_matching_ON-100.root"
+        "/eos/user/a/avendras/gridpack_output/HSCP/mg-Rhadron_mGl-1800/root_files/mg-Rhadron_mGl-1800-CMSSW_13_2_9-n20000-Jet_matching_ON-20k_100qcut_NewFragment.root"
     )
 
     # Choose extraction function and output directory based on the --isolation flag.
