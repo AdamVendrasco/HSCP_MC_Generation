@@ -1,46 +1,42 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./run-gridpack.sh <RUN_NAME> <CMSSW_VERSION> <NEVENTS> <DEBUG_TAG>
+# Usage: ./run-gridpack.sh <RUN_NAME> <CMSSW_VERSION> [NEVENTS] [DEBUG_TAG]
 # Example: ./run-gridpack.sh mg-Rhadron_mGl-1800 CMSSW_13_2_9 100 MYTAG
 
 run="$1"
-cmssw_version="${2:-}"
+cmssw_version="$2"
 nevents="${3:-100}"
 debug_tag="${4:-}"
 
 fragment_type="Jet_matching_ON"
 
-base_dir="$(pwd)"
-run_dir="${base_dir}/${run}"
-cmssw_base="/afs/cern.ch/user/a/avendras/work/CMSSW_Releases/${cmssw_version}"
+# ── where all your per-run folders live:
+base_runs="/uscms/home/avendras/nobackup/HSCP/run_directories"
+run_dir="${base_runs}/${run}"
 
-# Paths fragment & custom commands
+# ── CMSSW area under HSCP/CMSSW_Releases
+cmssw_base="/uscms/home/avendras/nobackup/HSCP/CMSSW_Releases/${cmssw_version}"
+
+# ── inputs live under each run_dir/input-configs
 config_in_filename="${run}-fragment_${fragment_type}.py"
 config_in_path="${run_dir}/input-configs/${config_in_filename}"
 custom_commands_src="${run_dir}/input-configs/CustomCommands.py"
 custom_commands_dst="${cmssw_base}/src/Configuration/GenProduction/python/CustomCommands.py"
 
-# Make sure all directories exist
-eos_base="/eos/user/a/avendras/gridpack_output/HSCP/${run}/root_files"
-mkdir -p "${run_dir}/output-configs" "${run_dir}/text-logs" "${eos_base}"
+# ── outputs still go under run_dir
+output_cfg_dir="${run_dir}/output-configs"
+log_dir="${run_dir}/text-logs"
+root_dir="${run_dir}/root_files"
 
-# Output filenames
-gen_cfg_name="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-GEN_cfg.py"
-sim_cfg_name="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-SIM_cfg.py"
-gen_cfg_path="${run_dir}/output-configs/${gen_cfg_name}"
-sim_cfg_path="${run_dir}/output-configs/${sim_cfg_name}"
-debug_out_filename="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-GEN-SIM.debug"
-debug_out_path="${run_dir}/text-logs/${debug_out_filename}"
-root_out_filename="${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}"
-root_out_path="${eos_base}/${root_out_filename}"
+mkdir -p "${output_cfg_dir}" "${log_dir}" "${root_dir}"
 
-# Sanity checks 
+# ── sanity checks
 if [[ -z "${cmssw_version}" ]]; then
   echo "ERROR: No CMSSW version declared. Exiting."
   exit 1
 elif [[ ! -d "${cmssw_base}" ]]; then
-  echo "ERROR: CMSSW release not found under ${cmssw_base}. Exiting."
+  echo "ERROR: CMSSW not found under ${cmssw_base}. Exiting."
   exit 1
 elif [[ ! -f "${config_in_path}" ]]; then
   echo "ERROR: Fragment not found: ${config_in_path}. Exiting."
@@ -50,50 +46,51 @@ elif [[ ! -f "${custom_commands_src}" ]]; then
   exit 1
 fi
 
+# ── define filenames
+gen_cfg_path="${output_cfg_dir}/${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-GEN_cfg.py"
+sim_cfg_path="${output_cfg_dir}/${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-SIM_cfg.py"
+debug_out="${log_dir}/${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}-GEN-SIM.debug"
+root_prefix="${root_dir}/${run}-${cmssw_version}-n${nevents}-${fragment_type}-${debug_tag}"
+
 echo "[1/6] Copying fragment and CustomCommands into CMSSW area..."
 cp -v "${config_in_path}" \
       "${cmssw_base}/src/Configuration/GenProduction/python/${config_in_filename}"
 cp -v "${custom_commands_src}" "${custom_commands_dst}"
 
-# Enter CMSSW
 cd "${cmssw_base}"
-echo "[2/6] Setting up CMSSW and building ..."
+echo "[2/6] cmsenv & build"
 cmsenv
 scram b -j8
 
-# Step 1: LHE & GEN 
-echo "[3/6] Phase 1: running LHE and GEN only"
+echo "[3/6] Phase 1: LHE & GEN only"
 cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
   --python_filename "${gen_cfg_path}" \
   --eventcontent RAWSIM,LHE \
   --step LHE,GEN \
   --datatier GEN,LHE \
-  --fileout file:"${root_out_path}-GEN-ONLY.root" \
+  --fileout file:"${root_prefix}-GEN-ONLY.root" \
   --conditions   106X_upgrade2018_realistic_v4 \
   --beamspot     Realistic25ns13TeVEarly2018Collision \
   --geometry     DB:Extended \
   --era          Run2_2018 \
-  --mc           -n "${nevents}" \
+  --mc -n "${nevents}" \
   --customise Configuration/DataProcessing/Utils.addMonitoring \
- --no_exec
+  --no_exec
 
 cmsRun "${gen_cfg_path}"
 
-
-# Install the produced pythia8 particle table 
-echo "[4/6] Installing rhadron_pythia8.dat into CMSSW data area"
+echo "[4/6] Installing Pythia8 table"
 mkdir -p "${cmssw_base}/src/SimGeneral/HepPDTESSource/data/"
-cp -v ${cmssw_base}/Pythia8_RhadronParticleDataTable.dat \
-      "${cmssw_base}/src/SimGeneral/HepPDTESSource/data/Pythia8_RhadronParticleDataTable.dat"
+cp -v "${cmssw_base}/Pythia8_RhadronParticleDataTable.dat" \
+      "${cmssw_base}/src/SimGeneral/HepPDTESSource/data/"
 
-# Step 2: SIM only 
-echo "[5/6] Phase 2: running SIM with custom .dat"
+echo "[5/6] Phase 2: SIM only"
 cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
   --python_filename "${sim_cfg_path}" \
   --eventcontent FEVTDEBUG \
   --step SIM \
-  --filein  file:"${root_out_path}-GEN-ONLY.root" \
-  --fileout file:"${root_out_path}-SIM.root" \
+  --filein  file:"${root_prefix}-GEN-ONLY.root" \
+  --fileout file:"${root_prefix}-SIM.root" \
   --conditions   106X_upgrade2018_realistic_v4 \
   --beamspot     Realistic25ns13TeVEarly2018Collision \
   --geometry     DB:Extended \
@@ -103,7 +100,9 @@ cmsDriver.py Configuration/GenProduction/python/"${config_in_filename}" \
   --customise Configuration/GenProduction/CustomCommands.addCustomisation \
   --no_exec
 
-cmsRun "${sim_cfg_path}" 2>&1 | tee "${debug_out_path}"
+cmsRun "${sim_cfg_path}" 2>&1 | tee "${debug_out}"
 
 cd - >/dev/null
-echo "[6/6] Finished. GEN-SIM output at: ${root_out_path}"
+echo "[6/6] Done."
+echo "      GEN → ${root_prefix}-GEN-ONLY.root"
+echo "      SIM → ${root_prefix}-SIM.root"

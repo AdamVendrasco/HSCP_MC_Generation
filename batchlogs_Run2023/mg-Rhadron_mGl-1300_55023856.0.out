@@ -1,0 +1,18 @@
+[FERMIHTC-APPTAINER]: INFO -- ApptainerImage classAd detected
+[FERMIHTC-APPTAINER]: INFO -- Attempting to run job in /cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel9
+[FERMIHTC-APPTAINER]: INFO -- Running /cvmfs/oasis.opensciencegrid.org/mis/apptainer/current/bin/apptainer exec --pid --ipc --contain --bind /cvmfs --bind /etc/hosts --bind /etc/grid-security --home /storage/local/data1/condor/execute/dir_2955970:/srv --pwd /srv /cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel9 ./job_mg-Rhadron_mGl-1300.sh 550238560
+
+Mon Aug 4 13:32:15 UTC 2025 at avendras-55023856-0-cmswn2226.fnal.gov
+
+./cards/mg-Rhadron_mGl-1300/:
+AlmaLinux release 9.5 (Teal Serval)
+Running gridpack generation step ALL
+Starting job on  Mon Aug 4 13:32:22 UTC 2025
+Running on  Linux avendras-55023856-0-cmswn2226.fnal.gov 5.14.0-570.26.1.el9_6.x86_64 #1 SMP PREEMPT_DYNAMIC Wed Jul 16 09:12:04 EDT 2025 x86_64 x86_64 x86_64 GNU/Linux
+System release  AlmaLinux release 9.5 (Teal Serval)
+name: mg-Rhadron_mGl-1300
+carddir: cards/mg-Rhadron_mGl-1300
+queue: local
+scram_arch: el9_amd64_gcc11
+cmssw_version: CMSSW_13_2_9
+/srv/genproductions/bin/MadGraph5_aMCatNLO/cards/mg-Rhadron_mGl-1300/mg-Rhadron_mGl-1300_proc_card.dat  does not exist!

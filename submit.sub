@@ -1,0 +1,11 @@
+executable              = $(filename)
+arguments               = $(ClusterId)$(ProcId)
+transfer_input_files    = /uscms/home/avendras/nobackup/HSCP/run_directories/mg-Rhadron_mGl-2000/input-cards/mg-Rhadron_mGl-2000_proc_card.dat,/uscms/home/avendras/nobackup/HSCP/run_directories/mg-Rhadron_mGl-2000/input-cards/mg-Rhadron_mGl-2000_run_card.dat,/uscms/home/avendras/nobackup/HSCP/run_directories/mg-Rhadron_mGl-2000/input-cards/mg-Rhadron_mGl-2000_param_card.dat
+output                  = batchlogs_Run2023/mg-Rhadron_mGl-2000_$(ClusterId).$(ProcId).out
+error                   = batchlogs_Run2023/mg-Rhadron_mGl-2000_$(ClusterId).$(ProcId).err
+log                     = batchlogs_Run2023/mg-Rhadron_mGl-2000_$(ClusterId).log
+RequestCPUs             = 8
++JobFlavour             = "tomorrow"
+request_memory          = 8000
+
+queue filename matching (batchexec_Run2023/job_mg-Rhadron_mGl-2000.sh)
