@@ -41,6 +41,7 @@ error                   = batchlogs_{tag}/{process}_$(ClusterId).$(ProcId).err
 log                     = batchlogs_{tag}/{process}_$(ClusterId).log
 RequestCPUs             = {jobs}
 +JobFlavour             = \"{queue}\"
++ApptainerImage         = "/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel7"
 request_memory          = 8000
 
 queue filename matching (batchexec_{tag}/job_{process}.sh)
@@ -54,8 +55,10 @@ def create_exec_file(process, cardsdir, exec_dir):
 echo ""
 echo `date` at `hostname`
 echo ""
-workarea=$PWD
+workarea="$PWD"
 PROCESS="{process}"
+SCRAM_ARCH="slc7_amd64_gcc700"
+CMSSW_VERSION="CMSSW_10_6_47"
 LOCAL="false"
 
 git clone https://github.com/cms-sw/genproductions.git --no-checkout genproductions --depth 1
@@ -76,7 +79,7 @@ ls cards/${{PROCESS}}/
 if [ ! -d cards/${{PROCESS}} ]; then 
   echo "ERROR: cards/${{PROCESS}} does NOT exist"
 else
-  sh gridpack_generation.sh ${{PROCESS}} cards/${{PROCESS}}
+  ./gridpack_generation.sh ${{PROCESS}} cards/${{PROCESS}} $workarea local ALL ${{SCRAM_ARCH}} ${{CMSSW_VERSION}}
   mv ${{PROCESS}}*.tar.xz $workarea/
   mv ${{PROCESS}}.log $workarea/
 fi
