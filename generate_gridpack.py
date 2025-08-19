@@ -79,7 +79,7 @@ ls cards/${{PROCESS}}/
 if [ ! -d cards/${{PROCESS}} ]; then 
   echo "ERROR: cards/${{PROCESS}} does NOT exist"
 else
-  ./gridpack_generation.sh ${{PROCESS}} cards/${{PROCESS}} $workarea local ALL ${{SCRAM_ARCH}} ${{CMSSW_VERSION}}
+  ./gridpack_generation.sh ${{PROCESS}} cards/${{PROCESS}} local ALL ${{SCRAM_ARCH}} ${{CMSSW_VERSION}}
   mv ${{PROCESS}}*.tar.xz $workarea/
   mv ${{PROCESS}}.log $workarea/
 fi
