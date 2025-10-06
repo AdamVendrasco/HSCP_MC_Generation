@@ -1,0 +1,10 @@
+JOB J1  condor_submit_ms_Rhadron_mstop_700_xqcut20.sub
+JOB J2  condor_submit_ms_Rhadron_mstop_700_xqcut40.sub
+JOB J3  condor_submit_ms_Rhadron_mstop_700_xqcut60.sub
+JOB J4  condor_submit_ms_Rhadron_mstop_700_xqcut80.sub
+JOB J5  condor_submit_ms_Rhadron_mstop_700_xqcut100.sub
+JOB J6  condor_submit_ms_Rhadron_mstop_700_xqcut110.sub
+JOB J7  condor_submit_ms_Rhadron_mstop_700_xqcut120.sub
+JOB J8  condor_submit_ms_Rhadron_mstop_700_xqcut130.sub
+JOB J9  condor_submit_ms_Rhadron_mstop_700_xqcut140.sub
+JOB J10 condor_submit_ms_Rhadron_mstop_700_xqcut150.sub
