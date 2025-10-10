@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/MagneticField
-subdirs_src_SimG4Core_MagneticField := src_SimG4Core_MagneticField_src src_SimG4Core_MagneticField_test

@@ -1,4 +1,0 @@
-plugin-poisoned-GeneratorInterfaceHydjet2InterfacePlugins.so Hydjet2GeneratorFilter CMS%EDM%Framework%Module
-plugin-poisoned-GeneratorInterfaceHydjet2InterfacePlugins.so Hydjet2GeneratorFilter CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-Hydjet2Analyzer.so Hydjet2Analyzer CMS%EDM%Framework%Module
-plugin-poisoned-Hydjet2Analyzer.so Hydjet2Analyzer CMS%EDM%Framework%ParameterSet%Description

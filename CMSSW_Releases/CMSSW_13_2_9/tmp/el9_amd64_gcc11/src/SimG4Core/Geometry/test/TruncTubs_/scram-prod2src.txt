@@ -1,1 +1,0 @@
-TruncTubs_ SimG4Core/Geometry/test/TruncTubs_.cpp

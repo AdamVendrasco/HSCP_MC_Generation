@@ -1,6 +1,0 @@
-tmp/el9_amd64_gcc11/src/GeneratorInterface/LHEInterface/test/testGeneratorInterfaceLHEInterface_TP/test_catch2_ExternalLHEProducer.cc.o: \
- src/GeneratorInterface/LHEInterface/test/test_catch2_ExternalLHEProducer.cc \
-
-tmp/el9_amd64_gcc11/src/GeneratorInterface/LHEInterface/test/testGeneratorInterfaceLHEInterface_TP/test_catch2_main.cc.o: \
- src/GeneratorInterface/LHEInterface/test/test_catch2_main.cc \
-

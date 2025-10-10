@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimGeneral/PreMixingModule
-subdirs_src_SimGeneral_PreMixingModule := src_SimGeneral_PreMixingModule_plugins src_SimGeneral_PreMixingModule_python src_SimGeneral_PreMixingModule_src src_SimGeneral_PreMixingModule_test

@@ -1,4 +1,0 @@
-plugin-poisoned-DD4hepGeometryTestPlugins.so DD4hepTestDDDWorld CMS%EDM%Framework%Module
-plugin-poisoned-DD4hepGeometryTestPlugins.so DD4hepTestDDDWorld CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-DD4hepGeometryTestPlugins.so DD4hepTestG4Geometry CMS%EDM%Framework%Module
-plugin-poisoned-DD4hepGeometryTestPlugins.so DD4hepTestG4Geometry CMS%EDM%Framework%ParameterSet%Description

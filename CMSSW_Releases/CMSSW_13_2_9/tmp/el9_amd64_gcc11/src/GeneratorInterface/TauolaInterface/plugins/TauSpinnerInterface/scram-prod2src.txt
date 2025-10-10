@@ -1,1 +1,0 @@
-TauSpinnerInterface GeneratorInterface/TauolaInterface/plugins/TauSpinner/TauSpinnerCMS.cc GeneratorInterface/TauolaInterface/plugins/TauSpinner/TauSpinnerFilter.cc GeneratorInterface/TauolaInterface/plugins/TauSpinner/read_particles_from_HepMC.cc

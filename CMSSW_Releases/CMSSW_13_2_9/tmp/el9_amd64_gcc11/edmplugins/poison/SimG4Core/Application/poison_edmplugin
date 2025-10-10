@@ -1,6 +1,0 @@
-plugin-poisoned-SimG4CoreApplicationPlugins.so OscarMTProducer CMS%EDM%Framework%Module
-plugin-poisoned-SimG4CoreApplicationPlugins.so OscarMTProducer CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-SimHitCaloHitDumper.so SimHitCaloHitDumper CMS%EDM%Framework%Module
-plugin-poisoned-SimHitCaloHitDumper.so SimHitCaloHitDumper CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-SimTrackSimVertexDumper.so SimTrackSimVertexDumper CMS%EDM%Framework%Module
-plugin-poisoned-SimTrackSimVertexDumper.so SimTrackSimVertexDumper CMS%EDM%Framework%ParameterSet%Description

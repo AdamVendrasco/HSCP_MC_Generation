@@ -1,2 +1,0 @@
-01:/usr/bin/rm -f lib/el9_amd64_gcc11/pluginEvtGenInterface.so lib/el9_amd64_gcc11/EvtGenInterface.edmplugin
-90:edmPluginRefresh lib/el9_amd64_gcc11

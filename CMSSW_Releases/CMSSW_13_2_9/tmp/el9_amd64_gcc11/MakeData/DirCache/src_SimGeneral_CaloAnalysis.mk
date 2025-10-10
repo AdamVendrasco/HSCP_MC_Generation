@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimGeneral/CaloAnalysis
-subdirs_src_SimGeneral_CaloAnalysis := src_SimGeneral_CaloAnalysis_plugins

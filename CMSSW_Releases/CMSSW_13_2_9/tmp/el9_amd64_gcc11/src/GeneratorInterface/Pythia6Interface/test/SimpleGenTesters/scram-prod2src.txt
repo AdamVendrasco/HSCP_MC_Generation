@@ -1,1 +1,0 @@
-SimpleGenTesters GeneratorInterface/Pythia6Interface/test/BasicGenTester.cc GeneratorInterface/Pythia6Interface/test/TauPhotonTester.cc

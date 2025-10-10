@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/GFlash
-subdirs_src_SimG4Core_GFlash := src_SimG4Core_GFlash_plugins src_SimG4Core_GFlash_python src_SimG4Core_GFlash_src src_SimG4Core_GFlash_test

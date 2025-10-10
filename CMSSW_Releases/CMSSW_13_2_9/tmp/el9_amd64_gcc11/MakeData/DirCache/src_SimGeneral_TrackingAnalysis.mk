@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimGeneral/TrackingAnalysis
-subdirs_src_SimGeneral_TrackingAnalysis := src_SimGeneral_TrackingAnalysis_plugins src_SimGeneral_TrackingAnalysis_python src_SimGeneral_TrackingAnalysis_src src_SimGeneral_TrackingAnalysis_test

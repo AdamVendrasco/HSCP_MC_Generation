@@ -1,5 +1,0 @@
-tmp/el9_amd64_gcc11/src/GeneratorInterface/AMPTInterface/test/AMPTAnalyzer/AMPTAnalyzer.cc.o: \
- src/GeneratorInterface/AMPTInterface/test/AMPTAnalyzer.cc \
- src/SimGeneral/HepPDTRecord/interface/ParticleDataTable.h \
- src/SimGeneral/HepPDTRecord/interface/PDTRecord.h \
-

@@ -1,4 +1,0 @@
-plugin-poisoned-ExhumeAnalyzer.so ExhumeAnalyzer CMS%EDM%Framework%Module
-plugin-poisoned-ExhumeAnalyzer.so ExhumeAnalyzer CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-GeneratorInterfaceExhumeFilter.so ExhumeGeneratorFilter CMS%EDM%Framework%Module
-plugin-poisoned-GeneratorInterfaceExhumeFilter.so ExhumeGeneratorFilter CMS%EDM%Framework%ParameterSet%Description

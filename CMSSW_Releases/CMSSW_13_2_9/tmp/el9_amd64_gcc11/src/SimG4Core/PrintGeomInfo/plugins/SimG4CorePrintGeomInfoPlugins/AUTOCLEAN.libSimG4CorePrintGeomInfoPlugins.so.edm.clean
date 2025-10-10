@@ -1,2 +1,0 @@
-01:/usr/bin/rm -f lib/el9_amd64_gcc11/pluginSimG4CorePrintGeomInfoPlugins.so lib/el9_amd64_gcc11/SimG4CorePrintGeomInfoPlugins.edmplugin
-90:edmPluginRefresh lib/el9_amd64_gcc11

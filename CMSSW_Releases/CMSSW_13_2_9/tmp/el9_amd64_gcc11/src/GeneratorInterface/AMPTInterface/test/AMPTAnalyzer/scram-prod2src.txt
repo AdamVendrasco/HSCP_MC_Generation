@@ -1,1 +1,0 @@
-AMPTAnalyzer GeneratorInterface/AMPTInterface/test/AMPTAnalyzer.cc

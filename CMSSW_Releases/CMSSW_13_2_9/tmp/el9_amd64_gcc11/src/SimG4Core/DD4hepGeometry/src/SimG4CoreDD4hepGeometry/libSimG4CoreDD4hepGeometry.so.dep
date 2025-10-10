@@ -1,4 +1,0 @@
-tmp/el9_amd64_gcc11/src/SimG4Core/DD4hepGeometry/src/SimG4CoreDD4hepGeometry/DD4hep_DDDWorld.cc.o: \
- src/SimG4Core/DD4hepGeometry/src/DD4hep_DDDWorld.cc \
- src/SimG4Core/DD4hepGeometry/interface/DD4hep_DDDWorld.h \
-

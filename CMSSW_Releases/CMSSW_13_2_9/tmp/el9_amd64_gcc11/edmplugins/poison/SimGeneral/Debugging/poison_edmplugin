@@ -1,4 +1,0 @@
-plugin-poisoned-SimDigiDumper.so SimDigiDumper CMS%EDM%Framework%Module
-plugin-poisoned-SimDigiDumper.so SimDigiDumper CMS%EDM%Framework%ParameterSet%Description
-plugin-poisoned-SimGeneralDebuggingAuto.so CaloParticleDebugger CMS%EDM%Framework%Module
-plugin-poisoned-SimGeneralDebuggingAuto.so CaloParticleDebugger CMS%EDM%Framework%ParameterSet%Description

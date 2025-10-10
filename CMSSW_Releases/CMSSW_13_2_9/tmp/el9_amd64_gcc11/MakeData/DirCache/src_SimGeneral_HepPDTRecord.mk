@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimGeneral/HepPDTRecord
-subdirs_src_SimGeneral_HepPDTRecord := src_SimGeneral_HepPDTRecord_src src_SimGeneral_HepPDTRecord_test

@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/KillSecondaries
-subdirs_src_SimG4Core_KillSecondaries := src_SimG4Core_KillSecondaries_src

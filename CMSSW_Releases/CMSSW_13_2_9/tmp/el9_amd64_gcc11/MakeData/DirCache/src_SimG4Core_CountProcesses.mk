@@ -1,2 +1,0 @@
-ALL_PACKAGES += SimG4Core/CountProcesses
-subdirs_src_SimG4Core_CountProcesses := src_SimG4Core_CountProcesses_src

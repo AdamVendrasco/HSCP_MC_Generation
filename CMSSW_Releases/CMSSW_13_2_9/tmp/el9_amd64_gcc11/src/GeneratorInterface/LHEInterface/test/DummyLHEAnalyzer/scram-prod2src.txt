@@ -1,1 +1,0 @@
-DummyLHEAnalyzer GeneratorInterface/LHEInterface/test/DummyLHEAnalyzer.cc

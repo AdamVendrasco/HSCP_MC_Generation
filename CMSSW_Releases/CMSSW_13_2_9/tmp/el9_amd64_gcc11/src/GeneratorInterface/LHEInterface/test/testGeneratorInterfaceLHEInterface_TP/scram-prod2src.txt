@@ -1,1 +1,0 @@
-testGeneratorInterfaceLHEInterface_TP GeneratorInterface/LHEInterface/test/test_catch2_ExternalLHEProducer.cc GeneratorInterface/LHEInterface/test/test_catch2_main.cc
