@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('/eos/user/a/avendras/gridpack_output/HSCP/mg-Rhadron_mGl-1800/tarball/mg-Rhadron_mGl-1800_el9_amd64_gcc11_CMSSW_13_2_9_tarball_100.tar.xz'),
+    args = cms.vstring('/eos/uscms/store/user/avendras/HSCP/gridpack_output/tarballs/RunII/mg-Rhadron_mGl-1300_slc7_amd64_gcc700_CMSSW_10_6_47_tarball.tar.xz'),
     nEvents = cms.untracked.uint32(20000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
@@ -58,11 +58,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
                                     'processParameters',
                                     )
                                     
-    ),
-    UserCustomization = cms.VPSet(
-        cms.PSet(pluginName = cms.string("DumpPythia8ParticleData")),
-        cms.PSet(pluginName = cms.string("DumpPythia8RhadronData_Full"))
-        )   
+    ) 
 )
 
 # We would like to change the particleID lists to be more inclusive of all RHadrons.

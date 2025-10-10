@@ -1,0 +1,39 @@
+000 (81943131.000.000) 2025-10-02 14:30:41 Job submitted from host: <131.225.189.168:9618?addrs=131.225.189.168-9618+[2620-6a-0-8421-f0-0-189-168]-9618&alias=lpcschedd6.fnal.gov&noUDP&sock=schedd_2257_b157>
+...
+040 (81943131.000.000) 2025-10-02 14:30:45 Started transferring input files
+	Transferring to host: <131.225.204.207:9618?addrs=[2620-6a-0-8420-f0-0-204-207]-9618+131.225.204.207-9618&alias=cmswn2235.fnal.gov&noUDP&sock=slot1_25_2053_462d_8257>
+...
+040 (81943131.000.000) 2025-10-02 14:30:45 Finished transferring input files
+...
+001 (81943131.000.000) 2025-10-02 14:30:46 Job executing on host: <131.225.204.207:9618?addrs=[2620-6a-0-8420-f0-0-204-207]-9618+131.225.204.207-9618&alias=cmswn2235.fnal.gov&noUDP&sock=startd_2001_1919>
+	SlotName: slot1_25@cmswn2235.fnal.gov
+	CondorScratchDir = "/storage/local/data1/condor/execute/dir_1208445"
+	Cpus = 2
+	Disk = 2100654
+	GPUs = 0
+	Memory = 3072
+...
+040 (81943131.000.000) 2025-10-02 14:31:26 Started transferring output files
+...
+040 (81943131.000.000) 2025-10-02 14:31:26 Finished transferring output files
+...
+005 (81943131.000.000) 2025-10-02 14:31:27 Job terminated.
+	(1) Normal termination (return value 1)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	609  -  Run Bytes Sent By Job
+	11003  -  Run Bytes Received By Job
+	609  -  Total Bytes Sent By Job
+	11003  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        2         2 
+	   Disk (KB)            :       39  2097152   2100654 
+	   GPUs                 :                           0 
+	   Memory (MB)          :              3072      3072 
+	   TimeExecute (s)      :       40                    
+	   TimeSlotBusy (s)     :       42                    
+
+	Job terminated of its own accord at 2025-10-02T19:31:26Z with exit-code 1.
+...
