@@ -1,15 +1,13 @@
-# mg-Rhadron
-1) After cloning this repo run the follwoing command
+# HSCP MC Generation
+* 1) After cloning this repo run the follwoing command
    ```
-   ./initial-setup.sh <CMSSW_VERSION> <MIN_MASS> <MAX_MASS> <INCREMENT>
+   ./initial-setup.sh <CMSSW_VERSION> 
    ```
-   This will create all run directories needed based on the mass spectrum you are intreseted in running.
-   For example:
-   ```
-   ./initial-setup.sh CMSSW_13_2_9 1000 2000 100
-   ```
-   This will automatically cmsrel CMSSW_13_2_9, clone genproductions repo and then create the different run directories that varies based the mass range you wish to analyze.
-3) To generate a gridpack run the following command:
+
+   This will automatically cmsrel `<CMSSW_VERSION>`, clone the genproductions repo 
+
+* 2) To begin generating gridpacks there are two options. The first is using condor (recommended) and the other is local. Either are fine but condor is generally faster.
+
    ```
    python3 generate_gridpack.py   --in <INPUT CARD DIR>  --out <TARBALL OUTPUT LOCATION>   --tag <TAG>   --queue <HTcondor RUNTIME> -j <#CORES REQUESTED>
    ```
