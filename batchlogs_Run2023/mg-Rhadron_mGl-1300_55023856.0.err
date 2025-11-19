@@ -1,3 +1,0 @@
-Cloning into 'genproductions'...
-cp: cannot stat '/uscms/home/avendras/nobackup/HSCP/run_directories/mg-Rhadron_mGl-1300/input-cards/mg-Rhadron_mGl-1300*.dat': No such file or directory
-mv: cannot stat 'mg-Rhadron_mGl-1300*.tar.xz': No such file or directory
