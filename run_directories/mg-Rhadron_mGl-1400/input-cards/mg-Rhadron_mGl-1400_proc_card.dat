@@ -1,9 +1,0 @@
-import model MSSM_SLHA2
-define p = g u c d s u~ c~ d~ s~
-define j = g u c d s u~ c~ d~ s~
-
-generate p p > go go @1
-add process p p > go go j @2
-add process p p > go go j j @3
-
-output mg-Rhadron_mGl-1400 -nojpeg
