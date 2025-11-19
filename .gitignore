@@ -15,3 +15,5 @@ scripts/coffea_script.py
 scripts/header_list.py
 scripts/plots/
 condor/condor_submit_files/generate_gridpack_subfiles-HSCP*
+run_directories/Run-3/stop-based/HSCP*
+run_directories/Run-3/gluino-based/HSCP*
