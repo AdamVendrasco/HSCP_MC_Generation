@@ -1,10 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from __future__ import print_function
+
 import os
 import sys
 import argparse
 import math
+import errno
 import ROOT
 ROOT.gSystem.Load("libHist")
+ROOT.TH1.AddDirectory(False)  # keep hists owned by Python, not by any TFile
 from collections import Counter, defaultdict
 from DataFormats.FWLite import Events, Handle
 from math import pi
@@ -16,17 +21,26 @@ RHADRON_PDGIDS = [
     1093314, 1093324, 1093334, 1009413, 1009423, 1009433, 1009443,
     1009513, 1009523, 1009533, 1009543, 1009553, 1094114, 1094214,
     1094224, 1094314, 1094324, 1094334, 1095114, 1095214, 1095224,
-    1095314, 1095324, 1095334
+    1095314, 1095324, 1095334,1000612, 1000622, 1000632, 1000642, 1000652,
+    1006113, 1006211, 1006213, 1006223, 1006311, 1006313,1006321, 1006323, 1006333,
 ]
 DEFAULT_TREE  = "Events"
 DEFAULT_LABEL = "genParticles"
 DEFAULT_TYPE  = "std::vector<reco::GenParticle>"
 
+def mkdir_p(path):
+    """Py2-safe mkdir -p."""
+    try:
+        os.makedirs(path)
+    except OSError as e:
+        if e.errno != errno.EEXIST or not os.path.isdir(path):
+            raise
+
 def initialize_fwlite():
-    """Load FWLite support libraries."""
+    """Load FWLite support libraries (Py2-friendly)."""
     for lib in ("libFWCoreFWLite", "libDataFormatsFWLite"):
         if ROOT.gSystem.Load(lib) < 0:
-            raise RuntimeError(f"Failed to load {lib}")
+            raise RuntimeError("Failed to load {}".format(lib))
     try:
         ROOT.FWLiteEnabler.enable()
     except AttributeError:
@@ -35,13 +49,17 @@ def initialize_fwlite():
 def list_tree_branches(file_path, tree_name=DEFAULT_TREE):
     """Print all branch names in the TTree."""
     f = ROOT.TFile.Open(file_path)
+    if not f or f.IsZombie():
+        print("Could not open file {}".format(file_path))
+        return
     tree = f.Get(tree_name)
     if not tree:
-        print(f"Tree '{tree_name}' not found in {file_path}")
+        print("Tree '{}' not found in {}".format(tree_name, file_path))
+        f.Close()
         return
-    print(f"\n=== Branches in '{tree_name}' ===")
+    print("\n=== Branches in '{}' ===".format(tree_name))
     for br in tree.GetListOfBranches():
-        print(" ", br.GetName())
+        print("  {}".format(br.GetName()))
     f.Close()
 
 def show_particle_methods(file_path, label, type_str=DEFAULT_TYPE):
@@ -54,10 +72,10 @@ def show_particle_methods(file_path, label, type_str=DEFAULT_TYPE):
         if not prod:
             continue
         p = prod[0]
-        print(f"\n=== Methods for '{label}' GenParticle ===")
+        print("\n=== Methods for '{}' GenParticle ===".format(label))
         for m in sorted(dir(p)):
             if not m.startswith("_"):
-                print(" ", m)
+                print("  {}".format(m))
         break
 
 def deltaR(eta1, phi1, eta2, phi2):
@@ -78,7 +96,10 @@ def extract_rhadron_info(file_path, label):
     for evt in events:
         evt_num = evt.eventAuxiliary().id().event()
         evt.getByLabel(label, handle)
-        for p in handle.product():
+        prod = handle.product()
+        if not prod:
+            continue
+        for p in prod:
             pid = abs(p.pdgId())
             if 1000600 <= pid <= 1100000 and p.status() == 1:
                 data['event'].append(evt_num)
@@ -89,13 +110,28 @@ def extract_rhadron_info(file_path, label):
                 data['energy'].append(p.energy())
                 data['eta'].append(p.eta())
                 data['phi'].append(p.phi())
-                data['long_lived'].append(int(hasattr(p,"longLived") and p.longLived()))
-                moms = [ str(p.motherRef(i).get().pdgId())
-                         for i in range(p.numberOfMothers())
-                         if p.motherRef(i).isNonnull() ]
-                dins = [ str(p.daughterRef(i).get().pdgId())
-                         for i in range(p.numberOfDaughters())
-                         if p.daughterRef(i).isNonnull() ]
+                # longLived accessor may not exist
+                ll = 0
+                try:
+                    ll = int(p.longLived())
+                except Exception:
+                    ll = 0
+                data['long_lived'].append(ll)
+
+                moms = []
+                for i in range(p.numberOfMothers()):
+                    try:
+                        if p.motherRef(i).isNonnull():
+                            moms.append(str(p.motherRef(i).get().pdgId()))
+                    except Exception:
+                        pass
+                dins = []
+                for i in range(p.numberOfDaughters()):
+                    try:
+                        if p.daughterRef(i).isNonnull():
+                            dins.append(str(p.daughterRef(i).get().pdgId()))
+                    except Exception:
+                        pass
                 data['mothers'].append(",".join(moms))
                 data['daughters'].append(",".join(dins))
     return data
@@ -103,10 +139,18 @@ def extract_rhadron_info(file_path, label):
 def extract_top6_ak4_pt(file_path, isolation=False):
     """Return dict with '1th'..'6th' pt lists and 'nJets' per event."""
     f = ROOT.TFile.Open(file_path)
+    if not f or f.IsZombie():
+        return {"nJets": []}
     tree = f.Get(DEFAULT_TREE)
+    if not tree:
+        f.Close()
+        return {"nJets": []}
+
     n = tree.GetEntries()
-    counts = { "nJets": [] }
-    counts.update({ f"{i}th": [] for i in range(1,7) })
+    counts = {"nJets": []}
+    for i in range(1, 7):
+        counts["{}th".format(i)] = []
+
     for i in range(n):
         tree.GetEntry(i)
         jw = getattr(tree, "recoGenJets_ak4GenJets__GEN", None)
@@ -125,21 +169,36 @@ def extract_top6_ak4_pt(file_path, isolation=False):
         pts = []
         for j in range(jets.size()):
             jet = jets.at(j)
-            if isolation and any(deltaR(jet.eta(),jet.phi(),e,p)<0.4 for e,p in coords):
-                continue
+            if isolation:
+                blocked = False
+                for (e, p) in coords:
+                    if deltaR(jet.eta(), jet.phi(), e, p) < 0.4:
+                        blocked = True
+                        break
+                if blocked:
+                    continue
             pts.append(jet.pt())
         counts["nJets"].append(len(pts))
         pts.sort(reverse=True)
-        for k in range(min(6,len(pts))):
-            counts[f"{k+1}th"].append(pts[k])
+        m = min(6, len(pts))
+        for k in range(m):
+            counts["{}th".format(k+1)].append(pts[k])
+
+    f.Close()
     return counts
 
 def extract_all_ak4_eta_phi(file_path, isolation=False):
     """Return lists of (eta,phi) for all AK4 jets, with optional isolation."""
-    f = ROOT.TFile.Open(file_path)
-    tree = f.Get(DEFAULT_TREE)
-    n = tree.GetEntries()
     etas, phis = [], []
+    f = ROOT.TFile.Open(file_path)
+    if not f or f.IsZombie():
+        return etas, phis
+    tree = f.Get(DEFAULT_TREE)
+    if not tree:
+        f.Close()
+        return etas, phis
+
+    n = tree.GetEntries()
     for i in range(n):
         tree.GetEntry(i)
         jw = getattr(tree, "recoGenJets_ak4GenJets__GEN", None)
@@ -156,14 +215,22 @@ def extract_all_ak4_eta_phi(file_path, isolation=False):
                         coords.append((g.eta(), g.phi()))
         for j in range(jets.size()):
             jet = jets.at(j)
-            if isolation and any(deltaR(jet.eta(),jet.phi(),e,p)<0.4 for e,p in coords):
-                continue
+            if isolation:
+                skip = False
+                for (e, p) in coords:
+                    if deltaR(jet.eta(), jet.phi(), e, p) < 0.4:
+                        skip = True
+                        break
+                if skip:
+                    continue
             etas.append(jet.eta())
             phis.append(jet.phi())
+
+    f.Close()
     return etas, phis
 
 def create_1d_histogram(vals, name, title, bins, val_range):
-    h = ROOT.TH1D(name, title, bins, *val_range)
+    h = ROOT.TH1D(name, title, bins, val_range[0], val_range[1])
     for x in vals:
         h.Fill(x)
     return h
@@ -183,26 +250,26 @@ def save_canvas(obj, path, opt=""):
 
 def write_table(data, path):
     keys = list(data.keys())
-    m = min(len(data[k]) for k in keys)
+    m = min(len(data[k]) for k in keys) if keys else 0
     with open(path, 'w') as f:
         f.write("\t".join(keys) + "\n")
         for i in range(m):
             f.write("\t".join(str(data[k][i]) for k in keys) + "\n")
-    print(f"Wrote {m} rows to {path}")
+    print("Wrote {} rows to {}".format(m, path))
 
 def parse_args():
-    p = argparse.ArgumentParser(description="Combined RHadron & AK4 jet analysis")
+    p = argparse.ArgumentParser(description="Combined RHadron & AK4 jet analysis (Python 2 compatible)")
     p.add_argument("input_file", help="ROOT file")
     p.add_argument("--label", default=DEFAULT_LABEL,
-                   help=f"GenParticle branch (default {DEFAULT_LABEL})")
+                   help="GenParticle branch (default {})".format(DEFAULT_LABEL))
     p.add_argument("--isolation", action="store_true",
-                   help="Exclude jets within ΔR<0.4 of RHadrons")
+                   help="Exclude jets within dR<0.4 of RHadrons")
     p.add_argument("--nbins", type=int, default=50,
                    help="Bins for jet pT histos")
     p.add_argument("--alpha", type=float, default=0.3,
                    help="Overlay fill opacity")
     p.add_argument("-o", "--output-dir", default=None,
-                   help="Base directory in which to create <base>/plots")
+                   help="Base dir in which to create <base>/plots")
     return p.parse_args()
 
 def main():
@@ -216,47 +283,55 @@ def main():
     else:
         rundir = os.path.dirname(infile)
         outdir = os.path.join(rundir, "plots", base)
-    os.makedirs(outdir, exist_ok=True)
+    mkdir_p(outdir)
 
     initialize_fwlite()
     list_tree_branches(infile)
     show_particle_methods(infile, args.label)
 
+    # make sure gDirectory is valid after closing any TFile
+    ROOT.gROOT.cd()
+
     # RHadron extraction + plots/tables
     rh_data = extract_rhadron_info(infile, args.label)
 
     # PDG ID histogram
-    cnt = Counter(rh_data['pdg_id'])
+    cnt = Counter(rh_data.get('pdg_id', []))
     h_pdg = ROOT.TH1D("pdg_ids", ";PDG ID;Count",
                       len(RHADRON_PDGIDS), 0.5, len(RHADRON_PDGIDS)+0.5)
     if not h_pdg:
         raise RuntimeError("Failed to create pdg_ids hist")
     for i, pid in enumerate(RHADRON_PDGIDS, start=1):
         h_pdg.SetBinContent(i, cnt.get(pid, 0))
-        h_pdg.GetXaxis().SetBinLabel(i, str(pid))
+        try:
+            h_pdg.GetXaxis().SetBinLabel(i, "%d" % pid)
+        except Exception:
+            pass
+    h_pdg.GetXaxis().LabelsOption("v")
     save_canvas(h_pdg, os.path.join(outdir, "pdg_ids.pdf"))
 
     # 1D kinematic histos
     for var in ['pt','eta','phi','mass','charge','energy']:
-        vals = rh_data[var]
+        vals = rh_data.get(var, [])
         if not vals:
             continue
         mn, mx = min(vals), max(vals)
         if var == 'phi':
             mn, mx = mn - 0.5, mx + 0.5
-        h = create_1d_histogram(vals, f"h_{var}", f";{var};Counts",
+        h = create_1d_histogram(vals, "h_{}".format(var), ";{};Counts".format(var),
                                 50, (mn, mx))
-        save_canvas(h, os.path.join(outdir, f"{var}.pdf"))
+        save_canvas(h, os.path.join(outdir, "{}.pdf".format(var)))
 
-    # Δφ of two leading RHadrons
+    # dphi of two leading RHadrons
     evtmap = defaultdict(list)
-    for e, pt, phi in zip(rh_data['event'], rh_data['pt'], rh_data['phi']):
+    for e, pt, phi in zip(rh_data.get('event', []), rh_data.get('pt', []), rh_data.get('phi', [])):
         evtmap[e].append((pt, phi))
     dphis = []
     for lst in evtmap.values():
         if len(lst) < 2:
             continue
-        (p1, f1), (p2, f2) = sorted(lst, key=lambda x: x[0], reverse=True)[:2]
+        lst_sorted = sorted(lst, key=lambda x: x[0], reverse=True)[:2]
+        (p1, f1), (p2, f2) = lst_sorted[0], lst_sorted[1]
         d = abs(f1 - f2)
         if d > pi:
             d = 2*pi - d
@@ -267,37 +342,47 @@ def main():
         hd.GetXaxis().SetRangeUser(0, 2*pi)
         save_canvas(hd, os.path.join(outdir, "dphi.pdf"))
 
-    # long-lived vs mass 2D
-    mnm, mxm = min(rh_data['mass']), max(rh_data['mass'])
-    h2_llm = ROOT.TH2D("ll_vs_mass", ";Long-lived;Mass[GeV]",
-                       2, 0, 2, 50, mnm*0.95, mxm*1.05)
-    for ll, m in zip(rh_data['long_lived'], rh_data['mass']):
-        h2_llm.Fill(ll, m)
-    save_canvas(h2_llm, os.path.join(outdir, "long_lived_vs_mass.pdf"), "COLZ")
+    # long-lived vs mass 2D and others
+    if rh_data.get('mass', []):
+        mnm, mxm = min(rh_data['mass']), max(rh_data['mass'])
 
-    # mass vs PDG ID 2D
-    h2_mpdg = ROOT.TH2D("mass_vs_pdg", ";PDG ID;Mass[GeV]",
-                        len(RHADRON_PDGIDS), 0.5, len(RHADRON_PDGIDS)+0.5,
-                        50, mnm, mxm)
-    for idx, pid in enumerate(RHADRON_PDGIDS, start=1):
-        h2_mpdg.GetXaxis().SetBinLabel(idx, str(pid))
-    for pid, m in zip(rh_data['pdg_id'], rh_data['mass']):
-        if pid in RHADRON_PDGIDS:
-            h2_mpdg.Fill(RHADRON_PDGIDS.index(pid)+1, m)
-    save_canvas(h2_mpdg, os.path.join(outdir, "mass_vs_pdgid.pdf"), "COLZ")
+        # long-lived vs mass
+        h2_llm = ROOT.TH2D("ll_vs_mass", ";Long-lived;Mass[GeV]",
+                           2, 0, 2, 50, mnm*0.95, mxm*1.05)
+        for ll, m in zip(rh_data.get('long_lived', []), rh_data.get('mass', [])):
+            h2_llm.Fill(ll, m)
+        save_canvas(h2_llm, os.path.join(outdir, "long_lived_vs_mass.pdf"), "COLZ")
 
-    # RHadron eta-phi 2D
-    h2_rhad = ROOT.TH2D("rhad_eta_phi", ";#eta;#phi",
-                        50, -5.0, 5.0, 64, -pi, pi)
-    for eta, phi in zip(rh_data['eta'], rh_data['phi']):
-        h2_rhad.Fill(eta, phi)
-    save_canvas(h2_rhad, os.path.join(outdir, "rhadron_eta_phi.pdf"), "COLZ")
+        # mass vs PDG ID 2D
+        h2_mpdg = ROOT.TH2D("mass_vs_pdg", ";PDG ID;Mass[GeV]",
+                            len(RHADRON_PDGIDS), 0.5, len(RHADRON_PDGIDS)+0.5,
+                            50, mnm, mxm)
+        for idx, pid in enumerate(RHADRON_PDGIDS, start=1):
+            try:
+                h2_mpdg.GetXaxis().SetBinLabel(idx, "%d" % pid)
+            except Exception:
+                pass
+        h2_mpdg.GetXaxis().LabelsOption("v")
+        for pid, m in zip(rh_data.get('pdg_id', []), rh_data.get('mass', [])):
+            if pid in RHADRON_PDGIDS:
+                h2_mpdg.Fill(RHADRON_PDGIDS.index(pid)+1, m)
+        save_canvas(h2_mpdg, os.path.join(outdir, "mass_vs_pdgid.pdf"), "COLZ")
+
+        # RHadron eta-phi 2D
+        h2_rhad = ROOT.TH2D("rhad_eta_phi", ";#eta;#phi",
+                            50, -5.0, 5.0, 64, -pi, pi)
+        for eta, phi in zip(rh_data.get('eta', []), rh_data.get('phi', [])):
+            h2_rhad.Fill(eta, phi)
+        save_canvas(h2_rhad, os.path.join(outdir, "rhadron_eta_phi.pdf"), "COLZ")
 
     write_table(rh_data, os.path.join(outdir, "rhadron_data.tsv"))
 
     # AK4 jet overlay & multiplicity
     jet_data = extract_top6_ak4_pt(infile, isolation=args.isolation)
-    all_pts = [pt for k, pts in jet_data.items() if k != "nJets" for pt in pts]
+    all_pts = []
+    for key in ["1th","2th","3th","4th","5th","6th"]:
+        all_pts.extend(jet_data.get(key, []))
+
     if all_pts:
         # AK4 jet eta-phi 2D
         jet_etas, jet_phis = extract_all_ak4_eta_phi(infile, isolation=args.isolation)
@@ -311,42 +396,48 @@ def main():
         # pT overlay
         lo, hi = min(all_pts), max(all_pts)
         labels = ["Leading","2nd","3rd","4th","5th","6th"]
-        histos = {}
-        for i, L in enumerate(labels, start=1):
-            h = ROOT.TH1D(f"h{i}", "", args.nbins, lo, hi)
-            for pt in jet_data[f"{i}th"]:
+        keys_in_order = ["1th","2th","3th","4th","5th","6th"]
+        histos = []
+        for i, key in enumerate(keys_in_order):
+            h = ROOT.TH1D("h{}".format(i+1), "", args.nbins, lo, hi)
+            for pt in jet_data.get(key, []):
                 h.Fill(pt)
-            if h.Integral() > 0:
-                h.Scale(1.0 / (h.Integral() * h.GetBinWidth(1)))
-            histos[L] = h
+            #if h.Integral() > 0:
+            #     h.Scale(1.0 / h.Integral()) 
+            histos.append((labels[i], h))
+
         c1 = ROOT.TCanvas("c1", "pT overlay", 800, 600)
         c1.SetLogy()
         cols = [ROOT.kBlack, ROOT.kRed, ROOT.kBlue,
                 ROOT.kGreen+2, ROOT.kMagenta, ROOT.kOrange]
         leg = ROOT.TLegend(0.6, 0.65, 0.9, 0.9)
-        for i, (L, h) in enumerate(histos.items()):
+        first = True
+        for i, (L, h) in enumerate(histos):
             h.SetLineColor(cols[i])
             h.SetLineWidth(2)
             h.SetFillStyle(1001)
             h.SetFillColorAlpha(cols[i], args.alpha)
-            opt = "HIST" if i == 0 else "HIST SAME"
+            opt = "HIST" if first else "HIST SAME"
             h.Draw(opt)
             leg.AddEntry(h, L, "lf")
+            first = False
         leg.Draw()
         c1.Update()
-        save_canvas(c1, os.path.join(outdir, f"{base}_overlay_1-6pt.png"))
+        save_canvas(c1, os.path.join(outdir, "{}_overlay_1-6pt.png".format(base)))
 
         # multiplicity
-        hnj = ROOT.TH1D("hnj", ";# jets;Events",
-                        max(jet_data["nJets"])+1, -0.5, max(jet_data["nJets"])+0.5)
-        for n in jet_data["nJets"]:
-            hnj.Fill(n)
-        c2 = ROOT.TCanvas("c2", "njets", 600, 400)
-        hnj.SetLineColor(ROOT.kBlue)
-        hnj.SetLineWidth(2)
-        hnj.Draw("HIST")
-        c2.Update()
-        save_canvas(c2, os.path.join(outdir, f"{base}_njets.png"))
+        njs = jet_data.get("nJets", [])
+        if njs:
+            maxnj = max(njs)
+            hnj = ROOT.TH1D("hnj", ";# jets;Events", maxnj+1, -0.5, maxnj+0.5)
+            for n in njs:
+                hnj.Fill(n)
+            c2 = ROOT.TCanvas("c2", "njets", 600, 400)
+            hnj.SetLineColor(ROOT.kBlue)
+            hnj.SetLineWidth(2)
+            hnj.Draw("HIST")
+            c2.Update()
+            save_canvas(c2, os.path.join(outdir, "{}_njets.png".format(base)))
     else:
         print("No jets found; skipping AK4 jet plots.")
 
