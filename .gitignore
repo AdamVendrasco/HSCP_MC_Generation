@@ -14,4 +14,4 @@ scripts/LHEEvents.py
 scripts/coffea_script.py
 scripts/header_list.py
 scripts/plots/
-condor_submit_files/generate_gridpack_subfiles-HSCP*
+condor/condor_submit_files/generate_gridpack_subfiles-HSCP*
