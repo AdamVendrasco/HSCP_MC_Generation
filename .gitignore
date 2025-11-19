@@ -17,3 +17,5 @@ scripts/plots/
 condor/condor_submit_files/generate_gridpack_subfiles-HSCP*
 run_directories/Run-3/stop-based/HSCP*
 run_directories/Run-3/gluino-based/HSCP*
+run_directories/Run-2/mg*
+run_directories/Run-2/ms*
