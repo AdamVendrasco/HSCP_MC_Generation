@@ -5,16 +5,19 @@
    ```
    This will automatically cmsrel `<CMSSW_VERSION>`, clone the genproductions repo 
 
-2) Before generating gridpacks we must generate MadGraph5 cards to use as input. Under `run_directories/Run-3/` there are template cards to be used for stop and gluino production. Run the `Run-3_gluino_generate_cards.sh` or `Run-3_stop_generate_cards.sh` script. This will create many directories and correspodinging MadGraph5 cards for that mass/matching scale point (xqcut). Note this script only edits:
+2) Before generating gridpacks we must generate MadGraph5 cards to use as input. Under `run_directories/Run-3/` there are template cards to be used for stop and gluino production. Run the `Run-3_gluino_generate_cards.sh` or `Run-3_stop_generate_cards.sh` script. This will create many directories and correspodinging MadGraph5 cards for that mass/matching scale point (xqcut). Edit the generation script mass point and matching scale your desired value or range. Note this script only edits:
    * Mass point (param_card.dat)
    * Matching scale: xqcut/minimum pt for the jets and b (run_card.dat)
    * MadGraph5 run_tag (run_card.dat)
    * output name (proc_card.dat)
 
 
-
 3) Now that we have our cards with our desired configurations we can begin generating gridpacks. There are two options: 
    * HTCondor (recommended) 
+      * Locate the `condor` directory. The script `condor/autoCreate_subFIles_forDagman.sh` will automatically create condo submit files which we then can mass submitt using DAGMAN. 
+         * Edit the mass point and XQCUTS parameters to match the desired cards you wish to generate gridpacks for.  
+         * Edit the IN_DIR parameter that will point to where all your directories are. This will tell condor what .dat files to copy when the job is submitted. 
+         
    * Locally
 
 
