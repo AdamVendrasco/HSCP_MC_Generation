@@ -19,3 +19,4 @@ run_directories/Run-3/stop-based/HSCP*
 run_directories/Run-3/gluino-based/HSCP*
 run_directories/Run-2/mg*
 run_directories/Run-2/ms*
+condor/condor_submit_files/DAGMAN_jobSubmitFile.dag.*
