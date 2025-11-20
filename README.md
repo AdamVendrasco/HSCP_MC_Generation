@@ -51,6 +51,6 @@
   ```bash
   python3 generate_gridpack.py   --in <INPUT CARD DIR>  --out <TARBALL OUTPUT LOCATION>   --tag <TAG>   --queue <HTCondor runtime> -j <#CORES REQUESTED>
   ```
-1)  To run a gridpack, edit the relevant Python fragment file under `run_directories/` and type the following:
+   *  To run a gridpack, edit the relevant Python fragment file under `run_directories/` and type the following:
 ```bash
 ./run-gridpack.sh <RUN_NAME> <CMSSW_VERSION> [NEVENTS] [DEBUG_TAG]
