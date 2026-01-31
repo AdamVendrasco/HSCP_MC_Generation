@@ -15,17 +15,11 @@ from math import pi
 
 import ROOT
 ROOT.gSystem.Load("libHist")
-ROOT.TH1.AddDirectory(False)   # keep hists in memory, not tied to a TFile
-ROOT.gROOT.SetBatch(True)      # avoid display issues on EL7
-ROOT.gStyle.SetOptStat(0)      # disable stats boxes globally
+ROOT.TH1.AddDirectory(False)   
+ROOT.gROOT.SetBatch(True)      
+ROOT.gStyle.SetOptStat(0)     
 
 from DataFormats.FWLite import Events, Handle
-
-# ----------------------------------------------------------------------
-# Utilities
-# ----------------------------------------------------------------------
-
-# Python 2-safe mkdir -p
 def mkdir_p(path):
     try:
         os.makedirs(path)
@@ -35,15 +29,8 @@ def mkdir_p(path):
         else:
             raise
 
-# Robust TH2 creation for old PyROOT
 def create_2d_histogram(name, title, xbins, xmin, xmax, ybins, ymin, ymax, use_float=False):
-    """
-    Robust TH2 creation for old PyROOT:
-      - Ensures ranges are valid and > 0 width
-      - Falls back to TH2F if TH2D returns None
-      - Appends a tiny epsilon if min==max
-      - Detaches from any directory (SetDirectory(0))
-    """
+   
     xmin = float(xmin); xmax = float(xmax)
     ymin = float(ymin); ymax = float(ymax)
 
@@ -76,7 +63,7 @@ def create_2d_histogram(name, title, xbins, xmin, xmax, ybins, ymin, ymax, use_f
     return h
 
 def create_1d_histogram(values, name, title, bins, value_range):
-    """Create and fill a 1D ROOT histogram safely."""
+    """Create and fill a 1D ROOT histograms."""
     ROOT.gROOT.cd()
     hist = ROOT.TH1D(name, title, int(bins), float(value_range[0]), float(value_range[1]))
     if hist:
@@ -131,11 +118,7 @@ def dphi_wrap(phi1, phi2):
         d = 2*pi - d
     return d
 
-# ----------------------------------------------------------------------
-# FWLite setup and extraction
-# ----------------------------------------------------------------------
 
-# Constants
 RHADRON_PDGIDS = [
     1000993, 1009213, 1009313, 1009323, 1009113, 1009223, 1009333,
     1091114, 1092114, 1092214, 1092224, 1093114, 1093214, 1093224,
@@ -171,8 +154,8 @@ def list_tree_branches(file_path, tree_name=DEFAULT_TREE):
     for branch in tree.GetListOfBranches():
         print("  {}".format(branch.GetName()))
     f.Close()
-    ROOT.gROOT.cd()  # ensure gDirectory is valid (not a closed TFile)
-
+    ROOT.gROOT.cd()
+    
 def extract_rhadron_info(file_path, branch_label):
     """Extract RHadron GenParticle information into a data dictionary."""
     events = Events(file_path)
@@ -225,9 +208,6 @@ def extract_rhadron_info(file_path, branch_label):
                 data['daughters'].append(",".join(dins))
     return data
 
-# ----------------------------------------------------------------------
-# CLI
-# ----------------------------------------------------------------------
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Extract RHadron data and produce plots/tables")
@@ -237,10 +217,6 @@ def parse_arguments():
     parser.add_argument('--output-dir', default='./plots',
                         help='Base directory to save plots and tables')
     return parser.parse_args()
-
-# ----------------------------------------------------------------------
-# Main
-# ----------------------------------------------------------------------
 
 def main():
     args = parse_arguments()
@@ -255,8 +231,6 @@ def main():
     list_tree_branches(infile)
 
     data = extract_rhadron_info(infile, label)
-
-    # ensure we are in a safe directory for object ownership
     ROOT.gROOT.cd()
 
     # ------------------------------------------------------------------
@@ -365,7 +339,6 @@ def main():
             "sum_px": vsum.Px(),
             "sum_py": vsum.Py(),
             "sum_pz": vsum.Pz(),
-            # convenience
             "met_like": vsum.Pt(),
         })
 
