@@ -1,4 +1,22 @@
-#!/usr/bin/env python3
+
+"""
+Condor submission helper for a CMSSW MC chain:
+
+  1) GEN-SIM (LHE,GEN,SIM)  -> GEN-SIM 
+  2) DIGI (+ optional Premix) -> GEN-SIM-RAW
+  3) HLT -> GEN-SIM-RAW-HLT
+  4) RECO -> AODSIM
+  5) optional + MiniAOD
+  6) optional + NanoAOD
+
+This script writes:
+  - an executable bash script into ./batchexec/
+  - a condor submit file into the current directory
+  - logs into ./batchlogs/
+
+Then you run:
+  condor_submit <submit_file>
+"""
 import os
 import argparse
 import getpass
@@ -6,251 +24,611 @@ from pathlib import Path
 
 EXEC_NAME = "batchexec"
 LOGS_NAME = "batchlogs"
-DEFAULT_TAG = "Run2023"
+
+DEFAULT_NEVENTS = 5000
+DEFAULT_CMSSW = "CMSSW_14_0_22"
+DEFAULT_ERA = "Run3_2024"
+DEFAULT_CONDITIONS = "140X_mcRun3_2024_realistic_v26"
+DEFAULT_HLT_MENU = "2024v14"
+DEFAULT_BEAMSPOT = "DBrealistic"
+
+DEFAULT_DO_PREMIX = True
+DEFAULT_DO_MINIAOD = True
+DEFAULT_DO_NANOAOD = True
+DEFAULT_THREADS = 2
+DEFAULT_PILEUP_INPUT = (
+    "dbs:/Neutrino_E-10_gun/RunIIISummer24PrePremix-Premixlib2024_140X_mcRun3_2024_realistic_v26-v1/PREMIX"
+)
+
+DEFAULT_DESIRED_OS = "rhel8"
+DEFAULT_SINGULARITY_IMAGE = "/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel8"
 
 USER = getpass.getuser()
-nobackup = f'/uscms_data/d1/{USER}'
-WORK_DIR = os.getcwd()
-EOS_STORE_REL = f"/store/user/{USER}/HSCP/gridpack_output/root_files"
-EOS_ROOT_URL  = f"root://cmseos.fnal.gov//{EOS_STORE_REL}"
+
+EOS_ROOTFILES_REL = f"/store/user/{USER}/HSCP/gridpack_output/root_files/"
+EOS_ROOTFILES_URL = f"root://cmseos.fnal.gov//{EOS_ROOTFILES_REL}"
+
+EOS_CFGS_REL = f"/store/user/{USER}/HSCP/gridpack_output/cfgs/"
+EOS_CFGS_URL = f"root://cmseos.fnal.gov//{EOS_CFGS_REL}"
+
+
+def choose_scram_arch(cmssw_version: str) -> str:
+    """
+    Choose a SCRAM_ARCH based on CMSSW version.
+
+    Notes:
+      - CMSSW_10_6_* is slc7.
+      - Newer releases in your workflow have been EL8 gcc12.
+    """
+    if cmssw_version.startswith("CMSSW_10_6_"):
+        return "slc7_amd64_gcc700"
+    try:
+        major = int(cmssw_version.split("_")[1])
+    except Exception:
+        major = 15
+    if major >= 14:
+        return "el8_amd64_gcc12"
+    return "el8_amd64_gcc12"
+
 
 class ArgumentParser(argparse.ArgumentParser):
     def __init__(self):
         super().__init__(usage="%(prog)s [options]")
-        self.add_argument("--tag", type=str, default=DEFAULT_TAG)
-        self.add_argument("--xqcut", type=int, required=True, help="XQCUT/QCUT (must match the tarball).")
-        self.add_argument("-o", "--out", required=True, help="(Unused for EOS mode) Output dir for ROOT files")
-        self.add_argument("-i", "--fragment", dest="fragment", required=False, help="Fragment file")
-        self.add_argument("--in", dest="fragment", required=False, help="Fragment file (alias of --fragment)")
-        self.add_argument("-q", "--queue", type=str, default="tomorrow")
-        self.add_argument("-j", "--jobs", type=int, default=1)
-        self.add_argument("-n", "--nevents", type=int, default=20000)
-        self.add_argument("-r", "--run", type=str, required=True, help="Run/process name")
-        self.add_argument("--cmssw", type=str, default="CMSSW_10_6_47", help="CMSSW version (default: %(default)s)")
 
-def create_submit_file(run, cards, tag, jobs, queue, exec_file, logs_dir, xqcut):
+        self.add_argument("--tag", type=str, default=DEFAULT_ERA,
+                          help="Tag used in output filenames (default: %(default)s)")
+        self.add_argument("--xqcut", type=int, required=True,
+                          help="XQCUT/QCUT (must match the tarball).")
+
+        self.add_argument("-o", "--out", required=True,
+                          help="(Unused for EOS mode) Output dir for ROOT files (kept for compatibility).")
+        self.add_argument("-i", "--fragment", dest="fragment", required=False,
+                          help="Fragment file")
+        self.add_argument("--in", dest="fragment", required=False,
+                          help="Fragment file (alias of --fragment)")
+
+        self.add_argument("-q", "--queue", type=str, default="tomorrow",
+                          help="Condor JobFlavour (default: %(default)s)")
+        self.add_argument("--njobs", type=int, default=1,
+                          help="Number of independent Condor jobs to queue (each job runs --nevents events).")
+        self.add_argument("-n", "--nevents", type=int, default=DEFAULT_NEVENTS,
+                          help="Events per job (default: %(default)s)")
+        self.add_argument("--threads", type=int, default=DEFAULT_THREADS,
+                          help="Threads per job passed to cmsDriver --nThreads (default: %(default)s).")
+
+        self.add_argument("-r", "--run", type=str, required=True,
+                          help="Run/process name")
+        self.add_argument("--cmssw", type=str, default=DEFAULT_CMSSW,
+                          help="CMSSW version (default: %(default)s)")
+
+        self.add_argument("--hlt-menu", type=str, default=DEFAULT_HLT_MENU,
+                          help="HLT menu name for cmsDriver syntax HLT:<menu> (default: %(default)s).")
+
+        self.add_argument("--desired-os", type=str, default=DEFAULT_DESIRED_OS,
+                          help='Condor +DesiredOS (default: %(default)s).')
+        self.add_argument("--singularity-image", type=str, default=DEFAULT_SINGULARITY_IMAGE,
+                          help="Container image path (default: %(default)s)")
+
+        # Premix toggle + pileup input
+        premixGroup = self.add_mutually_exclusive_group()
+        premixGroup.add_argument("--do-premix", dest="do_premix", action="store_true",
+                                 help="Enable pileup (DIGI,DATAMIX,L1,DIGI2RAW) after GEN-SIM (default)")
+        premixGroup.add_argument("--no-premix", dest="do_premix", action="store_false",
+                                 help="Disable pileup; use standard DIGI,L1,DIGI2RAW")
+        self.add_argument("--pileup-input", type=str, default=DEFAULT_PILEUP_INPUT,
+                          help=("Pileup source for premix. Either 'dbs:/.../PREMIX' or a local text file "
+                                "(one filename per line). Required if --do-premix."))
+        self.set_defaults(do_premix=DEFAULT_DO_PREMIX)
+
+        # MiniAOD toggle
+        miniGroup = self.add_mutually_exclusive_group()
+        miniGroup.add_argument("--do-miniaod", dest="do_miniaod", action="store_true",
+                               help="Enable MiniAOD (PAT) step (default)")
+        miniGroup.add_argument("--no-miniaod", dest="do_miniaod", action="store_false",
+                               help="Disable MiniAOD step")
+        self.set_defaults(do_miniaod=DEFAULT_DO_MINIAOD)
+
+        # NanoAOD toggle
+        nanoGroup = self.add_mutually_exclusive_group()
+        nanoGroup.add_argument("--do-nanoaod", dest="do_nanoaod", action="store_true",
+                               help="Enable NanoAOD step (default)")
+        nanoGroup.add_argument("--no-nanoaod", dest="do_nanoaod", action="store_false",
+                               help="Disable NanoAOD step")
+        self.set_defaults(do_nanoaod=DEFAULT_DO_NANOAOD)
+
+        # Conditions / era / beamspot
+        self.add_argument("--conditions", type=str, default=DEFAULT_CONDITIONS,
+                          help="GlobalTag/conditions (default: %(default)s).")
+        self.add_argument("--era", type=str, default=DEFAULT_ERA,
+                          help="cmsDriver era (default: %(default)s)")
+        self.add_argument("--beamspot", type=str, default=DEFAULT_BEAMSPOT,
+                          help="Beamspot name for cmsDriver --beamspot in GEN step (default: %(default)s)")
+
+
+def create_submit_file(*, run, transfer_inputs, njobs, queue, exec_file, logs_dir,
+                       request_cpus: int, desired_os: str, singularity_image: str):
     if not exec_file:
         raise ValueError("exec_file is None/empty; cannot write submit.sub")
     if not os.path.isfile(exec_file):
         raise FileNotFoundError(f"Executable file does not exist: {exec_file}")
 
     exec_file = os.path.abspath(exec_file)
-    cards_abs = os.path.abspath(cards)
+    transfer_inputs_abs = [os.path.abspath(p) for p in transfer_inputs]
+    transfer_inputs_str = ",".join(transfer_inputs_abs)
 
-    xqcut_tag = f"xqcut{xqcut}"
-    submit_file = f'condor_submit_{run}_{xqcut_tag}.sub' 
-    with open(submit_file, 'w') as fi:
-        fi.write(f"""executable              = {exec_file}
-arguments               = $(ClusterId)$(ProcId)
-transfer_input_files    = {cards_abs}
+    base_name = f"{run}_runGridpack"
+    submit_file = f"condor_submit_{base_name}.sub"
+
+    with open(submit_file, "w") as fi:
+        fi.write(
+            f"""executable              = {exec_file}
+arguments               = $(ClusterId) $(ProcId)
+transfer_input_files    = {transfer_inputs_str}
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT
-output                  = {logs_dir}/{run}_{xqcut_tag}_$(ClusterId).$(ProcId).out
-error                   = {logs_dir}/{run}_{xqcut_tag}_$(ClusterId).$(ProcId).err
-log                     = {logs_dir}/{run}_{xqcut_tag}.log
-request_cpus            = {jobs}
-+JobFlavour             = "{queue}"
-+ApptainerImage         = "/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel7"
+output                  = {logs_dir}/{base_name}_$(ClusterId).$(ProcId).out
+error                   = {logs_dir}/{base_name}_$(ClusterId).$(ProcId).err
+log                     = {logs_dir}/{base_name}.log
+
+request_cpus            = {int(request_cpus)}
 request_memory          = 8000
 
-queue 1
-""")
++JobFlavour             = "{queue}"
++DesiredOS              = "{desired_os}"
++SingularityImage       = "{singularity_image}"
+
+queue {int(njobs)}
+"""
+        )
     return submit_file
 
-def create_exec_file(run, fragment_path, exec_dir, out_dir, tag, nevents, xqcut, cmssw_version):
-    xqcut_tag = f"xqcut{xqcut}" if xqcut is not None else "xqcutNA"
-    exec_file = Path(exec_dir) / f'job_{run}_{xqcut_tag}.sh'
+
+def create_exec_file(*, run, fragment_path, exec_dir, tag, nevents, xqcut, cmssw_version,
+                     do_premix, pileup_input, do_hlt, hlt_menu,
+                     do_miniaod, do_nanoaod, conditions, era, beamspot, threads: int):
+    base_name = f"{run}_runGridpack"
+    exec_file = Path(exec_dir) / f"{base_name}.sh"
+
     frag_name = Path(fragment_path).name
+    scram_arch = choose_scram_arch(cmssw_version)
 
-    with open(exec_file, 'w') as fi:
-        fi.write(f"""#!/bin/bash
-set -eo pipefail
+    with open(exec_file, "w") as fi:
+        fi.write(
+            f"""#!/bin/bash
+set -euo pipefail
+
+CLUSTER_ID="${{1:-0}}"
+PROC_ID="${{2:-0}}"
+JOBID="${{CLUSTER_ID}}.${{PROC_ID}}"
+
+export SCRAM_ARCH="{scram_arch}"
+set +u
 source /cvmfs/cms.cern.ch/cmsset_default.sh
+set -u
 
-# Networking: some slots prefer IPv4 for XRootD
-export XRD_NETWORKSTACK=IPv4
-
+# -----------------------------------------------------------------------------
+# Job parameters
+# -----------------------------------------------------------------------------
 RUN="{run}"
 TAG="{tag}"
 NEVENTS="{nevents}"
 XQCUT="{xqcut}"
 FRAGMENT="{frag_name}"
-OUTDIR="{out_dir}"
-WORKAREA="$PWD"
+
 CMSSW_VERSION="{cmssw_version}"
-EOS_ROOT_URL="{EOS_ROOT_URL}"
-EOS_STORE_REL="{EOS_STORE_REL}"
+ERA="{era}"
+CONDITIONS="{conditions}"
+HLT_MENU="{hlt_menu}"
+BEAMSPOT="{beamspot}"
 
-echo "[job] RUN=$RUN"
-echo "[job] TAG=$TAG"
-echo "[job] NEVENTS=$NEVENTS"
-echo "[job] XQCUT=$XQCUT"
-echo "[job] Using fragment (basename): $FRAGMENT"
-echo "[job] CMSSW: $CMSSW_VERSION"
-echo "[job] Work area (Condor execute dir): $WORKAREA"
+DO_PREMIX="{1 if do_premix else 0}"
+PILEUP_INPUT_RAW="{pileup_input}"
 
-if [[ "$CMSSW_VERSION" == CMSSW_10_6_* ]]; then
-  export SCRAM_ARCH="slc7_amd64_gcc700"
-  echo "[job] SCRAM: $SCRAM_ARCH"
-else
-  echo "[warning] CMSSW=$CMSSW_VERSION, using existing SCRAM_ARCH=$SCRAM_ARCH (adjust if needed)."
-fi
+DO_HLT="{1 if do_hlt else 0}"
 
-# The fragment is transferred by HTCondor into $WORKAREA (execute dir).
-if [[ ! -f "$WORKAREA/$FRAGMENT" ]]; then
-  echo "[fatal] Fragment not found at $WORKAREA/$FRAGMENT"
-  echo "[debug] Listing $WORKAREA contents:"
-  ls -al "$WORKAREA" || true
+DO_MINIAOD="{1 if do_miniaod else 0}"
+DO_NANOAOD="{1 if do_nanoaod else 0}"
+
+# -----------------------------------------------------------------------------
+# Threads + seed spacing
+# -----------------------------------------------------------------------------
+NTHREADS="{int(threads)}"
+if [[ "$NTHREADS" -lt 1 ]]; then NTHREADS=1; fi
+RSEED=$(( (PROC_ID+1) * NTHREADS * 4 + 1001 ))
+
+echo "[job] JOBID=$JOBID RUN=$RUN TAG=$TAG NEVENTS=$NEVENTS XQCUT=$XQCUT"
+echo "[job] CMSSW_VERSION=$CMSSW_VERSION SCRAM_ARCH=$SCRAM_ARCH ERA=$ERA CONDITIONS=$CONDITIONS"
+echo "[job] DO_PREMIX=$DO_PREMIX PILEUP_INPUT_RAW=$PILEUP_INPUT_RAW"
+echo "[job] DO_HLT=$DO_HLT (HLT_MENU=$HLT_MENU) DO_MINIAOD=$DO_MINIAOD DO_NANOAOD=$DO_NANOAOD"
+echo "[job] NTHREADS=$NTHREADS RSEED=$RSEED"
+
+if [[ ! -f "$FRAGMENT" ]]; then
+  echo "[fatal] Fragment not found in job sandbox: $FRAGMENT"
+  echo "[debug] ls -al:"
+  ls -al
   exit 10
 fi
 
-echo "[1/6] building area"
-echo "Found fragment at $WORKAREA/$FRAGMENT"
-echo "[preview] --- head of fragment ---"
-head -n 20 "$WORKAREA/$FRAGMENT" || true
-echo "[preview] ------------------------"
+run_cfg() {{
+  local cfg="$1"
+  local out="$2"
+  echo "[run] cmsRun $cfg"
+  cmsRun "$cfg"
+  if [[ ! -f "$out" ]]; then
+    echo "[fatal] expected output not found: $out"
+    exit 2
+  fi
+}}
 
-echo "[CMSSW Env]"
-scramv1 project CMSSW $CMSSW_VERSION
-cd $CMSSW_VERSION/src/
-eval `scramv1 runtime -sh`
+# --- Setup CMSSW ---
+TOPDIR="$PWD"
+if [[ -r "${{CMSSW_VERSION}}/src" ]]; then
+  echo "[env] Using existing $CMSSW_VERSION"
+else
+  echo "[env] Creating $CMSSW_VERSION"
+  scram project CMSSW "$CMSSW_VERSION"
+fi
 
-echo "[Copying fragment into CMSSW area]"
+cd "$CMSSW_VERSION/src"
+eval "$(scram runtime -sh)"
+
 mkdir -p "$CMSSW_BASE/src/Configuration/GenProduction/python"
-cp -v "$WORKAREA/$FRAGMENT" "$CMSSW_BASE/src/Configuration/GenProduction/python/"
-ls "$CMSSW_BASE/src/Configuration/GenProduction/python/" || true
+cp -v "$TOPDIR/$FRAGMENT" "$CMSSW_BASE/src/Configuration/GenProduction/python/fragment.py"
 
-echo "[2/6] cmsenv & build"
-cd "$CMSSW_BASE/src"
-cmsenv
 scram b -j8
+cd "$TOPDIR"
 
-# Make sure we have writable local copies of BOTH runner scripts (avoid /cvmfs noexec)
-mkdir -p "$CMSSW_BASE/src/GeneratorInterface/LHEInterface/data"
-for s in run_generic_tarball_xrootd.sh run_generic_tarball_cvmfs.sh; do
-  cp -f "$CMSSW_RELEASE_BASE/src/GeneratorInterface/LHEInterface/data/$s" \\
-        "$CMSSW_BASE/src/GeneratorInterface/LHEInterface/data/$s"
-  chmod +x "$CMSSW_BASE/src/GeneratorInterface/LHEInterface/data/$s"
-done
+# =========================================
+# PASS 1: GEN-SIM (LHE,GEN,SIM)
+# =========================================
+BASE_GENSIM="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-job$JOBID-GEN-SIM"
 
-echo "[3/6] LHE & GEN only (cfg)"
-cmsDriver.py Configuration/GenProduction/python/$FRAGMENT \\
-  --python_filename $RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-GEN-ONLY_cfg.py \\
+cmsDriver.py Configuration/GenProduction/python/fragment.py \\
+  --python_filename "${{BASE_GENSIM}}_cfg.py" \\
   --eventcontent RAWSIM,LHE \\
-  --step           LHE,GEN \\
-  --datatier       GEN,LHE \\
-  --fileout file:$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-GEN-ONLY.root \\
-  --conditions   106X_upgrade2018_realistic_v4 \\
-  --beamspot     Realistic25ns13TeVEarly2018Collision \\
-  --geometry     DB:Extended \\
-  --era          Run2_2018 \\
-  --mc -n $NEVENTS \\
+  --step LHE,GEN,SIM \\
+  --datatier GEN-SIM,LHE \\
+  --fileout "file:${{BASE_GENSIM}}.root" \\
+  --conditions "$CONDITIONS" \\
+  --beamspot "$BEAMSPOT" \\
+  --geometry DB:Extended \\
+  --era "$ERA" \\
+  --mc -n "$NEVENTS" \\
+  --nThreads "$NTHREADS" \\
+  --customise SimG4Core/CustomPhysics/Exotica_HSCP_SIM_cfi.customise \\
+  --customise SimG4Core/CustomPhysics/GenPlusSimParticles_cfi.customizeKeep \\
+  --customise SimG4Core/CustomPhysics/GenPlusSimParticles_cfi.customizeProduce \\
+  --customise Configuration/DataProcessing/Utils.addMonitoring \\
+  --customise_commands "process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=${{RSEED}}; process.source.numberEventsInLuminosityBlock=cms.untracked.uint32(143)" \\
+  --no_exec
+run_cfg "${{BASE_GENSIM}}_cfg.py" "${{BASE_GENSIM}}.root"
+
+# =========================================
+# PASS 2: DIGI (Premix or Standard) -> GEN-SIM-RAW
+# =========================================
+BASE_DIGIRAW="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-job$JOBID-GEN-SIM-RAW"
+
+if [[ "$DO_PREMIX" == "1" ]]; then
+  if [[ -z "$PILEUP_INPUT_RAW" ]]; then
+    echo "[fatal] DO_PREMIX=1 but --pileup-input was not provided."
+    exit 30
+  fi
+
+  if [[ "$PILEUP_INPUT_RAW" == dbs:* ]]; then
+    PILEUP_INPUT="$PILEUP_INPUT_RAW"
+  else
+    PILEUP_LOCAL="$(basename "$PILEUP_INPUT_RAW")"
+    if [[ ! -f "$PILEUP_LOCAL" ]]; then
+      echo "[fatal] local pileup list not found in sandbox: $PILEUP_LOCAL"
+      echo "[debug] ls -al:"
+      ls -al
+      exit 31
+    fi
+    PILEUP_INPUT="filelist:$PILEUP_LOCAL"
+  fi
+
+  echo "[premix] pileup_input=$PILEUP_INPUT"
+
+  cmsDriver.py stepDIGIPremix \\
+    --python_filename "${{BASE_DIGIRAW}}_cfg.py" \\
+    --eventcontent PREMIXRAW \\
+    --datatier GEN-SIM-RAW \\
+    --filein  "file:${{BASE_GENSIM}}.root" \\
+    --fileout "file:${{BASE_DIGIRAW}}.root" \\
+    --pileup_input "$PILEUP_INPUT" \\
+    --step DIGI,DATAMIX,L1,DIGI2RAW \\
+    --procModifiers premix_stage2 \\
+    --datamix PreMix \\
+    --conditions "$CONDITIONS" \\
+    --geometry DB:Extended \\
+    --era "$ERA" \\
+    --mc -n "$NEVENTS" \\
+    --nThreads "$NTHREADS" \\
+    --customise Configuration/DataProcessing/Utils.addMonitoring \\
+    --no_exec
+
+  run_cfg "${{BASE_DIGIRAW}}_cfg.py" "${{BASE_DIGIRAW}}.root"
+
+else
+  cmsDriver.py stepDIGIRAW \\
+    --python_filename "${{BASE_DIGIRAW}}_cfg.py" \\
+    --eventcontent RAWSIM \\
+    --datatier GEN-SIM-RAW \\
+    --step DIGI,L1,DIGI2RAW \\
+    --filein  "file:${{BASE_GENSIM}}.root" \\
+    --fileout "file:${{BASE_DIGIRAW}}.root" \\
+    --conditions "$CONDITIONS" \\
+    --geometry DB:Extended \\
+    --era "$ERA" \\
+    --mc -n "$NEVENTS" \\
+    --nThreads "$NTHREADS" \\
+    --customise Configuration/DataProcessing/Utils.addMonitoring \\
+    --no_exec
+
+  run_cfg "${{BASE_DIGIRAW}}_cfg.py" "${{BASE_DIGIRAW}}.root"
+fi
+
+# =========================================
+# PASS 3: HLT -> GEN-SIM-RAW-HLT
+# =========================================
+BASE_HLT="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-job$JOBID-GEN-SIM-RAW-HLT"
+
+cmsDriver.py stepHLT \\
+  --python_filename "${{BASE_HLT}}_cfg.py" \\
+  --eventcontent RAWSIM \\
+  --datatier GEN-SIM-RAW \\
+  --step HLT:${{HLT_MENU}} \\
+  --filein  "file:${{BASE_DIGIRAW}}.root" \\
+  --fileout "file:${{BASE_HLT}}.root" \\
+  --conditions "$CONDITIONS" \\
+  --geometry DB:Extended \\
+  --era "$ERA" \\
+  --mc -n "$NEVENTS" \\
+  --nThreads "$NTHREADS" \\
   --customise Configuration/DataProcessing/Utils.addMonitoring \\
   --no_exec
 
-# (Optional) sanity: confirm remote gridpack presence
-xrdfs root://cmseos.fnal.gov stat /store/user/{USER}/HSCP/gridpack_output/tarballs/RunII/ms-Rhadron_mstop_2000_slc7_amd64_gcc700_CMSSW_10_6_47_xqcut60_tarball.tar.xz || true
+run_cfg "${{BASE_HLT}}_cfg.py" "${{BASE_HLT}}.root"
 
-echo "[4/6] cmsRun"
-cmsRun $RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-GEN-ONLY_cfg.py
+INPUT_RECO="file:${{BASE_HLT}}.root"
 
-# === Collect ONLY the two EDM outputs back to the job sandbox (/srv) ===
-BASE="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-GEN-ONLY"
-OUT_GEN="$CMSSW_BASE/src/$BASE.root"
-OUT_LHEEDM="$CMSSW_BASE/src/${{BASE}}_inLHE.root"
+# =========================================
+# PASS 4: RECO -> AODSIM
+# =========================================
+BASE_AOD="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-job$JOBID-AODSIM"
 
-echo "[5/6] collect"
-echo "[collect] Looking for outputs:"
-ls -lh "$OUT_GEN" "$OUT_LHEEDM" 2>/dev/null || true
+cmsDriver.py stepRECO \\
+  --python_filename "${{BASE_AOD}}_cfg.py" \\
+  --eventcontent AODSIM \\
+  --datatier AODSIM \\
+  --step RAW2DIGI,L1Reco,RECO \\
+  --filein  "$INPUT_RECO" \\
+  --fileout "file:${{BASE_AOD}}.root" \\
+  --conditions "$CONDITIONS" \\
+  --geometry DB:Extended \\
+  --era "$ERA" \\
+  --mc -n "$NEVENTS" \\
+  --nThreads "$NTHREADS" \\
+  --customise Configuration/DataProcessing/Utils.addMonitoring \\
+  --no_exec
 
-cd "$WORKAREA"
-mkdir -p "$WORKAREA"
+run_cfg "${{BASE_AOD}}_cfg.py" "${{BASE_AOD}}.root"
 
-[[ -f "$OUT_GEN"    ]] && cp -v "$OUT_GEN"    "$WORKAREA/" || echo "[warn] Missing: $OUT_GEN"
-[[ -f "$OUT_LHEEDM" ]] && cp -v "$OUT_LHEEDM" "$WORKAREA/" || echo "[warn] Missing: $OUT_LHEEDM"
+# =========================================
+# PASS 5: MiniAOD
+# =========================================
+BASE_MINI=""
+if [[ "$DO_MINIAOD" == "1" ]]; then
+  BASE_MINI="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-job$JOBID-MINIAODSIM"
 
-echo "[collect] In sandbox now:"
-ls -lh "$WORKAREA" || true
+  cmsDriver.py stepMINIAOD \\
+    --python_filename "${{BASE_MINI}}_cfg.py" \\
+    --eventcontent MINIAODSIM \\
+    --datatier MINIAODSIM \\
+    --step PAT \\
+    --filein  "file:${{BASE_AOD}}.root" \\
+    --fileout "file:${{BASE_MINI}}.root" \\
+    --conditions "$CONDITIONS" \\
+    --geometry DB:Extended \\
+    --era "$ERA" \\
+    --mc -n "$NEVENTS" \\
+    --nThreads "$NTHREADS" \\
+    --customise Configuration/DataProcessing/Utils.addMonitoring \\
+    --no_exec
 
-# === Push to EOS ===
-echo "[6/6] xrdcp to EOS -> {EOS_STORE_REL}"
-# ensure directories (best-effort)
-xrdfs cmseos.fnal.gov mkdir /store/user/{USER}/HSCP || true
-xrdfs cmseos.fnal.gov mkdir /store/user/{USER}/HSCP/GEN || true
-
-if [[ -f "$WORKAREA/$BASE.root" ]]; then
-  xrdcp -f "$WORKAREA/$BASE.root"   "$EOS_ROOT_URL$BASE.root"
-else
-  echo "[warn] Not found in sandbox: $WORKAREA/$BASE.root"
+  run_cfg "${{BASE_MINI}}_cfg.py" "${{BASE_MINI}}.root"
 fi
 
-if [[ -f "$WORKAREA/${{BASE}}_inLHE.root" ]]; then
-  xrdcp -f "$WORKAREA/${{BASE}}_inLHE.root" "$EOS_ROOT_URL${{BASE}}_inLHE.root"
-else
-  echo "[warn] Not found in sandbox: $WORKAREA/${{BASE}}_inLHE.root"
+# =========================================
+# PASS 6: NanoAOD
+# =========================================
+BASE_NANO=""
+if [[ "$DO_NANOAOD" == "1" ]]; then
+  if [[ "$DO_MINIAOD" != "1" ]]; then
+    echo "[fatal] NanoAOD requires MiniAOD."
+    exit 40
+  fi
+
+  BASE_NANO="$RUN-$CMSSW_VERSION-n$NEVENTS-$TAG-job$JOBID-NANOAODSIM"
+
+  cmsDriver.py stepNANO \\
+    --python_filename "${{BASE_NANO}}_cfg.py" \\
+    --eventcontent NANOAODSIM \\
+    --datatier NANOAODSIM \\
+    --step NANO \\
+    --filein  "file:${{BASE_MINI}}.root" \\
+    --fileout "file:${{BASE_NANO}}.root" \\
+    --conditions "$CONDITIONS" \\
+    --geometry DB:Extended \\
+    --era "$ERA" \\
+    --mc -n "$NEVENTS" \\
+    --nThreads "$NTHREADS" \\
+    --customise Configuration/DataProcessing/Utils.addMonitoring \\
+    --customise_commands="process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))" \\
+    --no_exec
+
+  run_cfg "${{BASE_NANO}}_cfg.py" "${{BASE_NANO}}.root"
 fi
 
-echo "[Run] Completed successfully."
-""")
+# =========================================
+# Copy outputs back
+# =========================================
+cd "$TOPDIR"
+
+to_copy=(
+  "${{BASE_GENSIM}}.root"
+  "${{BASE_DIGIRAW}}.root"
+  "${{BASE_HLT}}.root"
+  "${{BASE_AOD}}.root"
+)
+
+cfg_copy=(
+  "${{BASE_GENSIM}}_cfg.py"
+  "${{BASE_DIGIRAW}}_cfg.py"
+  "${{BASE_HLT}}_cfg.py"
+  "${{BASE_AOD}}_cfg.py"
+)
+
+if [[ "$DO_MINIAOD" == "1" ]]; then
+  to_copy+=("${{BASE_MINI}}.root")
+  cfg_copy+=("${{BASE_MINI}}_cfg.py")
+fi
+if [[ "$DO_NANOAOD" == "1" ]]; then
+  to_copy+=("${{BASE_NANO}}.root")
+  cfg_copy+=("${{BASE_NANO}}_cfg.py")
+fi
+
+OUTDIR_CMSSW="$TOPDIR/$CMSSW_VERSION/src"
+
+for f in "${{to_copy[@]}}"; do
+  if [[ -f "$OUTDIR_CMSSW/$f" ]]; then
+    cp -v "$OUTDIR_CMSSW/$f" "$TOPDIR/"
+  else
+    echo "[warn] Missing output: $OUTDIR_CMSSW/$f"
+  fi
+done
+
+for c in "${{cfg_copy[@]}}"; do
+  if [[ -f "$OUTDIR_CMSSW/$c" ]]; then
+    cp -v "$OUTDIR_CMSSW/$c" "$TOPDIR/"
+  else
+    echo "[warn] Missing cfg: $OUTDIR_CMSSW/$c"
+  fi
+done
+
+# =========================================
+# Upload to EOS
+# =========================================
+EOS_ROOTFILES_URL="{EOS_ROOTFILES_URL}"
+EOS_ROOTFILES_REL="{EOS_ROOTFILES_REL}"
+EOS_CFGS_URL="{EOS_CFGS_URL}"
+EOS_CFGS_REL="{EOS_CFGS_REL}"
+
+echo "[eos] mkdir -p $EOS_ROOTFILES_REL and $EOS_CFGS_REL"
+xrdfs cmseos.fnal.gov mkdir -p "$EOS_ROOTFILES_REL" || true
+xrdfs cmseos.fnal.gov mkdir -p "$EOS_CFGS_REL" || true
+
+echo "[eos] upload ROOT files"
+for f in "${{to_copy[@]}}"; do
+  if [[ -f "$TOPDIR/$f" ]]; then
+    xrdcp -f "$TOPDIR/$f" "$EOS_ROOTFILES_URL$f"
+  fi
+done
+
+echo "[eos] upload cfg files"
+for c in "${{cfg_copy[@]}}"; do
+  if [[ -f "$TOPDIR/$c" ]]; then
+    xrdcp -f "$TOPDIR/$c" "$EOS_CFGS_URL$c"
+  fi
+done
+
+echo "[done] workflow complete"
+"""
+        )
+
     return str(exec_file)
+
 
 def main():
     ap = ArgumentParser()
     args = ap.parse_args()
 
+    # You said HLT is mandatory in this version
+    args.do_hlt = True
+
     if not args.fragment:
         ap.error("You must provide a fragment file via -i/--fragment (or --in).")
     if not os.path.isfile(args.fragment):
         ap.error(f"Fragment file does not exist: {args.fragment}")
+    if args.threads < 1:
+        ap.error("--threads must be >= 1")
+    if args.do_nanoaod and not args.do_miniaod:
+        ap.error("NanoAOD requires MiniAOD. Don’t disable MiniAOD if you enable NanoAOD.")
+    if args.do_premix and not args.pileup_input.strip():
+        ap.error("--do-premix requires --pileup-input (either dbs:/.../PREMIX or a local file list)")
 
-    # ensure dirs
+    # Create local directories
     exec_dir = Path(EXEC_NAME)
     logs_dir = Path(LOGS_NAME)
-    out_dir  = Path(args.out)
+    out_dir = Path(args.out)
+
     exec_dir.mkdir(exist_ok=True)
     logs_dir.mkdir(exist_ok=True)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # create exec
+    # Generate executable + submit file
     exec_file = create_exec_file(
         run=args.run,
         fragment_path=args.fragment,
         exec_dir=exec_dir,
-        out_dir=str(out_dir), 
         tag=args.tag,
         nevents=args.nevents,
         xqcut=args.xqcut,
         cmssw_version=args.cmssw,
+        do_premix=args.do_premix,
+        pileup_input=args.pileup_input,
+        do_hlt=args.do_hlt,
+        hlt_menu=args.hlt_menu,
+        do_miniaod=args.do_miniaod,
+        do_nanoaod=args.do_nanoaod,
+        conditions=args.conditions,
+        era=args.era,
+        beamspot=args.beamspot,
+        threads=args.threads,
     )
 
-    # validate + make executable + absolutize
-    if not exec_file:
-        raise RuntimeError("Internal error: create_exec_file returned None")
     exec_abs = os.path.abspath(exec_file)
     os.chmod(exec_abs, 0o755)
-    if not os.path.isfile(exec_abs):
-        raise FileNotFoundError(f"Executable not found at {exec_abs}")
 
-    # submit file (transfer the fragment so the exec has it)
+    transfer_inputs = [args.fragment]
+    if args.do_premix and args.pileup_input and os.path.isfile(args.pileup_input):
+        transfer_inputs.append(args.pileup_input)
+
     submit_file = create_submit_file(
         run=args.run,
-        cards=args.fragment,
-        tag=args.tag,
-        jobs=args.jobs,
+        transfer_inputs=transfer_inputs,
+        njobs=args.njobs,
         queue=args.queue,
         exec_file=exec_abs,
         logs_dir=str(logs_dir),
-        xqcut=args.xqcut,
+        request_cpus=args.threads,
+        desired_os=args.desired_os,
+        singularity_image=args.singularity_image,
     )
 
-    print(f"[ok] Wrote exec:   {exec_abs}")
-    print(f"[ok] Wrote submit: {submit_file}")
-    # Sanity print the executable line from the submit file
-    with open(submit_file) as fh:
-        for line in fh:
-            if line.strip().startswith("executable"):
-                print("[debug]", line.strip())
-                break
+    print(f"[ok] Wrote exec:    {exec_abs}")
+    print(f"[ok] Wrote submit: {submit_file}\n")
+    print("Next command:")
+    print(f"  condor_submit {submit_file}\n")
+
+    if args.do_premix:
+        if args.pileup_input.startswith("dbs:"):
+            print("Premix pileup input is DBS-based.")
+        else:
+            print("Premix pileup input is a local file list; it will be shipped via transfer_input_files.")
+
+    print(f"This submission requests {args.threads} CPU core(s) and runs cmsDriver with --nThreads {args.threads}.")
+
 
 if __name__ == "__main__":
     main()
