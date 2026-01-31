@@ -9,12 +9,12 @@ import math
 import errno
 import ROOT
 ROOT.gSystem.Load("libHist")
-ROOT.TH1.AddDirectory(False)  # keep hists owned by Python, not by any TFile
+ROOT.TH1.AddDirectory(False)  
 from collections import Counter, defaultdict
 from DataFormats.FWLite import Events, Handle
 from math import pi
 
-# pdgids came from pythia8 logs
+# pdgids came from Pythia8 logs
 RHADRON_PDGIDS = [
     1000993, 1009213, 1009313, 1009323, 1009113, 1009223, 1009333,
     1091114, 1092114, 1092214, 1092224, 1093114, 1093214, 1093224,
@@ -110,7 +110,6 @@ def extract_rhadron_info(file_path, label):
                 data['energy'].append(p.energy())
                 data['eta'].append(p.eta())
                 data['phi'].append(p.phi())
-                # longLived accessor may not exist
                 ll = 0
                 try:
                     ll = int(p.longLived())
@@ -277,7 +276,6 @@ def main():
     infile = args.input_file
     base = os.path.splitext(os.path.basename(infile))[0]
 
-    # Determine output directory
     if args.output_dir:
         outdir = os.path.join(args.output_dir, base)
     else:
@@ -288,11 +286,8 @@ def main():
     initialize_fwlite()
     list_tree_branches(infile)
     show_particle_methods(infile, args.label)
-
-    # make sure gDirectory is valid after closing any TFile
     ROOT.gROOT.cd()
-
-    # RHadron extraction + plots/tables
+    
     rh_data = extract_rhadron_info(infile, args.label)
 
     # PDG ID histogram
