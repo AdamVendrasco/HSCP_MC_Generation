@@ -78,6 +78,16 @@ Now that we have our cards with our desired configurations, we can begin generat
   ```bash
   python3 generate_gridpack.py   --in <INPUT CARD DIR>  --out <TARBALL OUTPUT LOCATION>   --tag <TAG>   --queue <HTCondor runtime> -j <#CORES REQUESTED>
   ```
+  
+## Running Gridpacks for Sample Generation
+#### Sample Generation via HTCondor (Recommended): Needs to be updated 
+
+#### Sample Generation locally: Needs to be udpated
+
    *  To run a gridpack, edit the relevant Python fragment file under `run_directories/` and type the following:
 ```bash
 ./run-gridpack.sh <RUN_NAME> <CMSSW_VERSION> [NEVENTS] [DEBUG_TAG]
+
+
+
+
