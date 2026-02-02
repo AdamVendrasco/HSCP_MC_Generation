@@ -28,7 +28,10 @@ MASS_MIN, MASS_MAX = 1000.0, 2600.0
 counts_packed = Counter()
 counts_pruned = Counter()
 
-
+# -------------------------
+# FWLite Handles (IMPORTANT)
+# Handle() takes ONLY a C++ type string
+# -------------------------
 h_packed = Handle("std::vector<pat::PackedGenParticle>")
 h_pruned = Handle("std::vector<reco::GenParticle>")
 h_GenMET = Handle("std::vector<reco::GenMET>")
@@ -37,7 +40,9 @@ print("\n[Setup] Looking at std::vector<pat::PackedGenParticle> (packedGenPartic
 print("[Setup] Looking at std::vector<reco::GenParticle> (prunedGenParticles)")
 print("[Setup] Looking at std::vector<reco::GenMET> (genMetTrue)")
 
-
+# -------------------------
+# Histograms: R-hadrons
+# -------------------------
 h_lead_pt    = ROOT.TH1D("lead_rhad_pt_packed",     ";leading packed R-hadron p_{T} [GeV];Events", NBINS, PT_MIN, PT_MAX)
 h_sublead_pt = ROOT.TH1D("sublead_rhad_pt_packed",  ";subleading packed R-hadron p_{T} [GeV];Events", NBINS, PT_MIN, PT_MAX)
 
@@ -52,11 +57,13 @@ h_sublead_mass = ROOT.TH1D("sublead_rhad_mass_packed",";subleading packed R-hadr
 
 h_lead_sublead_Delta_phi = ROOT.TH1D( "lead_sublead_Delta_phi_packed", ";|#Delta#phi(lead, sublead)|;Events", NBINS, 0.0, 3.7)
 
-h_GenMET_pt    = ROOT.TH1D("GenMET_pt",    ";GEN MET p_{T} [GeV];Events", 3, 0.0, 5000.0)
-h_GenMET_phi   = ROOT.TH1D("GenMET_phi",   ";GEN MET #phi;Events",        100, -4.0, 4.0)
-h_GenMET_px    = ROOT.TH1D("GenMET_px",    ";GEN MET p_{x} [GeV];Events", 100, -2000.0, 2000.0)
-h_GenMET_py    = ROOT.TH1D("GenMET_py",    ";GEN MET p_{y} [GeV];Events", 100, -2000.0, 2000.0)
-h_GenMET_sumEt = ROOT.TH1D("GenMET_sumEt", ";GEN MET #SigmaE_{T} [GeV];Events", 500, 0.0, 5000.0)
+# GEN MET plots (more realistic binning)
+h_GenMET_pt    = ROOT.TH1D("GenMET_pt",    ";GEN MET p_{T} [GeV];Events", 100, 0.0, 500.0)
+h_GenMET_phi   = ROOT.TH1D("GenMET_phi",   ";GEN MET #phi;Events",        64, -3.5, 3.5)
+h_GenMET_px    = ROOT.TH1D("GenMET_px",    ";GEN MET p_{x} [GeV];Events", 120, -600.0, 600.0)
+h_GenMET_py    = ROOT.TH1D("GenMET_py",    ";GEN MET p_{y} [GeV];Events", 120, -600.0, 600.0)
+h_GenMET_sumEt = ROOT.TH1D("GenMET_sumEt", ";GEN MET #SigmaE_{T} [GeV];Events", 200, 0.0, 5000.0)
+
 
 for h in (
     h_lead_pt, h_sublead_pt,
@@ -92,6 +99,7 @@ for FILE in FILES:
 
         if got_genmet:
             genMetVec = h_GenMET.product()
+            # usually size==1, but loop safely
             for met in genMetVec:
                 h_GenMET_pt.Fill(float(met.pt()))
                 h_GenMET_phi.Fill(float(met.phi()))
@@ -249,8 +257,8 @@ draw_overlay("c_rhad_mass_packed", MASS_MIN, MASS_MAX, h_lead_mass, h_sublead_ma
 draw_single ("c_dphi",             0.0,      5.0,      h_lead_sublead_Delta_phi,   "|#Delta#phi(lead, sublead)|", "Events", "lead_sublead_dphi_packed.png", yoffset=1.01)
 
 # GEN MET plots
-draw_single("c_genmet_pt",     -10.0,   50.0,  h_GenMET_pt,    "GEN MET p_{T} [GeV]",        "Events", "genmet_pt.png",     yoffset=1.01)
+draw_single("c_genmet_pt",     0.0,   500.0,  h_GenMET_pt,    "GEN MET p_{T} [GeV]",        "Events", "genmet_pt.png",     yoffset=1.01)
 draw_single("c_genmet_phi",   -3.5,   3.5,     h_GenMET_phi,   "GEN MET #phi",               "Events", "genmet_phi.png",    yoffset=1.01)
-draw_single("c_genmet_px", -2000.0,  2000.0,   h_GenMET_px,    "GEN MET p_{x} [GeV]",        "Events", "genmet_px.png",     yoffset=1.01)
-draw_single("c_genmet_py", -2000.0,  2000.0,   h_GenMET_py,    "GEN MET p_{y} [GeV]",        "Events", "genmet_py.png",     yoffset=1.01)
-draw_single("c_genmet_sumEt",  0.0,   5000.0,  h_GenMET_sumEt, "GEN MET #SigmaE_{T} [GeV]",  "Events", "genmet_sumEt.png",  yoffset=1.01)
+draw_single("c_genmet_px",   -600.0,  600.0,  h_GenMET_px,    "GEN MET p_{x} [GeV]",        "Events", "genmet_px.png",     yoffset=1.01)
+draw_single("c_genmet_py",   -600.0,  600.0,  h_GenMET_py,    "GEN MET p_{y} [GeV]",        "Events", "genmet_py.png",     yoffset=1.01)
+draw_single("c_genmet_sumEt",  0.0,  5000.0,  h_GenMET_sumEt, "GEN MET #SigmaE_{T} [GeV]",  "Events", "genmet_sumEt.png",  yoffset=1.01)
