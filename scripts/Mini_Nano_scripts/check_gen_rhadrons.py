@@ -14,34 +14,67 @@ FILES = [
     "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.0-MINIAODSIM.root",
     "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.1-MINIAODSIM.root",
     "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.2-MINIAODSIM.root",
-    #... need more local files.
-    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.19-MINIAODSIM.root"
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.3-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.4-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.5-MINIAODSIM.root",
+
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.6-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.7-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.8-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.9-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.10-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.11-MINIAODSIM.root",
+    
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.12-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.13-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.14-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.15-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.16-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.17-MINIAODSIM.root",
+
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.18-MINIAODSIM.root",
+    "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.19-MINIAODSIM.root",
+
 ]
 
 THRESH = 1_000_000
-MAX_EVENTS_TO_PRINT = 1
+MAX_EVENTS_TO_PRINT = 0
 
+# Individual R-hadron binning
 NBINS = 40
 PT_MIN, PT_MAX   = 0.0, 3500.0
 ETA_MIN, ETA_MAX = -6.0, 6.0
 PHI_MIN, PHI_MAX = -4.0, 4.0
 MASS_MIN, MASS_MAX = 1000.0, 2600.0
 
-PT_PAIR_MIN,  PT_PAIR_MAX   = 0.0, 2500.0
-MASS_PAIR_MIN, MASS_PAIR_MAX = 3000.0, 8000.0
-P_PAIR_MIN,   P_PAIR_MAX    = -2000.0, 2000.0
+PAIR_PT_BINS, PAIR_PT_MIN, PAIR_PT_MAX = 150, 0.0, 3000.0
+PAIR_ETA_BINS, PAIR_ETA_MIN, PAIR_ETA_MAX   = 150, -8.0, 8.0
+PAIR_PHI_BINS,  PAIR_PHI_MIN,  PAIR_PHI_MAX  = 125, -3.6, 3.6
+PAIR_MASS_BINS, PAIR_MASS_MIN, PAIR_MASS_MAX = 150, 3550.0, 9000.0
+PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX  = 150, -6000.0, 6000.0
+
+MET_PT_BINS, MET_PT_MIN, MET_PT_MAX = 150, 0.0, 5000.0
+MET_PXY_BINS, MET_PXY_MIN, MET_PXY_MAX = 150, -5000.0, 5000.0
+MET_PHI_BINS, MET_PHI_MIN, MET_PHI_MAX = 70, -3.5, 3.5
+
 
 counts_packed = Counter()
 counts_pruned = Counter()
 
-h_packed = Handle("std::vector<pat::PackedGenParticle>")
-h_pruned = Handle("std::vector<reco::GenParticle>")
-h_GenMET = Handle("std::vector<reco::GenMET>")
+h_packed   = Handle("std::vector<pat::PackedGenParticle>")  # packedGenParticles
+h_pruned   = Handle("std::vector<reco::GenParticle>")       # prunedGenParticles
+h_GenMET   = Handle("std::vector<reco::GenMET>")            # genMetTrue
+h_PFMET    = Handle("std::vector<pat::MET>")                # slimmedMETs
+h_PUPPIMET = Handle("std::vector<pat::MET>")                # slimmedMETsPuppi
 
 print("\n[Setup] Looking at std::vector<pat::PackedGenParticle> (packedGenParticles)")
 print("[Setup] Looking at std::vector<reco::GenParticle> (prunedGenParticles)")
 print("[Setup] Looking at std::vector<reco::GenMET> (genMetTrue)")
+print("[Setup] Looking at std::vector<pat::MET> (slimmedMETs)")
+print("[Setup] Looking at std::vector<pat::MET> (slimmedMETsPuppi)")
 
+
+# Individual R-hadron hists (MG5)
 h_lead_pt_MG5    = ROOT.TH1D("lead_rhad_pt_MG5",     ";leading R-hadron p_{T} [GeV];Events", NBINS, PT_MIN, PT_MAX)
 h_sublead_pt_MG5 = ROOT.TH1D("sublead_rhad_pt_MG5",  ";subleading R-hadron p_{T} [GeV];Events", NBINS, PT_MIN, PT_MAX)
 h_lead_eta_MG5   = ROOT.TH1D("lead_rhad_eta_MG5",    ";leading R-hadron #eta;Events", NBINS, ETA_MIN, ETA_MAX)
@@ -53,20 +86,34 @@ h_sublead_mass_MG5 = ROOT.TH1D("sublead_rhad_mass_MG5",";subleading R-hadron mas
 
 h_lead_sublead_Delta_phi_MG5 = ROOT.TH1D("lead_sublead_Delta_phi_MG5", ";|#Delta#phi(lead, sublead)|;Events", NBINS, 0.0, 3.7)
 
-h_rhadpair_pt_MG5   = ROOT.TH1D("rhadpair_pt_MG5",   ";(lead+sublead R-hadrons) p_{T} [GeV];Events", NBINS, 0, 3500)
-h_rhadpair_eta_MG5  = ROOT.TH1D("rhadpair_eta_MG5",  ";(lead+sublead R-hadrons) #eta;Events",        NBINS, -8, 8)
-h_rhadpair_phi_MG5  = ROOT.TH1D("rhadpair_phi_MG5",  ";(lead+sublead R-hadrons) #phi;Events",        NBINS, -5, 5)
-h_rhadpair_mass_MG5 = ROOT.TH1D("rhadpair_mass_MG5", ";(lead+sublead R-hadrons) mass [GeV];Events",  NBINS, MASS_PAIR_MIN, MASS_PAIR_MAX)
-h_rhadpair_px_MG5   = ROOT.TH1D("rhadpair_px_MG5",   ";(lead+sublead R-hadrons) p_{x} [GeV];Events", NBINS, P_PAIR_MIN, P_PAIR_MAX)
-h_rhadpair_py_MG5   = ROOT.TH1D("rhadpair_py_MG5",   ";(lead+sublead R-hadrons) p_{y} [GeV];Events", NBINS, P_PAIR_MIN, P_PAIR_MAX)
-h_rhadpair_pz_MG5   = ROOT.TH1D("rhadpair_pz_MG5",   ";(lead+sublead R-hadrons) p_{z} [GeV];Events", NBINS, -8000, 8000)
+# rhadron-pair hists (ALL share same binning/range now)
+h_rhadpair_pt_MG5   = ROOT.TH1D("rhadpair_pt_MG5",   ";(lead+sublead R-hadrons) p_{T} [GeV];Events", PAIR_PT_BINS,   PAIR_PT_MIN,   PAIR_PT_MAX)
+h_rhadpair_eta_MG5  = ROOT.TH1D("rhadpair_eta_MG5",  ";(lead+sublead R-hadrons) #eta;Events",        PAIR_ETA_BINS,  PAIR_ETA_MIN,  PAIR_ETA_MAX)
+h_rhadpair_phi_MG5  = ROOT.TH1D("rhadpair_phi_MG5",  ";(lead+sublead R-hadrons) #phi;Events",        PAIR_PHI_BINS,  PAIR_PHI_MIN,  PAIR_PHI_MAX)
+h_rhadpair_mass_MG5 = ROOT.TH1D("rhadpair_mass_MG5", ";(lead+sublead R-hadrons) mass [GeV];Events",  PAIR_MASS_BINS, PAIR_MASS_MIN, PAIR_MASS_MAX)
+h_rhadpair_px_MG5   = ROOT.TH1D("rhadpair_px_MG5",   ";(lead+sublead R-hadrons) p_{x} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_py_MG5   = ROOT.TH1D("rhadpair_py_MG5",   ";(lead+sublead R-hadrons) p_{y} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_pz_MG5   = ROOT.TH1D("rhadpair_pz_MG5",   ";(lead+sublead R-hadrons) p_{z} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
 
-h_GenMET_pt_MG5    = ROOT.TH1D("GenMET_pt_MG5",    ";GEN MET p_{T} [GeV];Events", 200, 0.0, 1000.0)
-h_GenMET_phi_MG5   = ROOT.TH1D("GenMET_phi_MG5",   ";GEN MET #phi;Events",        70, -3.5, 3.5)
-h_GenMET_px_MG5    = ROOT.TH1D("GenMET_px_MG5",   ";GEN MET p_{x} [GeV];Events", 200, -1000.0, 1000.0)
-h_GenMET_py_MG5    = ROOT.TH1D("GenMET_py_MG5",    ";GEN MET p_{y} [GeV];Events", 200, -1000.0, 1000.0)
+h_GenMET_pt_MG5    = ROOT.TH1D("GenMET_pt_MG5",    ";GEN MET p_{T} [GeV];Events", 200,  0,  250)
+h_GenMET_phi_MG5   = ROOT.TH1D("GenMET_phi_MG5",   ";GEN MET #phi;Events",        200, -3.6, 3.6)
+h_GenMET_px_MG5    = ROOT.TH1D("GenMET_px_MG5",    ";GEN MET p_{x} [GeV];Events", 200, -250.0, 250.0)
+h_GenMET_py_MG5    = ROOT.TH1D("GenMET_py_MG5",    ";GEN MET p_{y} [GeV];Events", 200, -250.0, 250.0)
 h_GenMET_sumEt_MG5 = ROOT.TH1D("GenMET_sumEt_MG5", ";GEN MET #SigmaE_{T} [GeV];Events", 200, 0.0, 9000.0)
 
+h_PFMET_pt_MG5    = ROOT.TH1D("PFMET_pt_MG5",    ";PF MET p_{T} [GeV];Events", MET_PT_BINS,  MET_PT_MIN,  MET_PT_MAX)
+h_PFMET_phi_MG5   = ROOT.TH1D("PFMET_phi_MG5",   ";PF MET #phi;Events",        MET_PHI_BINS, MET_PHI_MIN, MET_PHI_MAX)
+h_PFMET_px_MG5    = ROOT.TH1D("PFMET_px_MG5",    ";PF MET p_{x} [GeV];Events", MET_PXY_BINS, MET_PXY_MIN, MET_PXY_MAX)
+h_PFMET_py_MG5    = ROOT.TH1D("PFMET_py_MG5",    ";PF MET p_{y} [GeV];Events", MET_PXY_BINS, MET_PXY_MIN, MET_PXY_MAX)
+h_PFMET_sumEt_MG5 = ROOT.TH1D("PFMET_sumEt_MG5", ";PF MET #SigmaE_{T} [GeV];Events", 200, 0.0, 9000.0)
+
+h_PUPPIMET_pt_MG5    = ROOT.TH1D("PUPPIMET_pt_MG5",    ";PUPPI MET p_{T} [GeV];Events", MET_PT_BINS,  MET_PT_MIN,  MET_PT_MAX)
+h_PUPPIMET_phi_MG5   = ROOT.TH1D("PUPPIMET_phi_MG5",   ";PUPPI MET #phi;Events",        MET_PHI_BINS, MET_PHI_MIN, MET_PHI_MAX)
+h_PUPPIMET_px_MG5    = ROOT.TH1D("PUPPIMET_px_MG5",    ";PUPPI MET p_{x} [GeV];Events", MET_PXY_BINS, MET_PXY_MIN, MET_PXY_MAX)
+h_PUPPIMET_py_MG5    = ROOT.TH1D("PUPPIMET_py_MG5",    ";PUPPI MET p_{y} [GeV];Events", MET_PXY_BINS, MET_PXY_MIN, MET_PXY_MAX)
+h_PUPPIMET_sumEt_MG5 = ROOT.TH1D("PUPPIMET_sumEt_MG5", ";PUPPI MET #SigmaE_{T} [GeV];Events", 200, 0.0, 9000.0)
+
+# Style settings
 for h in (
     h_lead_pt_MG5, h_sublead_pt_MG5,
     h_lead_eta_MG5, h_sublead_eta_MG5,
@@ -75,11 +122,20 @@ for h in (
     h_lead_sublead_Delta_phi_MG5,
     h_rhadpair_pt_MG5, h_rhadpair_eta_MG5, h_rhadpair_phi_MG5, h_rhadpair_mass_MG5,
     h_rhadpair_px_MG5, h_rhadpair_py_MG5, h_rhadpair_pz_MG5,
-    h_GenMET_pt_MG5, h_GenMET_phi_MG5, h_GenMET_px_MG5, h_GenMET_py_MG5, h_GenMET_sumEt_MG5
+    h_GenMET_pt_MG5, h_GenMET_phi_MG5, h_GenMET_px_MG5, h_GenMET_py_MG5, h_GenMET_sumEt_MG5,
+    h_PFMET_pt_MG5, h_PFMET_phi_MG5, h_PFMET_px_MG5, h_PFMET_py_MG5, h_PFMET_sumEt_MG5,
+    h_PUPPIMET_pt_MG5, h_PUPPIMET_phi_MG5, h_PUPPIMET_px_MG5, h_PUPPIMET_py_MG5, h_PUPPIMET_sumEt_MG5
 ):
     h.SetFillStyle(0)
     h.SetFillColor(0)
     h.SetMarkerStyle(0)
+
+def fill_met_hists(hpt, hphi, hpx, hpy, hsumet, met_obj):
+    hpt.Fill(float(met_obj.pt()))
+    hphi.Fill(float(met_obj.phi()))
+    hpx.Fill(float(met_obj.px()))
+    hpy.Fill(float(met_obj.py()))
+    hsumet.Fill(float(met_obj.sumEt()))
 
 n_scanned = 0
 
@@ -87,7 +143,7 @@ for FILE in FILES:
     print(f"\n[Input] {FILE}")
     events = Events(FILE)
     printed_this_file = 0
-    file_evt = 0 
+    file_evt = 0
 
     for evt in events:
         file_evt += 1
@@ -98,17 +154,26 @@ for FILE in FILES:
         packed = h_packed.product()
         pruned = h_pruned.product()
 
+        # GEN MET (genMetTrue)
         got_genmet = evt.getByLabel("genMetTrue", h_GenMET)
         if not got_genmet:
             got_genmet = evt.getByLabel(("genMetTrue", "", "DIGI2RAW"), h_GenMET)
 
         if got_genmet:
             for met in h_GenMET.product():
-                h_GenMET_pt_MG5.Fill(float(met.pt()))
-                h_GenMET_phi_MG5.Fill(float(met.phi()))
-                h_GenMET_px_MG5.Fill(float(met.px()))
-                h_GenMET_py_MG5.Fill(float(met.py()))
-                h_GenMET_sumEt_MG5.Fill(float(met.sumEt()))
+                fill_met_hists(h_GenMET_pt_MG5, h_GenMET_phi_MG5, h_GenMET_px_MG5, h_GenMET_py_MG5, h_GenMET_sumEt_MG5, met)
+
+        # Offline PF MET (slimmedMETs)
+        got_pfmet = evt.getByLabel("slimmedMETs", h_PFMET)
+        if got_pfmet and len(h_PFMET.product()) > 0:
+            met = h_PFMET.product()[0]
+            fill_met_hists(h_PFMET_pt_MG5, h_PFMET_phi_MG5, h_PFMET_px_MG5, h_PFMET_py_MG5, h_PFMET_sumEt_MG5, met)
+
+        # Offline PUPPI MET (slimmedMETsPuppi)
+        got_puppimet = evt.getByLabel("slimmedMETsPuppi", h_PUPPIMET)
+        if got_puppimet and len(h_PUPPIMET.product()) > 0:
+            met = h_PUPPIMET.product()[0]
+            fill_met_hists(h_PUPPIMET_pt_MG5, h_PUPPIMET_phi_MG5, h_PUPPIMET_px_MG5, h_PUPPIMET_py_MG5, h_PUPPIMET_sumEt_MG5, met)
 
         for particle in packed:
             pdgid = int(particle.pdgId())
@@ -120,12 +185,11 @@ for FILE in FILES:
             if abs(pdgid) >= THRESH and particle.statusFlags().isLastCopy():
                 counts_pruned[pdgid] += 1
 
-        vecs = []  # list of (TLorentzVector, pdgid)
+        vecs = []
         for particle in packed:
             pdgid = int(particle.pdgId())
             if abs(pdgid) <= THRESH:
                 continue
-
             tlv = TLorentzVector()
             tlv.SetPtEtaPhiM(
                 float(particle.pt()),
@@ -140,7 +204,6 @@ for FILE in FILES:
         lead     = vecs[0] if len(vecs) >= 1 else None
         sub_lead = vecs[1] if len(vecs) >= 2 else None
 
-        #(prevents stale prints)
         tlv1 = tlv2 = None
         pdgid1 = pdgid2 = None
         rhad_pair = None
@@ -163,20 +226,16 @@ for FILE in FILES:
             dphi = float(tlv1.DeltaPhi(tlv2))
             h_lead_sublead_Delta_phi_MG5.Fill(abs(dphi))
 
-            # -----------------------------
-            # 4-vector = tlv1 + tlv2 (ONLY the two R-hadrons)
-            # -----------------------------
             rhad_pair = tlv1 + tlv2
 
+            # RHADRON-PAIR fills (common range)
             h_rhadpair_pt_MG5.Fill(rhad_pair.Pt())
             h_rhadpair_eta_MG5.Fill(rhad_pair.Eta())
             h_rhadpair_phi_MG5.Fill(rhad_pair.Phi())
             h_rhadpair_mass_MG5.Fill(rhad_pair.M())
-
             h_rhadpair_px_MG5.Fill(rhad_pair.Px())
             h_rhadpair_py_MG5.Fill(rhad_pair.Py())
             h_rhadpair_pz_MG5.Fill(rhad_pair.Pz())
-
 
         if MAX_EVENTS_TO_PRINT != 0 and (MAX_EVENTS_TO_PRINT < 0 or printed_this_file < MAX_EVENTS_TO_PRINT):
             printed_this_file += 1
@@ -225,18 +284,55 @@ for h in (
     h_lead_sublead_Delta_phi_MG5,
     h_rhadpair_pt_MG5, h_rhadpair_eta_MG5, h_rhadpair_phi_MG5, h_rhadpair_mass_MG5,
     h_rhadpair_px_MG5, h_rhadpair_py_MG5, h_rhadpair_pz_MG5,
-    h_GenMET_pt_MG5, h_GenMET_phi_MG5, h_GenMET_px_MG5, h_GenMET_py_MG5, h_GenMET_sumEt_MG5
+    h_GenMET_pt_MG5, h_GenMET_phi_MG5, h_GenMET_px_MG5, h_GenMET_py_MG5, h_GenMET_sumEt_MG5,
+    h_PFMET_pt_MG5, h_PFMET_phi_MG5, h_PFMET_px_MG5, h_PFMET_py_MG5, h_PFMET_sumEt_MG5,
+    h_PUPPIMET_pt_MG5, h_PUPPIMET_phi_MG5, h_PUPPIMET_px_MG5, h_PUPPIMET_py_MG5, h_PUPPIMET_sumEt_MG5
 ):
     h.Write()
 fout.Close()
 print(f"[Output] wrote ROOT file: {outroot}")
 
+def report_flow(h, label):
+    nb = h.GetNbinsX()
+    uf = h.GetBinContent(0)
+    of = h.GetBinContent(nb + 1)
+    xmin = h.GetXaxis().GetXmin()
+    xmax = h.GetXaxis().GetXmax()
+    entries = h.GetEntries()
+    if uf > 0 or of > 0:
+        frac_of = (of / entries) if entries > 0 else 0.0
+        frac_uf = (uf / entries) if entries > 0 else 0.0
+        print(f"[Flow] {label}: range=[{xmin:g},{xmax:g}]  under={uf:.0f} ({frac_uf:.3%})  over={of:.0f} ({frac_of:.3%})")
+    else:
+        print(f"[Flow] {label}: range=[{xmin:g},{xmax:g}]  under=0  over=0")
+
+print("\n[Flow report] rhadron pair hist under/overflow (pair = tlv1 + tlv2):")
+report_flow(h_rhadpair_pt_MG5,   "RhadPair pt")
+report_flow(h_rhadpair_eta_MG5,  "RhadPair eta")
+report_flow(h_rhadpair_phi_MG5,  "RhadPair phi")
+report_flow(h_rhadpair_mass_MG5, "RhadPair mass")
+report_flow(h_rhadpair_px_MG5,   "RhadPair px")
+report_flow(h_rhadpair_py_MG5,   "RhadPair py")
+report_flow(h_rhadpair_pz_MG5,   "RhadPair pz")
+
+print("\n[Flow report] MET hist under/overflow:")
+report_flow(h_GenMET_pt_MG5,    "GenMET pt")
+report_flow(h_PFMET_pt_MG5,     "PF MET pt")
+report_flow(h_PUPPIMET_pt_MG5,  "PUPPI MET pt")
+report_flow(h_GenMET_px_MG5,    "GenMET px")
+report_flow(h_PFMET_px_MG5,     "PF MET px")
+report_flow(h_PUPPIMET_px_MG5,  "PUPPI MET px")
+report_flow(h_GenMET_py_MG5,    "GenMET py")
+report_flow(h_PFMET_py_MG5,     "PF MET py")
+report_flow(h_PUPPIMET_py_MG5,  "PUPPI MET py")
 
 CMS.SetExtraText("Private Work: Gluino GEN-level MC Simulation")
 CMS.SetLumi(None, run="Run 3")
 CMS.SetEnergy(13.6)
 
-def draw_single(name, xmin, xmax, h, xtitle, ytitle, outpng, yoffset=1.45, titlesize=0.045, labelsize=0.040, logy=False, ymin_log=0.1):
+def draw_single(name, xmin, xmax, h, xtitle, ytitle, outpng,
+                yoffset=1.45, titlesize=0.045, labelsize=0.040,
+                logy=False, ymin_log=0.1):
     ymax = max(h.GetMaximum(), 1.0) * 1.35
     ymin = ymin_log if logy else 0.0
     canv = CMS.cmsCanvas(name, xmin, xmax, ymin, ymax, xtitle, ytitle, square=False, iPos=11)
@@ -259,8 +355,9 @@ def draw_single(name, xmin, xmax, h, xtitle, ytitle, outpng, yoffset=1.45, title
     canv.SaveAs(outpng)
     print(f"[Output] wrote PNG: {outpng}")
 
-
-def draw_overlay(name, xmin, xmax, h1, h2, xtitle, ytitle, outpng, yoffset=1.45, titlesize=0.045, labelsize=0.040, logy=False, ymin_log=0.1):
+def draw_overlay(name, xmin, xmax, h1, h2, xtitle, ytitle, outpng,
+                 yoffset=1.45, titlesize=0.045, labelsize=0.040,
+                 logy=False, ymin_log=0.1):
     ymax = max(h1.GetMaximum(), h2.GetMaximum(), 1.0) * 1.35
     ymin = ymin_log if logy else 0.0
 
@@ -291,26 +388,37 @@ def draw_overlay(name, xmin, xmax, h1, h2, xtitle, ytitle, outpng, yoffset=1.45,
     canv.SaveAs(outpng)
     print(f"[Output] wrote PNG: {outpng}")
 
-# R-hadron plots
-draw_overlay("c_rhad_pt_MG5",   PT_MIN,   PT_MAX,   h_lead_pt_MG5,   h_sublead_pt_MG5,   "R-hadron p_{T} [GeV]", "Events", "rhad_pt_MG5.png",    yoffset=1.01)
-draw_overlay("c_rhad_eta_MG5",  ETA_MIN,  ETA_MAX,  h_lead_eta_MG5,  h_sublead_eta_MG5,  "R-hadron #eta",       "Events", "rhad_eta_MG5.png",  yoffset=1.01)
-draw_overlay("c_rhad_phi_MG5",  PHI_MIN,  PHI_MAX,  h_lead_phi_MG5,  h_sublead_phi_MG5,  "R-hadron #phi",       "Events", "rhad_phi_MG5.png",   yoffset=1.01)
-draw_overlay("c_rhad_mass_MG5", MASS_MIN, MASS_MAX, h_lead_mass_MG5, h_sublead_mass_MG5, "R-hadron mass [GeV]", "Events", "rhad_mass_MG5.png",  yoffset=1.01)
-draw_single ("c_dphi_MG5",      0.0,      3.5,      h_lead_sublead_Delta_phi_MG5,   "|#Delta#phi(lead, sublead)|", "Events", "lead_sublead_dphi_MG5.png", yoffset=1.01)
+# Individual R-hadron plots
+draw_overlay("c_rhad_pt_MG5",   PT_MIN,   PT_MAX,   h_lead_pt_MG5,   h_sublead_pt_MG5,  "R-hadron p_{T} [GeV]", "Events", "rhad_pt_MG5.png",   yoffset=1.01)
+draw_overlay("c_rhad_eta_MG5",  ETA_MIN,  ETA_MAX,  h_lead_eta_MG5,  h_sublead_eta_MG5, "R-hadron #eta",        "Events", "rhad_eta_MG5.png",  yoffset=1.01)
+draw_overlay("c_rhad_phi_MG5",  PHI_MIN,  PHI_MAX,  h_lead_phi_MG5,  h_sublead_phi_MG5, "R-hadron #phi",        "Events", "rhad_phi_MG5.png",  yoffset=1.01)
+draw_overlay("c_rhad_mass_MG5", MASS_MIN, MASS_MAX, h_lead_mass_MG5, h_sublead_mass_MG5,"R-hadron mass [GeV]",  "Events", "rhad_mass_MG5.png", yoffset=1.01)
+draw_single ("c_dphi_MG5",      0.0,      3.5,      h_lead_sublead_Delta_phi_MG5, "|#Delta#phi(lead, sublead)|", "Events", "lead_sublead_dphi_MG5.png", yoffset=1.01)
 
-# sum rhadrons plots (lead+sublead only)
-draw_single("c_rhadpair_pt_MG5",   0,   3500,    h_rhadpair_pt_MG5,   "(lead+sublead R-hadrons) p_{T} [GeV]", "Events", "rhadpair_pt_MG5.png", yoffset=1.01)
-draw_single("c_rhadpair_eta_MG5",  -8,           8,              h_rhadpair_eta_MG5,  "(lead+sublead R-hadrons) #eta",        "Events", "rhadpair_eta_MG5.png",  yoffset=1.01)
-draw_single("c_rhadpair_phi_MG5",  -5,           5,              h_rhadpair_phi_MG5,  "(lead+sublead R-hadrons) #phi",        "Events", "rhadpair_phi_MG5.png",  yoffset=1.01)
-draw_single("c_rhadpair_mass_MG5", MASS_PAIR_MIN, MASS_PAIR_MAX,  h_rhadpair_mass_MG5, "(lead+sublead R-hadrons) mass [GeV]",  "Events", "rhadpair_mass_MG5.png", yoffset=1.01)
+# combined rhadron plots
+draw_single("c_rhadpair_pt_MG5",   PAIR_PT_MIN,   PAIR_PT_MAX,   h_rhadpair_pt_MG5,   "(lead+sublead R-hadrons) p_{T} [GeV]", "Events", "rhadpair_pt_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_rhadpair_eta_MG5",  PAIR_ETA_MIN,  PAIR_ETA_MAX,  h_rhadpair_eta_MG5,  "(lead+sublead R-hadrons) #eta",        "Events", "rhadpair_eta_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_rhadpair_phi_MG5",  PAIR_PHI_MIN,  PAIR_PHI_MAX,  h_rhadpair_phi_MG5,  "(lead+sublead R-hadrons) #phi",        "Events", "rhadpair_phi_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_rhadpair_mass_MG5", PAIR_MASS_MIN, PAIR_MASS_MAX, h_rhadpair_mass_MG5, "(lead+sublead R-hadrons) mass [GeV]",  "Events", "rhadpair_mass_MG5.png", logy=True, yoffset=1.01)
+draw_single("c_rhadpair_px_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_px_MG5,   "(lead+sublead R-hadrons) p_{x} [GeV]", "Events", "rhadpair_px_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_rhadpair_py_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_py_MG5,   "(lead+sublead R-hadrons) p_{y} [GeV]", "Events", "rhadpair_py_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_rhadpair_pz_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_pz_MG5,   "(lead+sublead R-hadrons) p_{z} [GeV]", "Events", "rhadpair_pz_MG5.png",   logy=True, yoffset=1.01)
 
-draw_single("c_rhadpair_px_MG5",   P_PAIR_MIN,    P_PAIR_MAX,     h_rhadpair_px_MG5,   "(lead+sublead R-hadrons) p_{x} [GeV]", "Events", "rhadpair_px_MG5.png",   yoffset=1.01)
-draw_single("c_rhadpair_py_MG5",   P_PAIR_MIN,    P_PAIR_MAX,     h_rhadpair_py_MG5,   "(lead+sublead R-hadrons) p_{y} [GeV]", "Events", "rhadpair_py_MG5.png",   yoffset=1.01)
-draw_single("c_rhadpair_pz_MG5",   -8000,    8000,     h_rhadpair_pz_MG5,   "(lead+sublead R-hadrons) p_{z} [GeV]", "Events", "rhadpair_pz_MG5.png",   yoffset=1.01)
+# MET plots 
+draw_single("c_genmet_pt_MG5",      0,  250,  h_GenMET_pt_MG5,   "GEN MET p_{T} [GeV]",   "Events", "genmet_pt_MG5.png",   logy=True, yoffset=1.01, ymin_log=0.1)
+draw_single("c_genmet_phi_MG5",     MET_PHI_MIN, MET_PHI_MAX, h_GenMET_phi_MG5,  "GEN MET #phi",          "Events", "genmet_phi_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_genmet_px_MG5",      0, 250, h_GenMET_px_MG5,   "GEN MET p_{x} [GeV]",   "Events", "genmet_px_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_genmet_py_MG5",      0, 250, h_GenMET_py_MG5,   "GEN MET p_{y} [GeV]",   "Events", "genmet_py_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_genmet_sumEt_MG5",   0.0, 9000.0, h_GenMET_sumEt_MG5, "#SigmaE_{T} [GeV]", "Events",       "genmet_sumEt_MG5.png",          logy=True, yoffset=1.01)
 
-# GEN MET plots
-draw_single("c_genmet_pt_MG5",    0.0,  1000.0,  h_GenMET_pt_MG5,    "GEN MET p_{T} [GeV]",        "Events", "genmet_pt_MG5.png",    logy=True,  yoffset=1.01,  ymin_log=0.1)
-draw_single("c_genmet_phi_MG5",  -3.5,    3.5,  h_GenMET_phi_MG5,   "GEN MET #phi",               "Events", "genmet_phi_MG5.png",   logy=True,  yoffset=1.01)
-draw_single("c_genmet_px_MG5",  -1000.0, 1000.0, h_GenMET_px_MG5,    "GEN MET p_{x} [GeV]",        "Events", "genmet_px_MG5.png",    logy=True,  yoffset=1.01)
-draw_single("c_genmet_py_MG5",  -1000.0,  1000.0, h_GenMET_py_MG5,    "GEN MET p_{y} [GeV]",        "Events", "genmet_py_MG5.png",    logy=True,  yoffset=1.01)
-draw_single("c_genmet_sumEt_MG5", 0.0,  9000.0, h_GenMET_sumEt_MG5, "#SigmaE_{T} [GeV]",          "Events", "genmet_sumEt_MG5.png", logy=True,  yoffset=1.01)
+draw_single("c_pfmet_pt_MG5",       MET_PT_MIN,  MET_PT_MAX,  h_PFMET_pt_MG5,    "PF MET p_{T} [GeV]",    "Events", "pfmet_pt_MG5.png",    logy=True, yoffset=1.01, ymin_log=0.1)
+draw_single("c_pfmet_phi_MG5",      MET_PHI_MIN, MET_PHI_MAX, h_PFMET_phi_MG5,   "PF MET #phi",           "Events", "pfmet_phi_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_pfmet_px_MG5",       MET_PXY_MIN, MET_PXY_MAX, h_PFMET_px_MG5,    "PF MET p_{x} [GeV]",    "Events", "pfmet_px_MG5.png",    logy=True, yoffset=1.01)
+draw_single("c_pfmet_py_MG5",       MET_PXY_MIN, MET_PXY_MAX, h_PFMET_py_MG5,    "PF MET p_{y} [GeV]",    "Events", "pfmet_py_MG5.png",    logy=True, yoffset=1.01)
+draw_single("c_pfmet_sumEt_MG5",    0.0, 9000.0, h_PFMET_sumEt_MG5, "#SigmaE_{T} [GeV]",                  "Events", "pfmet_sumEt_MG5.png", logy=True, yoffset=1.01)
+
+draw_single("c_puppimet_pt_MG5",    MET_PT_MIN,  MET_PT_MAX,  h_PUPPIMET_pt_MG5, "PUPPI MET p_{T} [GeV]", "Events", "puppimet_pt_MG5.png", logy=True, yoffset=1.01, ymin_log=0.1)
+draw_single("c_puppimet_phi_MG5",   MET_PHI_MIN, MET_PHI_MAX, h_PUPPIMET_phi_MG5,"PUPPI MET #phi",        "Events", "puppimet_phi_MG5.png", logy=True, yoffset=1.01)
+draw_single("c_puppimet_px_MG5",    MET_PXY_MIN, MET_PXY_MAX, h_PUPPIMET_px_MG5, "PUPPI MET p_{x} [GeV]", "Events", "puppimet_px_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_puppimet_py_MG5",    MET_PXY_MIN, MET_PXY_MAX, h_PUPPIMET_py_MG5, "PUPPI MET p_{y} [GeV]", "Events", "puppimet_py_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_puppimet_sumEt_MG5", 0.0, 9000.0, h_PUPPIMET_sumEt_MG5, "#SigmaE_{T} [GeV]", "Events", "puppimet_sumEt_MG5.png", logy=True, yoffset=1.01)
