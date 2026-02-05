@@ -520,7 +520,6 @@ draw_single("c_rhadpair_px_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_px_M
 draw_single("c_rhadpair_py_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_py_MG5,   "(lead+sublead R-hadrons) p_{y} [GeV]", "Events", "rhadpair_py_MG5.png",   logy=True, yoffset=1.01)
 draw_single("c_rhadpair_pz_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_pz_MG5,   "(lead+sublead R-hadrons) p_{z} [GeV]", "Events", "rhadpair_pz_MG5.png",   logy=True, yoffset=1.01)
 
-
 # MET plots 
 draw_single("c_genmet_pt_MG5",      0,  250,  h_GenMET_pt_MG5,   "GEN MET p_{T} [GeV]",   "Events", "genmet_pt_MG5.png",   logy=True, yoffset=1.01, ymin_log=0.1)
 draw_single("c_genmet_phi_MG5",     MET_PHI_MIN, MET_PHI_MAX, h_GenMET_phi_MG5,  "GEN MET #phi",          "Events", "genmet_phi_MG5.png",  logy=True, yoffset=1.01)
