@@ -4,7 +4,6 @@ import cmsstyle as CMS
 from collections import Counter
 from ROOT import TLorentzVector
 from DataFormats.FWLite import Handle, Events
-
 import subprocess
 import shutil
 
@@ -12,7 +11,7 @@ ROOT.gROOT.SetBatch(True)
 ROOT.gSystem.Load("libFWCoreFWLite.so")
 ROOT.gSystem.Load("libDataFormatsFWLite.so")
 ROOT.AutoLibraryLoader.enable()
-
+ROOT.TH1.SetDefaultSumw2(True)
 FILES = [
     "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.0-MINIAODSIM.root",
     "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.1-MINIAODSIM.root",
@@ -36,8 +35,8 @@ FILES = [
     "root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/root_files/PrivateSamples-Gael/Pileup_included/HSCP-Gluino_Par-M-1800/HSCP-Gluino_Par-M-1800_xqcut150_el8_amd64_gcc12_2024-CMSSW_14_0_22-n5000-Run3_2024-job82856820.19-MINIAODSIM.root",
 ]
 
-MASS_POINT="1800"
-SAMPLE_TYPE="Gluino"
+MASS_POINT = "1800"
+SAMPLE_TYPE = "Gluino"
 THRESH = 1_000_000
 MAX_EVENTS_TO_PRINT = 0
 
@@ -70,9 +69,13 @@ def _normalize_dataset_string(s: str) -> str:
 
 
 def _as_xrootd_url(redirector: str, store_path: str) -> str:
+    """
+    Build a ROOT xrootd URL with an ABSOLUTE /store/... path.
+    """
     r = (redirector or "").strip()
     if not r:
         r = "root://cmsxrootd.fnal.gov/"
+
     if not r.endswith("/"):
         r += "/"
 
@@ -93,6 +96,10 @@ def _as_xrootd_url(redirector: str, store_path: str) -> str:
 
 
 def get_das_root_files(dataset, nfiles=20, redirector="root://cmsxrootd.fnal.gov/"):
+    """
+    Returns a list of xrootd URLs for files in a DAS dataset.
+    Requires dasgoclient in PATH.
+    """
     if shutil.which("dasgoclient") is None:
         print("[DAS] dasgoclient not found in PATH -> skipping DAS file retrieval.")
         return []
@@ -165,7 +172,6 @@ h_PUPPIMET = Handle("std::vector<pat::MET>")
 
 print("\n[Setup] packedGenParticles / prunedGenParticles / genMetTrue / slimmedMETs / slimmedMETsPuppi")
 
-
 h_lead_pt_MG5 = ROOT.TH1D("lead_rhad_pt_MG5", ";leading R-hadron p_{T} [GeV];Events", NBINS, PT_MIN, PT_MAX)
 h_sublead_pt_MG5 = ROOT.TH1D("sublead_rhad_pt_MG5", ";subleading R-hadron p_{T} [GeV];Events", NBINS, PT_MIN, PT_MAX)
 h_lead_eta_MG5 = ROOT.TH1D("lead_rhad_eta_MG5", ";leading R-hadron #eta;Events", NBINS, ETA_MIN, ETA_MAX)
@@ -177,20 +183,24 @@ h_sublead_mass_MG5 = ROOT.TH1D("sublead_rhad_mass_MG5", ";subleading R-hadron ma
 
 h_lead_sublead_Delta_phi_MG5 = ROOT.TH1D("lead_sublead_Delta_phi_MG5", ";|#Delta#phi(lead, sublead)|;Events", NBINS, 0.0, 3.7)
 
-h_rhadpair_pt_MG5 = ROOT.TH1D("rhadpair_pt_MG5", ";(lead+sublead R-hadrons) p_{T} [GeV];Events",  PAIR_PT_BINS, PAIR_PT_MIN, PAIR_PT_MAX)
-h_rhadpair_eta_MG5 = ROOT.TH1D("rhadpair_eta_MG5", ";(lead+sublead R-hadrons) #eta;Events",   PAIR_ETA_BINS, PAIR_ETA_MIN, PAIR_ETA_MAX)
-h_rhadpair_phi_MG5 = ROOT.TH1D("rhadpair_phi_MG5", ";(lead+sublead R-hadrons) #phi;Events",   PAIR_PHI_BINS, PAIR_PHI_MIN, PAIR_PHI_MAX)
-h_rhadpair_mass_MG5 = ROOT.TH1D("rhadpair_mass_MG5", ";(lead+sublead R-hadrons) mass [GeV];Events",    PAIR_MASS_BINS, PAIR_MASS_MIN, PAIR_MASS_MAX)
-h_rhadpair_px_MG5 = ROOT.TH1D("rhadpair_px_MG5", ";(lead+sublead R-hadrons) p_{x} [GeV];Events",  PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
-h_rhadpair_py_MG5 = ROOT.TH1D("rhadpair_py_MG5", ";(lead+sublead R-hadrons) p_{y} [GeV];Events",  PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
-h_rhadpair_pz_MG5 = ROOT.TH1D("rhadpair_pz_MG5", ";(lead+sublead R-hadrons) p_{z} [GeV];Events",  PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_pt_MG5 = ROOT.TH1D("rhadpair_pt_MG5", ";(lead+sublead R-hadrons) p_{T} [GeV];Events", PAIR_PT_BINS, PAIR_PT_MIN, PAIR_PT_MAX)
+h_rhadpair_eta_MG5 = ROOT.TH1D("rhadpair_eta_MG5", ";(lead+sublead R-hadrons) #eta;Events", PAIR_ETA_BINS, PAIR_ETA_MIN, PAIR_ETA_MAX)
+h_rhadpair_phi_MG5 = ROOT.TH1D("rhadpair_phi_MG5", ";(lead+sublead R-hadrons) #phi;Events", PAIR_PHI_BINS, PAIR_PHI_MIN, PAIR_PHI_MAX)
+h_rhadpair_mass_MG5 = ROOT.TH1D("rhadpair_mass_MG5", ";(lead+sublead R-hadrons) mass [GeV];Events", PAIR_MASS_BINS, PAIR_MASS_MIN, PAIR_MASS_MAX)
+h_rhadpair_px_MG5 = ROOT.TH1D("rhadpair_px_MG5", ";(lead+sublead R-hadrons) p_{x} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_py_MG5 = ROOT.TH1D("rhadpair_py_MG5", ";(lead+sublead R-hadrons) p_{y} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_pz_MG5 = ROOT.TH1D("rhadpair_pz_MG5", ";(lead+sublead R-hadrons) p_{z} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
 
 h_GenMET_pt_MG5 = ROOT.TH1D("GenMET_pt_MG5", ";GEN MET p_{T} [GeV];Events", 200, 0, 250)
 h_GenMET_phi_MG5 = ROOT.TH1D("GenMET_phi_MG5", ";GEN MET #phi;Events", 100, -3.6, 3.6)
 h_GenMET_px_MG5 = ROOT.TH1D("GenMET_px_MG5", ";GEN MET p_{x} [GeV];Events", 200, -250.0, 250.0)
 h_GenMET_py_MG5 = ROOT.TH1D("GenMET_py_MG5", ";GEN MET p_{y} [GeV];Events", 200, -250.0, 250.0)
 h_GenMET_sumEt_MG5 = ROOT.TH1D("GenMET_sumEt_MG5", ";GEN MET #SigmaE_{T} [GeV];Events", 200, 0.0, 9000.0)
-h_GenMET_phi_pxpyThresh_MG5 = ROOT.TH1D("GenMET_phi_pxpyThresh_MG5",f";GEN MET #phi (|p_{{x}}|,|p_{{y}}|>{GENMET_PXY_ABS_THRESH} GeV);Events",100, -3.6, 3.6)
+h_GenMET_phi_pxpyThresh_MG5 = ROOT.TH1D(
+    "GenMET_phi_pxpyThresh_MG5",
+    f";GEN MET #phi (|p_{{x}}|,|p_{{y}}|>{GENMET_PXY_ABS_THRESH} GeV);Events",
+    100, -3.6, 3.6
+)
 
 h_PFMET_pt_MG5 = ROOT.TH1D("PFMET_pt_MG5", ";PF MET p_{T} [GeV];Events", MET_PT_BINS, MET_PT_MIN, MET_PT_MAX)
 h_PFMET_phi_MG5 = ROOT.TH1D("PFMET_phi_MG5", ";PF MET #phi;Events", MET_PHI_BINS, MET_PHI_MIN, MET_PHI_MAX)
@@ -204,24 +214,56 @@ h_PUPPIMET_px_MG5 = ROOT.TH1D("PUPPIMET_px_MG5", ";PUPPI MET p_{x} [GeV];Events"
 h_PUPPIMET_py_MG5 = ROOT.TH1D("PUPPIMET_py_MG5", ";PUPPI MET p_{y} [GeV];Events", MET_PXY_BINS, MET_PXY_MIN, MET_PXY_MAX)
 h_PUPPIMET_sumEt_MG5 = ROOT.TH1D("PUPPIMET_sumEt_MG5", ";PUPPI MET #SigmaE_{T} [GeV];Events", 200, 0.0, 9000.0)
 
-h_GenMETphivsGenMETpt_MG5 = ROOT.TH2D("GenMETphivsGenMETpt_MG5", ";GEN MET p_{T} [GeV];GEN MET #phi", H2_BINS, GENMET_PT_MIN, GENMET_PT_MAX, H2_BINS, GENMET_PHI_MIN, GENMET_PHI_MAX)
-h_GenMETptvsGenMETpx_MG5 = ROOT.TH2D("GenMETptvsGenMETpx_MG5", ";GEN MET p_{T} [GeV];GEN MET p_{x} [GeV]", H2_BINS, GENMET_PT_MIN, GENMET_PT_MAX, H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX)
-h_GenMETptvsGenMETpy_MG5 = ROOT.TH2D("GenMETptvsGenMETpy_MG5", ";GEN MET p_{T} [GeV];GEN MET p_{y} [GeV]", H2_BINS, GENMET_PT_MIN, GENMET_PT_MAX, H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX)
-h_GenMETpxvsGenMETphi_MG5 = ROOT.TH2D("GenMETpxvsGenMETphi_MG5", ";GEN MET p_{x} [GeV];GEN MET #phi", H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX, H2_BINS, GENMET_PHI_MIN, GENMET_PHI_MAX)
-h_GenMETpyvsGenMETphi_MG5 = ROOT.TH2D("GenMETpyvsGenMETphi_MG5", ";GEN MET p_{y} [GeV];GEN MET #phi", H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX, H2_BINS, GENMET_PHI_MIN, GENMET_PHI_MAX)
-h_GenMETpxvsGenMETpy_MG5 = ROOT.TH2D("GenMETpxvsGenMETpy_MG5", ";GEN MET p_{x} [GeV];GEN MET p_{y} [GeV]", H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX, H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX)
+h_GenMETphivsGenMETpt_MG5 = ROOT.TH2D(
+    "GenMETphivsGenMETpt_MG5", ";GEN MET p_{T} [GeV];GEN MET #phi",
+    H2_BINS, GENMET_PT_MIN, GENMET_PT_MAX,
+    H2_BINS, GENMET_PHI_MIN, GENMET_PHI_MAX
+)
+h_GenMETptvsGenMETpx_MG5 = ROOT.TH2D(
+    "GenMETptvsGenMETpx_MG5", ";GEN MET p_{T} [GeV];GEN MET p_{x} [GeV]",
+    H2_BINS, GENMET_PT_MIN, GENMET_PT_MAX,
+    H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX
+)
+h_GenMETptvsGenMETpy_MG5 = ROOT.TH2D(
+    "GenMETptvsGenMETpy_MG5", ";GEN MET p_{T} [GeV];GEN MET p_{y} [GeV]",
+    H2_BINS, GENMET_PT_MIN, GENMET_PT_MAX,
+    H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX
+)
+h_GenMETpxvsGenMETphi_MG5 = ROOT.TH2D(
+    "GenMETpxvsGenMETphi_MG5", ";GEN MET p_{x} [GeV];GEN MET #phi",
+    H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX,
+    H2_BINS, GENMET_PHI_MIN, GENMET_PHI_MAX
+)
+h_GenMETpyvsGenMETphi_MG5 = ROOT.TH2D(
+    "GenMETpyvsGenMETphi_MG5", ";GEN MET p_{y} [GeV];GEN MET #phi",
+    H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX,
+    H2_BINS, GENMET_PHI_MIN, GENMET_PHI_MAX
+)
+h_GenMETpxvsGenMETpy_MG5 = ROOT.TH2D(
+    "GenMETpxvsGenMETpy_MG5", ";GEN MET p_{x} [GeV];GEN MET p_{y} [GeV]",
+    H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX,
+    H2_BINS, GENMET_PXY_MIN, GENMET_PXY_MAX
+)
 
-# Local vs DAS compare hists
-h_GenParticle_pt_MG5 = ROOT.TH1D("GenParticle_pt_MG5", ";GenParticle p_{T} [GeV];Particles", 200, PT_MIN, PT_MAX)
-h_GenParticle_eta_MG5  = ROOT.TH1D("GenParticle_eta_MG5",  ";GenParticle #eta;Particles", 160, -8.0, 8.0)
-h_GenParticle_phi_MG5  = ROOT.TH1D("GenParticle_phi_MG5",  ";GenParticle #phi;Particles", 128, -3.6, 3.6)
-h_GenParticle_mass_MG5 = ROOT.TH1D("GenParticle_mass_MG5", ";GenParticle mass [GeV];Particles", 200, 0.0, 3000.0)
-h_GenParticle_pt_DAS = ROOT.TH1D("GenParticle_pt_DAS", ";GenParticle p_{T} [GeV];Particles", 200, PT_MIN, PT_MAX)
-h_GenParticle_phi_DAS  = ROOT.TH1D("GenParticle_phi_DAS",  ";GenParticle #phi;Particles", 128, -3.6, 3.6)
-h_GenParticle_mass_DAS = ROOT.TH1D("GenParticle_mass_DAS", ";GenParticle mass [GeV];Particles", 200, 0.0, 3000.0)
-h_GenParticle_eta_DAS  = ROOT.TH1D("GenParticle_eta_DAS",  ";GenParticle #eta;Particles", 160, -8.0, 8.0)
+h_GenParticle_pt_MG5   = ROOT.TH1D("GenParticle_pt_MG5",   ";GenParticle p_{T} [GeV];Particles", 200, PT_MIN, PT_MAX)
+h_GenParticle_eta_MG5  = ROOT.TH1D("GenParticle_eta_MG5",  ";GenParticle #eta;Particles",        200, ETA_MIN, ETA_MAX)
+h_GenParticle_phi_MG5  = ROOT.TH1D("GenParticle_phi_MG5",  ";GenParticle #phi;Particles",        200, PHI_MIN, PHI_MAX)
+h_GenParticle_mass_MG5 = ROOT.TH1D("GenParticle_mass_MG5", ";GenParticle mass [GeV];Particles",  200, 0.0, 3000.0)
 
-# Style
+h_GenParticle_pt_DAS   = ROOT.TH1D("GenParticle_pt_DAS",   ";GenParticle p_{T} [GeV];Particles", 200, PT_MIN, PT_MAX)
+h_GenParticle_eta_DAS  = ROOT.TH1D("GenParticle_eta_DAS",  ";GenParticle #eta;Particles",        200, ETA_MIN, ETA_MAX)
+h_GenParticle_phi_DAS  = ROOT.TH1D("GenParticle_phi_DAS",  ";GenParticle #phi;Particles",        200, PHI_MIN, PHI_MAX)
+h_GenParticle_mass_DAS = ROOT.TH1D("GenParticle_mass_DAS", ";GenParticle mass [GeV];Particles",  200, 0.0, 3000.0)
+
+# NEW: DAS (Pythia8) rhadron-pair histograms
+h_rhadpair_pt_DAS = ROOT.TH1D("rhadpair_pt_DAS", ";(lead+sublead R-hadrons) p_{T} [GeV];Events", PAIR_PT_BINS, PAIR_PT_MIN, PAIR_PT_MAX)
+h_rhadpair_eta_DAS = ROOT.TH1D("rhadpair_eta_DAS", ";(lead+sublead R-hadrons) #eta;Events", PAIR_ETA_BINS, PAIR_ETA_MIN, PAIR_ETA_MAX)
+h_rhadpair_phi_DAS = ROOT.TH1D("rhadpair_phi_DAS", ";(lead+sublead R-hadrons) #phi;Events", PAIR_PHI_BINS, PAIR_PHI_MIN, PAIR_PHI_MAX)
+h_rhadpair_mass_DAS = ROOT.TH1D("rhadpair_mass_DAS", ";(lead+sublead R-hadrons) mass [GeV];Events", PAIR_MASS_BINS, PAIR_MASS_MIN, PAIR_MASS_MAX)
+h_rhadpair_px_DAS = ROOT.TH1D("rhadpair_px_DAS", ";(lead+sublead R-hadrons) p_{x} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_py_DAS = ROOT.TH1D("rhadpair_py_DAS", ";(lead+sublead R-hadrons) p_{y} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+h_rhadpair_pz_DAS = ROOT.TH1D("rhadpair_pz_DAS", ";(lead+sublead R-hadrons) p_{z} [GeV];Events", PAIR_PXYZ_BINS, PAIR_PXYZ_MIN, PAIR_PXYZ_MAX)
+
 for h in (
     h_lead_pt_MG5, h_sublead_pt_MG5, h_lead_eta_MG5, h_sublead_eta_MG5,
     h_lead_phi_MG5, h_sublead_phi_MG5, h_lead_mass_MG5, h_sublead_mass_MG5,
@@ -234,10 +276,11 @@ for h in (
     h_PUPPIMET_pt_MG5, h_PUPPIMET_phi_MG5, h_PUPPIMET_px_MG5, h_PUPPIMET_py_MG5, h_PUPPIMET_sumEt_MG5,
     h_GenMETphivsGenMETpt_MG5, h_GenMETptvsGenMETpx_MG5, h_GenMETptvsGenMETpy_MG5,
     h_GenMETpxvsGenMETphi_MG5, h_GenMETpyvsGenMETphi_MG5, h_GenMETpxvsGenMETpy_MG5,
-    h_GenParticle_pt_MG5, h_GenParticle_pt_DAS,
-    h_GenParticle_eta_MG5, h_GenParticle_eta_DAS,
-    h_GenParticle_phi_MG5, h_GenParticle_phi_DAS,
-    h_GenParticle_mass_MG5, h_GenParticle_mass_DAS,
+    h_GenParticle_pt_MG5, h_GenParticle_eta_MG5, h_GenParticle_phi_MG5, h_GenParticle_mass_MG5,
+    h_GenParticle_pt_DAS, h_GenParticle_eta_DAS, h_GenParticle_phi_DAS, h_GenParticle_mass_DAS,
+    # NEW
+    h_rhadpair_pt_DAS, h_rhadpair_eta_DAS, h_rhadpair_phi_DAS, h_rhadpair_mass_DAS,
+    h_rhadpair_px_DAS, h_rhadpair_py_DAS, h_rhadpair_pz_DAS,
 ):
     h.SetFillStyle(0)
     h.SetFillColor(0)
@@ -298,12 +341,11 @@ for FILE in FILES:
             met = h_PUPPIMET.product()[0]
             fill_met_hists(h_PUPPIMET_pt_MG5, h_PUPPIMET_phi_MG5, h_PUPPIMET_px_MG5, h_PUPPIMET_py_MG5, h_PUPPIMET_sumEt_MG5, met)
 
+        # thresholded GenParticle kinematics (local)
         for particle in packed:
             pdgid = int(particle.pdgId())
             if abs(pdgid) > THRESH:
                 counts_packed[pdgid] += 1
-
-                # Local compare hists
                 h_GenParticle_pt_MG5.Fill(float(particle.pt()))
                 h_GenParticle_eta_MG5.Fill(float(particle.eta()))
                 h_GenParticle_phi_MG5.Fill(float(particle.phi()))
@@ -314,6 +356,7 @@ for FILE in FILES:
             if abs(pdgid) >= THRESH and particle.statusFlags().isLastCopy():
                 counts_pruned[pdgid] += 1
 
+        # R-hadron leading/subleading
         vecs = []
         for particle in packed:
             pdgid = int(particle.pdgId())
@@ -360,12 +403,11 @@ for FILE in FILES:
         if MAX_EVENTS_TO_PRINT != 0 and (MAX_EVENTS_TO_PRINT < 0 or printed_this_file < MAX_EVENTS_TO_PRINT):
             printed_this_file += 1
 
-
 print(f"\n[Local] Total local events processed = {n_scanned}")
 print(f"[Check] total packed R-hadrons (sum over PDGIDs) = {sum(counts_packed.values())}")
 print(f"[Check] total pruned gluino (lastCopy)           = {counts_pruned.get(1000021, 0)}")
 
-# Cap DAS events to match local
+# Cap DAS events to match local events
 if MATCH_DAS_EVENTS_TO_LOCAL:
     if n_scanned > 0:
         MAX_EVENTS_DAS = int(n_scanned)
@@ -376,7 +418,7 @@ if MATCH_DAS_EVENTS_TO_LOCAL:
 das_files = get_das_root_files(DAS_DATASET, nfiles=N_DAS_FILES, redirector=DAS_REDIRECTOR)
 
 if len(das_files) == 0:
-    print("[DAS] No DAS files returned -> DAS hists will remain empty.")
+    print("[DAS] No DAS files returned -> DAS histograms will remain empty.")
 else:
     print(f"[DAS] Will scan {len(das_files)} DAS file(s) for packedGenParticles...")
     das_evt_total = 0
@@ -404,6 +446,7 @@ else:
                     continue
                 packed_das = h_packed.product()
 
+                # thresholded GenParticle kinematics (DAS)
                 for p in packed_das:
                     pdgid = int(p.pdgId())
                     if abs(pdgid) > THRESH:
@@ -412,6 +455,27 @@ else:
                         h_GenParticle_phi_DAS.Fill(float(p.phi()))
                         h_GenParticle_mass_DAS.Fill(float(p.mass()))
 
+                vecs_das = []
+                for p in packed_das:
+                    pdgid = int(p.pdgId())
+                    if abs(pdgid) <= THRESH:
+                        continue
+                    tlv = TLorentzVector()
+                    tlv.SetPtEtaPhiM(float(p.pt()), float(p.eta()), float(p.phi()), float(p.mass()))
+                    vecs_das.append(tlv)
+
+                vecs_das.sort(key=lambda v: v.Pt(), reverse=True)
+
+                if len(vecs_das) >= 2:
+                    rhad_pair_das = vecs_das[0] + vecs_das[1]
+                    h_rhadpair_pt_DAS.Fill(rhad_pair_das.Pt())
+                    h_rhadpair_eta_DAS.Fill(rhad_pair_das.Eta())
+                    h_rhadpair_phi_DAS.Fill(rhad_pair_das.Phi())
+                    h_rhadpair_mass_DAS.Fill(rhad_pair_das.M())
+                    h_rhadpair_px_DAS.Fill(rhad_pair_das.Px())
+                    h_rhadpair_py_DAS.Fill(rhad_pair_das.Py())
+                    h_rhadpair_pz_DAS.Fill(rhad_pair_das.Pz())
+
         except Exception as e:
             print(f"[DAS] WARN exception while scanning file (skipping rest of this file): {e}")
 
@@ -419,8 +483,9 @@ else:
             break
 
     print(f"[DAS] Opened {das_files_ok}/{len(das_files)} file(s)")
-    print(f"[DAS] DAS scan processed {das_evt_total} event(s)")
-    print(f"[DAS] Entries: pt={h_GenParticle_pt_DAS.GetEntries():.0f}, eta={h_GenParticle_eta_DAS.GetEntries():.0f}, phi={h_GenParticle_phi_DAS.GetEntries():.0f}, mass={h_GenParticle_mass_DAS.GetEntries():.0f}")
+    print(f"[DAS] Filled DAS entries: pt={h_GenParticle_pt_DAS.GetEntries():.0f}, eta={h_GenParticle_eta_DAS.GetEntries():.0f}, "
+          f"phi={h_GenParticle_phi_DAS.GetEntries():.0f}, mass={h_GenParticle_mass_DAS.GetEntries():.0f} "
+          f"from {das_evt_total} event(s)")
 
 outroot = "rhad_kinematics.root"
 fout = ROOT.TFile(outroot, "RECREATE")
@@ -438,22 +503,26 @@ for h in (
     h_PUPPIMET_pt_MG5, h_PUPPIMET_phi_MG5, h_PUPPIMET_px_MG5, h_PUPPIMET_py_MG5, h_PUPPIMET_sumEt_MG5,
     h_GenMETphivsGenMETpt_MG5, h_GenMETptvsGenMETpx_MG5, h_GenMETptvsGenMETpy_MG5,
     h_GenMETpxvsGenMETphi_MG5, h_GenMETpyvsGenMETphi_MG5, h_GenMETpxvsGenMETpy_MG5,
-    h_GenParticle_pt_MG5, h_GenParticle_pt_DAS,
-    
-    h_GenParticle_eta_MG5, h_GenParticle_eta_DAS,
-    h_GenParticle_phi_MG5, h_GenParticle_phi_DAS,
-    h_GenParticle_mass_MG5, h_GenParticle_mass_DAS,
+    h_GenParticle_pt_MG5, h_GenParticle_eta_MG5, h_GenParticle_phi_MG5, h_GenParticle_mass_MG5,
+    h_GenParticle_pt_DAS, h_GenParticle_eta_DAS, h_GenParticle_phi_DAS, h_GenParticle_mass_DAS,
+    # NEW
+    h_rhadpair_pt_DAS, h_rhadpair_eta_DAS, h_rhadpair_phi_DAS, h_rhadpair_mass_DAS,
+    h_rhadpair_px_DAS, h_rhadpair_py_DAS, h_rhadpair_pz_DAS,
 ):
     h.Write()
 fout.Close()
 print(f"[Output] wrote ROOT file: {outroot}")
+
 
 CMS_IPOS = 0
 CMS.SetExtraText(f"Private Work: {MASS_POINT} {SAMPLE_TYPE} MC Simulation")
 CMS.SetLumi(None, run="Run 3")
 CMS.SetEnergy(13.6)
 
-def draw_single(name, xmin, xmax, h, xtitle, ytitle, outpng,yoffset=1.45, titlesize=0.045, labelsize=0.040,logy=False, ymin_log=0.1, logx=False, xmin_log=0.1):
+
+def draw_single(name, xmin, xmax, h, xtitle, ytitle, outpng,
+                yoffset=1.45, titlesize=0.045, labelsize=0.040,
+                logy=False, ymin_log=0.1, logx=False, xmin_log=0.1):
     xmin_use = xmin
     if logx and xmin_use <= 0:
         xmin_use = xmin_log
@@ -487,10 +556,13 @@ def draw_single(name, xmin, xmax, h, xtitle, ytitle, outpng,yoffset=1.45, titles
     print(f"[Output] wrote PNG: {outpng}")
 
 
-def draw_2d_colz(name, xmin, xmax, ymin, ymax, h2, xtitle, ytitle, outpng,titlesize=0.045, labelsize=0.040, yoffset=1.0,logz=False, logx=False, xmin_log=0.1):
+def draw_2d_colz(name, xmin, xmax, ymin, ymax, h2, xtitle, ytitle, outpng,
+                 titlesize=0.045, labelsize=0.040, yoffset=1.0,
+                 logz=False, logx=False, xmin_log=0.1):
     xmin_use = xmin
     if logx and xmin_use <= 0:
         xmin_use = xmin_log
+
     canv = CMS.cmsCanvas(name, xmin_use, xmax, ymin, ymax, xtitle, ytitle, square=False, iPos=CMS_IPOS)
     canv.SetRightMargin(0.16)
 
@@ -519,7 +591,10 @@ def draw_2d_colz(name, xmin, xmax, ymin, ymax, h2, xtitle, ytitle, outpng,titles
     canv.SaveAs(outpng)
     print(f"[Output] wrote PNG: {outpng}")
 
-def draw_overlay(name, xmin, xmax, h1, h2, xtitle, ytitle, outpng,syoffset=1.45, titlesize=0.045, labelsize=0.040,slogy=False, ymin_log=0.1, logx=False, xmin_log=0.1):
+
+def draw_overlay(name, xmin, xmax, h1, h2, xtitle, ytitle, outpng,
+                 yoffset=1.45, titlesize=0.045, labelsize=0.040,
+                 logy=False, ymin_log=0.1, logx=False, xmin_log=0.1):
     xmin_use = xmin
     if logx and xmin_use <= 0:
         xmin_use = xmin_log
@@ -561,7 +636,22 @@ def draw_overlay(name, xmin, xmax, h1, h2, xtitle, ytitle, outpng,syoffset=1.45,
     print(f"[Output] wrote PNG: {outpng}")
 
 
-def draw_compare_samples(name, xmin, xmax, h_local, h_das, xtitle, ytitle, outpng, yoffset=1.45, titlesize=0.045, labelsize=0.040, logy=False, ymin_log=0.1, logx=False, xmin_log=0.1):
+def draw_compare_samples_with_ratio(
+    name,
+    xmin, xmax,
+    h_local, h_das,
+    xtitle, ytitle,
+    outpng,
+    ratio_title="Pythia8 / MadGraph5",
+    ratio_ymin=0.0, ratio_ymax=2.0,
+    yoffset=1.45, titlesize=0.045, labelsize=0.040,
+    logy=False, ymin_log=0.1,
+    logx=False, xmin_log=0.1,
+):
+    """
+    Draw overlay (local vs DAS) with ratio pad below.
+    Ratio = DAS / local, with safe handling when local bin content is 0.
+    """
     xmin_use = xmin
     if logx and xmin_use <= 0:
         xmin_use = xmin_log
@@ -570,96 +660,293 @@ def draw_compare_samples(name, xmin, xmax, h_local, h_das, xtitle, ytitle, outpn
     ymin = ymin_log if logy else 0.0
 
     canv = CMS.cmsCanvas(name, xmin_use, xmax, ymin, ymax, xtitle, ytitle, square=False, iPos=CMS_IPOS)
+
+    canv.cd()
+    top = ROOT.TPad(f"{name}_top", "", 0.0, 0.30, 1.0, 1.0)
+    bot = ROOT.TPad(f"{name}_bot", "", 0.0, 0.00, 1.0, 0.30)
+
+    top.SetBottomMargin(0.02)
+    bot.SetTopMargin(0.02)
+    bot.SetBottomMargin(0.35)
+
+    # IMPORTANT: turn off grid in ratio pad (common source of dashed horizontal lines)
+    bot.SetGridx(True)
+    bot.SetGridy(True)
+
     if logy:
-        canv.SetLogy(True)
+        top.SetLogy(True)
         h_local.SetMinimum(ymin_log)
         h_das.SetMinimum(ymin_log)
     if logx:
-        canv.SetLogx(True)
+        top.SetLogx(True)
+        bot.SetLogx(True)
 
-    frame = CMS.GetCmsCanvasHist(canv)
-    frame.GetXaxis().SetTitleSize(titlesize)
-    frame.GetYaxis().SetTitleSize(titlesize)
-    frame.GetXaxis().SetLabelSize(labelsize)
-    frame.GetYaxis().SetLabelSize(labelsize)
-    frame.GetYaxis().SetTitleOffset(yoffset)
+    top.Draw()
+    bot.Draw()
+
+    top.cd()
+
+    hframe = h_local.Clone(f"{name}_frame")
+    hframe.Reset("ICES")
+    hframe.SetMinimum(ymin)
+    hframe.SetMaximum(ymax)
+
+    hframe.GetXaxis().SetLabelSize(0)
+    hframe.GetXaxis().SetTitleSize(0)
+
+    hframe.GetYaxis().SetTitle(ytitle)
+    hframe.GetYaxis().SetTitleSize(titlesize)
+    hframe.GetYaxis().SetLabelSize(labelsize)
+    hframe.GetYaxis().SetTitleOffset(yoffset)
 
     if logx:
-        frame.GetXaxis().SetMoreLogLabels(True)
-        frame.GetXaxis().SetNoExponent(True)
+        hframe.GetXaxis().SetMoreLogLabels(True)
+        hframe.GetXaxis().SetNoExponent(True)
 
-    canv.Modified()
-    canv.Update()
+    hframe.Draw("AXIS")
 
-    CMS.cmsDraw(h_local, "HIST", lwidth=2, lcolor=ROOT.kBlue + 1, fstyle=0)
-    CMS.cmsDraw(h_das, "HIST SAME", lwidth=2, lstyle=ROOT.kDashed, lcolor=ROOT.kRed + 1, fstyle=0)
+    CMS.cmsDraw(h_local, "HIST",      lwidth=2, lcolor=ROOT.kBlue + 1, fstyle=0)
+    CMS.cmsDraw(h_das,   "HIST SAME", lwidth=2, lstyle=ROOT.kDashed, lcolor=ROOT.kRed + 1, fstyle=0)
 
     leg = CMS.cmsLeg(0.55, 0.75, 0.88, 0.88, textSize=0.035)
     leg.AddEntry(h_local, "MadGraph5 (Private)", "l")
-    leg.AddEntry(h_das, "Pythia8 (Official)", "l")
+    leg.AddEntry(h_das,   "Pythia8 (Official)",  "l")
     leg.Draw()
+
+    top.Modified()
+    top.Update()
+
+    bot.cd()
+
+    ratio = h_das.Clone(f"{name}_ratio")
+    ratio.Reset("ICES")
+    ratio.SetStats(0)
+    ratio.SetMarkerStyle(20)
+    ratio.SetMarkerSize(0.9)
+    ratio.SetMarkerColor(ROOT.kBlack)
+    ratio.SetLineColor(ROOT.kBlack)
+    ratio.SetLineWidth(1)
+    ratio.SetLineStyle(1)
+
+    nb = h_local.GetNbinsX()
+    for i in range(1, nb + 1):
+        a = h_local.GetBinContent(i)
+        b = h_das.GetBinContent(i)
+        ea = h_local.GetBinError(i)
+        eb = h_das.GetBinError(i)
+
+        if a > 0:
+            r = b / a
+            if b > 0:
+                dr = r * ((eb / b) ** 2 + (ea / a) ** 2) ** 0.5
+            else:
+                dr = r * (ea / a)
+            ratio.SetBinContent(i, r)
+            ratio.SetBinError(i, dr)
+        else:
+            ratio.SetBinContent(i, 0.0)
+            ratio.SetBinError(i, 0.0)
+
+    ratio.SetMinimum(ratio_ymin)
+    ratio.SetMaximum(ratio_ymax)
+
+    ratio.GetYaxis().SetTitle(ratio_title)
+    ratio.GetYaxis().SetNdivisions(505)
+    ratio.GetYaxis().SetTitleSize(0.11)
+    ratio.GetYaxis().SetLabelSize(0.10)
+    ratio.GetYaxis().SetTitleOffset(0.55)
+
+    ratio.GetXaxis().SetTitle(xtitle)
+    ratio.GetXaxis().SetTitleSize(0.13)
+    ratio.GetXaxis().SetLabelSize(0.12)
+    ratio.GetXaxis().SetTitleOffset(1.10)
+
+    if logx:
+        ratio.GetXaxis().SetMoreLogLabels(True)
+        ratio.GetXaxis().SetNoExponent(True)
+
+
+    ratio.Draw("E1")
+
+    ratio_line = ratio.Clone(f"{name}_ratio_line")
+    ratio_line.SetMarkerStyle(0)
+    ratio_line.SetLineColor(ROOT.kBlack)
+    ratio_line.SetLineWidth(1)
+    ratio_line.SetLineStyle(1)
+    ratio_line.Draw("HIST SAME")
+
+    bot.Modified()
+    bot.Update()
 
     canv.SaveAs(outpng)
     print(f"[Output] wrote PNG: {outpng}")
 
-draw_overlay("c_rhad_pt_MG5", PT_MIN, PT_MAX, h_lead_pt_MG5, h_sublead_pt_MG5, "R-hadron p_{T} [GeV]", "Events", "rhad_pt_MG5.png", yoffset=1.01)
-draw_overlay("c_rhad_eta_MG5", ETA_MIN, ETA_MAX, h_lead_eta_MG5, h_sublead_eta_MG5, "R-hadron #eta", "Events", "rhad_eta_MG5.png", yoffset=1.01)
-draw_overlay("c_rhad_phi_MG5", PHI_MIN, PHI_MAX, h_lead_phi_MG5, h_sublead_phi_MG5, "R-hadron #phi", "Events", "rhad_phi_MG5.png", yoffset=1.01)
-draw_overlay("c_rhad_mass_MG5", MASS_MIN, MASS_MAX, h_lead_mass_MG5, h_sublead_mass_MG5, "R-hadron mass [GeV]", "Events", "rhad_mass_MG5.png", yoffset=1.01)
-draw_single("c_dphi_MG5", 0.0, 3.5, h_lead_sublead_Delta_phi_MG5, "|#Delta#phi(lead, sublead)|", "Events", "lead_sublead_dphi_MG5.png", yoffset=1.01)
 
-draw_single("c_rhadpair_pt_MG5", PAIR_PT_MIN, PAIR_PT_MAX, h_rhadpair_pt_MG5, "(lead+sublead R-hadrons) p_{T} [GeV]", "Events", "rhadpair_pt_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_rhadpair_eta_MG5", PAIR_ETA_MIN, PAIR_ETA_MAX, h_rhadpair_eta_MG5, "(lead+sublead R-hadrons) #eta", "Events", "rhadpair_eta_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_rhadpair_phi_MG5", PAIR_PHI_MIN, PAIR_PHI_MAX, h_rhadpair_phi_MG5, "(lead+sublead R-hadrons) #phi", "Events", "rhadpair_phi_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_rhadpair_mass_MG5", PAIR_MASS_MIN, PAIR_MASS_MAX, h_rhadpair_mass_MG5, "(lead+sublead R-hadrons) mass [GeV]", "Events", "rhadpair_mass_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_rhadpair_px_MG5", PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_px_MG5, "(lead+sublead R-hadrons) p_{x} [GeV]", "Events", "rhadpair_px_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_rhadpair_py_MG5", PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_py_MG5, "(lead+sublead R-hadrons) p_{y} [GeV]", "Events", "rhadpair_py_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_rhadpair_pz_MG5", PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_pz_MG5, "(lead+sublead R-hadrons) p_{z} [GeV]", "Events", "rhadpair_pz_MG5.png", logy=True, yoffset=1.01)
 
-draw_single("c_genmet_pt_MG5", 0, 250, h_GenMET_pt_MG5, "GEN MET p_{T} [GeV]", "Events", "genmet_pt_MG5.png", logy=True, yoffset=1.01, ymin_log=0.1)
-draw_single("c_genmet_phi_MG5", MET_PHI_MIN, MET_PHI_MAX, h_GenMET_phi_MG5, "GEN MET #phi", "Events", "genmet_phi_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_genmet_px_MG5", -250, 250, h_GenMET_px_MG5, "GEN MET p_{x} [GeV]", "Events", "genmet_px_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_genmet_py_MG5", -250, 250, h_GenMET_py_MG5, "GEN MET p_{y} [GeV]", "Events", "genmet_py_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_genmet_sumEt_MG5", 0.0, 9000.0, h_GenMET_sumEt_MG5, "#SigmaE_{T} [GeV]", "Events", "genmet_sumEt_MG5.png", logy=True, yoffset=1.01)
+# MG5-only plots
+draw_overlay("c_rhad_pt_MG5",   PT_MIN, PT_MAX,   h_lead_pt_MG5,   h_sublead_pt_MG5,   "R-hadron p_{T} [GeV]", " ", "rhad_pt_MG5.png",   yoffset=1.01)
+draw_overlay("c_rhad_eta_MG5",  ETA_MIN, ETA_MAX, h_lead_eta_MG5,  h_sublead_eta_MG5,  "R-hadron #eta",         " ", "rhad_eta_MG5.png",  yoffset=1.01)
+draw_overlay("c_rhad_phi_MG5",  PHI_MIN, PHI_MAX, h_lead_phi_MG5,  h_sublead_phi_MG5,  "R-hadron #phi",         " ", "rhad_phi_MG5.png",  yoffset=1.01)
+draw_overlay("c_rhad_mass_MG5", MASS_MIN, MASS_MAX, h_lead_mass_MG5, h_sublead_mass_MG5, "R-hadron mass [GeV]", " ", "rhad_mass_MG5.png", yoffset=1.01)
+draw_single("c_dphi_MG5", 0.0, 3.5, h_lead_sublead_Delta_phi_MG5, "|#Delta#phi(lead, sublead)|", " ", "lead_sublead_dphi_MG5.png", yoffset=1.01)
 
-draw_single("c_genmet_phi_pxpyThresh_MG5", MET_PHI_MIN, MET_PHI_MAX,h_GenMET_phi_pxpyThresh_MG5,f"GEN MET #phi (|p_{{x}}|,|p_{{y}}| > {GENMET_PXY_ABS_THRESH} GeV)","Events", "genmet_phi_pxpyThresh_MG5.png",logy=True, yoffset=1.01)
+draw_single("c_rhadpair_pt_MG5",   PAIR_PT_MIN,   PAIR_PT_MAX,   h_rhadpair_pt_MG5,   "(lead+sublead R-hadrons) p_{T} [GeV]", " ", "rhadpair_pt_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_rhadpair_eta_MG5",  PAIR_ETA_MIN,  PAIR_ETA_MAX,  h_rhadpair_eta_MG5,  "(lead+sublead R-hadrons) #eta",         " ", "rhadpair_eta_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_rhadpair_phi_MG5",  PAIR_PHI_MIN,  PAIR_PHI_MAX,  h_rhadpair_phi_MG5,  "(lead+sublead R-hadrons) #phi",         " ", "rhadpair_phi_MG5.png",  logy=True, yoffset=1.01)
+draw_single("c_rhadpair_mass_MG5", PAIR_MASS_MIN, PAIR_MASS_MAX, h_rhadpair_mass_MG5, "(lead+sublead R-hadrons) mass [GeV]",    " ", "rhadpair_mass_MG5.png", logy=True, yoffset=1.01)
+draw_single("c_rhadpair_px_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_px_MG5,   "(lead+sublead R-hadrons) p_{x} [GeV]",   " ", "rhadpair_px_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_rhadpair_py_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_py_MG5,   "(lead+sublead R-hadrons) p_{y} [GeV]",   " ", "rhadpair_py_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_rhadpair_pz_MG5",   PAIR_PXYZ_MIN, PAIR_PXYZ_MAX, h_rhadpair_pz_MG5,   "(lead+sublead R-hadrons) p_{z} [GeV]",   " ", "rhadpair_pz_MG5.png",   logy=True, yoffset=1.01)
 
-draw_single("c_pfmet_pt_MG5", MET_PT_MIN, MET_PT_MAX, h_PFMET_pt_MG5, "PF MET p_{T} [GeV]", "Events", "pfmet_pt_MG5.png", logy=True, yoffset=1.01, ymin_log=0.1)
-draw_single("c_pfmet_phi_MG5", MET_PHI_MIN, MET_PHI_MAX, h_PFMET_phi_MG5, "PF MET #phi", "Events", "pfmet_phi_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_pfmet_px_MG5", MET_PXY_MIN, MET_PXY_MAX, h_PFMET_px_MG5, "PF MET p_{x} [GeV]", "Events", "pfmet_px_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_pfmet_py_MG5", MET_PXY_MIN, MET_PXY_MAX, h_PFMET_py_MG5, "PF MET p_{y} [GeV]", "Events", "pfmet_py_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_pfmet_sumEt_MG5", 0.0, 9000.0, h_PFMET_sumEt_MG5, "#SigmaE_{T} [GeV]", "Events", "pfmet_sumEt_MG5.png", logy=True, yoffset=1.01)
+draw_single("c_genmet_pt_MG5",    0, 250, h_GenMET_pt_MG5,    "GEN MET p_{T} [GeV]", " ", "genmet_pt_MG5.png",    logy=True, yoffset=1.01, ymin_log=0.1)
+draw_single("c_genmet_phi_MG5",   MET_PHI_MIN, MET_PHI_MAX, h_GenMET_phi_MG5, "GEN MET #phi", " ", "genmet_phi_MG5.png", logy=True, yoffset=1.01)
+draw_single("c_genmet_px_MG5",   -250, 250, h_GenMET_px_MG5,  "GEN MET p_{x} [GeV]", " ", "genmet_px_MG5.png",     logy=True, yoffset=1.01)
+draw_single("c_genmet_py_MG5",   -250, 250, h_GenMET_py_MG5,  "GEN MET p_{y} [GeV]", " ", "genmet_py_MG5.png",     logy=True, yoffset=1.01)
+draw_single("c_genmet_sumEt_MG5", 0.0, 9000.0, h_GenMET_sumEt_MG5, "#SigmaE_{T} [GeV]", " ", "genmet_sumEt_MG5.png", logy=True, yoffset=1.01)
 
-draw_single("c_puppimet_pt_MG5", MET_PT_MIN, MET_PT_MAX, h_PUPPIMET_pt_MG5, "PUPPI MET p_{T} [GeV]", "Events", "puppimet_pt_MG5.png", logy=True, yoffset=1.01, ymin_log=0.1)
-draw_single("c_puppimet_phi_MG5", MET_PHI_MIN, MET_PHI_MAX, h_PUPPIMET_phi_MG5, "PUPPI MET #phi", "Events", "puppimet_phi_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_puppimet_px_MG5", MET_PXY_MIN, MET_PXY_MAX, h_PUPPIMET_px_MG5, "PUPPI MET p_{x} [GeV]", "Events", "puppimet_px_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_puppimet_py_MG5", MET_PXY_MIN, MET_PXY_MAX, h_PUPPIMET_py_MG5, "PUPPI MET p_{y} [GeV]", "Events", "puppimet_py_MG5.png", logy=True, yoffset=1.01)
-draw_single("c_puppimet_sumEt_MG5", 0.0, 9000.0, h_PUPPIMET_sumEt_MG5, "#SigmaE_{T} [GeV]", "Events", "puppimet_sumEt_MG5.png", logy=True, yoffset=1.01)
+draw_single(
+    "c_genmet_phi_pxpyThresh_MG5", MET_PHI_MIN, MET_PHI_MAX,
+    h_GenMET_phi_pxpyThresh_MG5,
+    f"GEN MET #phi (|p_{{x}}|,|p_{{y}}| > {GENMET_PXY_ABS_THRESH} GeV)", " ",
+    "genmet_phi_pxpyThresh_MG5.png",
+    logy=True, yoffset=1.01
+)
+
+draw_single("c_pfmet_pt_MG5",    MET_PT_MIN, MET_PT_MAX,  h_PFMET_pt_MG5,    "PF MET p_{T} [GeV]", " ", "pfmet_pt_MG5.png",    logy=True, yoffset=1.01, ymin_log=0.1)
+draw_single("c_pfmet_phi_MG5",   MET_PHI_MIN, MET_PHI_MAX, h_PFMET_phi_MG5,  "PF MET #phi",        " ", "pfmet_phi_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_pfmet_px_MG5",    MET_PXY_MIN, MET_PXY_MAX, h_PFMET_px_MG5,   "PF MET p_{x} [GeV]", " ", "pfmet_px_MG5.png",    logy=True, yoffset=1.01)
+draw_single("c_pfmet_py_MG5",    MET_PXY_MIN, MET_PXY_MAX, h_PFMET_py_MG5,   "PF MET p_{y} [GeV]", " ", "pfmet_py_MG5.png",    logy=True, yoffset=1.01)
+draw_single("c_pfmet_sumEt_MG5", 0.0, 9000.0, h_PFMET_sumEt_MG5, "#SigmaE_{T} [GeV]", " ", "pfmet_sumEt_MG5.png", logy=True, yoffset=1.01)
+
+draw_single("c_puppimet_pt_MG5",    MET_PT_MIN, MET_PT_MAX,  h_PUPPIMET_pt_MG5,   "PUPPI MET p_{T} [GeV]", " ", "puppimet_pt_MG5.png",    logy=True, yoffset=1.01, ymin_log=0.1)
+draw_single("c_puppimet_phi_MG5",   MET_PHI_MIN, MET_PHI_MAX, h_PUPPIMET_phi_MG5, "PUPPI MET #phi",        " ", "puppimet_phi_MG5.png",   logy=True, yoffset=1.01)
+draw_single("c_puppimet_px_MG5",    MET_PXY_MIN, MET_PXY_MAX, h_PUPPIMET_px_MG5,  "PUPPI MET p_{x} [GeV]", " ", "puppimet_px_MG5.png",    logy=True, yoffset=1.01)
+draw_single("c_puppimet_py_MG5",    MET_PXY_MIN, MET_PXY_MAX, h_PUPPIMET_py_MG5,  "PUPPI MET p_{y} [GeV]", " ", "puppimet_py_MG5.png",    logy=True, yoffset=1.01)
+draw_single("c_puppimet_sumEt_MG5", 0.0, 9000.0, h_PUPPIMET_sumEt_MG5, "#SigmaE_{T} [GeV]", " ", "puppimet_sumEt_MG5.png", logy=True, yoffset=1.01)
 
 draw_2d_colz("c_genmet_phi_vs_pt_MG5", GENMET_PT_MIN, GENMET_PT_MAX, GENMET_PHI_MIN, GENMET_PHI_MAX, h_GenMETphivsGenMETpt_MG5, "GEN MET p_{T} [GeV]", "GEN MET #phi", "genmet_phi_vs_pt_MG5.png", logz=True)
-draw_2d_colz("c_genmet_pt_vs_px_MG5", GENMET_PT_MIN, GENMET_PT_MAX, GENMET_PXY_MIN, GENMET_PXY_MAX, h_GenMETptvsGenMETpx_MG5, "GEN MET p_{T} [GeV]", "GEN MET p_{x} [GeV]", "genmet_pt_vs_px_MG5.png", logz=True)
-draw_2d_colz("c_genmet_pt_vs_py_MG5", GENMET_PT_MIN, GENMET_PT_MAX, GENMET_PXY_MIN, GENMET_PXY_MAX, h_GenMETptvsGenMETpy_MG5, "GEN MET p_{T} [GeV]", "GEN MET p_{y} [GeV]", "genmet_pt_vs_py_MG5.png", logz=True)
+draw_2d_colz("c_genmet_pt_vs_px_MG5",  GENMET_PT_MIN, GENMET_PT_MAX, GENMET_PXY_MIN, GENMET_PXY_MAX, h_GenMETptvsGenMETpx_MG5,  "GEN MET p_{T} [GeV]", "GEN MET p_{x} [GeV]", "genmet_pt_vs_px_MG5.png", logz=True)
+draw_2d_colz("c_genmet_pt_vs_py_MG5",  GENMET_PT_MIN, GENMET_PT_MAX, GENMET_PXY_MIN, GENMET_PXY_MAX, h_GenMETptvsGenMETpy_MG5,  "GEN MET p_{T} [GeV]", "GEN MET p_{y} [GeV]", "genmet_pt_vs_py_MG5.png", logz=True)
 draw_2d_colz("c_genmet_px_vs_phi_MG5", GENMET_PXY_MIN, GENMET_PXY_MAX, GENMET_PHI_MIN, GENMET_PHI_MAX, h_GenMETpxvsGenMETphi_MG5, "GEN MET p_{x} [GeV]", "GEN MET #phi", "genmet_px_vs_phi_MG5.png", logz=True)
 draw_2d_colz("c_genmet_py_vs_phi_MG5", GENMET_PXY_MIN, GENMET_PXY_MAX, GENMET_PHI_MIN, GENMET_PHI_MAX, h_GenMETpyvsGenMETphi_MG5, "GEN MET p_{y} [GeV]", "GEN MET #phi", "genmet_py_vs_phi_MG5.png", logz=True)
-draw_2d_colz("c_genmet_px_vs_py_MG5", GENMET_PXY_MIN, GENMET_PXY_MAX, GENMET_PXY_MIN, GENMET_PXY_MAX, h_GenMETpxvsGenMETpy_MG5, "GEN MET p_{x} [GeV]", "GEN MET p_{y} [GeV]", "genmet_px_vs_py_MG5.png", logz=True)
+draw_2d_colz("c_genmet_px_vs_py_MG5",  GENMET_PXY_MIN, GENMET_PXY_MAX, GENMET_PXY_MIN, GENMET_PXY_MAX, h_GenMETpxvsGenMETpy_MG5,  "GEN MET p_{x} [GeV]", "GEN MET p_{y} [GeV]", "genmet_px_vs_py_MG5.png", logz=True)
 
-# Existing pt compare
+
+# Draw local vs DAS comparisons 
 if h_GenParticle_pt_DAS.GetEntries() > 0:
-    draw_compare_samples("c_genparticle_pt_local_vs_das", PT_MIN, PT_MAX,h_GenParticle_pt_MG5, h_GenParticle_pt_DAS,"GenParticle p_{T} [GeV]", "Particles","genparticle_pt_MG5_vs_DAS_Pythia8.png",logy=True, yoffset=1.01, ymin_log=0.1)
-else:
-    print("[DAS] Skipping genparticle_pt_MG5_vs_DAS_Pythia8.png because DAS histogram is empty.")
+    draw_compare_samples_with_ratio(
+        "c_genparticle_pt_local_vs_das",
+        PT_MIN, PT_MAX,
+        h_GenParticle_pt_MG5, h_GenParticle_pt_DAS,
+        "GenParticle p_{T} [GeV]", " ",
+        "genparticle_pt_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
 
-if h_GenParticle_eta_DAS.GetEntries() > 0:
-    draw_compare_samples("c_genparticle_eta_local_vs_das", -8.0, 8.0,h_GenParticle_eta_MG5, h_GenParticle_eta_DAS,"GenParticle #eta", "Particles","genparticle_eta_MG5_vs_DAS_Pythia8.png",logy=True, yoffset=1.01, ymin_log=0.1)
-else:
-    print("[DAS] Skipping genparticle_eta_MG5_vs_DAS_Pythia8.png because DAS histogram is empty.")
+    draw_compare_samples_with_ratio(
+        "c_genparticle_eta_local_vs_das",
+        ETA_MIN, ETA_MAX,
+        h_GenParticle_eta_MG5, h_GenParticle_eta_DAS,
+        "GenParticle #eta", " ",
+        "genparticle_eta_MG5_vs_DAS_Pythia8.png",
+        logy=False, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
 
-if h_GenParticle_phi_DAS.GetEntries() > 0:
-    draw_compare_samples("c_genparticle_phi_local_vs_das", -3.6, 3.6,h_GenParticle_phi_MG5, h_GenParticle_phi_DAS,"GenParticle #phi", "Particles","genparticle_phi_MG5_vs_DAS_Pythia8.png",logy=True, yoffset=1.01, ymin_log=0.1)
-else:
-    print("[DAS] Skipping genparticle_phi_MG5_vs_DAS_Pythia8.png because DAS histogram is empty.")
+    draw_compare_samples_with_ratio(
+        "c_genparticle_phi_local_vs_das",
+        PHI_MIN, PHI_MAX,
+        h_GenParticle_phi_MG5, h_GenParticle_phi_DAS,
+        "GenParticle #phi", " ",
+        "genparticle_phi_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
 
-if h_GenParticle_mass_DAS.GetEntries() > 0:
-    draw_compare_samples("c_genparticle_mass_local_vs_das", 0.0, 3000.0,h_GenParticle_mass_MG5, h_GenParticle_mass_DAS,"GenParticle mass [GeV]", "Particles","genparticle_mass_MG5_vs_DAS_Pythia8.png",logy=True, yoffset=1.01, ymin_log=0.1)
+    draw_compare_samples_with_ratio(
+        "c_genparticle_mass_local_vs_das",
+        0.0, 3000.0,
+        h_GenParticle_mass_MG5, h_GenParticle_mass_DAS,
+        "GenParticle mass [GeV]", " ",
+        "genparticle_mass_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
 else:
-    print("[DAS] Skipping genparticle_mass_MG5_vs_DAS_Pythia8.png because DAS histogram is empty.")
+    print("[DAS] Skipping all local-vs-DAS GenParticle comparison PNGs because DAS histograms are empty.")
+
+
+# MG5 rhad-pair vs DAS rhad-pair comparisons WITH ratio pads
+if h_rhadpair_pt_DAS.GetEntries() > 0 and h_rhadpair_pt_MG5.GetEntries() > 0:
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_pt_MG5_vs_DAS",
+        PAIR_PT_MIN, PAIR_PT_MAX,
+        h_rhadpair_pt_MG5, h_rhadpair_pt_DAS,
+        "(lead+sublead R-hadrons) p_{T} [GeV]", " ",
+        "rhadpair_pt_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_eta_MG5_vs_DAS",
+        PAIR_ETA_MIN, PAIR_ETA_MAX,
+        h_rhadpair_eta_MG5, h_rhadpair_eta_DAS,
+        "(lead+sublead R-hadrons) #eta", " ",
+        "rhadpair_eta_MG5_vs_DAS_Pythia8.png",
+        logy=False, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_phi_MG5_vs_DAS",
+        PAIR_PHI_MIN, PAIR_PHI_MAX,
+        h_rhadpair_phi_MG5, h_rhadpair_phi_DAS,
+        "(lead+sublead R-hadrons) #phi", " ",
+        "rhadpair_phi_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_mass_MG5_vs_DAS",
+        PAIR_MASS_MIN, PAIR_MASS_MAX,
+        h_rhadpair_mass_MG5, h_rhadpair_mass_DAS,
+        "(lead+sublead R-hadrons) mass [GeV]", " ",
+        "rhadpair_mass_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_px_MG5_vs_DAS",
+        PAIR_PXYZ_MIN, PAIR_PXYZ_MAX,
+        h_rhadpair_px_MG5, h_rhadpair_px_DAS,
+        "(lead+sublead R-hadrons) p_{x} [GeV]", " ",
+        "rhadpair_px_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_py_MG5_vs_DAS",
+        PAIR_PXYZ_MIN, PAIR_PXYZ_MAX,
+        h_rhadpair_py_MG5, h_rhadpair_py_DAS,
+        "(lead+sublead R-hadrons) p_{y} [GeV]", " ",
+        "rhadpair_py_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+
+    draw_compare_samples_with_ratio(
+        "c_rhadpair_pz_MG5_vs_DAS",
+        PAIR_PXYZ_MIN, PAIR_PXYZ_MAX,
+        h_rhadpair_pz_MG5, h_rhadpair_pz_DAS,
+        "(lead+sublead R-hadrons) p_{z} [GeV]", " ",
+        "rhadpair_pz_MG5_vs_DAS_Pythia8.png",
+        logy=True, ymin_log=0.1, yoffset=1.01,
+        ratio_ymin=0.0, ratio_ymax=2.0
+    )
+else:
+    print("[Compare] Skipping rhadron-pair MG5-vs-DAS plots because one side is empty.")
