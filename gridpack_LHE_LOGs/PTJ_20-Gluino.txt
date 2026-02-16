@@ -115,3 +115,198 @@
 6.387765e-02 8.051974e-04 2.568174e-04 3
 <generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
 </init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1800_xqcut50_el8_amd64_gcc12_CMSSW_14_0_22_xqcut50_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:15
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+1.396489e-03 7.608863e-06 3.774849e-06 1
+1.434285e-03 1.893638e-05 3.774849e-06 2
+9.440757e-04 1.218818e-05 3.774849e-06 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1800_xqcut40_el8_amd64_gcc12_CMSSW_14_0_22_xqcut40_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:15
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+1.396919e-03 8.190371e-06 4.463244e-06 1
+1.721563e-03 2.299396e-05 4.463244e-06 2
+1.344762e-03 1.790701e-05 4.463244e-06 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1800_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:16
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+1.393079e-03 1.088988e-05 7.809150e-06 1
+2.807854e-03 3.651813e-05 7.809150e-06 2
+3.608217e-03 3.963432e-05 7.809150e-06 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1000_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:16
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+1.868571e-01 1.067081e-03 1.103416e-03 1
+3.977424e-01 5.345764e-03 1.103416e-03 2
+5.188162e-01 6.140466e-03 1.103416e-03 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1000_xqcut40_el8_amd64_gcc12_CMSSW_14_0_22_xqcut40_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:17
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+1.869341e-01 8.040428e-04 6.172398e-04 1
+2.442871e-01 3.262306e-03 6.172398e-04 2
+1.860187e-01 2.527602e-03 6.172398e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1000_xqcut50_el8_amd64_gcc12_CMSSW_14_0_22_xqcut50_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:17
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+1.873738e-01 7.629259e-04 5.189159e-04 1
+2.040670e-01 2.707191e-03 5.189159e-04 2
+1.274751e-01 1.673108e-03 5.189159e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1100_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:18
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+9.226200e-02 5.447570e-04 5.459111e-04 1
+1.991465e-01 2.726915e-03 5.459111e-04 2
+2.545025e-01 2.706625e-03 5.459111e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1100_xqcut40_el8_amd64_gcc12_CMSSW_14_0_22_xqcut40_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:19
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+9.209200e-02 4.158588e-04 3.047963e-04 1
+1.191926e-01 1.537915e-03 3.047963e-04 2
+9.351173e-02 1.211893e-03 3.047963e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1100_xqcut50_el8_amd64_gcc12_CMSSW_14_0_22_xqcut50_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:19
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+9.233850e-02 3.857740e-04 2.568174e-04 1
+1.006012e-01 1.240247e-03 2.568174e-04 2
+6.387765e-02 8.051974e-04 2.568174e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1200_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:20
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+4.722600e-02 3.281933e-04 2.781166e-04 1
+1.009864e-01 1.383276e-03 2.781166e-04 2
+1.299042e-01 1.424465e-03 2.781166e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1200_xqcut50_el8_amd64_gcc12_CMSSW_14_0_22_xqcut50_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:20
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+4.717500e-02 2.311206e-04 1.317309e-04 1
+5.150710e-02 6.158674e-04 1.317309e-04 2
+3.304884e-02 4.344656e-04 1.317309e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1300_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:21
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+2.478179e-02 1.774386e-04 1.466624e-04 1
+5.286732e-02 7.320613e-04 1.466624e-04 2
+6.901324e-02 8.472343e-04 1.466624e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1300_xqcut50_el8_amd64_gcc12_CMSSW_14_0_22_xqcut50_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:21
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+2.478979e-02 1.259131e-04 6.900907e-05 1
+2.688345e-02 3.327208e-04 6.900907e-05 2
+1.733584e-02 2.274758e-04 6.900907e-05 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1200_xqcut40_el8_amd64_gcc12_CMSSW_14_0_22_xqcut40_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:22
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+4.707200e-02 2.526673e-04 1.560943e-04 1
+6.080025e-02 7.914785e-04 1.560943e-04 2
+4.822201e-02 6.309690e-04 1.560943e-04 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
+
+################################################################################
+# file: /uscms/home/avendras/nobackup/HSCP/gridpack_LHE_LOGs/PTJ_20/HSCPgluino_M-1300_xqcut40_el8_amd64_gcc12_CMSSW_14_0_22_xqcut40_cmsgrid_final.lhe
+# time: 2026-02-16T11:24:22
+# block: 1 of 1
+################################################################################
+<init>
+2212 2212 6.800000e+03 6.800000e+03 0 0 325300 325300 -3 3
+2.482084e-02 1.369953e-04 8.214082e-05 1
+3.177749e-02 4.368177e-04 8.214082e-05 2
+2.554249e-02 3.224072e-04 8.214082e-05 3
+<generator name='MadGraph5_aMC@NLO' version='2.9.18'>please cite 1405.0301 </generator>
+</init>
