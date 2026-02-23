@@ -1,5 +1,5 @@
 #Exclusive (bad private samples)
-species,    mass,   ptj,    ptb,    xqcut(MG5),  qcut(P8),   Summary Cross_section (Generation log), Process@1,    Process@1 Error,  Process@2,    Process@2 Error, Process@3,     Process@3 Error
+species,    mass,   ptj,    ptb,    xqcut(MG5),  qcut(P8),   Summary Cross_section (Generation log), Process@1,    Process@1 Error,  Process@2,    Process@2 Error, Process@3,     Process@3 Error, Ratio, Ratio Error
 gluino,     1100,   150,    150,    150,          150,        0.1332 +- 0.000434 pb,                  9.216800e-02, 3.441447e-04,     3.481079e-02, 5.430590e-04,    7.072991e-03,  1.065274e-04
 gluino,     1200,   150,    150,    150,          150,        0.06853 +- 0.0002745 pb,                4.717700e-02, 2.114167e-04,     1.780483e-02, 2.758560e-04,    3.854213e-03,  5.873763e-05
 gluino,     1300,   150,    150,    150,          150,        0.03608 +- 0.0001294 pb,                2.481279e-02, 1.136183e-04,     9.472235e-03, 1.423237e-04,    2.048892e-03,  2.971318e-05
