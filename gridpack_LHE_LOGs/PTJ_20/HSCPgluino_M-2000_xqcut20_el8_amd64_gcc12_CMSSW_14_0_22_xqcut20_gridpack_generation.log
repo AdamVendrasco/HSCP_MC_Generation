@@ -91,7 +91,7 @@ DONE
 write ./events.lhe.gz
 run 1 finished, total number of produced events: 1000/1000
 
--rw-r--r-- 1 avendras fnalgrid 227633 Feb 20 15:20 events_1.lhe.gz
+-rw-r--r-- 1 avendras fnalgrid 227633 Feb 23 19:03 events_1.lhe.gz
 run finished, produced number of events:
 1000
 ~/work_HSCPgluino_M-2000_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20/process/madevent ~/work_HSCPgluino_M-2000_xqcut20_el8_amd64_gcc12_CMSSW_14_0_22_xqcut20
@@ -128,7 +128,7 @@ madevent>INFO: Running Systematics computation
 [1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
 INFO: # events generated with PDF: NNPDF31_nnlo_as_0118_mc_hessian_pdfas (325300) 
 INFO: #Will Compute 926 weights per event. 
-INFO: # currently at event 0 [elapsed time: 0.072 s] 
+INFO: # currently at event 0 [elapsed time: 0.13 s] 
 INFO: #***************************************************************************
 #
 # original cross-section: 0.002679559499999969
@@ -165,17 +165,17 @@ Number of weights that are NaN:
 0
 All checks passed 
 
-total 36120
-drwxr-xr-x 17 avendras fnalgrid     4096 Feb 20 15:17 CMSSW_14_0_22
-drwxr-xr-x  2 avendras fnalgrid      163 Feb 19 01:44 InputCards
--rw-r--r--  1 avendras fnalgrid 36744505 Feb 20 15:20 cmsgrid_final.lhe
+total 36172
+drwxr-xr-x 17 avendras fnalgrid     4096 Feb 23 19:00 CMSSW_14_0_22
+drwxr-xr-x  2 avendras fnalgrid     4096 Feb 19 01:44 InputCards
+-rw-r--r--  1 avendras fnalgrid 36744505 Feb 23 19:04 cmsgrid_final.lhe
 -rw-r--r--  1 avendras fnalgrid   200541 Feb 19 01:44 gridpack_generation.log
 -rwxr-xr-x  1 avendras fnalgrid    11617 Feb 19 01:44 merge.pl
 drwxr-xr-x 14 avendras fnalgrid     4096 Feb 19 01:44 mgbasedir
-drwxr-xr-x  3 avendras fnalgrid       48 Feb 20 15:20 process
+drwxr-xr-x  3 avendras fnalgrid     4096 Feb 23 19:03 process
 -rwxr-xr-x  1 avendras fnalgrid     7989 Feb 19 01:44 runcmsgrid.sh
--rw-r--r--  1 avendras fnalgrid      113 Feb 20 15:17 runcmsgrid.stderr
--rw-r--r--  1 avendras fnalgrid     7669 Feb 20 15:20 runcmsgrid.stdout
+-rw-r--r--  1 avendras fnalgrid      113 Feb 23 19:00 runcmsgrid.stderr
+-rw-r--r--  1 avendras fnalgrid     7668 Feb 23 19:04 runcmsgrid.stdout
 
 === runcmsgrid.sh STDERR (captured) ===
 WARNING: In non-interactive mode release checks e.g. deprecated releases, production architectures are disabled.
