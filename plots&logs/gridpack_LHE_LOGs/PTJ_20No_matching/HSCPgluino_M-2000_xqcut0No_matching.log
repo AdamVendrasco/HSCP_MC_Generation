@@ -1,0 +1,244 @@
+Starting job on  Tue Mar 3 23:00:33 CST 2026
+Running on  Linux cmslpc201.fnal.gov 4.18.0-553.100.1.el8_10.x86_64 #1 SMP Mon Feb 2 04:13:33 EST 2026 x86_64 x86_64 x86_64 GNU/Linux
+System release  AlmaLinux release 8.10 (Cerulean Leopard)
+name: HSCPgluino_M-2000_xqcut0
+carddir: ../../../run_directories/Run-3/gluino-based-matchingOFF/HSCPgluino_M-2000_xqcut0/
+queue: local
+scram_arch: el8_amd64_gcc12
+cmssw_version: CMSSW_14_0_22
+On branch master
+Your branch is up to date with 'origin/master'.
+
+You are in a sparse checkout with 31% of tracked files present.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   gridpack_generation.sh
+	modified:   macros/plotdjr.C
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	HSCPgluino_M-1000_xqcut0.log
+	HSCPgluino_M-1000_xqcut0/
+	HSCPgluino_M-1000_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1100_xqcut0.log
+	HSCPgluino_M-1100_xqcut0/
+	HSCPgluino_M-1100_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1200_xqcut0.log
+	HSCPgluino_M-1200_xqcut0/
+	HSCPgluino_M-1200_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1300_xqcut0.log
+	HSCPgluino_M-1300_xqcut0/
+	HSCPgluino_M-1300_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1400_xqcut0.log
+	HSCPgluino_M-1400_xqcut0/
+	HSCPgluino_M-1400_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1500_xqcut0.log
+	HSCPgluino_M-1500_xqcut0/
+	HSCPgluino_M-1500_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1600_xqcut0.log
+	HSCPgluino_M-1600_xqcut0/
+	HSCPgluino_M-1600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1800_xqcut0.log
+	HSCPgluino_M-1800_xqcut0/
+	HSCPgluino_M-1800_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-2000_xqcut0.log
+	HSCPgluino_M-2000_xqcut0/
+	macros/ms-1000_qcut100_djr.png
+	macros/ms-1000_qcut120_djr.png
+	macros/ms-1000_qcut140_djr.png
+	macros/ms-1000_qcut20_djr.png
+	macros/ms-1000_qcut40_djr.png
+	macros/ms-1000_qcut60_djr.png
+	macros/ms-1000_qcut80_djr.png
+	mass_sub.sh
+	submit_lpc_condor_gridpack.sh
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Current git revision is:
+82dde0589e318a06308f2041a281b8103b3eabf3
+diff --git a/bin/MadGraph5_aMCatNLO/gridpack_generation.sh b/bin/MadGraph5_aMCatNLO/gridpack_generation.sh
+index 36eebee1..0020f19c 100755
+--- a/bin/MadGraph5_aMCatNLO/gridpack_generation.sh
++++ b/bin/MadGraph5_aMCatNLO/gridpack_generation.sh
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-
++#
+ ##########################################################################################
+ #GENERAL INSTRUCTIONS:                                                                   #
+ #You should take care of having the following ingredients in order to have this recipe   #
+@@ -731,9 +731,9 @@ if [ -n "$6" ]; then
+     cmssw_version=${6}
+ else
+     if [[ $SYSTEM_RELEASE == *"release 7"* ]]; then 
+-        cmssw_version=CMSSW_12_4_8
++        cmssw_version=CMSSW_10_6_47
+     elif [[ $SYSTEM_RELEASE == *"release 8"* ]]; then
+-        cmssw_version=CMSSW_12_4_8
++        cmssw_version=CMSSW_10_6_47
+     elif [[ $SYSTEM_RELEASE == *"release 9"* ]]; then
+ 	cmssw_version=CMSSW_13_2_9
+     else 
+diff --git a/bin/MadGraph5_aMCatNLO/macros/plotdjr.C b/bin/MadGraph5_aMCatNLO/macros/plotdjr.C
+index 83c5c8ed..0ce83a40 100644
+--- a/bin/MadGraph5_aMCatNLO/macros/plotdjr.C
++++ b/bin/MadGraph5_aMCatNLO/macros/plotdjr.C
+@@ -8,6 +8,11 @@
+ #include "TLegend.h"
+ #include <vector>
+ 
++// --- ADDED: helper to decide if a histogram is empty ---
++inline bool hasEntries(const TH1* h) {
++  return h && (h->GetEntries() > 0 || h->Integral() > 0.0);
++}
++// -------------------------------------------------------
+ 
+ void setcanvas(TCanvas *c1, TPad **pad){
+ 
+@@ -38,16 +43,18 @@ void setlegend(TLegend *legend, TH1D *hall, TH1D *hmult0, TH1D *hmult1, TH1D *hm
+   legend->SetFillStyle(1001);
+ 
+   legend->AddEntry(hall,"all partons");
+-  legend->AddEntry(hmult0,"0 partons");
+-  legend->AddEntry(hmult1,"1 parton");
+-  legend->AddEntry(hmult2,"2 partons");
+-  legend->AddEntry(hmult3,"3 partons");
+-  legend->AddEntry(hmult4,"4 partons");
+ 
++  // --- CHANGED: only add entries if that multiplicity has content
++  if (hasEntries(hmult0)) legend->AddEntry(hmult0,"0 partons");
++  if (hasEntries(hmult1)) legend->AddEntry(hmult1,"1 parton");
++  if (hasEntries(hmult2)) legend->AddEntry(hmult2,"2 partons");
++  if (hasEntries(hmult3)) legend->AddEntry(hmult3,"3 partons");
++  if (hasEntries(hmult4)) legend->AddEntry(hmult4,"4 partons");
++  // -------------------------------------------------------
+ }
+ 
+ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring, const char *xlabel, int nbins, double xlow, double xhigh, int typeMC) {
+-  
++
+   TCut mult0 = "GenEvent.nMEPartons()==0";
+   TCut mult1 = "GenEvent.nMEPartons()==1";
+   TCut mult2 = "GenEvent.nMEPartons()==2";
+@@ -59,7 +66,7 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+     mult0 = "LHEEvent.npNLO()==0";
+     mult1 = "LHEEvent.npNLO()==1";
+     mult2 = "LHEEvent.npNLO()==2";
+-    mult3 = "LHEEvent.npNLO()==3";  
++    mult3 = "LHEEvent.npNLO()==3";
+     mult4 = "LHEEvent.npNLO()==4";
+   } else if (typeMC == 1) {
+   //this is for LO with MLM; default values
+@@ -75,7 +82,7 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+     mult2 = "GenEvent.nMEPartonsFiltered()==2";
+     mult3 = "GenEvent.nMEPartonsFiltered()==3";
+     mult4 = "GenEvent.nMEPartonsFiltered()==4";
+-  }  
++  }
+ 
+   TH1D *hall = new TH1D(TString::Format("hall_%s",name),"",nbins,xlow,xhigh);
+   TH1D *hmult0 = new TH1D(TString::Format("hmult0_%s",name),"",nbins,xlow,xhigh);
+@@ -84,7 +91,7 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+   TH1D *hmult3 = new TH1D(TString::Format("hmult3_%s",name),"",nbins,xlow,xhigh);
+   TH1D *hmult4 = new TH1D(TString::Format("hmult4_%s",name),"",nbins,xlow,xhigh);
+ 
+-  hall->SetLineColor(921);  
++  hall->SetLineColor(921);
+   hmult0->SetLineColor(600);
+   hmult1->SetLineColor(629);
+   hmult2->SetLineColor(419);
+@@ -93,56 +100,58 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+ 
+   hall->SetLineWidth(2);
+   hmult0->SetLineStyle(2);
+-  hmult1->SetLineStyle(2);  
++  hmult1->SetLineStyle(2);
+   hmult2->SetLineStyle(2);
+   hmult3->SetLineStyle(2);
+   hmult4->SetLineStyle(2);
+-  
++
+   tree->Draw(TString::Format("%s>>%s",drawstring,hall->GetName()),weight,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult0->GetName()),weight*mult0,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult1->GetName()),weight*mult1,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult2->GetName()),weight*mult2,"goff");
+-  tree->Draw(TString::Format("%s>>%s",drawstring,hmult3->GetName()),weight*mult3,"goff");  
++  tree->Draw(TString::Format("%s>>%s",drawstring,hmult3->GetName()),weight*mult3,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult4->GetName()),weight*mult4,"goff");
+ 
+   hall->GetXaxis()->SetTitle(xlabel);
+ 
+-  TLegend *legend=new TLegend(0.67,0.87-4*0.06,0.87,0.87);
++  TLegend* legend = new TLegend(0.12, 0.45, 0.32, 0.75);
+   setlegend(legend, hall, hmult0, hmult1, hmult2, hmult3, hmult4);
+-  
++
+   hall->Draw("EHIST");
+-  hmult0->Draw("EHISTSAME");
+-  hmult1->Draw("EHISTSAME");
+-  hmult2->Draw("EHISTSAME");
+-  hmult3->Draw("EHISTSAME");
+-  hmult4->Draw("EHISTSAME");
++  // --- CHANGED: only draw non-empty multiplicities
++  if (hasEntries(hmult0)) hmult0->Draw("EHISTSAME");
++  if (hasEntries(hmult1)) hmult1->Draw("EHISTSAME");
++  if (hasEntries(hmult2)) hmult2->Draw("EHISTSAME");
++  if (hasEntries(hmult3)) hmult3->Draw("EHISTSAME");
++  if (hasEntries(hmult4)) hmult4->Draw("EHISTSAME");
++  // ---------------------------------------------------
+ 
+   gStyle->SetOptStat(0);
+   legend->Draw();
+ }
+ 
+ void plotdjr(const TString & infile, const TString & outfile) {
+- 
+-  gSystem->Load("libFWCoreFWLite.so");  
+-  AutoLibraryLoader::enable();  
++
++  gSystem->Load("libFWCoreFWLite.so");
++  AutoLibraryLoader::enable();
+   TH1::SetDefaultSumw2();
+-  
++
+   TChain *tree = new TChain("Events");
+   tree->Add(infile);
+-  
++
+   tree->SetAlias("GenEvent","GenEventInfoProduct_generator__GEN.obj");
+   tree->SetAlias("LHEEvent","LHEEventProduct_externalLHEProducer__GEN.obj");
+- 
++
+   TCut weight = "GenEvent.weight()";
+-  int nbins = 50.;
++  int nbins = 35.;
+   double djrmin = -0.5;
+   double djrmax = 3.;
+   //typeMC sets the kind of sample we are looking at: 
+   //0 is for NLO with FXFX merging; 
+   //1 is for LO with MLM; 
+   //2 is for LO with MLM (plotting partons after excluding non-matched partons in wbb/vbf type processes)
+-  int typeMC = 2;
+-  
++  int typeMC = 2; // <<-- UNCHANGED, as you requested
++
+   TCanvas *c1 = new TCanvas("c1", "c1", 800, 600);
+   TPad *pad[5];
+   setcanvas(c1,pad);
+@@ -158,8 +167,6 @@ void plotdjr(const TString & infile, const TString & outfile) {
+   pad[4]->cd();
+   makeplot("djr4",tree,weight,"log10(GenEvent.DJRValues_[4])","DJR 4->5",nbins,djrmin,djrmax,typeMC);
+ 
+-
+   c1->Print(outfile);
+-  return;  
++  return;
+ }
+-
+/uscms/home/avendras/nobackup/HSCP/genproductions/bin/MadGraph5_aMCatNLO
+Reusing existing directory assuming generated code already exists
+WARNING: If you changed the process card you need to clean the folder and run from scratch
+SCRAM error: SCRAM: No type of variable called "INCLUDE" defined for this tool.
+Reusing an existing process directory HSCPgluino_M-2000_xqcut0 is not actually supported in production at the moment.  Please clean or move the directory and start from scratch.

@@ -1,0 +1,3186 @@
+[INFO] tarball_arg=/eos/uscms/store/user/avendras/HSCP/gridpack_output/tarballs/RunIII/gluinos/PTJ_20_No_matching_tarballs/HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+[INFO] prefix=HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22
+[INFO] pwd=/srv
+[INFO] Remote tarball detected.
+[INFO] Remote URL: root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/tarballs/RunIII/gluinos/PTJ_20_No_matching_tarballs/HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+[INFO] Local dest: /srv/HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+[INFO] Fetching tarball with: /usr/bin/xrdcp -f root://cmseos.fnal.gov//eos/uscms/store/user/avendras/HSCP/gridpack_output/tarballs/RunIII/gluinos/PTJ_20_No_matching_tarballs/HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz /srv/HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+=== xrdcp STDOUT ===
+=== xrdcp STDERR ===
+[INFO] workdir=/srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22
+[INFO] untar: tar -xvaf /srv/HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz -C /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22
+[INFO] runcmsgrid=/srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/runcmsgrid.sh
+[INFO] run_dir=/srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22
+[INFO] Running: bash /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/runcmsgrid.sh 1000 12345 1
+
+=== runcmsgrid.sh STDOUT (captured) ===
+%MSG-MG5 number of events requested = 1000
+%MSG-MG5 random seed used for the run = 12345
+%MSG-MG5 number of cpus = 1
+%MSG-MG5 SCRAM_ARCH version = el8_amd64_gcc12
+%MSG-MG5 CMSSW version = CMSSW_14_0_22
+Running MG5_aMC for the 1 time
+produced_lhe  0 nevt  1000 submitting_event  1000  remaining_event  1000
+run.sh 1000 123450
+Now generating 1000 events with random seed 123450 and granularity 1
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.18                                   *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/process/madevent/Cards/me5_configuration.txt  
+INFO: load configuration from /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/mgbasedir/input/mg5_configuration.txt  
+INFO: load configuration from /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/process/madevent/Cards/me5_configuration.txt  
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+No valid eps viewer found. Please set in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+WRITE GRIDCARD /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/process/madevent
+generate 1000 events
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+P3_gg_gogobbx
+P3_gb_gogogb
+P3_bbx_gogogg
+P3_gg_gogoqq
+P3_gq_gogogq
+P3_qq_gogogg
+P3_bb_gogobb
+P3_qq_gogoqq
+P3_gg_gogogg
+P3_qq_gogobbx
+P3_qb_gogoqb
+P3_bbx_gogoqq
+P2_gb_gogob
+P2_bbx_gogog
+P2_gq_gogoq
+P2_qq_gogog
+P2_gg_gogog
+P1_qq_gogo
+P1_bbx_gogo
+P1_gg_gogo
+Using random number seed offset = 123450
+INFO: Generating 1000.0 unweighted events. 
+sum of cpu time of last step: 7h21m03s
+INFO: need to improve 64 channels 
+combine_events
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+store_events
+  === Results Summary for run: GridRun_123450 tag: HSCPgluino_M-2600_xqcut0 ===
+
+     Cross-section :   0 +- 0 pb
+     Nb of events :  1000
+ 
+decay_events -from_cards
+DONE
+write ./events.lhe.gz
+run 1 finished, total number of produced events: 1000/1000
+
+-rw-r--r-- 1 avendras fnalgrid 179179 Mar  4 14:18 events_1.lhe.gz
+run finished, produced number of events:
+1000
+~/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/process/madevent ~/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.18                                   *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/process/madevent/Cards/me5_configuration.txt  
+INFO: load configuration from /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/mgbasedir/input/mg5_configuration.txt  
+INFO: load configuration from /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/process/madevent/Cards/me5_configuration.txt  
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+No valid eps viewer found. Please set in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+madevent>INFO: Running Systematics computation 
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+INFO: # events generated with PDF: NNPDF31_nnlo_as_0118_mc_hessian_pdfas (325300) 
+INFO: #Will Compute 926 weights per event. 
+INFO: # currently at event 0 [elapsed time: 0.17 s] 
+INFO: #***************************************************************************
+#
+# original cross-section: 0.00010275367999999847
+#     scale variation: +50.4% -31.1%
+#     emission scale variation: + 0% - 0%
+#     central scheme variation: + 0% -34.6%
+# PDF variation: +142% -142%
+#
+#PDF NNPDF31_nnlo_as_0118_mc: -2.24476e-06 +104% -104%
+#PDF NNPDF31_nlo_hessian_pdfas: 2.13732e-05 +82.9% -82.9%
+#PDF NNPDF40_nnlo_pdfas: 7.92623e-05 +13.5% -13.5%
+#PDF NNPDF40_nnlo_hessian_pdfas: 7.89208e-05 +8.37% -8.37%
+#PDF NNPDF40_nnlo_pch_as_01180: 8.23654e-05 +10.6% -10.6%
+#PDF CT18NNLO: 8.74249e-05 +44.2% -22.1%
+#PDF CT18ZNNLO: 0.000107613 +48.7% -27.7%
+#PDF MSHT20nnlo_as118: 9.93195e-05 +19.5% -18%
+#PDF PDF4LHC21_40_pdfas: 0.000132892 +124% -124%
+#PDF HERAPDF20_NNLO_EIG: 4.69003e-05 +4.74% -10%
+#PDF ABMP16als118_5_nnlo: 4.87269e-05 +5.89% -5.89%
+# dynamical scheme # 1 : 8.77654e-05 +48.4% -30.3% # \sum ET
+# dynamical scheme # 2 : 6.98774e-05 +45% -28.9% # \sum\sqrt{m^2+pt^2}
+# dynamical scheme # 3 : 0.000101293 +50.1% -31% # 0.5 \sum\sqrt{m^2+pt^2}
+# dynamical scheme # 4 : 6.7203e-05 +44.3% -28.7% # \sqrt{\hat s}
+# PDF 263000 : 0.00011601091232158886
+#***************************************************************************
+ 
+INFO: End of systematics computation 
+madevent>INFO:  
+launch in debug mode
+~/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22
+
+Run xml check
+Number of weights that are NaN:
+0
+All checks passed 
+
+total 35788
+drwxr-xr-x 17 avendras fnalgrid     4096 Mar  4 14:13 CMSSW_14_0_22
+drwxr-xr-x  2 avendras fnalgrid      160 Mar  4 09:06 InputCards
+-rw-r--r--  1 avendras fnalgrid 36419172 Mar  4 14:22 cmsgrid_final.lhe
+-rw-r--r--  1 avendras fnalgrid   180929 Mar  4 09:06 gridpack_generation.log
+-rwxr-xr-x  1 avendras fnalgrid    11617 Mar  4 09:06 merge.pl
+drwxr-xr-x 14 avendras fnalgrid     4096 Mar  4 09:06 mgbasedir
+drwxr-xr-x  3 avendras fnalgrid       48 Mar  4 14:18 process
+-rwxr-xr-x  1 avendras fnalgrid     7989 Mar  4 09:05 runcmsgrid.sh
+-rw-r--r--  1 avendras fnalgrid      113 Mar  4 14:13 runcmsgrid.stderr
+-rw-r--r--  1 avendras fnalgrid     7586 Mar  4 14:22 runcmsgrid.stdout
+
+=== runcmsgrid.sh STDERR (captured) ===
+WARNING: In non-interactive mode release checks e.g. deprecated releases, production architectures are disabled.
+[INFO] runcmsgrid return code = 0
+
+=== gridpack_generation.log (from gridpack) ===
+Starting job on  Wed Mar 4 01:51:08 CST 2026
+Running on  Linux cmslpc201.fnal.gov 4.18.0-553.100.1.el8_10.x86_64 #1 SMP Mon Feb 2 04:13:33 EST 2026 x86_64 x86_64 x86_64 GNU/Linux
+System release  AlmaLinux release 8.10 (Cerulean Leopard)
+name: HSCPgluino_M-2600_xqcut0
+carddir: ../../../run_directories/Run-3/gluino-based-matchingOFF/HSCPgluino_M-2600_xqcut0/
+queue: local
+scram_arch: el8_amd64_gcc12
+cmssw_version: CMSSW_14_0_22
+On branch master
+Your branch is up to date with 'origin/master'.
+
+You are in a sparse checkout with 31% of tracked files present.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   gridpack_generation.sh
+	modified:   macros/plotdjr.C
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	HSCPgluino_M-1000_xqcut0.log
+	HSCPgluino_M-1000_xqcut0/
+	HSCPgluino_M-1000_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1100_xqcut0.log
+	HSCPgluino_M-1100_xqcut0/
+	HSCPgluino_M-1100_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1200_xqcut0.log
+	HSCPgluino_M-1200_xqcut0/
+	HSCPgluino_M-1200_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1300_xqcut0.log
+	HSCPgluino_M-1300_xqcut0/
+	HSCPgluino_M-1300_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1400_xqcut0.log
+	HSCPgluino_M-1400_xqcut0/
+	HSCPgluino_M-1400_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1500_xqcut0.log
+	HSCPgluino_M-1500_xqcut0/
+	HSCPgluino_M-1500_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1600_xqcut0.log
+	HSCPgluino_M-1600_xqcut0/
+	HSCPgluino_M-1600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-1800_xqcut0.log
+	HSCPgluino_M-1800_xqcut0/
+	HSCPgluino_M-1800_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-2000_xqcut0.log
+	HSCPgluino_M-2000_xqcut0/
+	HSCPgluino_M-2200_xqcut0.log
+	HSCPgluino_M-2200_xqcut0/
+	HSCPgluino_M-2200_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-2400_xqcut0.log
+	HSCPgluino_M-2400_xqcut0/
+	HSCPgluino_M-2400_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22_tarball.tar.xz
+	HSCPgluino_M-2600_xqcut0.log
+	macros/ms-1000_qcut100_djr.png
+	macros/ms-1000_qcut120_djr.png
+	macros/ms-1000_qcut140_djr.png
+	macros/ms-1000_qcut20_djr.png
+	macros/ms-1000_qcut40_djr.png
+	macros/ms-1000_qcut60_djr.png
+	macros/ms-1000_qcut80_djr.png
+	mass_sub.sh
+	submit_lpc_condor_gridpack.sh
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Current git revision is:
+82dde0589e318a06308f2041a281b8103b3eabf3
+diff --git a/bin/MadGraph5_aMCatNLO/gridpack_generation.sh b/bin/MadGraph5_aMCatNLO/gridpack_generation.sh
+index 36eebee1..0020f19c 100755
+--- a/bin/MadGraph5_aMCatNLO/gridpack_generation.sh
++++ b/bin/MadGraph5_aMCatNLO/gridpack_generation.sh
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-
++#
+ ##########################################################################################
+ #GENERAL INSTRUCTIONS:                                                                   #
+ #You should take care of having the following ingredients in order to have this recipe   #
+@@ -731,9 +731,9 @@ if [ -n "$6" ]; then
+     cmssw_version=${6}
+ else
+     if [[ $SYSTEM_RELEASE == *"release 7"* ]]; then 
+-        cmssw_version=CMSSW_12_4_8
++        cmssw_version=CMSSW_10_6_47
+     elif [[ $SYSTEM_RELEASE == *"release 8"* ]]; then
+-        cmssw_version=CMSSW_12_4_8
++        cmssw_version=CMSSW_10_6_47
+     elif [[ $SYSTEM_RELEASE == *"release 9"* ]]; then
+ 	cmssw_version=CMSSW_13_2_9
+     else 
+diff --git a/bin/MadGraph5_aMCatNLO/macros/plotdjr.C b/bin/MadGraph5_aMCatNLO/macros/plotdjr.C
+index 83c5c8ed..0ce83a40 100644
+--- a/bin/MadGraph5_aMCatNLO/macros/plotdjr.C
++++ b/bin/MadGraph5_aMCatNLO/macros/plotdjr.C
+@@ -8,6 +8,11 @@
+ #include "TLegend.h"
+ #include <vector>
+ 
++// --- ADDED: helper to decide if a histogram is empty ---
++inline bool hasEntries(const TH1* h) {
++  return h && (h->GetEntries() > 0 || h->Integral() > 0.0);
++}
++// -------------------------------------------------------
+ 
+ void setcanvas(TCanvas *c1, TPad **pad){
+ 
+@@ -38,16 +43,18 @@ void setlegend(TLegend *legend, TH1D *hall, TH1D *hmult0, TH1D *hmult1, TH1D *hm
+   legend->SetFillStyle(1001);
+ 
+   legend->AddEntry(hall,"all partons");
+-  legend->AddEntry(hmult0,"0 partons");
+-  legend->AddEntry(hmult1,"1 parton");
+-  legend->AddEntry(hmult2,"2 partons");
+-  legend->AddEntry(hmult3,"3 partons");
+-  legend->AddEntry(hmult4,"4 partons");
+ 
++  // --- CHANGED: only add entries if that multiplicity has content
++  if (hasEntries(hmult0)) legend->AddEntry(hmult0,"0 partons");
++  if (hasEntries(hmult1)) legend->AddEntry(hmult1,"1 parton");
++  if (hasEntries(hmult2)) legend->AddEntry(hmult2,"2 partons");
++  if (hasEntries(hmult3)) legend->AddEntry(hmult3,"3 partons");
++  if (hasEntries(hmult4)) legend->AddEntry(hmult4,"4 partons");
++  // -------------------------------------------------------
+ }
+ 
+ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring, const char *xlabel, int nbins, double xlow, double xhigh, int typeMC) {
+-  
++
+   TCut mult0 = "GenEvent.nMEPartons()==0";
+   TCut mult1 = "GenEvent.nMEPartons()==1";
+   TCut mult2 = "GenEvent.nMEPartons()==2";
+@@ -59,7 +66,7 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+     mult0 = "LHEEvent.npNLO()==0";
+     mult1 = "LHEEvent.npNLO()==1";
+     mult2 = "LHEEvent.npNLO()==2";
+-    mult3 = "LHEEvent.npNLO()==3";  
++    mult3 = "LHEEvent.npNLO()==3";
+     mult4 = "LHEEvent.npNLO()==4";
+   } else if (typeMC == 1) {
+   //this is for LO with MLM; default values
+@@ -75,7 +82,7 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+     mult2 = "GenEvent.nMEPartonsFiltered()==2";
+     mult3 = "GenEvent.nMEPartonsFiltered()==3";
+     mult4 = "GenEvent.nMEPartonsFiltered()==4";
+-  }  
++  }
+ 
+   TH1D *hall = new TH1D(TString::Format("hall_%s",name),"",nbins,xlow,xhigh);
+   TH1D *hmult0 = new TH1D(TString::Format("hmult0_%s",name),"",nbins,xlow,xhigh);
+@@ -84,7 +91,7 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+   TH1D *hmult3 = new TH1D(TString::Format("hmult3_%s",name),"",nbins,xlow,xhigh);
+   TH1D *hmult4 = new TH1D(TString::Format("hmult4_%s",name),"",nbins,xlow,xhigh);
+ 
+-  hall->SetLineColor(921);  
++  hall->SetLineColor(921);
+   hmult0->SetLineColor(600);
+   hmult1->SetLineColor(629);
+   hmult2->SetLineColor(419);
+@@ -93,56 +100,58 @@ void makeplot(const char *name, TTree *tree, TCut weight, const char *drawstring
+ 
+   hall->SetLineWidth(2);
+   hmult0->SetLineStyle(2);
+-  hmult1->SetLineStyle(2);  
++  hmult1->SetLineStyle(2);
+   hmult2->SetLineStyle(2);
+   hmult3->SetLineStyle(2);
+   hmult4->SetLineStyle(2);
+-  
++
+   tree->Draw(TString::Format("%s>>%s",drawstring,hall->GetName()),weight,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult0->GetName()),weight*mult0,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult1->GetName()),weight*mult1,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult2->GetName()),weight*mult2,"goff");
+-  tree->Draw(TString::Format("%s>>%s",drawstring,hmult3->GetName()),weight*mult3,"goff");  
++  tree->Draw(TString::Format("%s>>%s",drawstring,hmult3->GetName()),weight*mult3,"goff");
+   tree->Draw(TString::Format("%s>>%s",drawstring,hmult4->GetName()),weight*mult4,"goff");
+ 
+   hall->GetXaxis()->SetTitle(xlabel);
+ 
+-  TLegend *legend=new TLegend(0.67,0.87-4*0.06,0.87,0.87);
++  TLegend* legend = new TLegend(0.12, 0.45, 0.32, 0.75);
+   setlegend(legend, hall, hmult0, hmult1, hmult2, hmult3, hmult4);
+-  
++
+   hall->Draw("EHIST");
+-  hmult0->Draw("EHISTSAME");
+-  hmult1->Draw("EHISTSAME");
+-  hmult2->Draw("EHISTSAME");
+-  hmult3->Draw("EHISTSAME");
+-  hmult4->Draw("EHISTSAME");
++  // --- CHANGED: only draw non-empty multiplicities
++  if (hasEntries(hmult0)) hmult0->Draw("EHISTSAME");
++  if (hasEntries(hmult1)) hmult1->Draw("EHISTSAME");
++  if (hasEntries(hmult2)) hmult2->Draw("EHISTSAME");
++  if (hasEntries(hmult3)) hmult3->Draw("EHISTSAME");
++  if (hasEntries(hmult4)) hmult4->Draw("EHISTSAME");
++  // ---------------------------------------------------
+ 
+   gStyle->SetOptStat(0);
+   legend->Draw();
+ }
+ 
+ void plotdjr(const TString & infile, const TString & outfile) {
+- 
+-  gSystem->Load("libFWCoreFWLite.so");  
+-  AutoLibraryLoader::enable();  
++
++  gSystem->Load("libFWCoreFWLite.so");
++  AutoLibraryLoader::enable();
+   TH1::SetDefaultSumw2();
+-  
++
+   TChain *tree = new TChain("Events");
+   tree->Add(infile);
+-  
++
+   tree->SetAlias("GenEvent","GenEventInfoProduct_generator__GEN.obj");
+   tree->SetAlias("LHEEvent","LHEEventProduct_externalLHEProducer__GEN.obj");
+- 
++
+   TCut weight = "GenEvent.weight()";
+-  int nbins = 50.;
++  int nbins = 35.;
+   double djrmin = -0.5;
+   double djrmax = 3.;
+   //typeMC sets the kind of sample we are looking at: 
+   //0 is for NLO with FXFX merging; 
+   //1 is for LO with MLM; 
+   //2 is for LO with MLM (plotting partons after excluding non-matched partons in wbb/vbf type processes)
+-  int typeMC = 2;
+-  
++  int typeMC = 2; // <<-- UNCHANGED, as you requested
++
+   TCanvas *c1 = new TCanvas("c1", "c1", 800, 600);
+   TPad *pad[5];
+   setcanvas(c1,pad);
+@@ -158,8 +167,6 @@ void plotdjr(const TString & infile, const TString & outfile) {
+   pad[4]->cd();
+   makeplot("djr4",tree,weight,"log10(GenEvent.DJRValues_[4])","DJR 4->5",nbins,djrmin,djrmax,typeMC);
+ 
+-
+   c1->Print(outfile);
+-  return;  
++  return;
+ }
+-
+/uscms/home/avendras/nobackup/HSCP/genproductions/bin/MadGraph5_aMCatNLO
+WARNING: In non-interactive mode release checks e.g. deprecated releases, production architectures are disabled.
+--2026-03-04 01:51:21--  https://cms-project-generators.web.cern.ch/cms-project-generators/MG5_aMC_v2.9.18.tar.gz
+Resolving cms-project-generators.web.cern.ch (cms-project-generators.web.cern.ch)... 2001:1458:d00:17::100:9e, 2001:1458:d00:62::100:2e8, 2001:1458:d00:61::100:1a4, ...
+Connecting to cms-project-generators.web.cern.ch (cms-project-generators.web.cern.ch)|2001:1458:d00:17::100:9e|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 26651876 (25M) [application/x-gzip]
+Saving to: 'MG5_aMC_v2.9.18.tar.gz'
+
+     0K .......... .......... .......... .......... ..........  0%  241K 1m48s
+    50K .......... .......... .......... .......... ..........  0% 23.5M 54s
+   100K .......... .......... .......... .......... ..........  0%  479K 54s
+   150K .......... .......... .......... .......... ..........  0%  248M 41s
+   200K .......... .......... .......... .......... ..........  0%  576K 41s
+   250K .......... .......... .......... .......... ..........  1% 2.73M 36s
+   300K .......... .......... .......... .......... ..........  1%  224M 31s
+   350K .......... .......... .......... .......... ..........  1%  282M 27s
+   400K .......... .......... .......... .......... ..........  1%  247M 24s
+   450K .......... .......... .......... .......... ..........  1%  578K 26s
+   500K .......... .......... .......... .......... ..........  2% 2.84M 24s
+   550K .......... .......... .......... .......... ..........  2%  248M 22s
+   600K .......... .......... .......... .......... ..........  2%  104M 20s
+   650K .......... .......... .......... .......... ..........  2%  187M 19s
+   700K .......... .......... .......... .......... ..........  2%  272M 18s
+   750K .......... .......... .......... .......... ..........  3%  236M 17s
+   800K .......... .......... .......... .......... ..........  3%  580K 18s
+   850K .......... .......... .......... .......... ..........  3% 25.7M 17s
+   900K .......... .......... .......... .......... ..........  3% 3.28M 17s
+   950K .......... .......... .......... .......... ..........  3%  219M 16s
+  1000K .......... .......... .......... .......... ..........  4%  217M 15s
+  1050K .......... .......... .......... .......... ..........  4%  219M 14s
+  1100K .......... .......... .......... .......... ..........  4%  246M 14s
+  1150K .......... .......... .......... .......... ..........  4%  225M 13s
+  1200K .......... .......... .......... .......... ..........  4%  236M 12s
+  1250K .......... .......... .......... .......... ..........  4%  232M 12s
+  1300K .......... .......... .......... .......... ..........  5%  295M 11s
+  1350K .......... .......... .......... .......... ..........  5%  308M 11s
+  1400K .......... .......... .......... .......... ..........  5%  253M 11s
+  1450K .......... .......... .......... .......... ..........  5%  261M 10s
+  1500K .......... .......... .......... .......... ..........  5%  290M 10s
+  1550K .......... .......... .......... .......... ..........  6%  266M 10s
+  1600K .......... .......... .......... .......... ..........  6%  587K 11s
+  1650K .......... .......... .......... .......... ..........  6%  237M 10s
+  1700K .......... .......... .......... .......... ..........  6%  120M 10s
+  1750K .......... .......... .......... .......... ..........  6%  213M 10s
+  1800K .......... .......... .......... .......... ..........  7%  234M 9s
+  1850K .......... .......... .......... .......... ..........  7% 3.32M 9s
+  1900K .......... .......... .......... .......... ..........  7% 26.2M 9s
+  1950K .......... .......... .......... .......... ..........  7%  249M 9s
+  2000K .......... .......... .......... .......... ..........  7%  201M 9s
+  2050K .......... .......... .......... .......... ..........  8%  247M 8s
+  2100K .......... .......... .......... .......... ..........  8%  258M 8s
+  2150K .......... .......... .......... .......... ..........  8%  213M 8s
+  2200K .......... .......... .......... .......... ..........  8%  236M 8s
+  2250K .......... .......... .......... .......... ..........  8%  270M 8s
+  2300K .......... .......... .......... .......... ..........  9%  257M 7s
+  2350K .......... .......... .......... .......... ..........  9%  268M 7s
+  2400K .......... .......... .......... .......... ..........  9%  206M 7s
+  2450K .......... .......... .......... .......... ..........  9%  236M 7s
+  2500K .......... .......... .......... .......... ..........  9%  268M 7s
+  2550K .......... .......... .......... .......... ..........  9%  188M 7s
+  2600K .......... .......... .......... .......... .......... 10%  273M 6s
+  2650K .......... .......... .......... .......... .......... 10%  276M 6s
+  2700K .......... .......... .......... .......... .......... 10%  331M 6s
+  2750K .......... .......... .......... .......... .......... 10%  292M 6s
+  2800K .......... .......... .......... .......... .......... 10%  324M 6s
+  2850K .......... .......... .......... .......... .......... 11%  310M 6s
+  2900K .......... .......... .......... .......... .......... 11%  289M 6s
+  2950K .......... .......... .......... .......... .......... 11%  170M 6s
+  3000K .......... .......... .......... .......... .......... 11%  258M 6s
+  3050K .......... .......... .......... .......... .......... 11%  241M 5s
+  3100K .......... .......... .......... .......... .......... 12%  266M 5s
+  3150K .......... .......... .......... .......... .......... 12%  164M 5s
+  3200K .......... .......... .......... .......... .......... 12%  260M 5s
+  3250K .......... .......... .......... .......... .......... 12%  247M 5s
+  3300K .......... .......... .......... .......... .......... 12%  611K 6s
+  3350K .......... .......... .......... .......... .......... 13%  111M 5s
+  3400K .......... .......... .......... .......... .......... 13%  191M 5s
+  3450K .......... .......... .......... .......... .......... 13%  178M 5s
+  3500K .......... .......... .......... .......... .......... 13%  249M 5s
+  3550K .......... .......... .......... .......... .......... 13%  277M 5s
+  3600K .......... .......... .......... .......... .......... 14%  275M 5s
+  3650K .......... .......... .......... .......... .......... 14%  246M 5s
+  3700K .......... .......... .......... .......... .......... 14%  219M 5s
+  3750K .......... .......... .......... .......... .......... 14% 3.61M 5s
+  3800K .......... .......... .......... .......... .......... 14% 30.2M 5s
+  3850K .......... .......... .......... .......... .......... 14%  315M 5s
+  3900K .......... .......... .......... .......... .......... 15%  229M 5s
+  3950K .......... .......... .......... .......... .......... 15% 98.3M 5s
+  4000K .......... .......... .......... .......... .......... 15%  250M 5s
+  4050K .......... .......... .......... .......... .......... 15%  261M 4s
+  4100K .......... .......... .......... .......... .......... 15%  221M 4s
+  4150K .......... .......... .......... .......... .......... 16%  189M 4s
+  4200K .......... .......... .......... .......... .......... 16%  241M 4s
+  4250K .......... .......... .......... .......... .......... 16%  246M 4s
+  4300K .......... .......... .......... .......... .......... 16%  248M 4s
+  4350K .......... .......... .......... .......... .......... 16%  249M 4s
+  4400K .......... .......... .......... .......... .......... 17%  214M 4s
+  4450K .......... .......... .......... .......... .......... 17%  221M 4s
+  4500K .......... .......... .......... .......... .......... 17%  280M 4s
+  4550K .......... .......... .......... .......... .......... 17%  274M 4s
+  4600K .......... .......... .......... .......... .......... 17%  253M 4s
+  4650K .......... .......... .......... .......... .......... 18%  226M 4s
+  4700K .......... .......... .......... .......... .......... 18%  281M 4s
+  4750K .......... .......... .......... .......... .......... 18%  261M 4s
+  4800K .......... .......... .......... .......... .......... 18%  156M 4s
+  4850K .......... .......... .......... .......... .......... 18%  186M 4s
+  4900K .......... .......... .......... .......... .......... 19% 38.4M 4s
+  4950K .......... .......... .......... .......... .......... 19%  221M 4s
+  5000K .......... .......... .......... .......... .......... 19%  210M 4s
+  5050K .......... .......... .......... .......... .......... 19%  215M 3s
+  5100K .......... .......... .......... .......... .......... 19%  263M 3s
+  5150K .......... .......... .......... .......... .......... 19%  274M 3s
+  5200K .......... .......... .......... .......... .......... 20%  230M 3s
+  5250K .......... .......... .......... .......... .......... 20%  221M 3s
+  5300K .......... .......... .......... .......... .......... 20%  219M 3s
+  5350K .......... .......... .......... .......... .......... 20%  220M 3s
+  5400K .......... .......... .......... .......... .......... 20% 88.7M 3s
+  5450K .......... .......... .......... .......... .......... 21%  208M 3s
+  5500K .......... .......... .......... .......... .......... 21%  233M 3s
+  5550K .......... .......... .......... .......... .......... 21%  228M 3s
+  5600K .......... .......... .......... .......... .......... 21%  195M 3s
+  5650K .......... .......... .......... .......... .......... 21%  223M 3s
+  5700K .......... .......... .......... .......... .......... 22%  159M 3s
+  5750K .......... .......... .......... .......... .......... 22%  266M 3s
+  5800K .......... .......... .......... .......... .......... 22%  244M 3s
+  5850K .......... .......... .......... .......... .......... 22%  649K 3s
+  5900K .......... .......... .......... .......... .......... 22% 21.5M 3s
+  5950K .......... .......... .......... .......... .......... 23%  160M 3s
+  6000K .......... .......... .......... .......... .......... 23%  160M 3s
+  6050K .......... .......... .......... .......... .......... 23%  172M 3s
+  6100K .......... .......... .......... .......... .......... 23%  180M 3s
+  6150K .......... .......... .......... .......... .......... 23%  218M 3s
+  6200K .......... .......... .......... .......... .......... 24%  188M 3s
+  6250K .......... .......... .......... .......... .......... 24%  221M 3s
+  6300K .......... .......... .......... .......... .......... 24%  171M 3s
+  6350K .......... .......... .......... .......... .......... 24%  189M 3s
+  6400K .......... .......... .......... .......... .......... 24%  133M 3s
+  6450K .......... .......... .......... .......... .......... 24%  143M 3s
+  6500K .......... .......... .......... .......... .......... 25%  163M 3s
+  6550K .......... .......... .......... .......... .......... 25% 4.69M 3s
+  6600K .......... .......... .......... .......... .......... 25%  156M 3s
+  6650K .......... .......... .......... .......... .......... 25%  195M 3s
+  6700K .......... .......... .......... .......... .......... 25%  175M 3s
+  6750K .......... .......... .......... .......... .......... 26%  146M 3s
+  6800K .......... .......... .......... .......... .......... 26%  134M 3s
+  6850K .......... .......... .......... .......... .......... 26%  154M 3s
+  6900K .......... .......... .......... .......... .......... 26%  141M 3s
+  6950K .......... .......... .......... .......... .......... 26% 37.3M 3s
+  7000K .......... .......... .......... .......... .......... 27%  144M 3s
+  7050K .......... .......... .......... .......... .......... 27%  206M 3s
+  7100K .......... .......... .......... .......... .......... 27%  194M 2s
+  7150K .......... .......... .......... .......... .......... 27%  177M 2s
+  7200K .......... .......... .......... .......... .......... 27%  208M 2s
+  7250K .......... .......... .......... .......... .......... 28%  209M 2s
+  7300K .......... .......... .......... .......... .......... 28%  188M 2s
+  7350K .......... .......... .......... .......... .......... 28%  166M 2s
+  7400K .......... .......... .......... .......... .......... 28%  162M 2s
+  7450K .......... .......... .......... .......... .......... 28%  127M 2s
+  7500K .......... .......... .......... .......... .......... 29%  111M 2s
+  7550K .......... .......... .......... .......... .......... 29%  129M 2s
+  7600K .......... .......... .......... .......... .......... 29%  151M 2s
+  7650K .......... .......... .......... .......... .......... 29%  182M 2s
+  7700K .......... .......... .......... .......... .......... 29%  154M 2s
+  7750K .......... .......... .......... .......... .......... 29%  124M 2s
+  7800K .......... .......... .......... .......... .......... 30%  158M 2s
+  7850K .......... .......... .......... .......... .......... 30%  160M 2s
+  7900K .......... .......... .......... .......... .......... 30%  133M 2s
+  7950K .......... .......... .......... .......... .......... 30%  170M 2s
+  8000K .......... .......... .......... .......... .......... 30%  191M 2s
+  8050K .......... .......... .......... .......... .......... 31%  152M 2s
+  8100K .......... .......... .......... .......... .......... 31%  109M 2s
+  8150K .......... .......... .......... .......... .......... 31%  174M 2s
+  8200K .......... .......... .......... .......... .......... 31%  112M 2s
+  8250K .......... .......... .......... .......... .......... 31%  162M 2s
+  8300K .......... .......... .......... .......... .......... 32%  185M 2s
+  8350K .......... .......... .......... .......... .......... 32%  179M 2s
+  8400K .......... .......... .......... .......... .......... 32%  172M 2s
+  8450K .......... .......... .......... .......... .......... 32%  182M 2s
+  8500K .......... .......... .......... .......... .......... 32% 94.1M 2s
+  8550K .......... .......... .......... .......... .......... 33%  165M 2s
+  8600K .......... .......... .......... .......... .......... 33%  147M 2s
+  8650K .......... .......... .......... .......... .......... 33%  149M 2s
+  8700K .......... .......... .......... .......... .......... 33%  213M 2s
+  8750K .......... .......... .......... .......... .......... 33%  169M 2s
+  8800K .......... .......... .......... .......... .......... 34%  656K 2s
+  8850K .......... .......... .......... .......... .......... 34%  104M 2s
+  8900K .......... .......... .......... .......... .......... 34%  174M 2s
+  8950K .......... .......... .......... .......... .......... 34%  156M 2s
+  9000K .......... .......... .......... .......... .......... 34%  181M 2s
+  9050K .......... .......... .......... .......... .......... 34%  151M 2s
+  9100K .......... .......... .......... .......... .......... 35%  225M 2s
+  9150K .......... .......... .......... .......... .......... 35%  206M 2s
+  9200K .......... .......... .......... .......... .......... 35%  146M 2s
+  9250K .......... .......... .......... .......... .......... 35% 4.40M 2s
+  9300K .......... .......... .......... .......... .......... 35% 33.0M 2s
+  9350K .......... .......... .......... .......... .......... 36%  152M 2s
+  9400K .......... .......... .......... .......... .......... 36%  170M 2s
+  9450K .......... .......... .......... .......... .......... 36%  159M 2s
+  9500K .......... .......... .......... .......... .......... 36%  204M 2s
+  9550K .......... .......... .......... .......... .......... 36%  206M 2s
+  9600K .......... .......... .......... .......... .......... 37%  192M 2s
+  9650K .......... .......... .......... .......... .......... 37%  222M 2s
+  9700K .......... .......... .......... .......... .......... 37%  193M 2s
+  9750K .......... .......... .......... .......... .......... 37%  206M 2s
+  9800K .......... .......... .......... .......... .......... 37%  107M 2s
+  9850K .......... .......... .......... .......... .......... 38%  165M 2s
+  9900K .......... .......... .......... .......... .......... 38%  157M 2s
+  9950K .......... .......... .......... .......... .......... 38%  153M 2s
+ 10000K .......... .......... .......... .......... .......... 38%  138M 2s
+ 10050K .......... .......... .......... .......... .......... 38%  195M 2s
+ 10100K .......... .......... .......... .......... .......... 38%  185M 2s
+ 10150K .......... .......... .......... .......... .......... 39%  221M 2s
+ 10200K .......... .......... .......... .......... .......... 39%  149M 2s
+ 10250K .......... .......... .......... .......... .......... 39%  183M 2s
+ 10300K .......... .......... .......... .......... .......... 39%  172M 2s
+ 10350K .......... .......... .......... .......... .......... 39%  176M 2s
+ 10400K .......... .......... .......... .......... .......... 40%  145M 2s
+ 10450K .......... .......... .......... .......... .......... 40%  164M 2s
+ 10500K .......... .......... .......... .......... .......... 40%  168M 2s
+ 10550K .......... .......... .......... .......... .......... 40%  184M 2s
+ 10600K .......... .......... .......... .......... .......... 40% 92.2M 2s
+ 10650K .......... .......... .......... .......... .......... 41%  219M 2s
+ 10700K .......... .......... .......... .......... .......... 41%  175M 1s
+ 10750K .......... .......... .......... .......... .......... 41%  154M 1s
+ 10800K .......... .......... .......... .......... .......... 41%  145M 1s
+ 10850K .......... .......... .......... .......... .......... 41%  171M 1s
+ 10900K .......... .......... .......... .......... .......... 42%  177M 1s
+ 10950K .......... .......... .......... .......... .......... 42%  147M 1s
+ 11000K .......... .......... .......... .......... .......... 42%  163M 1s
+ 11050K .......... .......... .......... .......... .......... 42%  156M 1s
+ 11100K .......... .......... .......... .......... .......... 42%  216M 1s
+ 11150K .......... .......... .......... .......... .......... 43%  183M 1s
+ 11200K .......... .......... .......... .......... .......... 43%  212M 1s
+ 11250K .......... .......... .......... .......... .......... 43%  191M 1s
+ 11300K .......... .......... .......... .......... .......... 43%  193M 1s
+ 11350K .......... .......... .......... .......... .......... 43%  135M 1s
+ 11400K .......... .......... .......... .......... .......... 43%  155M 1s
+ 11450K .......... .......... .......... .......... .......... 44%  153M 1s
+ 11500K .......... .......... .......... .......... .......... 44%  667K 1s
+ 11550K .......... .......... .......... .......... .......... 44% 14.4M 1s
+ 11600K .......... .......... .......... .......... .......... 44%  173M 1s
+ 11650K .......... .......... .......... .......... .......... 44%  198M 1s
+ 11700K .......... .......... .......... .......... .......... 45%  150M 1s
+ 11750K .......... .......... .......... .......... .......... 45%  161M 1s
+ 11800K .......... .......... .......... .......... .......... 45%  164M 1s
+ 11850K .......... .......... .......... .......... .......... 45%  191M 1s
+ 11900K .......... .......... .......... .......... .......... 45%  202M 1s
+ 11950K .......... .......... .......... .......... .......... 46%  185M 1s
+ 12000K .......... .......... .......... .......... .......... 46% 4.83M 1s
+ 12050K .......... .......... .......... .......... .......... 46% 26.8M 1s
+ 12100K .......... .......... .......... .......... .......... 46%  171M 1s
+ 12150K .......... .......... .......... .......... .......... 46%  177M 1s
+ 12200K .......... .......... .......... .......... .......... 47%  194M 1s
+ 12250K .......... .......... .......... .......... .......... 47%  189M 1s
+ 12300K .......... .......... .......... .......... .......... 47%  203M 1s
+ 12350K .......... .......... .......... .......... .......... 47%  158M 1s
+ 12400K .......... .......... .......... .......... .......... 47%  180M 1s
+ 12450K .......... .......... .......... .......... .......... 48%  250M 1s
+ 12500K .......... .......... .......... .......... .......... 48%  139M 1s
+ 12550K .......... .......... .......... .......... .......... 48%  141M 1s
+ 12600K .......... .......... .......... .......... .......... 48%  178M 1s
+ 12650K .......... .......... .......... .......... .......... 48%  100M 1s
+ 12700K .......... .......... .......... .......... .......... 48%  182M 1s
+ 12750K .......... .......... .......... .......... .......... 49%  180M 1s
+ 12800K .......... .......... .......... .......... .......... 49%  195M 1s
+ 12850K .......... .......... .......... .......... .......... 49%  122M 1s
+ 12900K .......... .......... .......... .......... .......... 49%  156M 1s
+ 12950K .......... .......... .......... .......... .......... 49%  185M 1s
+ 13000K .......... .......... .......... .......... .......... 50%  155M 1s
+ 13050K .......... .......... .......... .......... .......... 50%  124M 1s
+ 13100K .......... .......... .......... .......... .......... 50%  141M 1s
+ 13150K .......... .......... .......... .......... .......... 50% 17.5M 1s
+ 13200K .......... .......... .......... .......... .......... 50%  165M 1s
+ 13250K .......... .......... .......... .......... .......... 51%  126M 1s
+ 13300K .......... .......... .......... .......... .......... 51%  151M 1s
+ 13350K .......... .......... .......... .......... .......... 51%  177M 1s
+ 13400K .......... .......... .......... .......... .......... 51%  181M 1s
+ 13450K .......... .......... .......... .......... .......... 51%  188M 1s
+ 13500K .......... .......... .......... .......... .......... 52%  195M 1s
+ 13550K .......... .......... .......... .......... .......... 52%  222M 1s
+ 13600K .......... .......... .......... .......... .......... 52%  220M 1s
+ 13650K .......... .......... .......... .......... .......... 52%  179M 1s
+ 13700K .......... .......... .......... .......... .......... 52%  179M 1s
+ 13750K .......... .......... .......... .......... .......... 53%  219M 1s
+ 13800K .......... .......... .......... .......... .......... 53%  148M 1s
+ 13850K .......... .......... .......... .......... .......... 53%  204M 1s
+ 13900K .......... .......... .......... .......... .......... 53%  213M 1s
+ 13950K .......... .......... .......... .......... .......... 53%  171M 1s
+ 14000K .......... .......... .......... .......... .......... 53%  162M 1s
+ 14050K .......... .......... .......... .......... .......... 54%  202M 1s
+ 14100K .......... .......... .......... .......... .......... 54%  304M 1s
+ 14150K .......... .......... .......... .......... .......... 54%  231M 1s
+ 14200K .......... .......... .......... .......... .......... 54%  674K 1s
+ 14250K .......... .......... .......... .......... .......... 54%  135M 1s
+ 14300K .......... .......... .......... .......... .......... 55%  163M 1s
+ 14350K .......... .......... .......... .......... .......... 55%  161M 1s
+ 14400K .......... .......... .......... .......... .......... 55%  175M 1s
+ 14450K .......... .......... .......... .......... .......... 55%  191M 1s
+ 14500K .......... .......... .......... .......... .......... 55%  203M 1s
+ 14550K .......... .......... .......... .......... .......... 56%  219M 1s
+ 14600K .......... .......... .......... .......... .......... 56% 35.0M 1s
+ 14650K .......... .......... .......... .......... .......... 56%  188M 1s
+ 14700K .......... .......... .......... .......... .......... 56%  227M 1s
+ 14750K .......... .......... .......... .......... .......... 56%  177M 1s
+ 14800K .......... .......... .......... .......... .......... 57% 4.67M 1s
+ 14850K .......... .......... .......... .......... .......... 57%  156M 1s
+ 14900K .......... .......... .......... .......... .......... 57%  162M 1s
+ 14950K .......... .......... .......... .......... .......... 57%  146M 1s
+ 15000K .......... .......... .......... .......... .......... 57%  193M 1s
+ 15050K .......... .......... .......... .......... .......... 58%  195M 1s
+ 15100K .......... .......... .......... .......... .......... 58%  151M 1s
+ 15150K .......... .......... .......... .......... .......... 58%  124M 1s
+ 15200K .......... .......... .......... .......... .......... 58%  185M 1s
+ 15250K .......... .......... .......... .......... .......... 58%  153M 1s
+ 15300K .......... .......... .......... .......... .......... 58%  106M 1s
+ 15350K .......... .......... .......... .......... .......... 59%  164M 1s
+ 15400K .......... .......... .......... .......... .......... 59%  182M 1s
+ 15450K .......... .......... .......... .......... .......... 59%  194M 1s
+ 15500K .......... .......... .......... .......... .......... 59%  159M 1s
+ 15550K .......... .......... .......... .......... .......... 59%  126M 1s
+ 15600K .......... .......... .......... .......... .......... 60%  139M 1s
+ 15650K .......... .......... .......... .......... .......... 60%  165M 1s
+ 15700K .......... .......... .......... .......... .......... 60% 48.8M 1s
+ 15750K .......... .......... .......... .......... .......... 60%  194M 1s
+ 15800K .......... .......... .......... .......... .......... 60%  153M 1s
+ 15850K .......... .......... .......... .......... .......... 61%  184M 1s
+ 15900K .......... .......... .......... .......... .......... 61%  138M 1s
+ 15950K .......... .......... .......... .......... .......... 61%  141M 1s
+ 16000K .......... .......... .......... .......... .......... 61%  254M 1s
+ 16050K .......... .......... .......... .......... .......... 61% 16.4M 1s
+ 16100K .......... .......... .......... .......... .......... 62% 43.3M 1s
+ 16150K .......... .......... .......... .......... .......... 62%  175M 1s
+ 16200K .......... .......... .......... .......... .......... 62%  166M 1s
+ 16250K .......... .......... .......... .......... .......... 62%  164M 1s
+ 16300K .......... .......... .......... .......... .......... 62%  159M 1s
+ 16350K .......... .......... .......... .......... .......... 63%  165M 1s
+ 16400K .......... .......... .......... .......... .......... 63%  172M 1s
+ 16450K .......... .......... .......... .......... .......... 63%  216M 1s
+ 16500K .......... .......... .......... .......... .......... 63%  187M 1s
+ 16550K .......... .......... .......... .......... .......... 63%  212M 1s
+ 16600K .......... .......... .......... .......... .......... 63%  150M 1s
+ 16650K .......... .......... .......... .......... .......... 64%  194M 1s
+ 16700K .......... .......... .......... .......... .......... 64%  672K 1s
+ 16750K .......... .......... .......... .......... .......... 64%  170M 1s
+ 16800K .......... .......... .......... .......... .......... 64%  154M 1s
+ 16850K .......... .......... .......... .......... .......... 64%  151M 1s
+ 16900K .......... .......... .......... .......... .......... 65%  166M 1s
+ 16950K .......... .......... .......... .......... .......... 65%  184M 1s
+ 17000K .......... .......... .......... .......... .......... 65%  190M 1s
+ 17050K .......... .......... .......... .......... .......... 65%  124M 1s
+ 17100K .......... .......... .......... .......... .......... 65%  166M 1s
+ 17150K .......... .......... .......... .......... .......... 66%  215M 1s
+ 17200K .......... .......... .......... .......... .......... 66%  182M 1s
+ 17250K .......... .......... .......... .......... .......... 66%  174M 1s
+ 17300K .......... .......... .......... .......... .......... 66%  191M 1s
+ 17350K .......... .......... .......... .......... .......... 66%  195M 1s
+ 17400K .......... .......... .......... .......... .......... 67%  190M 1s
+ 17450K .......... .......... .......... .......... .......... 67%  145M 1s
+ 17500K .......... .......... .......... .......... .......... 67%  158M 1s
+ 17550K .......... .......... .......... .......... .......... 67%  180M 1s
+ 17600K .......... .......... .......... .......... .......... 67%  146M 1s
+ 17650K .......... .......... .......... .......... .......... 68%  131M 1s
+ 17700K .......... .......... .......... .......... .......... 68%  187M 1s
+ 17750K .......... .......... .......... .......... .......... 68% 4.49M 1s
+ 17800K .......... .......... .......... .......... .......... 68%  128M 1s
+ 17850K .......... .......... .......... .......... .......... 68%  175M 1s
+ 17900K .......... .......... .......... .......... .......... 68%  213M 1s
+ 17950K .......... .......... .......... .......... .......... 69%  164M 1s
+ 18000K .......... .......... .......... .......... .......... 69%  114M 1s
+ 18050K .......... .......... .......... .......... .......... 69%  172M 1s
+ 18100K .......... .......... .......... .......... .......... 69%  177M 1s
+ 18150K .......... .......... .......... .......... .......... 69%  138M 1s
+ 18200K .......... .......... .......... .......... .......... 70%  139M 1s
+ 18250K .......... .......... .......... .......... .......... 70%  185M 1s
+ 18300K .......... .......... .......... .......... .......... 70%  156M 1s
+ 18350K .......... .......... .......... .......... .......... 70%  176M 1s
+ 18400K .......... .......... .......... .......... .......... 70%  171M 1s
+ 18450K .......... .......... .......... .......... .......... 71%  173M 1s
+ 18500K .......... .......... .......... .......... .......... 71%  159M 1s
+ 18550K .......... .......... .......... .......... .......... 71% 67.3M 1s
+ 18600K .......... .......... .......... .......... .......... 71%  141M 1s
+ 18650K .......... .......... .......... .......... .......... 71%  210M 1s
+ 18700K .......... .......... .......... .......... .......... 72%  220M 1s
+ 18750K .......... .......... .......... .......... .......... 72%  224M 1s
+ 18800K .......... .......... .......... .......... .......... 72%  167M 1s
+ 18850K .......... .......... .......... .......... .......... 72%  224M 1s
+ 18900K .......... .......... .......... .......... .......... 72% 8.31M 1s
+ 18950K .......... .......... .......... .......... .......... 73%  158M 1s
+ 19000K .......... .......... .......... .......... .......... 73%  179M 1s
+ 19050K .......... .......... .......... .......... .......... 73%  157M 0s
+ 19100K .......... .......... .......... .......... .......... 73%  196M 0s
+ 19150K .......... .......... .......... .......... .......... 73%  167M 0s
+ 19200K .......... .......... .......... .......... .......... 73%  179M 0s
+ 19250K .......... .......... .......... .......... .......... 74%  175M 0s
+ 19300K .......... .......... .......... .......... .......... 74%  180M 0s
+ 19350K .......... .......... .......... .......... .......... 74%  163M 0s
+ 19400K .......... .......... .......... .......... .......... 74%  683K 0s
+ 19450K .......... .......... .......... .......... .......... 74% 22.5M 0s
+ 19500K .......... .......... .......... .......... .......... 75% 18.8M 0s
+ 19550K .......... .......... .......... .......... .......... 75% 29.2M 0s
+ 19600K .......... .......... .......... .......... .......... 75%  219M 0s
+ 19650K .......... .......... .......... .......... .......... 75%  201M 0s
+ 19700K .......... .......... .......... .......... .......... 75%  207M 0s
+ 19750K .......... .......... .......... .......... .......... 76%  180M 0s
+ 19800K .......... .......... .......... .......... .......... 76%  203M 0s
+ 19850K .......... .......... .......... .......... .......... 76%  208M 0s
+ 19900K .......... .......... .......... .......... .......... 76%  177M 0s
+ 19950K .......... .......... .......... .......... .......... 76%  199M 0s
+ 20000K .......... .......... .......... .......... .......... 77%  222M 0s
+ 20050K .......... .......... .......... .......... .......... 77%  199M 0s
+ 20100K .......... .......... .......... .......... .......... 77%  170M 0s
+ 20150K .......... .......... .......... .......... .......... 77%  219M 0s
+ 20200K .......... .......... .......... .......... .......... 77%  219M 0s
+ 20250K .......... .......... .......... .......... .......... 77%  201M 0s
+ 20300K .......... .......... .......... .......... .......... 78%  177M 0s
+ 20350K .......... .......... .......... .......... .......... 78%  215M 0s
+ 20400K .......... .......... .......... .......... .......... 78%  217M 0s
+ 20450K .......... .......... .......... .......... .......... 78%  210M 0s
+ 20500K .......... .......... .......... .......... .......... 78%  166M 0s
+ 20550K .......... .......... .......... .......... .......... 79% 11.0M 0s
+ 20600K .......... .......... .......... .......... .......... 79% 41.1M 0s
+ 20650K .......... .......... .......... .......... .......... 79%  188M 0s
+ 20700K .......... .......... .......... .......... .......... 79%  193M 0s
+ 20750K .......... .......... .......... .......... .......... 79%  200M 0s
+ 20800K .......... .......... .......... .......... .......... 80%  186M 0s
+ 20850K .......... .......... .......... .......... .......... 80%  128M 0s
+ 20900K .......... .......... .......... .......... .......... 80%  166M 0s
+ 20950K .......... .......... .......... .......... .......... 80%  160M 0s
+ 21000K .......... .......... .......... .......... .......... 80%  151M 0s
+ 21050K .......... .......... .......... .......... .......... 81%  191M 0s
+ 21100K .......... .......... .......... .......... .......... 81%  206M 0s
+ 21150K .......... .......... .......... .......... .......... 81%  173M 0s
+ 21200K .......... .......... .......... .......... .......... 81%  159M 0s
+ 21250K .......... .......... .......... .......... .......... 81%  157M 0s
+ 21300K .......... .......... .......... .......... .......... 82%  156M 0s
+ 21350K .......... .......... .......... .......... .......... 82%  161M 0s
+ 21400K .......... .......... .......... .......... .......... 82%  187M 0s
+ 21450K .......... .......... .......... .......... .......... 82% 70.8M 0s
+ 21500K .......... .......... .......... .......... .......... 82%  215M 0s
+ 21550K .......... .......... .......... .......... .......... 82%  211M 0s
+ 21600K .......... .......... .......... .......... .......... 83%  218M 0s
+ 21650K .......... .......... .......... .......... .......... 83%  142M 0s
+ 21700K .......... .......... .......... .......... .......... 83%  168M 0s
+ 21750K .......... .......... .......... .......... .......... 83% 9.30M 0s
+ 21800K .......... .......... .......... .......... .......... 83%  165M 0s
+ 21850K .......... .......... .......... .......... .......... 84%  145M 0s
+ 21900K .......... .......... .......... .......... .......... 84%  193M 0s
+ 21950K .......... .......... .......... .......... .......... 84%  165M 0s
+ 22000K .......... .......... .......... .......... .......... 84%  141M 0s
+ 22050K .......... .......... .......... .......... .......... 84%  207M 0s
+ 22100K .......... .......... .......... .......... .......... 85%  217M 0s
+ 22150K .......... .......... .......... .......... .......... 85%  199M 0s
+ 22200K .......... .......... .......... .......... .......... 85%  665K 0s
+ 22250K .......... .......... .......... .......... .......... 85%  172M 0s
+ 22300K .......... .......... .......... .......... .......... 85%  182M 0s
+ 22350K .......... .......... .......... .......... .......... 86%  198M 0s
+ 22400K .......... .......... .......... .......... .......... 86%  131M 0s
+ 22450K .......... .......... .......... .......... .......... 86%  205M 0s
+ 22500K .......... .......... .......... .......... .......... 86%  213M 0s
+ 22550K .......... .......... .......... .......... .......... 86%  196M 0s
+ 22600K .......... .......... .......... .......... .......... 87%  188M 0s
+ 22650K .......... .......... .......... .......... .......... 87%  217M 0s
+ 22700K .......... .......... .......... .......... .......... 87%  185M 0s
+ 22750K .......... .......... .......... .......... .......... 87%  165M 0s
+ 22800K .......... .......... .......... .......... .......... 87% 43.2M 0s
+ 22850K .......... .......... .......... .......... .......... 87%  218M 0s
+ 22900K .......... .......... .......... .......... .......... 88%  304M 0s
+ 22950K .......... .......... .......... .......... .......... 88% 4.53M 0s
+ 23000K .......... .......... .......... .......... .......... 88%  150M 0s
+ 23050K .......... .......... .......... .......... .......... 88%  156M 0s
+ 23100K .......... .......... .......... .......... .......... 88%  154M 0s
+ 23150K .......... .......... .......... .......... .......... 89%  169M 0s
+ 23200K .......... .......... .......... .......... .......... 89%  192M 0s
+ 23250K .......... .......... .......... .......... .......... 89%  157M 0s
+ 23300K .......... .......... .......... .......... .......... 89%  159M 0s
+ 23350K .......... .......... .......... .......... .......... 89%  160M 0s
+ 23400K .......... .......... .......... .......... .......... 90%  161M 0s
+ 23450K .......... .......... .......... .......... .......... 90%  152M 0s
+ 23500K .......... .......... .......... .......... .......... 90%  159M 0s
+ 23550K .......... .......... .......... .......... .......... 90%  108M 0s
+ 23600K .......... .......... .......... .......... .......... 90%  182M 0s
+ 23650K .......... .......... .......... .......... .......... 91%  183M 0s
+ 23700K .......... .......... .......... .......... .......... 91%  168M 0s
+ 23750K .......... .......... .......... .......... .......... 91%  129M 0s
+ 23800K .......... .......... .......... .......... .......... 91%  184M 0s
+ 23850K .......... .......... .......... .......... .......... 91%  128M 0s
+ 23900K .......... .......... .......... .......... .......... 92%  135M 0s
+ 23950K .......... .......... .......... .......... .......... 92%  192M 0s
+ 24000K .......... .......... .......... .......... .......... 92%  181M 0s
+ 24050K .......... .......... .......... .......... .......... 92%  166M 0s
+ 24100K .......... .......... .......... .......... .......... 92%  113M 0s
+ 24150K .......... .......... .......... .......... .......... 92%  186M 0s
+ 24200K .......... .......... .......... .......... .......... 93%  163M 0s
+ 24250K .......... .......... .......... .......... .......... 93%  181M 0s
+ 24300K .......... .......... .......... .......... .......... 93%  132M 0s
+ 24350K .......... .......... .......... .......... .......... 93%  153M 0s
+ 24400K .......... .......... .......... .......... .......... 93%  188M 0s
+ 24450K .......... .......... .......... .......... .......... 94%  189M 0s
+ 24500K .......... .......... .......... .......... .......... 94%  126M 0s
+ 24550K .......... .......... .......... .......... .......... 94%  178M 0s
+ 24600K .......... .......... .......... .......... .......... 94%  157M 0s
+ 24650K .......... .......... .......... .......... .......... 94% 24.8M 0s
+ 24700K .......... .......... .......... .......... .......... 95%  112M 0s
+ 24750K .......... .......... .......... .......... .......... 95%  173M 0s
+ 24800K .......... .......... .......... .......... .......... 95%  185M 0s
+ 24850K .......... .......... .......... .......... .......... 95%  201M 0s
+ 24900K .......... .......... .......... .......... .......... 95%  185M 0s
+ 24950K .......... .......... .......... .......... .......... 96%  176M 0s
+ 25000K .......... .......... .......... .......... .......... 96%  134M 0s
+ 25050K .......... .......... .......... .......... .......... 96%  677K 0s
+ 25100K .......... .......... .......... .......... .......... 96% 21.9M 0s
+ 25150K .......... .......... .......... .......... .......... 96%  119M 0s
+ 25200K .......... .......... .......... .......... .......... 97%  191M 0s
+ 25250K .......... .......... .......... .......... .......... 97%  132M 0s
+ 25300K .......... .......... .......... .......... .......... 97%  157M 0s
+ 25350K .......... .......... .......... .......... .......... 97%  163M 0s
+ 25400K .......... .......... .......... .......... .......... 97%  206M 0s
+ 25450K .......... .......... .......... .......... .......... 97%  129M 0s
+ 25500K .......... .......... .......... .......... .......... 98%  224M 0s
+ 25550K .......... .......... .......... .......... .......... 98%  138M 0s
+ 25600K .......... .......... .......... .......... .......... 98%  126M 0s
+ 25650K .......... .......... .......... .......... .......... 98%  134M 0s
+ 25700K .......... .......... .......... .......... .......... 98%  135M 0s
+ 25750K .......... .......... .......... .......... .......... 99%  154M 0s
+ 25800K .......... .......... .......... .......... .......... 99%  178M 0s
+ 25850K .......... .......... .......... .......... .......... 99%  170M 0s
+ 25900K .......... .......... .......... .......... .......... 99% 6.51M 0s
+ 25950K .......... .......... .......... .......... .......... 99% 32.0M 0s
+ 26000K .......... .......... .......                         100%  159M=1.7s
+
+2026-03-04 01:51:24 (15.2 MB/s) - 'MG5_aMC_v2.9.18.tar.gz' saved [26651876/26651876]
+
+patching file models/loop_qcd_qed_sm/restrict_lepton_masses_no_lepton_yukawas.dat
+patching file models/loop_sm/restrict_ckm_no_b_mass.dat
+patching file models/sm/restrict_ckm_lepton_masses.dat
+patching file models/sm/restrict_ckm_lepton_masses_no_b_mass.dat
+patching file models/sm/restrict_ckm_no_b_mass.dat
+patching file models/sm/restrict_lepton_masses_no_b_mass.dat
+patching file Template/NLO/SubProcesses/MCmasses_PYTHIA8.inc
+patching file madgraph/interface/loop_interface.py
+patching file madgraph/various/systematics.py
+Hunk #1 succeeded at 342 (offset 3 lines).
+Hunk #2 succeeded at 377 (offset 3 lines).
+Hunk #3 succeeded at 551 (offset 3 lines).
+patching file Template/NLO/Source/make_opts.inc
+patching file madgraph/iolibs/export_v4.py
+patching file madgraph/iolibs/template_files/pdf_opendata.f
+patching file madgraph/iolibs/template_files/pdf_wrap_lhapdf.f
+patching file madgraph/iolibs/template_files/pdf_wrap_lhapdf.f
+patching file madgraph/interface/reweight_interface.py
+patching file madgraph/interface/common_run_interface.py
+patching file Template/LO/SubProcesses/refine.sh
+patching file Template/LO/SubProcesses/refine_splitted.sh
+patching file Template/LO/SubProcesses/survey.sh
+patching file Template/NLO/SubProcesses/ajob_template
+patching file Template/NLO/SubProcesses/reweight_xsec_events.local
+patching file madgraph/various/misc.py
+Hunk #1 succeeded at 514 (offset 39 lines).
+patching file madgraph/various/cluster.py
+************************************************************
+*                                                          *
+*                     W E L C O M E to                     *
+*              M A D G R A P H 5 _ a M C @ N L O           *
+*                                                          *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.18                2023-12-08         *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                            and                           *
+*            http://amcatnlo.web.cern.ch/amcatnlo/         *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*           Type 'tutorial' to learn how MG5 works         *
+*    Type 'tutorial aMCatNLO' to learn how aMC@NLO works   *
+*    Type 'tutorial MadLoop' to learn how MadLoop works    *
+*                                                          *
+************************************************************
+load MG5 configuration from input/mg5_configuration.txt 
+fastjet-config does not seem to correspond to a valid fastjet-config executable (v3+). We will use fjcore instead.
+ Please set the 'fastjet'variable to the full (absolute) /PATH/TO/fastjet-config (including fastjet-config).
+ MG5_aMC> set fastjet /PATH/TO/fastjet-config
+
+Using golem library in /cvmfs/cms.cern.ch/el8_amd64_gcc12/cms/cmssw/CMSSW_14_0_22/external/el8_amd64_gcc12/lib
+set lhapdf to lhapdf-config
+None does not seem to correspond to a valid lhapdf-config executable. 
+Please set the 'lhapdf' variable to the (absolute) /PATH/TO/lhapdf-config (including lhapdf-config).
+Note that you can still compile and run aMC@NLO with the built-in PDFs
+ MG5_aMC> set lhapdf /PATH/TO/lhapdf-config
+
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+Using default eps viewer "evince". Set another one in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+import /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/MG5_aMC_v2_9_18/mgconfigscript
+The import format was not given, so we guess it as command
+set auto_update 0
+set automatic_html_opening False
+This option will be the default in any output that you are going to create in this session.
+In order to keep this changes permanent please run 'save options'
+set auto_convert_model True
+save options auto_convert_model
+save configuration file to /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/MG5_aMC_v2_9_18/input/mg5_configuration.txt
+set lhapdf_py3 /cvmfs/cms.cern.ch/el8_amd64_gcc12/external/lhapdf/6.4.0-5969784ee06af968580d5197ca83d374/share/LHAPDF/../../bin/lhapdf-config
+set lhapdf to /cvmfs/cms.cern.ch/el8_amd64_gcc12/external/lhapdf/6.4.0-5969784ee06af968580d5197ca83d374/share/LHAPDF/../../bin/lhapdf-config
+save options lhapdf_py3
+save configuration file to /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/MG5_aMC_v2_9_18/input/mg5_configuration.txt
+set run_mode 2
+This option will be the default in any output that you are going to create in this session.
+In order to keep this changes permanent please run 'save options'
+save options --all
+save configuration file to /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/MG5_aMC_v2_9_18/input/mg5_configuration.txt
+quit
+ls: cannot access '/uscms/home/avendras/nobackup/HSCP/genproductions/bin/MadGraph5_aMCatNLO/../../../run_directories/Run-3/gluino-based-matchingOFF/HSCPgluino_M-2600_xqcut0//HSCPgluino_M-2600_xqcut0*.patch': No such file or directory
+/uscms/home/avendras/nobackup/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work
+************************************************************
+*                                                          *
+*                     W E L C O M E to                     *
+*              M A D G R A P H 5 _ a M C @ N L O           *
+*                                                          *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.18                2023-12-08         *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                            and                           *
+*            http://amcatnlo.web.cern.ch/amcatnlo/         *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*           Type 'tutorial' to learn how MG5 works         *
+*    Type 'tutorial aMCatNLO' to learn how aMC@NLO works   *
+*    Type 'tutorial MadLoop' to learn how MadLoop works    *
+*                                                          *
+************************************************************
+load MG5 configuration from MG5_aMC_v2_9_18/input/mg5_configuration.txt 
+None does not seem to correspond to a valid fastjet-config executable (v3+). We will use fjcore instead.
+ Please set the 'fastjet'variable to the full (absolute) /PATH/TO/fastjet-config (including fastjet-config).
+ MG5_aMC> set fastjet /PATH/TO/fastjet-config
+
+set lhapdf to /cvmfs/cms.cern.ch/el8_amd64_gcc12/external/lhapdf/6.4.0-5969784ee06af968580d5197ca83d374/share/LHAPDF/../../bin/lhapdf-config
+set lhapdf to /cvmfs/cms.cern.ch/el8_amd64_gcc12/external/lhapdf/6.4.0-5969784ee06af968580d5197ca83d374/share/LHAPDF/../../bin/lhapdf-config
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+Using default eps viewer "evince". Set another one in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+import /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/HSCPgluino_M-2600_xqcut0_proc_card.dat
+The import format was not given, so we guess it as command
+import model MSSM_SLHA2
+INFO: load particles 
+INFO: load vertices 
+INFO: Restrict model MSSM_SLHA2 with file MG5_aMC_v2_9_18/models/MSSM_SLHA2/restrict_default.dat . 
+INFO: Run "set stdout_level DEBUG" before import for more information. 
+INFO: Detect SLHA2 format. keeping restricted parameter in the param_card 
+INFO: Change particles name to pass to MG5 convention 
+Defined multiparticle p = g u c d s u~ c~ d~ s~
+Defined multiparticle j = g u c d s u~ c~ d~ s~
+Defined multiparticle l+ = e+ mu+
+Defined multiparticle l- = e- mu-
+Defined multiparticle vl = ve vm vt
+Defined multiparticle vl~ = ve~ vm~ vt~
+Defined multiparticle all = g u c d s u~ c~ d~ s~ a ve vm vt e- mu- ve~ vm~ vt~ e+ mu+ go ul cl t1 ur cr t2 dl sl b1 dr sr b2 ul~ cl~ t1~ ur~ cr~ t2~ dl~ sl~ b1~ dr~ sr~ b2~ t b t~ b~ z w+ h01 h2 h3 h+ sve svm svt el- mul- ta1- er- mur- ta2- w- h- sve~ svm~ svt~ el+ mul+ ta1+ er+ mur+ ta2+ n1 n2 n3 n4 x1+ x2+ ta- x1- x2- ta+
+define p = g u c d s u~ c~ d~ s~
+Defined multiparticle p = g u c d s u~ c~ d~ s~
+define j = g u c d s u~ c~ d~ s~
+Defined multiparticle j = g u c d s u~ c~ d~ s~
+define p = p b b~
+Defined multiparticle p = g u c d s u~ c~ d~ s~ b b~
+define j = j b b~
+Defined multiparticle j = g u c d s u~ c~ d~ s~ b b~
+generate p p > go go @1
+INFO: Checking for minimal orders which gives processes. 
+INFO: Please specify coupling orders to bypass this step. 
+INFO: Trying coupling order WEIGHTED<=2: WEIGTHED IS QCD+2*QED 
+INFO: Trying process: g g > go go WEIGHTED<=2 @1  
+INFO: Process has 3 diagrams 
+INFO: Trying process: u u~ > go go WEIGHTED<=2 @1  
+INFO: Process has 5 diagrams 
+INFO: Trying process: u c~ > go go WEIGHTED<=2 @1  
+INFO: Trying process: c u~ > go go WEIGHTED<=2 @1  
+INFO: Trying process: c c~ > go go WEIGHTED<=2 @1  
+INFO: Process has 5 diagrams 
+INFO: Trying process: d d~ > go go WEIGHTED<=2 @1  
+INFO: Process has 5 diagrams 
+INFO: Trying process: d s~ > go go WEIGHTED<=2 @1  
+INFO: Trying process: d b~ > go go WEIGHTED<=2 @1  
+INFO: Trying process: s d~ > go go WEIGHTED<=2 @1  
+INFO: Trying process: s s~ > go go WEIGHTED<=2 @1  
+INFO: Process has 5 diagrams 
+INFO: Trying process: s b~ > go go WEIGHTED<=2 @1  
+INFO: Process u~ u > go go added to mirror process u u~ > go go 
+INFO: Process c~ c > go go added to mirror process c c~ > go go 
+INFO: Process d~ d > go go added to mirror process d d~ > go go 
+INFO: Trying process: d~ b > go go WEIGHTED<=2 @1  
+INFO: Process s~ s > go go added to mirror process s s~ > go go 
+INFO: Trying process: s~ b > go go WEIGHTED<=2 @1  
+INFO: Trying process: b b~ > go go WEIGHTED<=2 @1  
+INFO: Process has 5 diagrams 
+INFO: Process b~ b > go go added to mirror process b b~ > go go 
+6 processes with 28 diagrams generated in 0.137 s
+Total: 6 processes with 28 diagrams
+add process p p > go go j @2
+INFO: Checking for minimal orders which gives processes. 
+INFO: Please specify coupling orders to bypass this step. 
+INFO: Trying coupling order WEIGHTED<=3: WEIGTHED IS QCD+2*QED 
+INFO: Trying process: g g > go go g WEIGHTED<=3 @2  
+INFO: Process has 16 diagrams 
+INFO: Trying process: g u > go go u WEIGHTED<=3 @2  
+INFO: Process has 25 diagrams 
+INFO: Trying process: g u > go go c WEIGHTED<=3 @2  
+INFO: Trying process: g c > go go u WEIGHTED<=3 @2  
+INFO: Trying process: g c > go go c WEIGHTED<=3 @2  
+INFO: Process has 25 diagrams 
+INFO: Trying process: g d > go go d WEIGHTED<=3 @2  
+INFO: Process has 25 diagrams 
+INFO: Trying process: g d > go go s WEIGHTED<=3 @2  
+INFO: Trying process: g d > go go b WEIGHTED<=3 @2  
+INFO: Trying process: g s > go go d WEIGHTED<=3 @2  
+INFO: Trying process: g s > go go s WEIGHTED<=3 @2  
+INFO: Process has 25 diagrams 
+INFO: Trying process: g s > go go b WEIGHTED<=3 @2  
+INFO: Crossed process found for g u~ > go go u~, reuse diagrams. 
+INFO: Crossed process found for g c~ > go go c~, reuse diagrams. 
+INFO: Crossed process found for g d~ > go go d~, reuse diagrams. 
+INFO: Trying process: g d~ > go go b~ WEIGHTED<=3 @2  
+INFO: Crossed process found for g s~ > go go s~, reuse diagrams. 
+INFO: Trying process: g s~ > go go b~ WEIGHTED<=3 @2  
+INFO: Trying process: g b > go go b WEIGHTED<=3 @2  
+INFO: Process has 29 diagrams 
+INFO: Crossed process found for g b~ > go go b~, reuse diagrams. 
+INFO: Process u g > go go u added to mirror process g u > go go u 
+INFO: Crossed process found for u u~ > go go g, reuse diagrams. 
+INFO: Process c g > go go c added to mirror process g c > go go c 
+INFO: Crossed process found for c c~ > go go g, reuse diagrams. 
+INFO: Process d g > go go d added to mirror process g d > go go d 
+INFO: Crossed process found for d d~ > go go g, reuse diagrams. 
+INFO: Process s g > go go s added to mirror process g s > go go s 
+INFO: Crossed process found for s s~ > go go g, reuse diagrams. 
+INFO: Process u~ g > go go u~ added to mirror process g u~ > go go u~ 
+INFO: Process u~ u > go go g added to mirror process u u~ > go go g 
+INFO: Process c~ g > go go c~ added to mirror process g c~ > go go c~ 
+INFO: Process c~ c > go go g added to mirror process c c~ > go go g 
+INFO: Process d~ g > go go d~ added to mirror process g d~ > go go d~ 
+INFO: Process d~ d > go go g added to mirror process d d~ > go go g 
+INFO: Process s~ g > go go s~ added to mirror process g s~ > go go s~ 
+INFO: Process s~ s > go go g added to mirror process s s~ > go go g 
+INFO: Process b g > go go b added to mirror process g b > go go b 
+INFO: Crossed process found for b b~ > go go g, reuse diagrams. 
+INFO: Process b~ g > go go b~ added to mirror process g b~ > go go b~ 
+INFO: Process b~ b > go go g added to mirror process b b~ > go go g 
+16 processes with 403 diagrams generated in 0.282 s
+Total: 22 processes with 431 diagrams
+add process p p > go go j j @3
+INFO: Checking for minimal orders which gives processes. 
+INFO: Please specify coupling orders to bypass this step. 
+INFO: Trying coupling order WEIGHTED<=4: WEIGTHED IS QCD+2*QED 
+INFO: Trying process: g g > go go g g WEIGHTED<=4 @3  
+INFO: Process has 123 diagrams 
+INFO: Trying process: g g > go go u u~ WEIGHTED<=4 @3  
+INFO: Process has 180 diagrams 
+INFO: Trying process: g g > go go u c~ WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go c u~ WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go c c~ WEIGHTED<=4 @3  
+INFO: Process has 180 diagrams 
+INFO: Trying process: g g > go go d d~ WEIGHTED<=4 @3  
+INFO: Process has 180 diagrams 
+INFO: Trying process: g g > go go d s~ WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go d b~ WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go s d~ WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go s s~ WEIGHTED<=4 @3  
+INFO: Process has 180 diagrams 
+INFO: Trying process: g g > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go d~ b WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go s~ b WEIGHTED<=4 @3  
+INFO: Trying process: g g > go go b b~ WEIGHTED<=4 @3  
+INFO: Process has 244 diagrams 
+INFO: Crossed process found for g u > go go g u, reuse diagrams. 
+INFO: Crossed process found for g c > go go g c, reuse diagrams. 
+INFO: Crossed process found for g d > go go g d, reuse diagrams. 
+INFO: Crossed process found for g s > go go g s, reuse diagrams. 
+INFO: Crossed process found for g u~ > go go g u~, reuse diagrams. 
+INFO: Crossed process found for g c~ > go go g c~, reuse diagrams. 
+INFO: Crossed process found for g d~ > go go g d~, reuse diagrams. 
+INFO: Crossed process found for g s~ > go go g s~, reuse diagrams. 
+INFO: Crossed process found for g b > go go g b, reuse diagrams. 
+INFO: Crossed process found for g b~ > go go g b~, reuse diagrams. 
+INFO: Process u g > go go g u added to mirror process g u > go go g u 
+INFO: Trying process: u u > go go u u WEIGHTED<=4 @3  
+INFO: Process has 158 diagrams 
+INFO: Trying process: u u > go go u c WEIGHTED<=4 @3  
+INFO: Trying process: u u > go go c c WEIGHTED<=4 @3  
+INFO: Trying process: u c > go go u u WEIGHTED<=4 @3  
+INFO: Trying process: u c > go go u c WEIGHTED<=4 @3  
+INFO: Process has 79 diagrams 
+INFO: Trying process: u c > go go c c WEIGHTED<=4 @3  
+INFO: Trying process: u d > go go u d WEIGHTED<=4 @3  
+INFO: Process has 79 diagrams 
+INFO: Trying process: u d > go go u s WEIGHTED<=4 @3  
+INFO: Trying process: u d > go go u b WEIGHTED<=4 @3  
+INFO: Trying process: u d > go go c d WEIGHTED<=4 @3  
+INFO: Trying process: u d > go go c s WEIGHTED<=4 @3  
+INFO: Trying process: u d > go go c b WEIGHTED<=4 @3  
+INFO: Trying process: u s > go go u d WEIGHTED<=4 @3  
+INFO: Trying process: u s > go go u s WEIGHTED<=4 @3  
+INFO: Process has 79 diagrams 
+INFO: Trying process: u s > go go u b WEIGHTED<=4 @3  
+INFO: Trying process: u s > go go c d WEIGHTED<=4 @3  
+INFO: Trying process: u s > go go c s WEIGHTED<=4 @3  
+INFO: Trying process: u s > go go c b WEIGHTED<=4 @3  
+INFO: Crossed process found for u u~ > go go g g, reuse diagrams. 
+INFO: Crossed process found for u u~ > go go u u~, reuse diagrams. 
+INFO: Crossed process found for u u~ > go go c c~, reuse diagrams. 
+INFO: Crossed process found for u u~ > go go d d~, reuse diagrams. 
+INFO: Trying process: u u~ > go go d b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for u u~ > go go s s~, reuse diagrams. 
+INFO: Trying process: u u~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: u u~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Process has 83 diagrams 
+INFO: Crossed process found for u c~ > go go u c~, reuse diagrams. 
+INFO: Trying process: u c~ > go go d b~ WEIGHTED<=4 @3  
+INFO: Trying process: u c~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: u c~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for u d~ > go go u d~, reuse diagrams. 
+INFO: Crossed process found for u s~ > go go u s~, reuse diagrams. 
+INFO: Crossed process found for u b > go go u b, reuse diagrams. 
+INFO: Crossed process found for u b~ > go go u b~, reuse diagrams. 
+INFO: Process c g > go go g c added to mirror process g c > go go g c 
+INFO: Process c u > go go u c added to mirror process u c > go go u c 
+INFO: Trying process: c c > go go u u WEIGHTED<=4 @3  
+INFO: Trying process: c c > go go u c WEIGHTED<=4 @3  
+INFO: Trying process: c c > go go c c WEIGHTED<=4 @3  
+INFO: Process has 158 diagrams 
+INFO: Trying process: c d > go go u d WEIGHTED<=4 @3  
+INFO: Trying process: c d > go go u s WEIGHTED<=4 @3  
+INFO: Trying process: c d > go go u b WEIGHTED<=4 @3  
+INFO: Trying process: c d > go go c d WEIGHTED<=4 @3  
+INFO: Process has 79 diagrams 
+INFO: Trying process: c d > go go c s WEIGHTED<=4 @3  
+INFO: Trying process: c d > go go c b WEIGHTED<=4 @3  
+INFO: Trying process: c s > go go u d WEIGHTED<=4 @3  
+INFO: Trying process: c s > go go u s WEIGHTED<=4 @3  
+INFO: Trying process: c s > go go u b WEIGHTED<=4 @3  
+INFO: Trying process: c s > go go c d WEIGHTED<=4 @3  
+INFO: Trying process: c s > go go c s WEIGHTED<=4 @3  
+INFO: Process has 79 diagrams 
+INFO: Trying process: c s > go go c b WEIGHTED<=4 @3  
+INFO: Crossed process found for c u~ > go go c u~, reuse diagrams. 
+INFO: Trying process: c u~ > go go d b~ WEIGHTED<=4 @3  
+INFO: Trying process: c u~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: c u~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for c c~ > go go g g, reuse diagrams. 
+INFO: Crossed process found for c c~ > go go u u~, reuse diagrams. 
+INFO: Crossed process found for c c~ > go go c c~, reuse diagrams. 
+INFO: Crossed process found for c c~ > go go d d~, reuse diagrams. 
+INFO: Trying process: c c~ > go go d b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for c c~ > go go s s~, reuse diagrams. 
+INFO: Trying process: c c~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: c c~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Process has 83 diagrams 
+INFO: Crossed process found for c d~ > go go c d~, reuse diagrams. 
+INFO: Crossed process found for c s~ > go go c s~, reuse diagrams. 
+INFO: Crossed process found for c b > go go c b, reuse diagrams. 
+INFO: Crossed process found for c b~ > go go c b~, reuse diagrams. 
+INFO: Process d g > go go g d added to mirror process g d > go go g d 
+INFO: Process d u > go go u d added to mirror process u d > go go u d 
+INFO: Process d c > go go c d added to mirror process c d > go go c d 
+INFO: Trying process: d d > go go d d WEIGHTED<=4 @3  
+INFO: Process has 158 diagrams 
+INFO: Trying process: d d > go go d s WEIGHTED<=4 @3  
+INFO: Trying process: d d > go go d b WEIGHTED<=4 @3  
+INFO: Trying process: d d > go go s s WEIGHTED<=4 @3  
+INFO: Trying process: d d > go go s b WEIGHTED<=4 @3  
+INFO: Trying process: d d > go go b b WEIGHTED<=4 @3  
+INFO: Trying process: d s > go go d d WEIGHTED<=4 @3  
+INFO: Trying process: d s > go go d s WEIGHTED<=4 @3  
+INFO: Process has 79 diagrams 
+INFO: Trying process: d s > go go d b WEIGHTED<=4 @3  
+INFO: Trying process: d s > go go s s WEIGHTED<=4 @3  
+INFO: Trying process: d s > go go s b WEIGHTED<=4 @3  
+INFO: Trying process: d s > go go b b WEIGHTED<=4 @3  
+INFO: Crossed process found for d u~ > go go d u~, reuse diagrams. 
+INFO: Crossed process found for d c~ > go go d c~, reuse diagrams. 
+INFO: Crossed process found for d d~ > go go g g, reuse diagrams. 
+INFO: Crossed process found for d d~ > go go u u~, reuse diagrams. 
+INFO: Crossed process found for d d~ > go go c c~, reuse diagrams. 
+INFO: Crossed process found for d d~ > go go d d~, reuse diagrams. 
+INFO: Trying process: d d~ > go go d b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for d d~ > go go s s~, reuse diagrams. 
+INFO: Trying process: d d~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: d d~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Process has 83 diagrams 
+INFO: Crossed process found for d s~ > go go d s~, reuse diagrams. 
+INFO: Trying process: d s~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: d s~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for d b > go go d b, reuse diagrams. 
+INFO: Trying process: d b > go go b b WEIGHTED<=4 @3  
+INFO: Crossed process found for d b~ > go go d b~, reuse diagrams. 
+INFO: Process s g > go go g s added to mirror process g s > go go g s 
+INFO: Process s u > go go u s added to mirror process u s > go go u s 
+INFO: Process s c > go go c s added to mirror process c s > go go c s 
+INFO: Process s d > go go d s added to mirror process d s > go go d s 
+INFO: Trying process: s s > go go d d WEIGHTED<=4 @3  
+INFO: Trying process: s s > go go d s WEIGHTED<=4 @3  
+INFO: Trying process: s s > go go d b WEIGHTED<=4 @3  
+INFO: Trying process: s s > go go s s WEIGHTED<=4 @3  
+INFO: Process has 158 diagrams 
+INFO: Trying process: s s > go go s b WEIGHTED<=4 @3  
+INFO: Trying process: s s > go go b b WEIGHTED<=4 @3  
+INFO: Crossed process found for s u~ > go go s u~, reuse diagrams. 
+INFO: Crossed process found for s c~ > go go s c~, reuse diagrams. 
+INFO: Trying process: s d~ > go go d b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for s d~ > go go s d~, reuse diagrams. 
+INFO: Trying process: s d~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: s d~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for s s~ > go go g g, reuse diagrams. 
+INFO: Crossed process found for s s~ > go go u u~, reuse diagrams. 
+INFO: Crossed process found for s s~ > go go c c~, reuse diagrams. 
+INFO: Crossed process found for s s~ > go go d d~, reuse diagrams. 
+INFO: Crossed process found for s s~ > go go s s~, reuse diagrams. 
+INFO: Trying process: s s~ > go go s b~ WEIGHTED<=4 @3  
+INFO: Trying process: s s~ > go go b b~ WEIGHTED<=4 @3  
+INFO: Process has 83 diagrams 
+INFO: Crossed process found for s b > go go s b, reuse diagrams. 
+INFO: Trying process: s b > go go b b WEIGHTED<=4 @3  
+INFO: Crossed process found for s b~ > go go s b~, reuse diagrams. 
+INFO: Process u~ g > go go g u~ added to mirror process g u~ > go go g u~ 
+INFO: Process u~ u > go go g g added to mirror process u u~ > go go g g 
+INFO: Process u~ u > go go u u~ added to mirror process u u~ > go go u u~ 
+INFO: Process u~ u > go go c c~ added to mirror process u u~ > go go c c~ 
+INFO: Process u~ u > go go d d~ added to mirror process u u~ > go go d d~ 
+INFO: Process u~ u > go go s s~ added to mirror process u u~ > go go s s~ 
+INFO: Process u~ u > go go b b~ added to mirror process u u~ > go go b b~ 
+INFO: Process u~ c > go go c u~ added to mirror process c u~ > go go c u~ 
+INFO: Process u~ d > go go d u~ added to mirror process d u~ > go go d u~ 
+INFO: Process u~ s > go go s u~ added to mirror process s u~ > go go s u~ 
+INFO: Crossed process found for u~ u~ > go go u~ u~, reuse diagrams. 
+INFO: Crossed process found for u~ c~ > go go u~ c~, reuse diagrams. 
+INFO: Crossed process found for u~ d~ > go go u~ d~, reuse diagrams. 
+INFO: Crossed process found for u~ s~ > go go u~ s~, reuse diagrams. 
+INFO: Crossed process found for u~ b > go go u~ b, reuse diagrams. 
+INFO: Crossed process found for u~ b~ > go go u~ b~, reuse diagrams. 
+INFO: Process c~ g > go go g c~ added to mirror process g c~ > go go g c~ 
+INFO: Process c~ u > go go u c~ added to mirror process u c~ > go go u c~ 
+INFO: Process c~ c > go go g g added to mirror process c c~ > go go g g 
+INFO: Process c~ c > go go u u~ added to mirror process c c~ > go go u u~ 
+INFO: Process c~ c > go go c c~ added to mirror process c c~ > go go c c~ 
+INFO: Process c~ c > go go d d~ added to mirror process c c~ > go go d d~ 
+INFO: Process c~ c > go go s s~ added to mirror process c c~ > go go s s~ 
+INFO: Process c~ c > go go b b~ added to mirror process c c~ > go go b b~ 
+INFO: Process c~ d > go go d c~ added to mirror process d c~ > go go d c~ 
+INFO: Process c~ s > go go s c~ added to mirror process s c~ > go go s c~ 
+INFO: Process c~ u~ > go go u~ c~ added to mirror process u~ c~ > go go u~ c~ 
+INFO: Crossed process found for c~ c~ > go go c~ c~, reuse diagrams. 
+INFO: Crossed process found for c~ d~ > go go c~ d~, reuse diagrams. 
+INFO: Crossed process found for c~ s~ > go go c~ s~, reuse diagrams. 
+INFO: Crossed process found for c~ b > go go c~ b, reuse diagrams. 
+INFO: Crossed process found for c~ b~ > go go c~ b~, reuse diagrams. 
+INFO: Process d~ g > go go g d~ added to mirror process g d~ > go go g d~ 
+INFO: Process d~ u > go go u d~ added to mirror process u d~ > go go u d~ 
+INFO: Process d~ c > go go c d~ added to mirror process c d~ > go go c d~ 
+INFO: Process d~ d > go go g g added to mirror process d d~ > go go g g 
+INFO: Process d~ d > go go u u~ added to mirror process d d~ > go go u u~ 
+INFO: Process d~ d > go go c c~ added to mirror process d d~ > go go c c~ 
+INFO: Process d~ d > go go d d~ added to mirror process d d~ > go go d d~ 
+INFO: Process d~ d > go go s s~ added to mirror process d d~ > go go s s~ 
+INFO: Process d~ d > go go b b~ added to mirror process d d~ > go go b b~ 
+INFO: Process d~ s > go go s d~ added to mirror process s d~ > go go s d~ 
+INFO: Process d~ u~ > go go u~ d~ added to mirror process u~ d~ > go go u~ d~ 
+INFO: Process d~ c~ > go go c~ d~ added to mirror process c~ d~ > go go c~ d~ 
+INFO: Crossed process found for d~ d~ > go go d~ d~, reuse diagrams. 
+INFO: Trying process: d~ d~ > go go b~ b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for d~ s~ > go go d~ s~, reuse diagrams. 
+INFO: Trying process: d~ s~ > go go b~ b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for d~ b > go go d~ b, reuse diagrams. 
+INFO: Trying process: d~ b > go go b b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for d~ b~ > go go d~ b~, reuse diagrams. 
+INFO: Process s~ g > go go g s~ added to mirror process g s~ > go go g s~ 
+INFO: Process s~ u > go go u s~ added to mirror process u s~ > go go u s~ 
+INFO: Process s~ c > go go c s~ added to mirror process c s~ > go go c s~ 
+INFO: Process s~ d > go go d s~ added to mirror process d s~ > go go d s~ 
+INFO: Process s~ s > go go g g added to mirror process s s~ > go go g g 
+INFO: Process s~ s > go go u u~ added to mirror process s s~ > go go u u~ 
+INFO: Process s~ s > go go c c~ added to mirror process s s~ > go go c c~ 
+INFO: Process s~ s > go go d d~ added to mirror process s s~ > go go d d~ 
+INFO: Process s~ s > go go s s~ added to mirror process s s~ > go go s s~ 
+INFO: Process s~ s > go go b b~ added to mirror process s s~ > go go b b~ 
+INFO: Process s~ u~ > go go u~ s~ added to mirror process u~ s~ > go go u~ s~ 
+INFO: Process s~ c~ > go go c~ s~ added to mirror process c~ s~ > go go c~ s~ 
+INFO: Process s~ d~ > go go d~ s~ added to mirror process d~ s~ > go go d~ s~ 
+INFO: Crossed process found for s~ s~ > go go s~ s~, reuse diagrams. 
+INFO: Trying process: s~ s~ > go go b~ b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for s~ b > go go s~ b, reuse diagrams. 
+INFO: Trying process: s~ b > go go b b~ WEIGHTED<=4 @3  
+INFO: Crossed process found for s~ b~ > go go s~ b~, reuse diagrams. 
+INFO: Process b g > go go g b added to mirror process g b > go go g b 
+INFO: Process b u > go go u b added to mirror process u b > go go u b 
+INFO: Process b c > go go c b added to mirror process c b > go go c b 
+INFO: Process b d > go go d b added to mirror process d b > go go d b 
+INFO: Process b s > go go s b added to mirror process s b > go go s b 
+INFO: Process b u~ > go go u~ b added to mirror process u~ b > go go u~ b 
+INFO: Process b c~ > go go c~ b added to mirror process c~ b > go go c~ b 
+INFO: Process b d~ > go go d~ b added to mirror process d~ b > go go d~ b 
+INFO: Process b s~ > go go s~ b added to mirror process s~ b > go go s~ b 
+INFO: Trying process: b b > go go b b WEIGHTED<=4 @3  
+INFO: Process has 174 diagrams 
+INFO: Crossed process found for b b~ > go go g g, reuse diagrams. 
+INFO: Crossed process found for b b~ > go go u u~, reuse diagrams. 
+INFO: Crossed process found for b b~ > go go c c~, reuse diagrams. 
+INFO: Crossed process found for b b~ > go go d d~, reuse diagrams. 
+INFO: Crossed process found for b b~ > go go s s~, reuse diagrams. 
+INFO: Crossed process found for b b~ > go go b b~, reuse diagrams. 
+INFO: Process b~ g > go go g b~ added to mirror process g b~ > go go g b~ 
+INFO: Process b~ u > go go u b~ added to mirror process u b~ > go go u b~ 
+INFO: Process b~ c > go go c b~ added to mirror process c b~ > go go c b~ 
+INFO: Process b~ d > go go d b~ added to mirror process d b~ > go go d b~ 
+INFO: Process b~ s > go go s b~ added to mirror process s b~ > go go s b~ 
+INFO: Process b~ u~ > go go u~ b~ added to mirror process u~ b~ > go go u~ b~ 
+INFO: Process b~ c~ > go go c~ b~ added to mirror process c~ b~ > go go c~ b~ 
+INFO: Process b~ d~ > go go d~ b~ added to mirror process d~ b~ > go go d~ b~ 
+INFO: Process b~ s~ > go go s~ b~ added to mirror process s~ b~ > go go s~ b~ 
+INFO: Process b~ b > go go g g added to mirror process b b~ > go go g g 
+INFO: Process b~ b > go go u u~ added to mirror process b b~ > go go u u~ 
+INFO: Process b~ b > go go c c~ added to mirror process b b~ > go go c c~ 
+INFO: Process b~ b > go go d d~ added to mirror process b b~ > go go d d~ 
+INFO: Process b~ b > go go s s~ added to mirror process b b~ > go go s s~ 
+INFO: Process b~ b > go go b b~ added to mirror process b b~ > go go b b~ 
+INFO: Crossed process found for b~ b~ > go go b~ b~, reuse diagrams. 
+96 processes with 11233 diagrams generated in 10.349 s
+Total: 118 processes with 11664 diagrams
+output HSCPgluino_M-2600_xqcut0 -nojpeg
+[1;34mPlugin PLUGIN.CMS_CLUSTER has marked as NOT being validated with this version. 
+It has been validated for the last time with version: 2.6.0[0m
+INFO: initialize a new directory: HSCPgluino_M-2600_xqcut0 
+INFO: remove old information in HSCPgluino_M-2600_xqcut0 
+INFO: Organizing processes into subprocess groups 
+INFO: Generating Helas calls for process: g g > go go b b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: g g > go go b b~ @3 
+INFO: Generating Helas calls for process: g b > go go g b WEIGHTED<=4 @3 
+INFO: Processing color information for process: g b > go go g b @3 
+INFO: Generating Helas calls for process: g b~ > go go g b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: g b~ > go go g b~ @3 
+INFO: Generating Helas calls for process: b b~ > go go g g WEIGHTED<=4 @3 
+INFO: Processing color information for process: b b~ > go go g g @3 
+INFO: Generating Helas calls for process: g g > go go u u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: g g > go go u u~ @3 
+INFO: Generating Helas calls for process: g g > go go c c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g g > go go c c~ @3 
+INFO: Generating Helas calls for process: g g > go go d d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g g > go go d d~ @3 
+INFO: Generating Helas calls for process: g g > go go s s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g g > go go s s~ @3 
+INFO: Generating Helas calls for process: g u > go go g u WEIGHTED<=4 @3 
+INFO: Processing color information for process: g u > go go g u @3 
+INFO: Generating Helas calls for process: g c > go go g c WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g c > go go g c @3 
+INFO: Generating Helas calls for process: g d > go go g d WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g d > go go g d @3 
+INFO: Generating Helas calls for process: g s > go go g s WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g s > go go g s @3 
+INFO: Generating Helas calls for process: g u~ > go go g u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: g u~ > go go g u~ @3 
+INFO: Generating Helas calls for process: g c~ > go go g c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g c~ > go go g c~ @3 
+INFO: Generating Helas calls for process: g d~ > go go g d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g d~ > go go g d~ @3 
+INFO: Generating Helas calls for process: g s~ > go go g s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: g s~ > go go g s~ @3 
+INFO: Generating Helas calls for process: u u~ > go go g g WEIGHTED<=4 @3 
+INFO: Processing color information for process: u u~ > go go g g @3 
+INFO: Generating Helas calls for process: c c~ > go go g g WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c c~ > go go g g @3 
+INFO: Generating Helas calls for process: d d~ > go go g g WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d~ > go go g g @3 
+INFO: Generating Helas calls for process: s s~ > go go g g WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s~ > go go g g @3 
+INFO: Generating Helas calls for process: b b > go go b b WEIGHTED<=4 @3 
+INFO: Processing color information for process: b b > go go b b @3 
+INFO: Generating Helas calls for process: b b~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: b b~ > go go b b~ @3 
+INFO: Generating Helas calls for process: b~ b~ > go go b~ b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: b~ b~ > go go b~ b~ @3 
+INFO: Generating Helas calls for process: u u > go go u u WEIGHTED<=4 @3 
+INFO: Processing color information for process: u u > go go u u @3 
+INFO: Generating Helas calls for process: u u~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u u~ > go go u u~ @3 
+INFO: Generating Helas calls for process: c c > go go c c WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c c > go go c c @3 
+INFO: Generating Helas calls for process: c c~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c c~ > go go c c~ @3 
+INFO: Generating Helas calls for process: d d > go go d d WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d > go go d d @3 
+INFO: Generating Helas calls for process: d d~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d~ > go go d d~ @3 
+INFO: Generating Helas calls for process: s s > go go s s WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s > go go s s @3 
+INFO: Generating Helas calls for process: s s~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s~ > go go s s~ @3 
+INFO: Generating Helas calls for process: u~ u~ > go go u~ u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u~ u~ > go go u~ u~ @3 
+INFO: Generating Helas calls for process: c~ c~ > go go c~ c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c~ c~ > go go c~ c~ @3 
+INFO: Generating Helas calls for process: d~ d~ > go go d~ d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d~ d~ > go go d~ d~ @3 
+INFO: Generating Helas calls for process: s~ s~ > go go s~ s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s~ s~ > go go s~ s~ @3 
+INFO: Generating Helas calls for process: u c > go go u c WEIGHTED<=4 @3 
+INFO: Processing color information for process: u c > go go u c @3 
+INFO: Generating Helas calls for process: u d > go go u d WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u d > go go u d @3 
+INFO: Generating Helas calls for process: u s > go go u s WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u s > go go u s @3 
+INFO: Generating Helas calls for process: u u~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u u~ > go go c c~ @3 
+INFO: Generating Helas calls for process: u u~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u u~ > go go d d~ @3 
+INFO: Generating Helas calls for process: u u~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u u~ > go go s s~ @3 
+INFO: Generating Helas calls for process: u c~ > go go u c~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u c~ > go go u c~ @3 
+INFO: Generating Helas calls for process: u d~ > go go u d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u d~ > go go u d~ @3 
+INFO: Generating Helas calls for process: u s~ > go go u s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u s~ > go go u s~ @3 
+INFO: Generating Helas calls for process: c d > go go c d WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c d > go go c d @3 
+INFO: Generating Helas calls for process: c s > go go c s WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c s > go go c s @3 
+INFO: Generating Helas calls for process: c u~ > go go c u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: c u~ > go go c u~ @3 
+INFO: Generating Helas calls for process: c c~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: c c~ > go go u u~ @3 
+INFO: Generating Helas calls for process: c c~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c c~ > go go d d~ @3 
+INFO: Generating Helas calls for process: c c~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c c~ > go go s s~ @3 
+INFO: Generating Helas calls for process: c d~ > go go c d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c d~ > go go c d~ @3 
+INFO: Generating Helas calls for process: c s~ > go go c s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c s~ > go go c s~ @3 
+INFO: Generating Helas calls for process: d s > go go d s WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d s > go go d s @3 
+INFO: Generating Helas calls for process: d u~ > go go d u~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d u~ > go go d u~ @3 
+INFO: Generating Helas calls for process: d c~ > go go d c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d c~ > go go d c~ @3 
+INFO: Generating Helas calls for process: d d~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d~ > go go u u~ @3 
+INFO: Generating Helas calls for process: d d~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d~ > go go c c~ @3 
+INFO: Generating Helas calls for process: d d~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d~ > go go s s~ @3 
+INFO: Generating Helas calls for process: d s~ > go go d s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d s~ > go go d s~ @3 
+INFO: Generating Helas calls for process: s u~ > go go s u~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s u~ > go go s u~ @3 
+INFO: Generating Helas calls for process: s c~ > go go s c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s c~ > go go s c~ @3 
+INFO: Generating Helas calls for process: s d~ > go go s d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s d~ > go go s d~ @3 
+INFO: Generating Helas calls for process: s s~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s~ > go go u u~ @3 
+INFO: Generating Helas calls for process: s s~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s~ > go go c c~ @3 
+INFO: Generating Helas calls for process: s s~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s~ > go go d d~ @3 
+INFO: Generating Helas calls for process: u~ c~ > go go u~ c~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u~ c~ > go go u~ c~ @3 
+INFO: Generating Helas calls for process: u~ d~ > go go u~ d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u~ d~ > go go u~ d~ @3 
+INFO: Generating Helas calls for process: u~ s~ > go go u~ s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: u~ s~ > go go u~ s~ @3 
+INFO: Generating Helas calls for process: c~ d~ > go go c~ d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c~ d~ > go go c~ d~ @3 
+INFO: Generating Helas calls for process: c~ s~ > go go c~ s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c~ s~ > go go c~ s~ @3 
+INFO: Generating Helas calls for process: d~ s~ > go go d~ s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d~ s~ > go go d~ s~ @3 
+INFO: Generating Helas calls for process: g g > go go g g WEIGHTED<=4 @3 
+INFO: Processing color information for process: g g > go go g g @3 
+INFO: Generating Helas calls for process: u u~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u u~ > go go b b~ @3 
+INFO: Generating Helas calls for process: c c~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c c~ > go go b b~ @3 
+INFO: Generating Helas calls for process: d d~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d d~ > go go b b~ @3 
+INFO: Generating Helas calls for process: s s~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s s~ > go go b b~ @3 
+INFO: Generating Helas calls for process: u b > go go u b WEIGHTED<=4 @3 
+INFO: Processing color information for process: u b > go go u b @3 
+INFO: Generating Helas calls for process: u b~ > go go u b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u b~ > go go u b~ @3 
+INFO: Generating Helas calls for process: c b > go go c b WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c b > go go c b @3 
+INFO: Generating Helas calls for process: c b~ > go go c b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c b~ > go go c b~ @3 
+INFO: Generating Helas calls for process: d b > go go d b WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d b > go go d b @3 
+INFO: Generating Helas calls for process: d b~ > go go d b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d b~ > go go d b~ @3 
+INFO: Generating Helas calls for process: s b > go go s b WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s b > go go s b @3 
+INFO: Generating Helas calls for process: s b~ > go go s b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s b~ > go go s b~ @3 
+INFO: Generating Helas calls for process: u~ b > go go u~ b WEIGHTED<=4 @3 
+INFO: Processing color information for process: u~ b > go go u~ b @3 
+INFO: Generating Helas calls for process: u~ b~ > go go u~ b~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: u~ b~ > go go u~ b~ @3 
+INFO: Generating Helas calls for process: c~ b > go go c~ b WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c~ b > go go c~ b @3 
+INFO: Generating Helas calls for process: c~ b~ > go go c~ b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: c~ b~ > go go c~ b~ @3 
+INFO: Generating Helas calls for process: d~ b > go go d~ b WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d~ b > go go d~ b @3 
+INFO: Generating Helas calls for process: d~ b~ > go go d~ b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: d~ b~ > go go d~ b~ @3 
+INFO: Generating Helas calls for process: s~ b > go go s~ b WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s~ b > go go s~ b @3 
+INFO: Generating Helas calls for process: s~ b~ > go go s~ b~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: s~ b~ > go go s~ b~ @3 
+INFO: Generating Helas calls for process: b b~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Processing color information for process: b b~ > go go u u~ @3 
+INFO: Generating Helas calls for process: b b~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: b b~ > go go c c~ @3 
+INFO: Generating Helas calls for process: b b~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: b b~ > go go d d~ @3 
+INFO: Generating Helas calls for process: b b~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Reusing existing color information for process: b b~ > go go s s~ @3 
+INFO: Generating Helas calls for process: g b > go go b WEIGHTED<=3 @2 
+INFO: Processing color information for process: g b > go go b @2 
+INFO: Generating Helas calls for process: g b~ > go go b~ WEIGHTED<=3 @2 
+INFO: Processing color information for process: g b~ > go go b~ @2 
+INFO: Generating Helas calls for process: b b~ > go go g WEIGHTED<=3 @2 
+INFO: Processing color information for process: b b~ > go go g @2 
+INFO: Generating Helas calls for process: g u > go go u WEIGHTED<=3 @2 
+INFO: Processing color information for process: g u > go go u @2 
+INFO: Generating Helas calls for process: g c > go go c WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: g c > go go c @2 
+INFO: Generating Helas calls for process: g d > go go d WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: g d > go go d @2 
+INFO: Generating Helas calls for process: g s > go go s WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: g s > go go s @2 
+INFO: Generating Helas calls for process: g u~ > go go u~ WEIGHTED<=3 @2 
+INFO: Processing color information for process: g u~ > go go u~ @2 
+INFO: Generating Helas calls for process: g c~ > go go c~ WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: g c~ > go go c~ @2 
+INFO: Generating Helas calls for process: g d~ > go go d~ WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: g d~ > go go d~ @2 
+INFO: Generating Helas calls for process: g s~ > go go s~ WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: g s~ > go go s~ @2 
+INFO: Generating Helas calls for process: u u~ > go go g WEIGHTED<=3 @2 
+INFO: Processing color information for process: u u~ > go go g @2 
+INFO: Generating Helas calls for process: c c~ > go go g WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: c c~ > go go g @2 
+INFO: Generating Helas calls for process: d d~ > go go g WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: d d~ > go go g @2 
+INFO: Generating Helas calls for process: s s~ > go go g WEIGHTED<=3 @2 
+INFO: Reusing existing color information for process: s s~ > go go g @2 
+INFO: Generating Helas calls for process: g g > go go g WEIGHTED<=3 @2 
+INFO: Processing color information for process: g g > go go g @2 
+INFO: Generating Helas calls for process: u u~ > go go WEIGHTED<=2 @1 
+INFO: Processing color information for process: u u~ > go go @1 
+INFO: Generating Helas calls for process: c c~ > go go WEIGHTED<=2 @1 
+INFO: Reusing existing color information for process: c c~ > go go @1 
+INFO: Generating Helas calls for process: d d~ > go go WEIGHTED<=2 @1 
+INFO: Reusing existing color information for process: d d~ > go go @1 
+INFO: Generating Helas calls for process: s s~ > go go WEIGHTED<=2 @1 
+INFO: Reusing existing color information for process: s s~ > go go @1 
+INFO: Generating Helas calls for process: b b~ > go go WEIGHTED<=2 @1 
+INFO: Processing color information for process: b b~ > go go @1 
+INFO: Generating Helas calls for process: g g > go go WEIGHTED<=2 @1 
+INFO: Processing color information for process: g g > go go @1 
+INFO: Creating files in directory P3_gg_gogobbx 
+[1mINFO: Some T-channel width have been set to zero [new since 2.8.0]
+ if you want to keep this width please set "zerowidth_tchannel" to False [0m
+INFO: Generating Feynman diagrams for Process: g g > go go b b~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group gg_gogobbx 
+INFO: Creating files in directory P3_gb_gogogb 
+INFO: Generating Feynman diagrams for Process: g b > go go g b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g b~ > go go g b~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group gb_gogogb 
+INFO: Creating files in directory P3_bbx_gogogg 
+INFO: Generating Feynman diagrams for Process: b b~ > go go g g WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group bbx_gogogg 
+INFO: Creating files in directory P3_gg_gogoqq 
+INFO: Generating Feynman diagrams for Process: g g > go go u u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g g > go go c c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g g > go go d d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g g > go go s s~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group gg_gogoqq 
+INFO: Creating files in directory P3_gq_gogogq 
+INFO: Generating Feynman diagrams for Process: g u > go go g u WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g c > go go g c WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g d > go go g d WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g s > go go g s WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g u~ > go go g u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g c~ > go go g c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g d~ > go go g d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: g s~ > go go g s~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group gq_gogogq 
+INFO: Creating files in directory P3_qq_gogogg 
+INFO: Generating Feynman diagrams for Process: u u~ > go go g g WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c~ > go go g g WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d~ > go go g g WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s~ > go go g g WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group qq_gogogg 
+INFO: Creating files in directory P3_bb_gogobb 
+INFO: Generating Feynman diagrams for Process: b b > go go b b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: b b~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: b~ b~ > go go b~ b~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group bb_gogobb 
+INFO: Creating files in directory P3_qq_gogoqq 
+INFO: Generating Feynman diagrams for Process: u u > go go u u WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u u~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c > go go c c WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d > go go d d WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s > go go s s WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u~ u~ > go go u~ u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c~ c~ > go go c~ c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d~ d~ > go go d~ d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s~ s~ > go go s~ s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u c > go go u c WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u d > go go u d WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u s > go go u s WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u u~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u u~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u u~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u c~ > go go u c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u d~ > go go u d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u s~ > go go u s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c d > go go c d WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c s > go go c s WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c u~ > go go c u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c d~ > go go c d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c s~ > go go c s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d s > go go d s WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d u~ > go go d u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d c~ > go go d c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d s~ > go go d s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s u~ > go go s u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s c~ > go go s c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s d~ > go go s d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u~ c~ > go go u~ c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u~ d~ > go go u~ d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u~ s~ > go go u~ s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c~ d~ > go go c~ d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c~ s~ > go go c~ s~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d~ s~ > go go d~ s~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group qq_gogoqq 
+INFO: Creating files in directory P3_gg_gogogg 
+INFO: Computing Color-Flow optimization [2544 term] 
+INFO: Color-Flow passed to 120 term in 0s. Introduce 629 contraction 
+INFO: Generating Feynman diagrams for Process: g g > go go g g WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group gg_gogogg 
+INFO: Creating files in directory P3_qq_gogobbx 
+INFO: Generating Feynman diagrams for Process: u u~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c c~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d d~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s s~ > go go b b~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group qq_gogobbx 
+INFO: Creating files in directory P3_qb_gogoqb 
+INFO: Generating Feynman diagrams for Process: u b > go go u b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u b~ > go go u b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c b > go go c b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c b~ > go go c b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d b > go go d b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d b~ > go go d b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s b > go go s b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s b~ > go go s b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u~ b > go go u~ b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: u~ b~ > go go u~ b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c~ b > go go c~ b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: c~ b~ > go go c~ b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d~ b > go go d~ b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: d~ b~ > go go d~ b~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s~ b > go go s~ b WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: s~ b~ > go go s~ b~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group qb_gogoqb 
+INFO: Creating files in directory P3_bbx_gogoqq 
+INFO: Generating Feynman diagrams for Process: b b~ > go go u u~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: b b~ > go go c c~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: b b~ > go go d d~ WEIGHTED<=4 @3 
+INFO: Generating Feynman diagrams for Process: b b~ > go go s s~ WEIGHTED<=4 @3 
+INFO: Finding symmetric diagrams for subprocess group bbx_gogoqq 
+INFO: Creating files in directory P2_gb_gogob 
+INFO: Generating Feynman diagrams for Process: g b > go go b WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g b~ > go go b~ WEIGHTED<=3 @2 
+INFO: Finding symmetric diagrams for subprocess group gb_gogob 
+INFO: Creating files in directory P2_bbx_gogog 
+INFO: Generating Feynman diagrams for Process: b b~ > go go g WEIGHTED<=3 @2 
+INFO: Finding symmetric diagrams for subprocess group bbx_gogog 
+INFO: Creating files in directory P2_gq_gogoq 
+INFO: Generating Feynman diagrams for Process: g u > go go u WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g c > go go c WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g d > go go d WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g s > go go s WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g u~ > go go u~ WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g c~ > go go c~ WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g d~ > go go d~ WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: g s~ > go go s~ WEIGHTED<=3 @2 
+INFO: Finding symmetric diagrams for subprocess group gq_gogoq 
+INFO: Creating files in directory P2_qq_gogog 
+INFO: Generating Feynman diagrams for Process: u u~ > go go g WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: c c~ > go go g WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: d d~ > go go g WEIGHTED<=3 @2 
+INFO: Generating Feynman diagrams for Process: s s~ > go go g WEIGHTED<=3 @2 
+INFO: Finding symmetric diagrams for subprocess group qq_gogog 
+INFO: Creating files in directory P2_gg_gogog 
+INFO: Generating Feynman diagrams for Process: g g > go go g WEIGHTED<=3 @2 
+INFO: Finding symmetric diagrams for subprocess group gg_gogog 
+INFO: Creating files in directory P1_qq_gogo 
+INFO: Generating Feynman diagrams for Process: u u~ > go go WEIGHTED<=2 @1 
+INFO: Generating Feynman diagrams for Process: c c~ > go go WEIGHTED<=2 @1 
+INFO: Generating Feynman diagrams for Process: d d~ > go go WEIGHTED<=2 @1 
+INFO: Generating Feynman diagrams for Process: s s~ > go go WEIGHTED<=2 @1 
+INFO: Finding symmetric diagrams for subprocess group qq_gogo 
+INFO: Creating files in directory P1_bbx_gogo 
+INFO: Generating Feynman diagrams for Process: b b~ > go go WEIGHTED<=2 @1 
+INFO: Finding symmetric diagrams for subprocess group bbx_gogo 
+INFO: Creating files in directory P1_gg_gogo 
+INFO: Generating Feynman diagrams for Process: g g > go go WEIGHTED<=2 @1 
+INFO: Finding symmetric diagrams for subprocess group gg_gogo 
+Generated helas calls for 118 subprocesses (11664 diagrams) in 26.766 s
+Wrote files for 18573 helas calls in 68.240 s
+ALOHA: aloha creates FFS1 routines
+ALOHA: aloha creates VVVV1 routines
+ALOHA: aloha creates FFV1 routines
+ALOHA: aloha creates VVSS1 routines
+ALOHA: aloha creates FFS2 routines
+ALOHA: aloha creates VSS1 routines
+ALOHA: aloha creates VVVV4 routines
+ALOHA: aloha creates VVVV3 routines
+ALOHA: aloha creates VVV1 routines
+The option auto_update is modified [7] but will not be written in the configuration files.
+If you want to make this value the default for future session, you can run 'save options --all'
+save configuration file to /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/HSCPgluino_M-2600_xqcut0/Cards/me5_configuration.txt
+INFO: Use Fortran compiler gfortran 
+INFO: Use c++ compiler g++ 
+INFO: Generate web pages 
+Output to directory /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/HSCPgluino_M-2600_xqcut0 done.
+Type "launch" to generate events from this process, or see
+/uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/HSCPgluino_M-2600_xqcut0/README
+Run "open index.html" to see more information about this process.
+display multiparticles
+Multiparticle labels:
+p = g u c d s u~ c~ d~ s~ b b~
+j = g u c d s u~ c~ d~ s~ b b~
+l+ = e+ mu+
+l- = e- mu-
+vl = ve vm vt
+vl~ = ve~ vm~ vt~
+all = g u c d s u~ c~ d~ s~ a ve vm vt e- mu- ve~ vm~ vt~ e+ mu+ go ul cl t1 ur cr t2 dl sl b1 dr sr b2 ul~ cl~ t1~ ur~ cr~ t2~ dl~ sl~ b1~ dr~ sr~ b2~ t b t~ b~ z w+ h01 h2 h3 h+ sve svm svt el- mul- ta1- er- mur- ta2- w- h- sve~ svm~ svt~ el+ mul+ ta1+ er+ mur+ ta2+ n1 n2 n3 n4 x1+ x2+ ta- x1- x2- ta+
+quit
+copying generated process to working directory
+INFO: Using default PDF sets for run3 production
+copying custom params file
+starting LO mode
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.18                                   *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/processtmp/Cards/me5_configuration.txt  
+INFO: load configuration from /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/MG5_aMC_v2_9_18/input/mg5_configuration.txt  
+INFO: load configuration from /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/processtmp/Cards/me5_configuration.txt  
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+Using default eps viewer "evince". Set another one in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+generate_events pilotrun
+stty: 'standard input': Inappropriate ioctl for device
+The following switches determine which programs are run:
+/===========================================================================\
+| 1. Choose the shower/hadronization program   [1m  shower[0m = [01mNot Avail.[0m        |
+| 2. Choose the detector simulation program    [1mdetector[0m = [01mNot Avail.[0m        |
+| 3. Choose an analysis package (plot/convert) [1manalysis[0m = [01mNot Avail.[0m        |
+| 4. Decay onshell particles                   [1m madspin[0m = [31mOFF[0m               |
+| 5. Add weights to events for new hypp.       [1mreweight[0m = [01mNot Avail.[0m        |
+\===========================================================================/
+Either type the switch number (1 to 5) to change its setting,
+Set any switch explicitly (e.g. type 'madspin=ON' at the prompt)
+Type 'help' for the list of all valid option
+Type '0', 'auto', 'done' or just press enter when you are done.[60s to answer] 
+>stty: 'standard input': Inappropriate ioctl for device
+[1;34mrun_card missed argument time_of_flight. Takes default: -1.0[0m
+[1;34mrun_card missed argument bias_module. Takes default: None[0m
+[1;34mrun_card missed argument pt_min_pdg. Takes default: {}[0m
+[1;34mrun_card missed argument pt_max_pdg. Takes default: {}[0m
+[1;34mrun_card missed argument eta_min_pdg. Takes default: {}[0m
+[1;34mrun_card missed argument eta_max_pdg. Takes default: {}[0m
+[1;34mrun_card missed argument mxx_min_pdg. Takes default: {}[0m
+[1;34mrun_card missed argument mxx_only_part_antipart. Takes default: {'default': False}[0m
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+Do you want to edit a card (press enter to bypass editing)?
+/------------------------------------------------------------\
+|  [31m1[0m. param : [32mparam_card.dat[0m                                 |
+|  [31m2[0m. run   : [32mrun_card.dat[0m                                   |
+\------------------------------------------------------------/
+ you can also
+   - enter the path to a valid card or banner.
+   - use the 'set' command to modify a parameter directly.
+     The set option works only for param_card and run_card.
+     Type 'help set' for more information on this command.
+   - call an external program (ASperGE/MadWidth/...).
+     Type 'help' for the list of available command
+ [[4m0[0m, done, 1, param, 2, run, enter path][90s to answer] 
+>[1mINFO: modify parameter gridpack of the run_card.dat to True [0m
+Do you want to edit a card (press enter to bypass editing)?
+/------------------------------------------------------------\
+|  [31m1[0m. param : [32mparam_card.dat[0m                                 |
+|  [31m2[0m. run   : [32mrun_card.dat[0m                                   |
+\------------------------------------------------------------/
+ you can also
+   - enter the path to a valid card or banner.
+   - use the 'set' command to modify a parameter directly.
+     The set option works only for param_card and run_card.
+     Type 'help set' for more information on this command.
+   - call an external program (ASperGE/MadWidth/...).
+     Type 'help' for the list of available command
+ [[4m0[0m, done, 1, param, 2, run, enter path] 
+>[1;34mWARNING: Particle 1000021 with small width detected (1e-12): See https://answers.launchpad.net/mg5amcnlo/+faq/3053 to learn the special handling of that case [0m
+[1;34mWARNING: Particle 1000023 with small width detected (0.020777): See https://answers.launchpad.net/mg5amcnlo/+faq/3053 to learn the special handling of that case [0m
+[1;34mWARNING: Particle 1000024 with small width detected (0.01704145): See https://answers.launchpad.net/mg5amcnlo/+faq/3053 to learn the special handling of that case [0m
+INFO: Update the dependent parameter of the param_card.dat 
+[1;34mWARNING: Unknow type of information in the card: snumix,vckm,upmns [0m
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+Generating gridpack with run name pilotrun
+survey  pilotrun --accuracy=0.01 --points=2000 --iterations=8 --gridpack=.true.
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+INFO: compile directory 
+INFO: Using LHAPDF v6.4.0 interface for PDFs 
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+compile Source Directory
+Using random number seed offset = 21
+INFO: Running Survey 
+Creating Jobs
+Working on SubProcesses
+INFO: Compiling for process 1/20. 
+INFO:     P3_gg_gogobbx  
+[1;34mWARNING: The optimizer detects that you have coupling evaluated to zero: 
+GC_21 GC_73
+This will slow down the computation. Please consider using restricted model:
+https://answers.launchpad.net/mg5amcnlo/+faq/2312 [0m
+
+  0%|          | 0/2405 [00:00<?, ?it/s]
+ 37%|███▋      | 890/2405 [00:00<00:00, 8209.26it/s]
+ 71%|███████   | 1711/2405 [00:01<00:00, 768.90it/s]
+100%|██████████| 2405/2405 [00:01<00:00, 1255.80it/s]
+INFO: Compiling for process 2/20. 
+INFO:     P3_gb_gogogb  
+
+  0%|          | 0/2401 [00:00<?, ?it/s]
+ 37%|███▋      | 897/2401 [00:00<00:00, 8465.81it/s]
+ 73%|███████▎  | 1744/2401 [00:01<00:00, 855.14it/s]
+100%|██████████| 2401/2401 [00:01<00:00, 1363.48it/s]
+
+  0%|          | 0/2404 [00:00<?, ?it/s]
+ 38%|███▊      | 903/2404 [00:00<00:00, 8426.94it/s]
+ 73%|███████▎  | 1746/2404 [00:01<00:00, 866.78it/s]
+100%|██████████| 2404/2404 [00:01<00:00, 1383.15it/s]
+INFO: Compiling for process 3/20. 
+INFO:     P3_bbx_gogogg  
+
+  0%|          | 0/2400 [00:00<?, ?it/s]
+ 38%|███▊      | 905/2400 [00:00<00:00, 8996.00it/s]
+ 75%|███████▌  | 1805/2400 [00:01<00:00, 987.07it/s]
+100%|██████████| 2400/2400 [00:01<00:00, 1511.73it/s]
+INFO: Compiling for process 4/20. 
+INFO:     P3_gg_gogoqq  
+
+  0%|          | 0/2130 [00:00<?, ?it/s]
+ 43%|████▎     | 906/2130 [00:00<00:00, 8608.03it/s]
+ 83%|████████▎ | 1767/2130 [00:01<00:00, 1208.88it/s]
+100%|██████████| 2130/2130 [00:01<00:00, 1676.31it/s]
+
+  0%|          | 0/2130 [00:00<?, ?it/s]
+ 43%|████▎     | 906/2130 [00:00<00:00, 8854.08it/s]
+ 84%|████████▍ | 1792/2130 [00:01<00:00, 1250.92it/s]
+100%|██████████| 2130/2130 [00:01<00:00, 1706.91it/s]
+
+  0%|          | 0/2130 [00:00<?, ?it/s]
+ 43%|████▎     | 906/2130 [00:00<00:00, 8947.27it/s]
+ 85%|████████▍ | 1801/2130 [00:01<00:00, 1220.15it/s]
+100%|██████████| 2130/2130 [00:01<00:00, 1657.03it/s]
+
+  0%|          | 0/2130 [00:00<?, ?it/s]
+ 43%|████▎     | 906/2130 [00:00<00:00, 8585.86it/s]
+ 83%|████████▎ | 1765/2130 [00:01<00:00, 1218.30it/s]
+100%|██████████| 2130/2130 [00:01<00:00, 1691.13it/s]
+INFO: Compiling for process 5/20. 
+INFO:     P3_gq_gogogq  
+
+  0%|          | 0/2136 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2136 [00:00<00:00, 8608.02it/s]
+ 83%|████████▎ | 1765/2136 [00:01<00:00, 1218.20it/s]
+100%|██████████| 2136/2136 [00:01<00:00, 1695.32it/s]
+
+  0%|          | 0/2136 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2136 [00:00<00:00, 8581.68it/s]
+ 83%|████████▎ | 1763/2136 [00:01<00:00, 1197.47it/s]
+100%|██████████| 2136/2136 [00:01<00:00, 1669.32it/s]
+
+  0%|          | 0/2136 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2136 [00:00<00:00, 8584.49it/s]
+ 83%|████████▎ | 1763/2136 [00:01<00:00, 1212.00it/s]
+100%|██████████| 2136/2136 [00:01<00:00, 1688.58it/s]
+
+  0%|          | 0/2136 [00:00<?, ?it/s]
+ 42%|████▏     | 901/2136 [00:00<00:00, 9009.64it/s]
+ 84%|████████▍ | 1802/2136 [00:01<00:00, 1226.47it/s]
+100%|██████████| 2136/2136 [00:01<00:00, 1667.79it/s]
+
+  0%|          | 0/2135 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2135 [00:00<00:00, 8548.15it/s]
+ 82%|████████▏ | 1759/2135 [00:01<00:00, 1189.60it/s]
+100%|██████████| 2135/2135 [00:01<00:00, 1662.02it/s]
+
+  0%|          | 0/2135 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2135 [00:00<00:00, 8508.52it/s]
+ 82%|████████▏ | 1755/2135 [00:01<00:00, 1215.44it/s]
+100%|██████████| 2135/2135 [00:01<00:00, 1701.12it/s]
+
+  0%|          | 0/2135 [00:00<?, ?it/s]
+ 42%|████▏     | 902/2135 [00:00<00:00, 8993.01it/s]
+ 84%|████████▍ | 1802/2135 [00:01<00:00, 1225.67it/s]
+100%|██████████| 2135/2135 [00:01<00:00, 1666.21it/s]
+
+  0%|          | 0/2135 [00:00<?, ?it/s]
+ 42%|████▏     | 902/2135 [00:00<00:00, 8815.69it/s]
+ 84%|████████▎ | 1784/2135 [00:01<00:00, 1206.27it/s]
+100%|██████████| 2135/2135 [00:01<00:00, 1658.56it/s]
+INFO: Compiling for process 6/20. 
+INFO:     P3_qq_gogogg  
+
+  0%|          | 0/2138 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2138 [00:00<00:00, 8693.50it/s]
+ 83%|████████▎ | 1774/2138 [00:01<00:00, 1253.02it/s]
+100%|██████████| 2138/2138 [00:01<00:00, 1734.53it/s]
+
+  0%|          | 0/2138 [00:00<?, ?it/s]
+ 42%|████▏     | 899/2138 [00:00<00:00, 8656.47it/s]
+ 83%|████████▎ | 1765/2138 [00:01<00:00, 1230.01it/s]
+100%|██████████| 2138/2138 [00:01<00:00, 1711.73it/s]
+
+  0%|          | 0/2138 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2138 [00:00<00:00, 8686.47it/s]
+ 83%|████████▎ | 1773/2138 [00:01<00:00, 1244.83it/s]
+100%|██████████| 2138/2138 [00:01<00:00, 1724.53it/s]
+
+  0%|          | 0/2138 [00:00<?, ?it/s]
+ 42%|████▏     | 904/2138 [00:00<00:00, 8809.70it/s]
+ 83%|████████▎ | 1785/2138 [00:01<00:00, 1262.17it/s]
+100%|██████████| 2138/2138 [00:01<00:00, 1735.23it/s]
+INFO: Compiling for process 7/20. 
+INFO:     P3_bb_gogobb  
+
+  0%|          | 0/1746 [00:00<?, ?it/s]
+ 35%|███▍      | 606/1746 [00:00<00:00, 5807.40it/s]
+ 68%|██████▊   | 1187/1746 [00:01<00:01, 511.01it/s]
+100%|██████████| 1746/1746 [00:02<00:00, 872.20it/s]
+
+  0%|          | 0/1754 [00:00<?, ?it/s]
+ 35%|███▍      | 609/1754 [00:00<00:00, 6046.36it/s]
+ 69%|██████▉   | 1214/1754 [00:01<00:00, 544.01it/s]
+100%|██████████| 1754/1754 [00:01<00:00, 909.13it/s]
+
+  0%|          | 0/1755 [00:00<?, ?it/s]
+ 35%|███▍      | 610/1755 [00:00<00:00, 6032.76it/s]
+ 69%|██████▉   | 1214/1755 [00:01<00:01, 538.25it/s]
+100%|██████████| 1755/1755 [00:01<00:00, 900.47it/s]
+INFO: Compiling for process 8/20. 
+INFO:     P3_qq_gogoqq  
+
+  0%|          | 0/1650 [00:00<?, ?it/s]
+ 37%|███▋      | 610/1650 [00:00<00:00, 5785.82it/s]
+ 72%|███████▏  | 1189/1650 [00:01<00:00, 860.09it/s]
+100%|██████████| 1650/1650 [00:01<00:00, 1370.31it/s]
+
+  0%|          | 0/1648 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1648 [00:00<00:00, 6018.05it/s]
+ 74%|███████▍  | 1218/1648 [00:01<00:00, 916.25it/s]
+100%|██████████| 1648/1648 [00:01<00:00, 1419.17it/s]
+
+  0%|          | 0/1650 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1650 [00:00<00:00, 6116.04it/s]
+ 74%|███████▍  | 1228/1650 [00:01<00:00, 953.08it/s]
+100%|██████████| 1650/1650 [00:01<00:00, 1463.37it/s]
+
+  0%|          | 0/1648 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1648 [00:00<00:00, 5879.67it/s]
+ 73%|███████▎  | 1204/1648 [00:01<00:00, 903.15it/s]
+100%|██████████| 1648/1648 [00:01<00:00, 1417.37it/s]
+
+  0%|          | 0/1650 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1650 [00:00<00:00, 6045.39it/s]
+ 74%|███████▍  | 1221/1650 [00:01<00:00, 917.49it/s]
+100%|██████████| 1650/1650 [00:01<00:00, 1419.17it/s]
+
+  0%|          | 0/1648 [00:00<?, ?it/s]
+ 37%|███▋      | 613/1648 [00:00<00:00, 5799.99it/s]
+ 72%|███████▏  | 1193/1648 [00:01<00:00, 913.88it/s]
+100%|██████████| 1648/1648 [00:01<00:00, 1446.91it/s]
+
+  0%|          | 0/1650 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1650 [00:00<00:00, 5951.97it/s]
+ 73%|███████▎  | 1212/1650 [00:01<00:00, 948.39it/s]
+100%|██████████| 1650/1650 [00:01<00:00, 1477.41it/s]
+
+  0%|          | 0/1648 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1648 [00:00<00:00, 6118.78it/s]
+ 75%|███████▍  | 1228/1648 [00:01<00:00, 946.50it/s]
+100%|██████████| 1648/1648 [00:01<00:00, 1451.86it/s]
+
+  0%|          | 0/1651 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1651 [00:00<00:00, 6084.81it/s]
+ 74%|███████▍  | 1225/1651 [00:01<00:00, 907.25it/s]
+100%|██████████| 1651/1651 [00:01<00:00, 1399.65it/s]
+
+  0%|          | 0/1652 [00:00<?, ?it/s]
+ 37%|███▋      | 614/1652 [00:00<00:00, 6137.52it/s]
+ 74%|███████▍  | 1228/1652 [00:01<00:00, 911.57it/s]
+100%|██████████| 1652/1652 [00:01<00:00, 1402.35it/s]
+
+  0%|          | 0/1652 [00:00<?, ?it/s]
+ 37%|███▋      | 616/1652 [00:00<00:00, 5935.18it/s]
+ 73%|███████▎  | 1210/1652 [00:01<00:00, 927.18it/s]
+100%|██████████| 1652/1652 [00:01<00:00, 1449.51it/s]
+
+  0%|          | 0/1652 [00:00<?, ?it/s]
+ 37%|███▋      | 614/1652 [00:00<00:00, 6131.40it/s]
+ 74%|███████▍  | 1228/1652 [00:01<00:00, 921.68it/s]
+100%|██████████| 1652/1652 [00:01<00:00, 1417.80it/s]
+
+  0%|          | 0/1278 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1278 [00:00<00:00, 6567.43it/s]
+100%|██████████| 1278/1278 [00:00<00:00, 5189.21it/s]
+
+  0%|          | 0/1278 [00:00<?, ?it/s]
+ 53%|█████▎    | 677/1278 [00:00<00:00, 6624.79it/s]
+100%|██████████| 1278/1278 [00:00<00:00, 5262.03it/s]
+
+  0%|          | 0/1278 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1278 [00:00<00:00, 6557.29it/s]
+100%|██████████| 1278/1278 [00:00<00:00, 5165.73it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1279 [00:00<00:00, 6669.04it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5239.25it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 672/1279 [00:00<00:00, 6698.10it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5210.29it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1279 [00:00<00:00, 6685.89it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5213.33it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1279 [00:00<00:00, 6596.63it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5257.19it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 673/1279 [00:00<00:00, 6685.41it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5133.64it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 673/1279 [00:00<00:00, 6619.05it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5210.31it/s]
+
+  0%|          | 0/1278 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1278 [00:00<00:00, 6658.24it/s]
+100%|██████████| 1278/1278 [00:00<00:00, 5268.46it/s]
+
+  0%|          | 0/1278 [00:00<?, ?it/s]
+ 53%|█████▎    | 677/1278 [00:00<00:00, 6602.88it/s]
+100%|██████████| 1278/1278 [00:00<00:00, 5336.59it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 52%|█████▏    | 665/1276 [00:00<00:00, 6545.13it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5050.21it/s]
+
+  0%|          | 0/1281 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1281 [00:00<00:00, 6696.60it/s]
+100%|██████████| 1281/1281 [00:00<00:00, 5270.71it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1279 [00:00<00:00, 6595.34it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5233.08it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 52%|█████▏    | 665/1279 [00:00<00:00, 6529.83it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5020.92it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1279 [00:00<00:00, 6644.27it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5254.46it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 673/1279 [00:00<00:00, 6704.46it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5162.20it/s]
+
+  0%|          | 0/1278 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1278 [00:00<00:00, 6597.43it/s]
+100%|██████████| 1278/1278 [00:00<00:00, 5279.64it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1276 [00:00<00:00, 6728.18it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5346.95it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1276 [00:00<00:00, 6657.77it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5236.47it/s]
+
+  0%|          | 0/1281 [00:00<?, ?it/s]
+ 53%|█████▎    | 673/1281 [00:00<00:00, 6715.88it/s]
+100%|██████████| 1281/1281 [00:00<00:00, 5176.21it/s]
+
+  0%|          | 0/1281 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1281 [00:00<00:00, 6551.90it/s]
+100%|██████████| 1281/1281 [00:00<00:00, 5296.01it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1279 [00:00<00:00, 6673.12it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5234.63it/s]
+
+  0%|          | 0/1279 [00:00<?, ?it/s]
+ 53%|█████▎    | 677/1279 [00:00<00:00, 6630.06it/s]
+100%|██████████| 1279/1279 [00:00<00:00, 5012.12it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 676/1276 [00:00<00:00, 6677.88it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5399.05it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 52%|█████▏    | 663/1276 [00:00<00:00, 6595.16it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 4515.21it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 52%|█████▏    | 663/1276 [00:00<00:00, 6577.89it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 4520.51it/s]
+
+  0%|          | 0/1281 [00:00<?, ?it/s]
+ 52%|█████▏    | 666/1281 [00:00<00:00, 6451.70it/s]
+100%|██████████| 1281/1281 [00:00<00:00, 4851.28it/s]
+
+  0%|          | 0/1281 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1281 [00:00<00:00, 6742.23it/s]
+100%|██████████| 1281/1281 [00:00<00:00, 5329.51it/s]
+
+  0%|          | 0/1281 [00:00<?, ?it/s]
+ 53%|█████▎    | 675/1281 [00:00<00:00, 6729.95it/s]
+100%|██████████| 1281/1281 [00:00<00:00, 5352.17it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1276 [00:00<00:00, 6682.66it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5304.37it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1276 [00:00<00:00, 6735.77it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5302.69it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 674/1276 [00:00<00:00, 6690.40it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5294.62it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 52%|█████▏    | 667/1276 [00:00<00:00, 6566.48it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5124.95it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 53%|█████▎    | 676/1276 [00:00<00:00, 6584.50it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 5370.22it/s]
+
+  0%|          | 0/1276 [00:00<?, ?it/s]
+ 52%|█████▏    | 663/1276 [00:00<00:00, 6476.97it/s]
+100%|██████████| 1276/1276 [00:00<00:00, 4927.36it/s]
+INFO: Compiling for process 9/20. 
+INFO:     P3_gg_gogogg  
+
+  0%|          | 0/11462 [00:00<?, ?it/s]
+ 87%|████████▋ | 10011/11462 [00:00<00:00, 97540.14it/s]
+100%|██████████| 11462/11462 [00:01<00:00, 10723.06it/s]
+INFO: Compiling for process 10/20. 
+INFO:     P3_qq_gogobbx  
+
+  0%|          | 0/1309 [00:00<?, ?it/s]
+ 50%|████▉     | 651/1309 [00:00<00:00, 6262.90it/s]
+ 98%|█████████▊| 1278/1309 [00:00<00:00, 2505.67it/s]
+100%|██████████| 1309/1309 [00:00<00:00, 2823.12it/s]
+
+  0%|          | 0/1309 [00:00<?, ?it/s]
+ 50%|████▉     | 651/1309 [00:00<00:00, 6359.16it/s]
+ 98%|█████████▊| 1287/1309 [00:00<00:00, 2614.04it/s]
+100%|██████████| 1309/1309 [00:00<00:00, 2917.86it/s]
+
+  0%|          | 0/1309 [00:00<?, ?it/s]
+ 50%|████▉     | 651/1309 [00:00<00:00, 6425.06it/s]
+ 99%|█████████▉| 1294/1309 [00:00<00:00, 2603.63it/s]
+100%|██████████| 1309/1309 [00:00<00:00, 2891.55it/s]
+
+  0%|          | 0/1309 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1309 [00:00<00:00, 6372.87it/s]
+ 98%|█████████▊| 1287/1309 [00:00<00:00, 2494.94it/s]
+100%|██████████| 1309/1309 [00:00<00:00, 2793.16it/s]
+INFO: Compiling for process 11/20. 
+INFO:     P3_qb_gogoqb  
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1304 [00:00<00:00, 6313.08it/s]
+ 98%|█████████▊| 1281/1304 [00:00<00:00, 2580.13it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2883.66it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1300 [00:00<00:00, 6255.36it/s]
+ 98%|█████████▊| 1275/1300 [00:00<00:00, 2631.78it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2942.07it/s]
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 50%|█████     | 653/1304 [00:00<00:00, 6184.50it/s]
+ 98%|█████████▊| 1272/1304 [00:00<00:00, 2626.50it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2952.71it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|█████     | 651/1300 [00:00<00:00, 6491.16it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2953.58it/s]
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1304 [00:00<00:00, 6321.36it/s]
+ 98%|█████████▊| 1282/1304 [00:00<00:00, 2558.60it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2859.68it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 645/1300 [00:00<00:00, 6192.62it/s]
+ 97%|█████████▋| 1265/1300 [00:00<00:00, 2290.68it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2603.37it/s]
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 49%|████▉     | 645/1304 [00:00<00:00, 6446.12it/s]
+ 99%|█████████▉| 1290/1304 [00:00<00:00, 2501.09it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2782.23it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 647/1300 [00:00<00:00, 6212.23it/s]
+ 98%|█████████▊| 1269/1300 [00:00<00:00, 2504.46it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2821.32it/s]
+
+  0%|          | 0/1303 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1303 [00:00<00:00, 6164.60it/s]
+ 97%|█████████▋| 1266/1303 [00:00<00:00, 2525.88it/s]
+100%|██████████| 1303/1303 [00:00<00:00, 2856.75it/s]
+
+  0%|          | 0/1306 [00:00<?, ?it/s]
+ 50%|████▉     | 650/1306 [00:00<00:00, 6476.35it/s]
+ 99%|█████████▉| 1298/1306 [00:00<00:00, 2688.92it/s]
+100%|██████████| 1306/1306 [00:00<00:00, 2964.16it/s]
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 50%|████▉     | 650/1304 [00:00<00:00, 6485.63it/s]
+100%|█████████▉| 1299/1304 [00:00<00:00, 2572.91it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2838.32it/s]
+
+  0%|          | 0/1306 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1306 [00:00<00:00, 6249.38it/s]
+ 98%|█████████▊| 1274/1306 [00:00<00:00, 2511.79it/s]
+100%|██████████| 1306/1306 [00:00<00:00, 2831.51it/s]
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1304 [00:00<00:00, 6433.32it/s]
+ 99%|█████████▉| 1293/1304 [00:00<00:00, 2665.17it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2946.15it/s]
+
+  0%|          | 0/1306 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1306 [00:00<00:00, 6256.00it/s]
+ 98%|█████████▊| 1275/1306 [00:00<00:00, 2579.17it/s]
+100%|██████████| 1306/1306 [00:00<00:00, 2900.53it/s]
+
+  0%|          | 0/1304 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1304 [00:00<00:00, 6329.12it/s]
+ 98%|█████████▊| 1282/1304 [00:00<00:00, 2570.57it/s]
+100%|██████████| 1304/1304 [00:00<00:00, 2872.04it/s]
+
+  0%|          | 0/1306 [00:00<?, ?it/s]
+ 50%|████▉     | 649/1306 [00:00<00:00, 6376.59it/s]
+ 99%|█████████▊| 1287/1306 [00:00<00:00, 2525.45it/s]
+100%|██████████| 1306/1306 [00:00<00:00, 2818.76it/s]
+INFO: Compiling for process 12/20. 
+INFO:     P3_bbx_gogoqq  
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 645/1300 [00:00<00:00, 6393.91it/s]
+ 99%|█████████▉| 1285/1300 [00:00<00:00, 2490.80it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2773.27it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 647/1300 [00:00<00:00, 6427.88it/s]
+ 99%|█████████▉| 1290/1300 [00:00<00:00, 2585.91it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2862.00it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 647/1300 [00:00<00:00, 6356.35it/s]
+ 99%|█████████▊| 1283/1300 [00:00<00:00, 2651.44it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2944.57it/s]
+
+  0%|          | 0/1300 [00:00<?, ?it/s]
+ 50%|████▉     | 647/1300 [00:00<00:00, 6446.32it/s]
+ 99%|█████████▉| 1292/1300 [00:00<00:00, 2685.83it/s]
+100%|██████████| 1300/1300 [00:00<00:00, 2960.40it/s]
+INFO: Compiling for process 13/20. 
+INFO:     P2_gb_gogob  
+
+  0%|          | 0/902 [00:00<?, ?it/s]
+ 61%|██████    | 549/902 [00:00<00:00, 5489.19it/s]
+100%|██████████| 902/902 [00:00<00:00, 8863.75it/s]
+
+  0%|          | 0/902 [00:00<?, ?it/s]
+100%|██████████| 902/902 [00:00<00:00, 10966.87it/s]
+INFO: Compiling for process 14/20. 
+INFO:     P2_bbx_gogog  
+
+  0%|          | 0/898 [00:00<?, ?it/s]
+ 58%|█████▊    | 521/898 [00:00<00:00, 5113.99it/s]
+100%|██████████| 898/898 [00:00<00:00, 7717.76it/s]
+INFO: Compiling for process 15/20. 
+INFO:     P2_gq_gogoq  
+
+  0%|          | 0/880 [00:00<?, ?it/s]
+100%|██████████| 880/880 [00:00<00:00, 10932.73it/s]
+
+  0%|          | 0/880 [00:00<?, ?it/s]
+100%|██████████| 880/880 [00:00<00:00, 14811.70it/s]
+
+  0%|          | 0/880 [00:00<?, ?it/s]
+100%|██████████| 880/880 [00:00<00:00, 12614.84it/s]
+
+  0%|          | 0/880 [00:00<?, ?it/s]
+100%|██████████| 880/880 [00:00<00:00, 14539.58it/s]
+
+  0%|          | 0/881 [00:00<?, ?it/s]
+100%|██████████| 881/881 [00:00<00:00, 14389.00it/s]
+
+  0%|          | 0/881 [00:00<?, ?it/s]
+100%|██████████| 881/881 [00:00<00:00, 11061.86it/s]
+
+  0%|          | 0/881 [00:00<?, ?it/s]
+100%|██████████| 881/881 [00:00<00:00, 11963.51it/s]
+
+  0%|          | 0/881 [00:00<?, ?it/s]
+100%|██████████| 881/881 [00:00<00:00, 14279.30it/s]
+INFO: Compiling for process 16/20. 
+INFO:     P2_qq_gogog  
+
+  0%|          | 0/879 [00:00<?, ?it/s]
+100%|██████████| 879/879 [00:00<00:00, 13711.57it/s]
+
+  0%|          | 0/879 [00:00<?, ?it/s]
+100%|██████████| 879/879 [00:00<00:00, 14790.00it/s]
+
+  0%|          | 0/879 [00:00<?, ?it/s]
+100%|██████████| 879/879 [00:00<00:00, 14688.54it/s]
+
+  0%|          | 0/879 [00:00<?, ?it/s]
+100%|██████████| 879/879 [00:00<00:00, 14998.43it/s]
+INFO: Compiling for process 17/20. 
+INFO:     P2_gg_gogog  
+
+  0%|          | 0/1256 [00:00<?, ?it/s]
+100%|██████████| 1256/1256 [00:00<00:00, 26054.54it/s]
+INFO: Compiling for process 18/20. 
+INFO:     P1_qq_gogo  
+
+  0%|          | 0/740 [00:00<?, ?it/s]
+100%|██████████| 740/740 [00:00<00:00, 75766.75it/s]
+
+  0%|          | 0/740 [00:00<?, ?it/s]
+100%|██████████| 740/740 [00:00<00:00, 89025.50it/s]
+
+  0%|          | 0/740 [00:00<?, ?it/s]
+100%|██████████| 740/740 [00:00<00:00, 72632.04it/s]
+
+  0%|          | 0/740 [00:00<?, ?it/s]
+100%|██████████| 740/740 [00:00<00:00, 74499.18it/s]
+INFO: Compiling for process 19/20. 
+INFO:     P1_bbx_gogo  
+
+  0%|          | 0/742 [00:00<?, ?it/s]
+100%|██████████| 742/742 [00:00<00:00, 62257.17it/s]
+INFO: Compiling for process 20/20. 
+INFO:     P1_gg_gogo  
+
+  0%|          | 0/750 [00:00<?, ?it/s]
+100%|██████████| 750/750 [00:00<00:00, 107183.48it/s]
+INFO:     P3_gg_gogobbx  
+INFO:     P3_gb_gogogb  
+INFO:     P3_bbx_gogogg  
+INFO:     P3_gg_gogoqq  
+INFO:     P3_gq_gogogq  
+INFO:     P3_qq_gogogg  
+INFO:     P3_bb_gogobb  
+INFO:     P3_qq_gogoqq  
+INFO:     P3_gg_gogogg  
+INFO:     P3_qq_gogobbx  
+INFO:     P3_qb_gogoqb  
+INFO:     P3_bbx_gogoqq  
+INFO:     P2_gb_gogob  
+INFO:     P2_bbx_gogog  
+INFO:     P2_gq_gogoq  
+INFO:     P2_qq_gogog  
+INFO:     P2_gg_gogog  
+INFO:     P1_qq_gogo  
+INFO:     P1_bbx_gogo  
+INFO:     P1_gg_gogo  
+INFO:  Idle: 1101,  Running: 8,  Completed: 48 [ current time: 02h00 ] 
+INFO:  Idle: 1100,  Running: 8,  Completed: 49 [  0.66s  ] 
+INFO:  Idle: 1097,  Running: 8,  Completed: 52 [  6.5s  ] 
+INFO:  Idle: 1095,  Running: 8,  Completed: 54 [  9.7s  ] 
+INFO:  Idle: 1094,  Running: 8,  Completed: 55 [  18.3s  ] 
+INFO:  Idle: 1093,  Running: 8,  Completed: 56 [  24.6s  ] 
+INFO:  Idle: 1092,  Running: 8,  Completed: 57 [  27.7s  ] 
+INFO:  Idle: 1091,  Running: 8,  Completed: 58 [  33.8s  ] 
+INFO:  Idle: 1089,  Running: 8,  Completed: 60 [  43.1s  ] 
+INFO:  Idle: 1088,  Running: 8,  Completed: 61 [  48s  ] 
+INFO:  Idle: 1087,  Running: 8,  Completed: 62 [  51.6s  ] 
+INFO:  Idle: 1086,  Running: 8,  Completed: 63 [  54.7s  ] 
+INFO:  Idle: 1085,  Running: 8,  Completed: 64 [  59.8s  ] 
+INFO:  Idle: 1084,  Running: 8,  Completed: 65 [  1m 3s  ] 
+INFO:  Idle: 1080,  Running: 8,  Completed: 69 [  1m 13s  ] 
+INFO:  Idle: 1077,  Running: 8,  Completed: 72 [  1m 22s  ] 
+INFO:  Idle: 1076,  Running: 8,  Completed: 73 [  1m 31s  ] 
+INFO:  Idle: 1075,  Running: 8,  Completed: 74 [  1m 36s  ] 
+INFO:  Idle: 1073,  Running: 8,  Completed: 76 [  1m 46s  ] 
+INFO:  Idle: 1070,  Running: 8,  Completed: 79 [  1m 50s  ] 
+INFO:  Idle: 1069,  Running: 8,  Completed: 80 [  1m 53s  ] 
+INFO:  Idle: 1067,  Running: 8,  Completed: 82 [  2m 5s  ] 
+INFO:  Idle: 1057,  Running: 8,  Completed: 92 [  2m 13s  ] 
+INFO:  Idle: 1056,  Running: 8,  Completed: 93 [  2m 22s  ] 
+INFO:  Idle: 1052,  Running: 8,  Completed: 97 [  2m 38s  ] 
+INFO:  Idle: 1050,  Running: 8,  Completed: 99 [  2m 42s  ] 
+INFO:  Idle: 1049,  Running: 8,  Completed: 100 [  2m 48s  ] 
+INFO:  Idle: 1046,  Running: 8,  Completed: 103 [  3m 1s  ] 
+INFO:  Idle: 1044,  Running: 8,  Completed: 105 [  3m 34s  ] 
+INFO:  Idle: 1043,  Running: 8,  Completed: 106 [  3m 40s  ] 
+INFO:  Idle: 1041,  Running: 8,  Completed: 108 [  3m 54s  ] 
+INFO:  Idle: 1039,  Running: 8,  Completed: 110 [  4m 3s  ] 
+INFO:  Idle: 1038,  Running: 8,  Completed: 111 [  4m 11s  ] 
+INFO:  Idle: 1037,  Running: 8,  Completed: 112 [  4m 18s  ] 
+INFO:  Idle: 1034,  Running: 8,  Completed: 115 [  4m 27s  ] 
+INFO:  Idle: 1033,  Running: 8,  Completed: 116 [  4m 34s  ] 
+INFO:  Idle: 1031,  Running: 8,  Completed: 118 [  4m 39s  ] 
+INFO:  Idle: 1030,  Running: 8,  Completed: 119 [  4m 52s  ] 
+INFO:  Idle: 1029,  Running: 8,  Completed: 120 [  4m 57s  ] 
+INFO:  Idle: 1028,  Running: 8,  Completed: 121 [  5m 16s  ] 
+INFO:  Idle: 1026,  Running: 8,  Completed: 123 [  5m 21s  ] 
+INFO:  Idle: 1025,  Running: 8,  Completed: 124 [  5m 26s  ] 
+INFO:  Idle: 1024,  Running: 8,  Completed: 125 [  5m 42s  ] 
+INFO:  Idle: 1022,  Running: 8,  Completed: 127 [  5m 51s  ] 
+INFO:  Idle: 1020,  Running: 8,  Completed: 129 [  5m 57s  ] 
+INFO:  Idle: 1019,  Running: 8,  Completed: 130 [  6m 7s  ] 
+INFO:  Idle: 1018,  Running: 8,  Completed: 131 [  6m 13s  ] 
+INFO:  Idle: 1017,  Running: 8,  Completed: 132 [  6m 19s  ] 
+INFO:  Idle: 1012,  Running: 8,  Completed: 137 [  6m 23s  ] 
+INFO:  Idle: 1011,  Running: 8,  Completed: 138 [  6m 27s  ] 
+INFO:  Idle: 1007,  Running: 8,  Completed: 142 [  6m 31s  ] 
+INFO:  Idle: 1005,  Running: 8,  Completed: 144 [  6m 35s  ] 
+INFO:  Idle: 1003,  Running: 8,  Completed: 146 [  6m 39s  ] 
+INFO:  Idle: 1001,  Running: 8,  Completed: 148 [  6m 43s  ] 
+INFO:  Idle: 998,  Running: 8,  Completed: 151 [  6m 47s  ] 
+INFO:  Idle: 997,  Running: 8,  Completed: 152 [  6m 50s  ] 
+INFO:  Idle: 995,  Running: 8,  Completed: 154 [  6m 54s  ] 
+INFO:  Idle: 990,  Running: 8,  Completed: 159 [  7m 1s  ] 
+INFO:  Idle: 986,  Running: 8,  Completed: 163 [  7m 4s  ] 
+INFO:  Idle: 985,  Running: 8,  Completed: 164 [  7m 8s  ] 
+INFO:  Idle: 981,  Running: 8,  Completed: 168 [  7m 13s  ] 
+INFO:  Idle: 977,  Running: 8,  Completed: 172 [  7m 17s  ] 
+INFO:  Idle: 976,  Running: 8,  Completed: 173 [  7m 20s  ] 
+INFO:  Idle: 975,  Running: 8,  Completed: 174 [  7m 26s  ] 
+INFO:  Idle: 972,  Running: 8,  Completed: 177 [  7m 31s  ] 
+INFO:  Idle: 968,  Running: 8,  Completed: 181 [  7m 35s  ] 
+INFO:  Idle: 964,  Running: 8,  Completed: 185 [  7m 39s  ] 
+INFO:  Idle: 963,  Running: 8,  Completed: 186 [  7m 45s  ] 
+INFO:  Idle: 958,  Running: 8,  Completed: 191 [  7m 51s  ] 
+INFO:  Idle: 956,  Running: 8,  Completed: 193 [  7m 55s  ] 
+INFO:  Idle: 953,  Running: 8,  Completed: 196 [  7m 59s  ] 
+INFO:  Idle: 951,  Running: 8,  Completed: 198 [  8m 4s  ] 
+INFO:  Idle: 948,  Running: 8,  Completed: 201 [  8m 8s  ] 
+INFO:  Idle: 946,  Running: 8,  Completed: 203 [  8m 11s  ] 
+INFO:  Idle: 943,  Running: 8,  Completed: 206 [  8m 14s  ] 
+INFO:  Idle: 941,  Running: 8,  Completed: 208 [  8m 20s  ] 
+INFO:  Idle: 939,  Running: 8,  Completed: 210 [  8m 23s  ] 
+INFO:  Idle: 937,  Running: 8,  Completed: 212 [  8m 26s  ] 
+INFO:  Idle: 935,  Running: 8,  Completed: 214 [  8m 30s  ] 
+INFO:  Idle: 932,  Running: 8,  Completed: 217 [  8m 34s  ] 
+INFO:  Idle: 930,  Running: 8,  Completed: 219 [  8m 38s  ] 
+INFO:  Idle: 928,  Running: 8,  Completed: 221 [  8m 42s  ] 
+INFO:  Idle: 925,  Running: 8,  Completed: 224 [  8m 47s  ] 
+INFO:  Idle: 922,  Running: 8,  Completed: 227 [  8m 51s  ] 
+INFO:  Idle: 919,  Running: 8,  Completed: 230 [  8m 54s  ] 
+INFO:  Idle: 917,  Running: 8,  Completed: 232 [  8m 59s  ] 
+INFO:  Idle: 914,  Running: 8,  Completed: 235 [  9m 5s  ] 
+INFO:  Idle: 913,  Running: 8,  Completed: 236 [  9m 9s  ] 
+INFO:  Idle: 909,  Running: 8,  Completed: 240 [  9m 13s  ] 
+INFO:  Idle: 907,  Running: 8,  Completed: 242 [  9m 19s  ] 
+INFO:  Idle: 905,  Running: 8,  Completed: 244 [  9m 23s  ] 
+INFO:  Idle: 902,  Running: 8,  Completed: 247 [  9m 26s  ] 
+INFO:  Idle: 900,  Running: 8,  Completed: 249 [  9m 30s  ] 
+INFO:  Idle: 898,  Running: 8,  Completed: 251 [  9m 35s  ] 
+INFO:  Idle: 896,  Running: 8,  Completed: 253 [  9m 39s  ] 
+INFO:  Idle: 892,  Running: 8,  Completed: 257 [  9m 46s  ] 
+INFO:  Idle: 888,  Running: 8,  Completed: 261 [  9m 52s  ] 
+INFO:  Idle: 884,  Running: 8,  Completed: 265 [  10m 4s  ] 
+INFO:  Idle: 879,  Running: 8,  Completed: 270 [  10m 8s  ] 
+INFO:  Idle: 876,  Running: 8,  Completed: 273 [  10m 12s  ] 
+INFO:  Idle: 874,  Running: 8,  Completed: 275 [  10m 18s  ] 
+INFO:  Idle: 872,  Running: 8,  Completed: 277 [  10m 22s  ] 
+INFO:  Idle: 870,  Running: 8,  Completed: 279 [  10m 28s  ] 
+INFO:  Idle: 866,  Running: 8,  Completed: 283 [  10m 38s  ] 
+INFO:  Idle: 863,  Running: 8,  Completed: 286 [  10m 41s  ] 
+INFO:  Idle: 862,  Running: 8,  Completed: 287 [  10m 45s  ] 
+INFO:  Idle: 859,  Running: 8,  Completed: 290 [  10m 55s  ] 
+INFO:  Idle: 855,  Running: 8,  Completed: 294 [  11m 3s  ] 
+INFO:  Idle: 854,  Running: 8,  Completed: 295 [  11m 7s  ] 
+INFO:  Idle: 852,  Running: 8,  Completed: 297 [  11m 11s  ] 
+INFO:  Idle: 848,  Running: 8,  Completed: 301 [  11m 17s  ] 
+INFO:  Idle: 843,  Running: 8,  Completed: 306 [  11m 23s  ] 
+INFO:  Idle: 841,  Running: 8,  Completed: 308 [  11m 31s  ] 
+INFO:  Idle: 839,  Running: 8,  Completed: 310 [  11m 36s  ] 
+INFO:  Idle: 837,  Running: 8,  Completed: 312 [  11m 39s  ] 
+INFO:  Idle: 836,  Running: 8,  Completed: 313 [  11m 44s  ] 
+INFO:  Idle: 833,  Running: 8,  Completed: 316 [  11m 49s  ] 
+INFO:  Idle: 831,  Running: 8,  Completed: 318 [  11m 52s  ] 
+INFO:  Idle: 829,  Running: 8,  Completed: 320 [  11m 57s  ] 
+INFO:  Idle: 827,  Running: 8,  Completed: 322 [  12m 1s  ] 
+INFO:  Idle: 825,  Running: 8,  Completed: 324 [  12m 8s  ] 
+INFO:  Idle: 823,  Running: 8,  Completed: 326 [  12m 11s  ] 
+INFO:  Idle: 819,  Running: 8,  Completed: 330 [  12m 21s  ] 
+INFO:  Idle: 817,  Running: 8,  Completed: 332 [  12m 24s  ] 
+INFO:  Idle: 815,  Running: 8,  Completed: 334 [  12m 27s  ] 
+INFO:  Idle: 810,  Running: 8,  Completed: 339 [  12m 34s  ] 
+INFO:  Idle: 808,  Running: 8,  Completed: 341 [  12m 38s  ] 
+INFO:  Idle: 806,  Running: 8,  Completed: 343 [  12m 42s  ] 
+INFO:  Idle: 805,  Running: 8,  Completed: 344 [  12m 46s  ] 
+INFO:  Idle: 804,  Running: 8,  Completed: 345 [  12m 50s  ] 
+INFO:  Idle: 797,  Running: 8,  Completed: 352 [  12m 55s  ] 
+INFO:  Idle: 796,  Running: 8,  Completed: 353 [  13m 3s  ] 
+INFO:  Idle: 794,  Running: 8,  Completed: 355 [  13m 8s  ] 
+INFO:  Idle: 790,  Running: 8,  Completed: 359 [  13m 13s  ] 
+INFO:  Idle: 789,  Running: 8,  Completed: 360 [  13m 16s  ] 
+INFO:  Idle: 785,  Running: 8,  Completed: 364 [  13m 28s  ] 
+INFO:  Idle: 783,  Running: 8,  Completed: 366 [  13m 34s  ] 
+INFO:  Idle: 781,  Running: 8,  Completed: 368 [  13m 37s  ] 
+INFO:  Idle: 780,  Running: 8,  Completed: 369 [  13m 42s  ] 
+INFO:  Idle: 777,  Running: 8,  Completed: 372 [  13m 46s  ] 
+INFO:  Idle: 775,  Running: 8,  Completed: 374 [  13m 51s  ] 
+INFO:  Idle: 774,  Running: 8,  Completed: 375 [  13m 58s  ] 
+INFO:  Idle: 771,  Running: 8,  Completed: 378 [  14m 2s  ] 
+INFO:  Idle: 768,  Running: 8,  Completed: 381 [  14m 7s  ] 
+INFO:  Idle: 767,  Running: 8,  Completed: 382 [  14m 11s  ] 
+INFO:  Idle: 765,  Running: 8,  Completed: 384 [  14m 16s  ] 
+INFO:  Idle: 764,  Running: 8,  Completed: 385 [  14m 20s  ] 
+INFO:  Idle: 761,  Running: 8,  Completed: 388 [  14m 25s  ] 
+INFO:  Idle: 760,  Running: 8,  Completed: 389 [  14m 28s  ] 
+INFO:  Idle: 758,  Running: 8,  Completed: 391 [  14m 32s  ] 
+INFO:  Idle: 756,  Running: 8,  Completed: 393 [  14m 37s  ] 
+INFO:  Idle: 752,  Running: 8,  Completed: 397 [  14m 43s  ] 
+INFO:  Idle: 750,  Running: 8,  Completed: 399 [  14m 47s  ] 
+INFO:  Idle: 749,  Running: 8,  Completed: 400 [  14m 55s  ] 
+INFO:  Idle: 747,  Running: 8,  Completed: 402 [  14m 59s  ] 
+INFO:  Idle: 746,  Running: 8,  Completed: 403 [  15m 7s  ] 
+INFO:  Idle: 745,  Running: 8,  Completed: 404 [  15m 15s  ] 
+INFO:  Idle: 743,  Running: 8,  Completed: 406 [  15m 24s  ] 
+INFO:  Idle: 741,  Running: 8,  Completed: 408 [  15m 47s  ] 
+INFO:  Idle: 737,  Running: 8,  Completed: 412 [  16m 0s  ] 
+INFO:  Idle: 736,  Running: 8,  Completed: 413 [  16m 23s  ] 
+INFO:  Idle: 734,  Running: 8,  Completed: 415 [  16m 38s  ] 
+INFO:  Idle: 732,  Running: 8,  Completed: 417 [  16m 52s  ] 
+INFO:  Idle: 730,  Running: 8,  Completed: 419 [  16m 58s  ] 
+INFO:  Idle: 729,  Running: 8,  Completed: 420 [  17m 2s  ] 
+INFO:  Idle: 727,  Running: 8,  Completed: 422 [  17m 9s  ] 
+INFO:  Idle: 726,  Running: 8,  Completed: 423 [  17m 26s  ] 
+INFO:  Idle: 724,  Running: 8,  Completed: 425 [  17m 38s  ] 
+INFO:  Idle: 722,  Running: 8,  Completed: 427 [  17m 43s  ] 
+INFO:  Idle: 721,  Running: 8,  Completed: 428 [  17m 48s  ] 
+INFO:  Idle: 720,  Running: 8,  Completed: 429 [  17m 53s  ] 
+INFO:  Idle: 718,  Running: 8,  Completed: 431 [  17m 57s  ] 
+INFO:  Idle: 715,  Running: 8,  Completed: 434 [  18m 3s  ] 
+INFO:  Idle: 714,  Running: 8,  Completed: 435 [  18m 7s  ] 
+INFO:  Idle: 713,  Running: 8,  Completed: 436 [  18m 16s  ] 
+INFO:  Idle: 712,  Running: 8,  Completed: 437 [  18m 24s  ] 
+INFO:  Idle: 711,  Running: 8,  Completed: 438 [  18m 29s  ] 
+INFO:  Idle: 710,  Running: 8,  Completed: 439 [  18m 33s  ] 
+INFO:  Idle: 709,  Running: 8,  Completed: 440 [  18m 41s  ] 
+INFO:  Idle: 708,  Running: 8,  Completed: 441 [  18m 57s  ] 
+INFO:  Idle: 707,  Running: 8,  Completed: 442 [  19m 6s  ] 
+INFO:  Idle: 704,  Running: 8,  Completed: 445 [  19m 18s  ] 
+INFO:  Idle: 702,  Running: 8,  Completed: 447 [  19m 24s  ] 
+INFO:  Idle: 701,  Running: 8,  Completed: 448 [  19m 33s  ] 
+INFO:  Idle: 700,  Running: 8,  Completed: 449 [  19m 36s  ] 
+INFO:  Idle: 698,  Running: 8,  Completed: 451 [  19m 41s  ] 
+INFO:  Idle: 696,  Running: 8,  Completed: 453 [  20m 2s  ] 
+INFO:  Idle: 695,  Running: 8,  Completed: 454 [  20m 8s  ] 
+INFO:  Idle: 694,  Running: 8,  Completed: 455 [  20m 14s  ] 
+INFO:  Idle: 692,  Running: 8,  Completed: 457 [  20m 27s  ] 
+INFO:  Idle: 691,  Running: 8,  Completed: 458 [  20m 31s  ] 
+INFO:  Idle: 688,  Running: 8,  Completed: 461 [  20m 52s  ] 
+INFO:  Idle: 686,  Running: 8,  Completed: 463 [  20m 56s  ] 
+INFO:  Idle: 685,  Running: 8,  Completed: 464 [  21m 4s  ] 
+INFO:  Idle: 682,  Running: 8,  Completed: 467 [  21m 23s  ] 
+INFO:  Idle: 681,  Running: 8,  Completed: 468 [  21m 37s  ] 
+INFO:  Idle: 680,  Running: 8,  Completed: 469 [  21m 45s  ] 
+INFO:  Idle: 679,  Running: 8,  Completed: 470 [  21m 55s  ] 
+INFO:  Idle: 677,  Running: 8,  Completed: 472 [  22m 5s  ] 
+INFO:  Idle: 676,  Running: 8,  Completed: 473 [  22m 10s  ] 
+INFO:  Idle: 675,  Running: 8,  Completed: 474 [  22m 26s  ] 
+INFO:  Idle: 674,  Running: 8,  Completed: 475 [  22m 29s  ] 
+INFO:  Idle: 672,  Running: 8,  Completed: 477 [  22m 38s  ] 
+INFO:  Idle: 671,  Running: 8,  Completed: 478 [  22m 50s  ] 
+INFO:  Idle: 670,  Running: 8,  Completed: 479 [  23m 0s  ] 
+INFO:  Idle: 669,  Running: 8,  Completed: 480 [  23m 15s  ] 
+INFO:  Idle: 668,  Running: 8,  Completed: 481 [  23m 19s  ] 
+INFO:  Idle: 666,  Running: 8,  Completed: 483 [  23m 31s  ] 
+INFO:  Idle: 665,  Running: 8,  Completed: 484 [  23m 39s  ] 
+INFO:  Idle: 664,  Running: 8,  Completed: 485 [  23m 53s  ] 
+INFO:  Idle: 663,  Running: 8,  Completed: 486 [  23m 58s  ] 
+INFO:  Idle: 661,  Running: 8,  Completed: 488 [  24m 11s  ] 
+INFO:  Idle: 659,  Running: 8,  Completed: 490 [  24m 15s  ] 
+INFO:  Idle: 658,  Running: 8,  Completed: 491 [  24m 21s  ] 
+INFO:  Idle: 657,  Running: 8,  Completed: 492 [  24m 27s  ] 
+INFO:  Idle: 656,  Running: 8,  Completed: 493 [  24m 41s  ] 
+INFO:  Idle: 655,  Running: 8,  Completed: 494 [  24m 46s  ] 
+INFO:  Idle: 654,  Running: 8,  Completed: 495 [  24m 54s  ] 
+INFO:  Idle: 652,  Running: 8,  Completed: 497 [  25m 7s  ] 
+INFO:  Idle: 651,  Running: 8,  Completed: 498 [  25m 14s  ] 
+INFO:  Idle: 650,  Running: 8,  Completed: 499 [  25m 19s  ] 
+INFO:  Idle: 648,  Running: 8,  Completed: 501 [  25m 35s  ] 
+INFO:  Idle: 647,  Running: 8,  Completed: 502 [  25m 42s  ] 
+INFO:  Idle: 646,  Running: 8,  Completed: 503 [  26m 0s  ] 
+INFO:  Idle: 645,  Running: 8,  Completed: 504 [  26m 9s  ] 
+INFO:  Idle: 644,  Running: 8,  Completed: 505 [  26m 20s  ] 
+INFO:  Idle: 643,  Running: 8,  Completed: 506 [  26m 24s  ] 
+INFO:  Idle: 641,  Running: 8,  Completed: 508 [  26m 36s  ] 
+INFO:  Idle: 640,  Running: 8,  Completed: 509 [  26m 44s  ] 
+INFO:  Idle: 639,  Running: 8,  Completed: 510 [  26m 48s  ] 
+INFO:  Idle: 636,  Running: 8,  Completed: 513 [  27m 0s  ] 
+INFO:  Idle: 635,  Running: 8,  Completed: 514 [  27m 4s  ] 
+INFO:  Idle: 634,  Running: 8,  Completed: 515 [  27m 9s  ] 
+INFO:  Idle: 633,  Running: 8,  Completed: 516 [  27m 24s  ] 
+INFO:  Idle: 632,  Running: 8,  Completed: 517 [  27m 33s  ] 
+INFO:  Idle: 630,  Running: 8,  Completed: 519 [  27m 41s  ] 
+INFO:  Idle: 629,  Running: 8,  Completed: 520 [  27m 46s  ] 
+INFO:  Idle: 628,  Running: 8,  Completed: 521 [  27m 54s  ] 
+INFO:  Idle: 627,  Running: 8,  Completed: 522 [  28m 0s  ] 
+INFO:  Idle: 625,  Running: 8,  Completed: 524 [  28m 5s  ] 
+INFO:  Idle: 624,  Running: 8,  Completed: 525 [  28m 14s  ] 
+INFO:  Idle: 622,  Running: 8,  Completed: 527 [  28m 24s  ] 
+INFO:  Idle: 620,  Running: 8,  Completed: 529 [  28m 28s  ] 
+INFO:  Idle: 619,  Running: 8,  Completed: 530 [  28m 40s  ] 
+INFO:  Idle: 617,  Running: 8,  Completed: 532 [  28m 58s  ] 
+INFO:  Idle: 616,  Running: 8,  Completed: 533 [  29m 7s  ] 
+INFO:  Idle: 615,  Running: 8,  Completed: 534 [  29m 20s  ] 
+INFO:  Idle: 614,  Running: 8,  Completed: 535 [  29m 30s  ] 
+INFO:  Idle: 613,  Running: 8,  Completed: 536 [  29m 33s  ] 
+INFO:  Idle: 612,  Running: 8,  Completed: 537 [  29m 36s  ] 
+INFO:  Idle: 610,  Running: 8,  Completed: 539 [  29m 40s  ] 
+INFO:  Idle: 609,  Running: 8,  Completed: 540 [  29m 48s  ] 
+INFO:  Idle: 608,  Running: 8,  Completed: 541 [  29m 52s  ] 
+INFO:  Idle: 607,  Running: 8,  Completed: 542 [  30m 0s  ] 
+INFO:  Idle: 605,  Running: 8,  Completed: 544 [  30m 5s  ] 
+INFO:  Idle: 603,  Running: 8,  Completed: 546 [  30m 11s  ] 
+INFO:  Idle: 602,  Running: 8,  Completed: 547 [  30m 15s  ] 
+INFO:  Idle: 601,  Running: 8,  Completed: 548 [  30m 30s  ] 
+INFO:  Idle: 599,  Running: 8,  Completed: 550 [  30m 36s  ] 
+INFO:  Idle: 598,  Running: 8,  Completed: 551 [  30m 41s  ] 
+INFO:  Idle: 596,  Running: 8,  Completed: 553 [  30m 51s  ] 
+INFO:  Idle: 595,  Running: 8,  Completed: 554 [  30m 55s  ] 
+INFO:  Idle: 593,  Running: 8,  Completed: 556 [  30m 59s  ] 
+INFO:  Idle: 591,  Running: 8,  Completed: 558 [  31m 6s  ] 
+INFO:  Idle: 590,  Running: 8,  Completed: 559 [  31m 10s  ] 
+INFO:  Idle: 589,  Running: 8,  Completed: 560 [  31m 20s  ] 
+INFO:  Idle: 588,  Running: 8,  Completed: 561 [  31m 26s  ] 
+INFO:  Idle: 586,  Running: 8,  Completed: 563 [  31m 29s  ] 
+INFO:  Idle: 584,  Running: 8,  Completed: 565 [  31m 33s  ] 
+INFO:  Idle: 581,  Running: 8,  Completed: 568 [  31m 41s  ] 
+INFO:  Idle: 578,  Running: 8,  Completed: 571 [  31m 48s  ] 
+INFO:  Idle: 576,  Running: 8,  Completed: 573 [  31m 51s  ] 
+INFO:  Idle: 573,  Running: 8,  Completed: 576 [  31m 55s  ] 
+INFO:  Idle: 572,  Running: 8,  Completed: 577 [  31m 59s  ] 
+INFO:  Idle: 569,  Running: 8,  Completed: 580 [  32m 3s  ] 
+INFO:  Idle: 568,  Running: 8,  Completed: 581 [  32m 6s  ] 
+INFO:  Idle: 564,  Running: 8,  Completed: 585 [  32m 13s  ] 
+INFO:  Idle: 563,  Running: 8,  Completed: 586 [  32m 25s  ] 
+INFO:  Idle: 561,  Running: 8,  Completed: 588 [  32m 32s  ] 
+INFO:  Idle: 559,  Running: 8,  Completed: 590 [  32m 36s  ] 
+INFO:  Idle: 556,  Running: 8,  Completed: 593 [  32m 45s  ] 
+INFO:  Idle: 553,  Running: 8,  Completed: 596 [  32m 57s  ] 
+INFO:  Idle: 551,  Running: 8,  Completed: 598 [  33m 0s  ] 
+INFO:  Idle: 549,  Running: 8,  Completed: 600 [  33m 4s  ] 
+INFO:  Idle: 546,  Running: 8,  Completed: 603 [  33m 9s  ] 
+INFO:  Idle: 545,  Running: 8,  Completed: 604 [  33m 18s  ] 
+INFO:  Idle: 544,  Running: 8,  Completed: 605 [  33m 21s  ] 
+INFO:  Idle: 542,  Running: 8,  Completed: 607 [  33m 26s  ] 
+INFO:  Idle: 539,  Running: 8,  Completed: 610 [  33m 31s  ] 
+INFO:  Idle: 535,  Running: 8,  Completed: 614 [  33m 38s  ] 
+INFO:  Idle: 531,  Running: 8,  Completed: 618 [  33m 43s  ] 
+INFO:  Idle: 530,  Running: 8,  Completed: 619 [  33m 47s  ] 
+INFO:  Idle: 528,  Running: 8,  Completed: 621 [  33m 50s  ] 
+INFO:  Idle: 526,  Running: 8,  Completed: 623 [  34m 2s  ] 
+INFO:  Idle: 524,  Running: 8,  Completed: 625 [  34m 7s  ] 
+INFO:  Idle: 520,  Running: 8,  Completed: 629 [  34m 12s  ] 
+INFO:  Idle: 517,  Running: 8,  Completed: 632 [  34m 18s  ] 
+INFO:  Idle: 516,  Running: 8,  Completed: 633 [  34m 29s  ] 
+INFO:  Idle: 514,  Running: 8,  Completed: 635 [  34m 34s  ] 
+INFO:  Idle: 511,  Running: 8,  Completed: 638 [  34m 38s  ] 
+INFO:  Idle: 507,  Running: 8,  Completed: 642 [  34m 42s  ] 
+INFO:  Idle: 504,  Running: 8,  Completed: 645 [  34m 47s  ] 
+INFO:  Idle: 503,  Running: 8,  Completed: 646 [  34m 50s  ] 
+INFO:  Idle: 500,  Running: 8,  Completed: 649 [  34m 54s  ] 
+INFO:  Idle: 497,  Running: 8,  Completed: 652 [  34m 59s  ] 
+INFO:  Idle: 496,  Running: 8,  Completed: 653 [  35m 7s  ] 
+INFO:  Idle: 494,  Running: 8,  Completed: 655 [  35m 17s  ] 
+INFO:  Idle: 491,  Running: 8,  Completed: 658 [  35m 21s  ] 
+INFO:  Idle: 489,  Running: 8,  Completed: 660 [  35m 25s  ] 
+INFO:  Idle: 486,  Running: 8,  Completed: 663 [  35m 32s  ] 
+INFO:  Idle: 485,  Running: 8,  Completed: 664 [  35m 40s  ] 
+INFO:  Idle: 484,  Running: 8,  Completed: 665 [  35m 52s  ] 
+INFO:  Idle: 481,  Running: 8,  Completed: 668 [  35m 55s  ] 
+INFO:  Idle: 480,  Running: 8,  Completed: 669 [  36m 6s  ] 
+INFO:  Idle: 478,  Running: 8,  Completed: 671 [  36m 12s  ] 
+INFO:  Idle: 476,  Running: 8,  Completed: 673 [  36m 16s  ] 
+INFO:  Idle: 475,  Running: 8,  Completed: 674 [  36m 28s  ] 
+INFO:  Idle: 474,  Running: 8,  Completed: 675 [  36m 33s  ] 
+INFO:  Idle: 473,  Running: 8,  Completed: 676 [  36m 36s  ] 
+INFO:  Idle: 472,  Running: 8,  Completed: 677 [  36m 39s  ] 
+INFO:  Idle: 469,  Running: 8,  Completed: 680 [  36m 43s  ] 
+INFO:  Idle: 467,  Running: 8,  Completed: 682 [  36m 47s  ] 
+INFO:  Idle: 464,  Running: 8,  Completed: 685 [  36m 53s  ] 
+INFO:  Idle: 462,  Running: 8,  Completed: 687 [  36m 58s  ] 
+INFO:  Idle: 458,  Running: 8,  Completed: 691 [  37m 8s  ] 
+INFO:  Idle: 457,  Running: 8,  Completed: 692 [  37m 12s  ] 
+INFO:  Idle: 456,  Running: 8,  Completed: 693 [  37m 17s  ] 
+INFO:  Idle: 455,  Running: 8,  Completed: 694 [  37m 21s  ] 
+INFO:  Idle: 453,  Running: 8,  Completed: 696 [  37m 25s  ] 
+INFO:  Idle: 451,  Running: 8,  Completed: 698 [  37m 30s  ] 
+INFO:  Idle: 448,  Running: 8,  Completed: 701 [  37m 42s  ] 
+INFO:  Idle: 447,  Running: 8,  Completed: 702 [  37m 49s  ] 
+INFO:  Idle: 446,  Running: 8,  Completed: 703 [  37m 53s  ] 
+INFO:  Idle: 444,  Running: 8,  Completed: 705 [  37m 56s  ] 
+INFO:  Idle: 439,  Running: 8,  Completed: 710 [  38m 0s  ] 
+INFO:  Idle: 437,  Running: 8,  Completed: 712 [  38m 3s  ] 
+INFO:  Idle: 432,  Running: 8,  Completed: 717 [  38m 10s  ] 
+INFO:  Idle: 427,  Running: 8,  Completed: 722 [  38m 13s  ] 
+INFO:  Idle: 425,  Running: 8,  Completed: 724 [  38m 17s  ] 
+INFO:  Idle: 420,  Running: 8,  Completed: 729 [  38m 20s  ] 
+INFO:  Idle: 419,  Running: 8,  Completed: 730 [  38m 24s  ] 
+INFO:  Idle: 418,  Running: 8,  Completed: 731 [  38m 37s  ] 
+INFO:  Idle: 416,  Running: 8,  Completed: 733 [  38m 42s  ] 
+INFO:  Idle: 412,  Running: 8,  Completed: 737 [  38m 52s  ] 
+INFO:  Idle: 411,  Running: 8,  Completed: 738 [  39m 2s  ] 
+INFO:  Idle: 409,  Running: 8,  Completed: 740 [  39m 6s  ] 
+INFO:  Idle: 405,  Running: 8,  Completed: 744 [  39m 10s  ] 
+INFO:  Idle: 404,  Running: 8,  Completed: 745 [  39m 17s  ] 
+INFO:  Idle: 403,  Running: 8,  Completed: 746 [  39m 27s  ] 
+INFO:  Idle: 400,  Running: 8,  Completed: 749 [  39m 32s  ] 
+INFO:  Idle: 397,  Running: 8,  Completed: 752 [  39m 36s  ] 
+INFO:  Idle: 394,  Running: 8,  Completed: 755 [  39m 41s  ] 
+INFO:  Idle: 392,  Running: 8,  Completed: 757 [  39m 44s  ] 
+INFO:  Idle: 390,  Running: 8,  Completed: 759 [  39m 47s  ] 
+INFO:  Idle: 387,  Running: 8,  Completed: 762 [  39m 51s  ] 
+INFO:  Idle: 381,  Running: 8,  Completed: 768 [  39m 54s  ] 
+INFO:  Idle: 376,  Running: 8,  Completed: 773 [  39m 57s  ] 
+INFO:  Idle: 370,  Running: 8,  Completed: 779 [  40m 0s  ] 
+INFO:  Idle: 368,  Running: 8,  Completed: 781 [  40m 7s  ] 
+INFO:  Idle: 367,  Running: 8,  Completed: 782 [  40m 22s  ] 
+INFO:  Idle: 361,  Running: 8,  Completed: 788 [  40m 31s  ] 
+INFO:  Idle: 360,  Running: 8,  Completed: 789 [  40m 35s  ] 
+INFO:  Idle: 359,  Running: 8,  Completed: 790 [  40m 45s  ] 
+INFO:  Idle: 354,  Running: 8,  Completed: 795 [  40m 50s  ] 
+INFO:  Idle: 353,  Running: 8,  Completed: 796 [  40m 59s  ] 
+INFO:  Idle: 351,  Running: 8,  Completed: 798 [  41m 7s  ] 
+INFO:  Idle: 349,  Running: 8,  Completed: 800 [  41m 10s  ] 
+INFO:  Idle: 348,  Running: 8,  Completed: 801 [  41m 13s  ] 
+INFO:  Idle: 344,  Running: 8,  Completed: 805 [  41m 16s  ] 
+INFO:  Idle: 341,  Running: 8,  Completed: 808 [  41m 22s  ] 
+INFO:  Idle: 332,  Running: 8,  Completed: 817 [  41m 26s  ] 
+INFO:  Idle: 326,  Running: 8,  Completed: 823 [  41m 29s  ] 
+INFO:  Idle: 320,  Running: 8,  Completed: 829 [  41m 33s  ] 
+INFO:  Idle: 319,  Running: 8,  Completed: 830 [  41m 50s  ] 
+INFO:  Idle: 315,  Running: 8,  Completed: 834 [  41m 54s  ] 
+INFO:  Idle: 313,  Running: 8,  Completed: 836 [  42m 1s  ] 
+INFO:  Idle: 311,  Running: 8,  Completed: 838 [  42m 13s  ] 
+INFO:  Idle: 310,  Running: 8,  Completed: 839 [  42m 17s  ] 
+INFO:  Idle: 308,  Running: 8,  Completed: 841 [  42m 21s  ] 
+INFO:  Idle: 305,  Running: 8,  Completed: 844 [  42m 24s  ] 
+INFO:  Idle: 303,  Running: 8,  Completed: 846 [  42m 35s  ] 
+INFO:  Idle: 301,  Running: 8,  Completed: 848 [  42m 39s  ] 
+INFO:  Idle: 299,  Running: 8,  Completed: 850 [  42m 42s  ] 
+INFO:  Idle: 292,  Running: 8,  Completed: 857 [  42m 46s  ] 
+INFO:  Idle: 285,  Running: 8,  Completed: 864 [  42m 49s  ] 
+INFO:  Idle: 278,  Running: 8,  Completed: 871 [  42m 53s  ] 
+INFO:  Idle: 271,  Running: 8,  Completed: 878 [  43m 14s  ] 
+INFO:  Idle: 268,  Running: 8,  Completed: 881 [  43m 19s  ] 
+INFO:  Idle: 265,  Running: 8,  Completed: 884 [  43m 22s  ] 
+INFO:  Idle: 263,  Running: 8,  Completed: 886 [  43m 39s  ] 
+INFO:  Idle: 261,  Running: 8,  Completed: 888 [  43m 43s  ] 
+INFO:  Idle: 257,  Running: 8,  Completed: 892 [  43m 46s  ] 
+INFO:  Idle: 256,  Running: 8,  Completed: 893 [  43m 49s  ] 
+INFO:  Idle: 255,  Running: 8,  Completed: 894 [  44m 7s  ] 
+INFO:  Idle: 251,  Running: 8,  Completed: 898 [  44m 12s  ] 
+INFO:  Idle: 247,  Running: 8,  Completed: 902 [  44m 15s  ] 
+INFO:  Idle: 245,  Running: 8,  Completed: 904 [  45m 14s  ] 
+INFO:  Idle: 244,  Running: 8,  Completed: 905 [  45m 32s  ] 
+INFO:  Idle: 243,  Running: 8,  Completed: 906 [  45m 45s  ] 
+INFO:  Idle: 242,  Running: 8,  Completed: 907 [  45m 52s  ] 
+INFO:  Idle: 241,  Running: 8,  Completed: 908 [  46m 26s  ] 
+INFO:  Idle: 239,  Running: 8,  Completed: 910 [  46m 30s  ] 
+INFO:  Idle: 238,  Running: 8,  Completed: 911 [  47m 13s  ] 
+INFO:  Idle: 237,  Running: 8,  Completed: 912 [  47m 17s  ] 
+INFO:  Idle: 236,  Running: 8,  Completed: 913 [  47m 25s  ] 
+INFO:  Idle: 235,  Running: 8,  Completed: 914 [  47m 37s  ] 
+INFO:  Idle: 233,  Running: 8,  Completed: 916 [  47m 44s  ] 
+INFO:  Idle: 230,  Running: 8,  Completed: 919 [  47m 47s  ] 
+INFO:  Idle: 228,  Running: 8,  Completed: 921 [  47m 56s  ] 
+INFO:  Idle: 227,  Running: 8,  Completed: 922 [  48m 1s  ] 
+INFO:  Idle: 225,  Running: 8,  Completed: 924 [  48m 4s  ] 
+INFO:  Idle: 224,  Running: 8,  Completed: 925 [  48m 12s  ] 
+INFO:  Idle: 222,  Running: 8,  Completed: 927 [  48m 18s  ] 
+INFO:  Idle: 221,  Running: 8,  Completed: 928 [  48m 25s  ] 
+INFO:  Idle: 219,  Running: 8,  Completed: 930 [  48m 32s  ] 
+INFO:  Idle: 217,  Running: 8,  Completed: 932 [  48m 43s  ] 
+INFO:  Idle: 214,  Running: 8,  Completed: 935 [  48m 48s  ] 
+INFO:  Idle: 212,  Running: 8,  Completed: 937 [  48m 54s  ] 
+INFO:  Idle: 211,  Running: 8,  Completed: 938 [  49m 3s  ] 
+INFO:  Idle: 210,  Running: 8,  Completed: 939 [  49m 7s  ] 
+INFO:  Idle: 208,  Running: 8,  Completed: 941 [  49m 12s  ] 
+INFO:  Idle: 205,  Running: 8,  Completed: 944 [  49m 18s  ] 
+INFO:  Idle: 203,  Running: 8,  Completed: 946 [  49m 27s  ] 
+INFO:  Idle: 202,  Running: 8,  Completed: 947 [  49m 31s  ] 
+INFO:  Idle: 200,  Running: 8,  Completed: 949 [  49m 34s  ] 
+INFO:  Idle: 199,  Running: 8,  Completed: 950 [  49m 38s  ] 
+INFO:  Idle: 196,  Running: 8,  Completed: 953 [  49m 48s  ] 
+INFO:  Idle: 194,  Running: 8,  Completed: 955 [  49m 55s  ] 
+INFO:  Idle: 192,  Running: 8,  Completed: 957 [  50m 0s  ] 
+INFO:  Idle: 191,  Running: 8,  Completed: 958 [  50m 4s  ] 
+INFO:  Idle: 190,  Running: 8,  Completed: 959 [  50m 8s  ] 
+INFO:  Idle: 186,  Running: 8,  Completed: 963 [  50m 13s  ] 
+INFO:  Idle: 185,  Running: 8,  Completed: 964 [  50m 21s  ] 
+INFO:  Idle: 184,  Running: 8,  Completed: 965 [  50m 24s  ] 
+INFO:  Idle: 183,  Running: 8,  Completed: 966 [  50m 29s  ] 
+INFO:  Idle: 180,  Running: 8,  Completed: 969 [  50m 40s  ] 
+INFO:  Idle: 176,  Running: 8,  Completed: 973 [  50m 44s  ] 
+INFO:  Idle: 173,  Running: 8,  Completed: 976 [  50m 48s  ] 
+INFO:  Idle: 171,  Running: 8,  Completed: 978 [  50m 54s  ] 
+INFO:  Idle: 167,  Running: 8,  Completed: 982 [  50m 57s  ] 
+INFO:  Idle: 165,  Running: 8,  Completed: 984 [  51m 1s  ] 
+INFO:  Idle: 162,  Running: 8,  Completed: 987 [  51m 6s  ] 
+INFO:  Idle: 159,  Running: 8,  Completed: 990 [  51m 10s  ] 
+INFO:  Idle: 157,  Running: 8,  Completed: 992 [  51m 14s  ] 
+INFO:  Idle: 152,  Running: 8,  Completed: 997 [  51m 18s  ] 
+INFO:  Idle: 149,  Running: 8,  Completed: 1000 [  51m 25s  ] 
+INFO:  Idle: 143,  Running: 8,  Completed: 1006 [  51m 29s  ] 
+INFO:  Idle: 141,  Running: 8,  Completed: 1008 [  51m 33s  ] 
+INFO:  Idle: 138,  Running: 8,  Completed: 1011 [  51m 37s  ] 
+INFO:  Idle: 132,  Running: 8,  Completed: 1017 [  51m 44s  ] 
+INFO:  Idle: 128,  Running: 8,  Completed: 1021 [  51m 48s  ] 
+INFO:  Idle: 126,  Running: 8,  Completed: 1023 [  51m 55s  ] 
+INFO:  Idle: 124,  Running: 8,  Completed: 1025 [  52m 0s  ] 
+INFO:  Idle: 119,  Running: 8,  Completed: 1030 [  52m 7s  ] 
+INFO:  Idle: 117,  Running: 8,  Completed: 1032 [  52m 21s  ] 
+INFO:  Idle: 115,  Running: 8,  Completed: 1034 [  52m 24s  ] 
+INFO:  Idle: 113,  Running: 8,  Completed: 1036 [  52m 28s  ] 
+INFO:  Idle: 110,  Running: 8,  Completed: 1039 [  52m 31s  ] 
+INFO:  Idle: 107,  Running: 8,  Completed: 1042 [  52m 35s  ] 
+INFO:  Idle: 105,  Running: 8,  Completed: 1044 [  52m 43s  ] 
+INFO:  Idle: 102,  Running: 8,  Completed: 1047 [  52m 52s  ] 
+INFO:  Idle: 99,  Running: 8,  Completed: 1050 [  52m 56s  ] 
+INFO:  Idle: 97,  Running: 8,  Completed: 1052 [  52m 59s  ] 
+INFO:  Idle: 95,  Running: 8,  Completed: 1054 [  53m 3s  ] 
+INFO:  Idle: 92,  Running: 8,  Completed: 1057 [  53m 8s  ] 
+INFO:  Idle: 91,  Running: 8,  Completed: 1058 [  53m 13s  ] 
+INFO:  Idle: 89,  Running: 8,  Completed: 1060 [  53m 21s  ] 
+INFO:  Idle: 87,  Running: 8,  Completed: 1062 [  53m 24s  ] 
+INFO:  Idle: 85,  Running: 8,  Completed: 1064 [  53m 27s  ] 
+INFO:  Idle: 82,  Running: 8,  Completed: 1067 [  53m 31s  ] 
+INFO:  Idle: 81,  Running: 8,  Completed: 1068 [  53m 34s  ] 
+INFO:  Idle: 79,  Running: 8,  Completed: 1070 [  53m 38s  ] 
+INFO:  Idle: 77,  Running: 8,  Completed: 1072 [  53m 46s  ] 
+INFO:  Idle: 75,  Running: 8,  Completed: 1074 [  53m 54s  ] 
+INFO:  Idle: 74,  Running: 8,  Completed: 1075 [  53m 57s  ] 
+INFO:  Idle: 73,  Running: 8,  Completed: 1076 [  54m 1s  ] 
+INFO:  Idle: 66,  Running: 8,  Completed: 1083 [  54m 5s  ] 
+INFO:  Idle: 59,  Running: 8,  Completed: 1090 [  54m 8s  ] 
+INFO:  Idle: 49,  Running: 8,  Completed: 1100 [  54m 12s  ] 
+INFO:  Idle: 45,  Running: 8,  Completed: 1104 [  54m 16s  ] 
+INFO:  Idle: 32,  Running: 8,  Completed: 1117 [  54m 19s  ] 
+INFO:  Idle: 24,  Running: 8,  Completed: 1125 [  54m 22s  ] 
+INFO:  Idle: 17,  Running: 8,  Completed: 1132 [  54m 26s  ] 
+INFO:  Idle: 10,  Running: 8,  Completed: 1139 [  54m 30s  ] 
+INFO:  Idle: 1,  Running: 8,  Completed: 1148 [  54m 33s  ] 
+INFO:  Idle: 0,  Running: 0,  Completed: 1157 [  54m 34s  ] 
+sum of cpu time of last step: 7h21m03s
+  === Results Summary for run: pilotrun tag: HSCPgluino_M-2600_xqcut0 ===
+
+     Cross-section :   0.0001035 +- 2.497e-07 pb
+     Nb of events :  0
+ 
+INFO: End survey 
+combine_events
+INFO: Combining Events 
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+combination of events done in 7.79641318321228 s 
+store_events
+INFO: Storing parton level results 
+INFO: End Parton 
+decay_events -from_cards
+create_gridpack
+INFO: Creating gridpack 
+P3_gg_gogobbx
+P3_gb_gogogb
+P3_bbx_gogogg
+P3_gg_gogoqq
+P3_gq_gogogq
+P3_qq_gogogg
+P3_bb_gogobb
+P3_qq_gogoqq
+P3_gg_gogogg
+P3_qq_gogobbx
+P3_qb_gogoqb
+P3_bbx_gogoqq
+P2_gb_gogob
+P2_bbx_gogog
+P2_gq_gogoq
+P2_qq_gogog
+P2_gg_gogog
+P1_qq_gogo
+P1_bbx_gogo
+P1_gg_gogo
+Cleaning  SubProcesses.................... 
+INFO: gridpack created 
+quit
+INFO: storing files of previous run 
+INFO: Done 
+INFO:  
+finished pilot run
+cleaning temporary output
+unpacking temporary gridpack
+cleaning temporary gridpack
+Now generating 1000 events with random seed 234567 and granularity 1
+************************************************************
+*                                                          *
+*                      W E L C O M E to                    *
+*             M A D G R A P H 5 _ a M C @ N L O            *
+*                      M A D E V E N T                     *
+*                                                          *
+*                 *                       *                *
+*                   *        * *        *                  *
+*                     * * * * 5 * * * *                    *
+*                   *        * *        *                  *
+*                 *                       *                *
+*                                                          *
+*         VERSION 2.9.18                                   *
+*                                                          *
+*    The MadGraph5_aMC@NLO Development Team - Find us at   *
+*    https://server06.fynu.ucl.ac.be/projects/madgraph     *
+*                                                          *
+*               Type 'help' for in-line help.              *
+*                                                          *
+************************************************************
+INFO: load configuration from /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/process/madevent/Cards/me5_configuration.txt  
+INFO: load configuration from /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/MG5_aMC_v2_9_18/input/mg5_configuration.txt  
+INFO: load configuration from /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/process/madevent/Cards/me5_configuration.txt  
+Using default text editor "vi". Set another one in ./input/mg5_configuration.txt
+Using default eps viewer "evince". Set another one in ./input/mg5_configuration.txt
+No valid web browser found. Please set in ./input/mg5_configuration.txt
+WRITE GRIDCARD /uscms_data/d3/avendras/HSCP/genproductions/bin/MadGraph5_aMCatNLO/HSCPgluino_M-2600_xqcut0/HSCPgluino_M-2600_xqcut0_gridpack/work/process/madevent
+generate 1000 events
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+P3_gg_gogobbx
+P3_gb_gogogb
+P3_bbx_gogogg
+P3_gg_gogoqq
+P3_gq_gogogq
+P3_qq_gogogg
+P3_bb_gogobb
+P3_qq_gogoqq
+P3_gg_gogogg
+P3_qq_gogobbx
+P3_qb_gogoqb
+P3_bbx_gogoqq
+P2_gb_gogob
+P2_bbx_gogog
+P2_gq_gogoq
+P2_qq_gogog
+P2_gg_gogog
+P1_qq_gogo
+P1_bbx_gogo
+P1_gg_gogo
+Using random number seed offset = 234567
+INFO: Generating 1000.0 unweighted events. 
+sum of cpu time of last step: 7h21m03s
+INFO: need to improve 72 channels 
+combine_events
+[1;34mThe parameter ptonium is not supported anymore this parameter will be ignored.[0m
+[1;34mThe parameter etaonium is not supported anymore this parameter will be ignored.[0m
+store_events
+  === Results Summary for run: GridRun_234567 tag: HSCPgluino_M-2600_xqcut0 ===
+
+     Cross-section :   0 +- 0 pb
+     Nb of events :  1000
+ 
+decay_events -from_cards
+DONE
+write ./events.lhe.gz
+preparing final gridpack
+cleaning unneeded files from gridpack
+rm: cannot remove 'mgbasedir/doc': No such file or directory
+[OK] Found LHE at: /srv/work_HSCPgluino_M-2600_xqcut0_el8_amd64_gcc12_CMSSW_14_0_22/cmsgrid_final.lhe
+[OK] Success. Outputs ready for transfer.
