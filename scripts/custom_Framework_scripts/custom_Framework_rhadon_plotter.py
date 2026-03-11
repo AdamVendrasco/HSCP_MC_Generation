@@ -21,7 +21,7 @@ rhadron_pdgids = {
 }
 
 cuts = {
-    "max_events_to_print": -1,
+    "max_events_to_print": 20,
 
     # Gen cuts
     "abs_eta_max": 2.4,
@@ -33,6 +33,8 @@ cuts = {
     "DeDx_FiPixelNoL1": 0.3,
 
     # track cuts
+    "IsoTrack_pt": 55.0,
+    "IsoTrack_eta": 2.4,
     "IsoTrack_fractionOfValidHits": 0.8,
     "IsoTrack_isHighPurityTrack": True,
     "IsoTrack_normChi2": 5.0,
@@ -68,6 +70,8 @@ def main():
             "DeDx_NoL1NOM",
             "DeDx_FiPixelNoL1",
 
+            "IsoTrack_pt",
+            "IsoTrack_eta",
             "IsoTrack_fractionOfValidHits",
             "IsoTrack_isHighPurityTrack",
             "IsoTrack_normChi2",
@@ -95,6 +99,8 @@ def main():
     DeDx_NoL1NOM = branches["DeDx_NoL1NOM"]
     DeDx_FiPixelNoL1 = branches["DeDx_FiPixelNoL1"]
 
+    IsoTrack_pt = branches["IsoTrack_pt"]
+    IsoTrack_eta = branches["IsoTrack_eta"]
     IsoTrack_fractionOfValidHits = branches["IsoTrack_fractionOfValidHits"]
     IsoTrack_isHighPurityTrack = branches["IsoTrack_isHighPurityTrack"]
     IsoTrack_normChi2 = branches["IsoTrack_normChi2"]
@@ -132,7 +138,7 @@ def main():
 
     leading_rhadron = selected[:, 0]
     subleading_rhadron = selected[:, 1]
-    has_valid_pair = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
+    has_valid_pair = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron) #keeps only pair lead/sublead rhadrons from GEN
 
     # Trigger cuts
     trigger_event_mask = (
@@ -142,9 +148,11 @@ def main():
         | HLT_MET105_IsoTrk50
     )
 
-# reco mask: dedx/IsoTracks
+# reco mask: dedx + IsoTracks
     reco_candidate_mask = (
-        (IsoTrack_fractionOfValidHits > cuts["IsoTrack_fractionOfValidHits"])
+        (IsoTrack_pt > cuts["IsoTrack_pt"])
+        & (abs(IsoTrack_eta) < cuts["IsoTrack_eta"])
+        & (IsoTrack_fractionOfValidHits > cuts["IsoTrack_fractionOfValidHits"])
         & (IsoTrack_isHighPurityTrack == cuts["IsoTrack_isHighPurityTrack"])
         & (IsoTrack_normChi2 < cuts["IsoTrack_normChi2"])
         & (abs(IsoTrack_dz) < cuts["IsoTrack_dz"])
@@ -182,10 +190,12 @@ def main():
         candidate_passes = ak.to_list(reco_candidate_mask[event_index])
 
         print(f"\nEvent {event_index}")
-        print(f"  reco_candidate_mask            = {candidate_passes}")
+        print(f"  reco_candidate_mask           = {candidate_passes}")
         print(f"  DeDx_PixelNoL1NOM             = {ak.to_list(DeDx_PixelNoL1NOM[event_index])}")
         print(f"  DeDx_NoL1NOM                  = {ak.to_list(DeDx_NoL1NOM[event_index])}")
         print(f"  DeDx_FiPixelNoL1              = {ak.to_list(DeDx_FiPixelNoL1[event_index])}")
+        print(f"  IsoTrack_pt                   = {ak.to_list(IsoTrack_pt[event_index])}")
+        print(f"  IsoTrack_eta                  = {ak.to_list(IsoTrack_eta[event_index])}")
         print(f"  IsoTrack_fractionOfValidHits  = {ak.to_list(IsoTrack_fractionOfValidHits[event_index])}")
         print(f"  IsoTrack_isHighPurityTrack    = {ak.to_list(IsoTrack_isHighPurityTrack[event_index])}")
         print(f"  IsoTrack_normChi2             = {ak.to_list(IsoTrack_normChi2[event_index])}")
