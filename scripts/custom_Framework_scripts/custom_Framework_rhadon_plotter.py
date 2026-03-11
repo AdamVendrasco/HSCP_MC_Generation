@@ -21,7 +21,7 @@ rhadron_pdgids = {
 }
 
 cuts = {
-    "max_events_to_print": 20,
+    "max_events_to_print": 1,
 
     # Gen cuts
     "abs_eta_max": 2.4,
@@ -43,10 +43,10 @@ cuts = {
     "IsoTrack_ptErrOverPt": 0.1,
     "IsoTrack_ptErrOverPt2": 0.0008,
     "IsoTrack_pfEnergyOverP": 0.3,
+    "IsoTrack_pfMiniRelIsoAll": 0.02,
+    "IsoTrack_IsoSumPt_dr03": 15.0,
 
     # cuts left to add:
-    # I_trk < 15 GeV?
-    # I_rel_PF < 0.02 -> IsoTrack_pfMiniRelIsoAll?
     # Ih > C -> need to calculate C from track variables?
 }
 
@@ -80,11 +80,14 @@ def main():
             "IsoTrack_ptErrOverPt",
             "IsoTrack_ptErrOverPt2",
             "IsoTrack_pfEnergyOverP",
+            "IsoTrack_pfMiniRelIsoAll",
+            "IsoTrack_IsoSumPt_dr03",
 
             "HLT_PFMET120_PFMHT120_IDTight",
             "HLT_PFHT500_PFMET100_PFMHT100_IDTight",
             "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
             "HLT_MET105_IsoTrk50",
+
         ],
         library="ak",
     )
@@ -109,6 +112,8 @@ def main():
     IsoTrack_ptErrOverPt = branches["IsoTrack_ptErrOverPt"]
     IsoTrack_ptErrOverPt2 = branches["IsoTrack_ptErrOverPt2"]
     IsoTrack_pfEnergyOverP = branches["IsoTrack_pfEnergyOverP"]
+    IsoTrack_IsoSumPt_dr03 = branches["IsoTrack_IsoSumPt_dr03"]
+    IsoTrack_pfMiniRelIsoAll = branches["IsoTrack_pfMiniRelIsoAll"]
 
     HLT_PFMET120_PFMHT120_IDTight = branches["HLT_PFMET120_PFMHT120_IDTight"]
     HLT_PFHT500_PFMET100_PFMHT100_IDTight = branches["HLT_PFHT500_PFMET100_PFMHT100_IDTight"]
@@ -150,7 +155,7 @@ def main():
 
 # reco mask: dedx + IsoTracks
     reco_candidate_mask = (
-        (IsoTrack_pt > cuts["IsoTrack_pt"])
+          (IsoTrack_pt > cuts["IsoTrack_pt"])
         & (abs(IsoTrack_eta) < cuts["IsoTrack_eta"])
         & (IsoTrack_fractionOfValidHits > cuts["IsoTrack_fractionOfValidHits"])
         & (IsoTrack_isHighPurityTrack == cuts["IsoTrack_isHighPurityTrack"])
@@ -160,6 +165,9 @@ def main():
         & (IsoTrack_ptErrOverPt < cuts["IsoTrack_ptErrOverPt"])
         & (IsoTrack_ptErrOverPt2 < cuts["IsoTrack_ptErrOverPt2"])
         & (IsoTrack_pfEnergyOverP < cuts["IsoTrack_pfEnergyOverP"])
+        & (IsoTrack_pfMiniRelIsoAll < cuts["IsoTrack_pfMiniRelIsoAll"])
+        & (IsoTrack_IsoSumPt_dr03 < cuts["IsoTrack_IsoSumPt_dr03"])
+
         & (DeDx_PixelNoL1NOM >= cuts["DeDx_PixelNoL1NOM"])
         & (DeDx_NoL1NOM >= cuts["DeDx_NoL1NOM"])
         & (DeDx_FiPixelNoL1 >= cuts["DeDx_FiPixelNoL1"])
@@ -204,6 +212,9 @@ def main():
         print(f"  IsoTrack_ptErrOverPt          = {ak.to_list(IsoTrack_ptErrOverPt[event_index])}")
         print(f"  IsoTrack_ptErrOverPt2         = {ak.to_list(IsoTrack_ptErrOverPt2[event_index])}")
         print(f"  IsoTrack_pfEnergyOverP        = {ak.to_list(IsoTrack_pfEnergyOverP[event_index])}")
+        print(f"  IsoTrack_pfMiniRelIsoAll           = {ak.to_list(IsoTrack_pfMiniRelIsoAll[event_index])}")
+        print(f"  IsoTrack_pfMiniRelIsoAll = {ak.type(IsoTrack_pfMiniRelIsoAll)}")
+        print(f"  IsoTrack_IsoSumPt_dr03        = {ak.to_list(IsoTrack_IsoSumPt_dr03[event_index])}")
 
         print(f"  HLT_PFMET120_PFMHT120_IDTight               = {bool(HLT_PFMET120_PFMHT120_IDTight[event_index])}")
         print(f"  HLT_PFHT500_PFMET100_PFMHT100_IDTight       = {bool(HLT_PFHT500_PFMET100_PFMHT100_IDTight[event_index])}")
