@@ -2,13 +2,16 @@
 import uproot
 import awkward as ak
 import numpy as np
-
+sample_name = "HSCP-Gluino_Par-M-1800_xqcut150_MC"
+year = 2024
+era = "2024"
+tag = "MC" #or DATA
 
 input_file = (
     "/uscms/home/avendras/nobackup/HSCP/hscp_tutorial/CMSSW_15_0_16/src/ntuples/2024/HSCP-Gluino_Par-M-1800_xqcut150_MC.root"
 )
 
-output_file = "selected_events.root"
+output_file = f"{sample_name}_{year}_{era}_{tag}_preselected_events.root"
 tree_path = "HSCPMiniAODAnalyzer/Events"
 
 rhadron_pdgids = {
