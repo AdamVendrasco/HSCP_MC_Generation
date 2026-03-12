@@ -2,6 +2,7 @@
 import uproot
 import awkward as ak
 import numpy as np
+import ROOT
 
 sample_name = "HSCP-Gluino_Par-M-1800_xqcut150_MC"
 year = 2024
@@ -28,7 +29,7 @@ rhadron_pdgids = {
 }
 
 cuts = {
-    "max_events_to_print": 10,
+    "max_events_to_print": 1,
 
     # Event-level cuts
     "PV_npvsGood": 1,
@@ -53,11 +54,67 @@ cuts = {
     "K": 1.0,
 }
 
-
 def jagged_isin(jagged_array, valid_values):
     flat_mask = np.isin(ak.to_numpy(ak.flatten(jagged_array)), list(valid_values))
     return ak.unflatten(flat_mask, ak.num(jagged_array))
 
+def build_tlorentz_vectors(lead_final, sub_final, max_print=10):
+    lead_tlv = []
+    sub_tlv = []
+    GEN_dirhadron_sum = []
+
+    n_selected = len(lead_final)
+    print(f"\n[DEBUG] Building TLorentzVectors for {n_selected} selected events")
+
+    for i in range(n_selected):
+        v1 = ROOT.TLorentzVector()
+        v1.SetPtEtaPhiM(
+            float(lead_final.pt[i]),
+            float(lead_final.eta[i]),
+            float(lead_final.phi[i]),
+            float(lead_final.mass[i]),
+        )
+        lead_tlv.append(v1)
+
+        v2 = ROOT.TLorentzVector()
+        v2.SetPtEtaPhiM(
+            float(sub_final.pt[i]),
+            float(sub_final.eta[i]),
+            float(sub_final.phi[i]),
+            float(sub_final.mass[i]),
+        )
+        sub_tlv.append(v2)
+
+        v_sum = v1 + v2
+        GEN_dirhadron_sum.append(v_sum)
+
+    n_to_print = min(max_print, n_selected)
+    print(f"[DEBUG] Printing first {n_to_print} selected events")
+
+    for i in range(n_to_print):
+        print(f"\n[DEBUG] Selected event {i}")
+
+        print("  Leading GEN RHadron:")
+        print(f"    pdgId = {int(lead_final.pdgId[i])}")
+        print(f"    pt    = {lead_tlv[i].Pt():.6f}")
+        print(f"    eta   = {lead_tlv[i].Eta():.6f}")
+        print(f"    phi   = {lead_tlv[i].Phi():.6f}")
+        print(f"    mass  = {lead_tlv[i].M():.6f}")
+
+        print("  Subleading GEN RHadron:")
+        print(f"    pdgId = {int(sub_final.pdgId[i])}")
+        print(f"    pt    = {sub_tlv[i].Pt():.6f}")
+        print(f"    eta   = {sub_tlv[i].Eta():.6f}")
+        print(f"    phi   = {sub_tlv[i].Phi():.6f}")
+        print(f"    mass  = {sub_tlv[i].M():.6f}")
+
+        print("  Sum of GEN RHadrons:")
+        print(f"    pt    = {GEN_dirhadron_sum[i].Pt():.6f}")
+        print(f"    eta   = {GEN_dirhadron_sum[i].Eta():.6f}")
+        print(f"    phi   = {GEN_dirhadron_sum[i].Phi():.6f}")
+        print(f"    mass  = {GEN_dirhadron_sum[i].M():.6f}")
+
+    return lead_tlv, sub_tlv, GEN_dirhadron_sum
 
 def main():
     tree = uproot.open(input_file)[tree_path]
@@ -121,8 +178,6 @@ def main():
     IsoTrack_ptErrOverPt2 = branches["IsoTrack_ptErrOverPt2"]
     IsoTrack_pfEnergyOverP = branches["IsoTrack_pfEnergyOverP"]
 
-    # GEN bookkeeping only:
-    # identify RHadrons by PDG ID only, with NO extra GEN cuts
     rhadron_mask = jagged_isin(abs(gen_pdgid), rhadron_pdgids)
 
     rhadrons = ak.zip(
@@ -135,7 +190,10 @@ def main():
         }
     )
 
-    # Sort RHadrons by pT within each event so leading/subleading are consistent
+    print(f"[DEBUG] Total events in input                 = {len(gen_pdgid)}")
+    print(f"[DEBUG] Events with >=1 GEN RHadron           = {int(ak.sum(ak.num(rhadrons) >= 1))}")
+    print(f"[DEBUG] Events with >=2 GEN RHadrons          = {int(ak.sum(ak.num(rhadrons) >= 2))}")
+
     rhadrons = rhadrons[ak.argsort(rhadrons.pt, axis=1, ascending=False)]
     rhadrons = ak.pad_none(rhadrons, 2)
 
@@ -144,7 +202,6 @@ def main():
 
     trigger_event_mask = HLT_FilterOR
 
-    # Reco cuts
     reco_candidate_mask = (
         (IsoTrack_pt > cuts["IsoTrack_pt"])
         & (abs(IsoTrack_eta) < cuts["IsoTrack_eta"])
@@ -163,7 +220,6 @@ def main():
 
     reco_event_mask = ak.any(reco_candidate_mask, axis=1)
 
-    # Event-level cuts
     event_quality_mask = (
         (PV_npvsGood >= cuts["PV_npvsGood"])
         & (HSCP_n >= cuts["HSCP_n"])
@@ -171,33 +227,40 @@ def main():
         & (nMuon >= cuts["nMuon"])
     )
 
-    # I am requiring that there should be a corresponding GEN RHadron pair in the event
     gen_pair_mask = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
-    final_event_mask = ( reco_event_mask & trigger_event_mask & event_quality_mask & gen_pair_mask)
 
-    # Leading/subleading RHadron bookkeeping for selected events
+    final_event_mask = (
+        reco_event_mask
+        & trigger_event_mask
+        & event_quality_mask
+        & gen_pair_mask
+    )
+
     lead_final = leading_rhadron[final_event_mask]
     sub_final = subleading_rhadron[final_event_mask]
 
     n_final = int(ak.sum(final_event_mask))
 
-    print(f"Total events in input                         = {len(gen_pdgid)}")
     print(f"[DEBUG] Events passing trigger                = {int(ak.sum(trigger_event_mask))}")
     print(f"[DEBUG] Events passing reco cuts              = {int(ak.sum(reco_event_mask))}")
     print(f"[DEBUG] Events passing event cuts             = {int(ak.sum(event_quality_mask))}")
-    print(f" Events passing final selection               = {n_final}")
+    print(f"[DEBUG] Events with GEN RHadron pair          = {int(ak.sum(gen_pair_mask))}")
+    print(f"[DEBUG] Events passing final selection        = {n_final}")
 
-    lead_pdgid = ak.to_numpy(lead_final.pdgId)
-    lead_pt = ak.to_numpy(lead_final.pt)
-    lead_eta = ak.to_numpy(lead_final.eta)
-    lead_phi = ak.to_numpy(lead_final.phi)
-    lead_mass = ak.to_numpy(lead_final.mass)
+    if n_final == 0:
+        print("[DEBUG] No selected events found")
+        return
 
-    sub_pdgid = ak.to_numpy(sub_final.pdgId)
-    sub_pt = ak.to_numpy(sub_final.pt)
-    sub_eta = ak.to_numpy(sub_final.eta)
-    sub_phi = ak.to_numpy(sub_final.phi)
-    sub_mass = ak.to_numpy(sub_final.mass)
+    print(f"[DEBUG] lead_final length                     = {len(lead_final)}")
+    print(f"[DEBUG] sub_final length                      = {len(sub_final)}")
+    print(f"[DEBUG] First selected leading pdgId          = {int(lead_final.pdgId[0])}")
+    print(f"[DEBUG] First selected subleading pdgId       = {int(sub_final.pdgId[0])}")
+
+    lead_tlv, sub_tlv, GEN_dirhadron_sum = build_tlorentz_vectors(
+        lead_final,
+        sub_final,
+        max_print=cuts["max_events_to_print"]
+    )
 
     out = {
         # Full saved GEN info for selected events
@@ -229,28 +292,35 @@ def main():
         "nMuon": nMuon[final_event_mask],
         "HLT_FilterOR": HLT_FilterOR[final_event_mask],
 
-        # add reco tracks that passed the reco candidate mask
+        # Which reco tracks passed the reco candidate mask
         "reco_candidate_mask": reco_candidate_mask[final_event_mask],
 
-        # Leading/subleading GEN RHadron bookkeeping
-        "LeadingRHadron_pdgId": lead_pdgid,
-        "LeadingRHadron_pt": lead_pt,
-        "LeadingRHadron_eta": lead_eta,
-        "LeadingRHadron_phi": lead_phi,
-        "LeadingRHadron_mass": lead_mass,
+        # Leading GEN RHadron 4-vector
+        "GEN_LeadingRHadron_pdgId": np.array([int(x) for x in ak.to_list(lead_final.pdgId)], dtype=np.int32),
+        "GEN_LeadingRHadron_pt": np.array([v.Pt() for v in lead_tlv], dtype=np.float64),
+        "GEN_LeadingRHadron_eta": np.array([v.Eta() for v in lead_tlv], dtype=np.float64),
+        "GEN_LeadingRHadron_phi": np.array([v.Phi() for v in lead_tlv], dtype=np.float64),
+        "GEN_LeadingRHadron_mass": np.array([v.M() for v in lead_tlv], dtype=np.float64),
 
-        "SubleadingRHadron_pdgId": sub_pdgid,
-        "SubleadingRHadron_pt": sub_pt,
-        "SubleadingRHadron_eta": sub_eta,
-        "SubleadingRHadron_phi": sub_phi,
-        "SubleadingRHadron_mass": sub_mass,
+        # Subleading GEN RHadron 4-vector
+        "GEN_SubleadingRHadron_pdgId": np.array([int(x) for x in ak.to_list(sub_final.pdgId)], dtype=np.int32),
+        "GEN_SubleadingRHadron_pt": np.array([v.Pt() for v in sub_tlv], dtype=np.float64),
+        "GEN_SubleadingRHadron_eta": np.array([v.Eta() for v in sub_tlv], dtype=np.float64),
+        "GEN_SubleadingRHadron_phi": np.array([v.Phi() for v in sub_tlv], dtype=np.float64),
+        "GEN_SubleadingRHadron_mass": np.array([v.M() for v in sub_tlv], dtype=np.float64),
+
+        # di_GEN RHadron 4-vector
+        "GEN_diRHadron_pt": np.array([v.Pt() for v in GEN_dirhadron_sum], dtype=np.float64),
+        "GEN_diRHadron_eta": np.array([v.Eta() for v in GEN_dirhadron_sum], dtype=np.float64),
+        "GEN_diRHadron_phi": np.array([v.Phi() for v in GEN_dirhadron_sum], dtype=np.float64),
+        "GEN_diRHadron_mass": np.array([v.M() for v in GEN_dirhadron_sum], dtype=np.float64),
     }
 
     with uproot.recreate(output_file) as fout:
         fout["Events"] = out
 
-    print(f"\nWrote selected events to = {output_file}")
-
+    print(f"\n[DEBUG] Wrote selected events: {output_file}")
+    print("[DEBUG] Saved leading/subleading/summed GEN 4-vectors as pt/eta/phi/mass branches")
 
 if __name__ == "__main__":
     main()
