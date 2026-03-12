@@ -171,15 +171,9 @@ def main():
         & (nMuon >= cuts["nMuon"])
     )
 
-    # I am requiring that that there is a corresponding GEN RHadron pair in the event
+    # I am requiring that there should be a corresponding GEN RHadron pair in the event
     gen_pair_mask = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
-
-    final_event_mask = (
-        reco_event_mask
-        & trigger_event_mask
-        & event_quality_mask
-        & gen_pair_mask
-    )
+    final_event_mask = ( reco_event_mask & trigger_event_mask & event_quality_mask & gen_pair_mask)
 
     # Leading/subleading RHadron bookkeeping for selected events
     lead_final = leading_rhadron[final_event_mask]
