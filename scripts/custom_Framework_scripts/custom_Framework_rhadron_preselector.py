@@ -2,16 +2,18 @@
 import uproot
 import awkward as ak
 import numpy as np
+
 sample_name = "HSCP-Gluino_Par-M-1800_xqcut150_MC"
 year = 2024
-era = "2024"
-tag = "MC" #or DATA
+GTAG = "150X_mcRun3_2024_realistic_v2"
+era = "D"
+tag = "MC"  # or DATA
 
 input_file = (
     "/uscms/home/avendras/nobackup/HSCP/hscp_tutorial/CMSSW_15_0_16/src/ntuples/2024/HSCP-Gluino_Par-M-1800_xqcut150_MC.root"
 )
 
-output_file = f"{sample_name}_{year}_{era}_{tag}_preselected_events.root"
+output_file = f"{sample_name}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
 tree_path = "HSCPMiniAODAnalyzer/Events"
 
 rhadron_pdgids = {
@@ -45,14 +47,10 @@ cuts = {
     "IsoTrack_dz": 0.1,
     "IsoTrack_dxy": 0.02,
     "IsoTrack_pfEnergyOverP": 0.3,
-    "IsoTrack_ptErrOverPt": 1.0,     
+    "IsoTrack_ptErrOverPt": 1.0,
     "IsoTrack_ptErrOverPt2": 0.0008,
-    "C": 1.0,  # Find 2024 MC C & K values!!!
-    "K": 1.0,  # Find 2024 MC C & K values!!!
-
-    # GEN RHadron -- Not a cut in the final selection just for me to store information in the output file about GEN
-    "Gen_abs_eta_max": 2.4,
-    "Gen_pt_min": 55.0,
+    "C": 1.0,
+    "K": 1.0,
 }
 
 
@@ -65,7 +63,7 @@ def main():
     tree = uproot.open(input_file)[tree_path]
 
     branch_names = [
-        # GEN branches used in selection
+        # GEN branches
         "GenPart_pdgId",
         "GenPart_pt",
         "GenPart_eta",
@@ -77,6 +75,7 @@ def main():
         "HSCP_n",
         "nIsoTrack",
         "nMuon",
+        "HLT_FilterOR",
 
         # Reco branches
         "DeDx_Ih",
@@ -92,12 +91,6 @@ def main():
         "IsoTrack_pfEnergyOverP",
         "IsoTrack_ptErrOverPt2",
         "IsoTrack_ptErrOverPt",
-
-        # Triggers used in cuts
-        "HLT_PFMET120_PFMHT120_IDTight",
-        "HLT_PFHT500_PFMET100_PFMHT100_IDTight",
-        "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60",
-        "HLT_MET105_IsoTrk50",
     ]
 
     branches = tree.arrays(branch_names, library="ak")
@@ -107,6 +100,12 @@ def main():
     gen_eta = branches["GenPart_eta"]
     gen_phi = branches["GenPart_phi"]
     gen_mass = branches["GenPart_mass"]
+
+    PV_npvsGood = branches["PV_npvsGood"]
+    HSCP_n = branches["HSCP_n"]
+    nIsoTrack = branches["nIsoTrack"]
+    nMuon = branches["nMuon"]
+    HLT_FilterOR = branches["HLT_FilterOR"]
 
     DeDx_Ih = branches["DeDx_Ih"]
     IsoTrack_pt = branches["IsoTrack_pt"]
@@ -122,47 +121,28 @@ def main():
     IsoTrack_ptErrOverPt2 = branches["IsoTrack_ptErrOverPt2"]
     IsoTrack_pfEnergyOverP = branches["IsoTrack_pfEnergyOverP"]
 
-    HLT_PFMET120_PFMHT120_IDTight = branches["HLT_PFMET120_PFMHT120_IDTight"]
-    HLT_PFHT500_PFMET100_PFMHT100_IDTight = branches["HLT_PFHT500_PFMET100_PFMHT100_IDTight"]
-    HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60 = branches["HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60"]
-    HLT_MET105_IsoTrk50 = branches["HLT_MET105_IsoTrk50"]
+    # GEN bookkeeping only:
+    # identify RHadrons by PDG ID only, with NO extra GEN cuts
+    rhadron_mask = jagged_isin(abs(gen_pdgid), rhadron_pdgids)
 
-    # Event-level branches loaded but not used yet in final_event_mask below
-    PV_npvsGood = branches["PV_npvsGood"]
-    HSCP_n = branches["HSCP_n"]
-    nIsoTrack = branches["nIsoTrack"]
-    nMuon = branches["nMuon"]
-
-    particle_mask = (
-        jagged_isin(abs(gen_pdgid), rhadron_pdgids)
-        & (abs(gen_eta) < cuts["Gen_abs_eta_max"])
-        & (gen_pt > cuts["Gen_pt_min"])
-    )
-
-    selected = ak.zip(
+    rhadrons = ak.zip(
         {
-            "pdgId": gen_pdgid[particle_mask],
-            "pt": gen_pt[particle_mask],
-            "eta": gen_eta[particle_mask],
-            "phi": gen_phi[particle_mask],
-            "mass": gen_mass[particle_mask],
+            "pdgId": gen_pdgid[rhadron_mask],
+            "pt": gen_pt[rhadron_mask],
+            "eta": gen_eta[rhadron_mask],
+            "phi": gen_phi[rhadron_mask],
+            "mass": gen_mass[rhadron_mask],
         }
     )
 
-    selected = selected[ak.argsort(selected.pt, axis=1, ascending=False)]
-    selected = ak.pad_none(selected, 2)
+    # Sort RHadrons by pT within each event so leading/subleading are consistent
+    rhadrons = rhadrons[ak.argsort(rhadrons.pt, axis=1, ascending=False)]
+    rhadrons = ak.pad_none(rhadrons, 2)
 
-    leading_rhadron = selected[:, 0]
-    subleading_rhadron = selected[:, 1]
-    has_valid_pair = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
+    leading_rhadron = rhadrons[:, 0]
+    subleading_rhadron = rhadrons[:, 1]
 
-    # Trigger cuts
-    trigger_event_mask = (
-        HLT_PFMET120_PFMHT120_IDTight
-        | HLT_PFHT500_PFMET100_PFMHT100_IDTight
-        | HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60
-        | HLT_MET105_IsoTrk50
-    )
+    trigger_event_mask = HLT_FilterOR
 
     # Reco cuts
     reco_candidate_mask = (
@@ -191,18 +171,49 @@ def main():
         & (nMuon >= cuts["nMuon"])
     )
 
-    # Final event selection
-    final_event_mask =  reco_event_mask & trigger_event_mask & event_quality_mask #& has_valid_pair -- has_valid_pair (GEN cut) is not applied
+    # I am requiring that that there is a corresponding GEN RHadron pair in the event
+    gen_pair_mask = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
+
+    final_event_mask = (
+        reco_event_mask
+        & trigger_event_mask
+        & event_quality_mask
+        & gen_pair_mask
+    )
+
+    # Leading/subleading RHadron bookkeeping for selected events
     lead_final = leading_rhadron[final_event_mask]
     sub_final = subleading_rhadron[final_event_mask]
 
+    n_final = int(ak.sum(final_event_mask))
+
+    print(f"Total events in input                         = {len(gen_pdgid)}")
+    print(f"[DEBUG] Events passing trigger                = {int(ak.sum(trigger_event_mask))}")
+    print(f"[DEBUG] Events passing reco cuts              = {int(ak.sum(reco_event_mask))}")
+    print(f"[DEBUG] Events passing event cuts             = {int(ak.sum(event_quality_mask))}")
+    print(f" Events passing final selection               = {n_final}")
+
+    lead_pdgid = ak.to_numpy(lead_final.pdgId)
+    lead_pt = ak.to_numpy(lead_final.pt)
+    lead_eta = ak.to_numpy(lead_final.eta)
+    lead_phi = ak.to_numpy(lead_final.phi)
+    lead_mass = ak.to_numpy(lead_final.mass)
+
+    sub_pdgid = ak.to_numpy(sub_final.pdgId)
+    sub_pt = ak.to_numpy(sub_final.pt)
+    sub_eta = ak.to_numpy(sub_final.eta)
+    sub_phi = ak.to_numpy(sub_final.phi)
+    sub_mass = ak.to_numpy(sub_final.mass)
+
     out = {
+        # Full saved GEN info for selected events
         "GenPart_pdgId": gen_pdgid[final_event_mask],
         "GenPart_pt": gen_pt[final_event_mask],
         "GenPart_eta": gen_eta[final_event_mask],
         "GenPart_phi": gen_phi[final_event_mask],
         "GenPart_mass": gen_mass[final_event_mask],
 
+        # Saved reco info for selected events
         "IsoTrack_pt": IsoTrack_pt[final_event_mask],
         "IsoTrack_eta": IsoTrack_eta[final_event_mask],
         "IsoTrack_fractionOfValidHits": IsoTrack_fractionOfValidHits[final_event_mask],
@@ -217,41 +228,35 @@ def main():
         "IsoTrack_pfEnergyOverP": IsoTrack_pfEnergyOverP[final_event_mask],
         "DeDx_Ih": DeDx_Ih[final_event_mask],
 
+        # Event-level info
         "PV_npvsGood": PV_npvsGood[final_event_mask],
         "HSCP_n": HSCP_n[final_event_mask],
         "nIsoTrack": nIsoTrack[final_event_mask],
         "nMuon": nMuon[final_event_mask],
+        "HLT_FilterOR": HLT_FilterOR[final_event_mask],
 
-        "HLT_PFMET120_PFMHT120_IDTight": HLT_PFMET120_PFMHT120_IDTight[final_event_mask],
-        "HLT_PFHT500_PFMET100_PFMHT100_IDTight": HLT_PFHT500_PFMET100_PFMHT100_IDTight[final_event_mask],
-        "HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60": HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60[final_event_mask],
-        "HLT_MET105_IsoTrk50": HLT_MET105_IsoTrk50[final_event_mask],
+        # add reco tracks that passed the reco candidate mask
         "reco_candidate_mask": reco_candidate_mask[final_event_mask],
 
+        # Leading/subleading GEN RHadron bookkeeping
+        "LeadingRHadron_pdgId": lead_pdgid,
+        "LeadingRHadron_pt": lead_pt,
+        "LeadingRHadron_eta": lead_eta,
+        "LeadingRHadron_phi": lead_phi,
+        "LeadingRHadron_mass": lead_mass,
 
-        #Do I want to save leading/sublead rhadrons here? I could probably just sort in the plotter script
-        #"LeadingRHadron_pdgId": ak.to_numpy(ak.fill_none(lead_final.pdgId, -999)),
-        #"LeadingRHadron_pt": ak.to_numpy(ak.fill_none(lead_final.pt, -999.0)),
-        #"LeadingRHadron_eta": ak.to_numpy(ak.fill_none(lead_final.eta, -999.0)),
-        #"LeadingRHadron_phi": ak.to_numpy(ak.fill_none(lead_final.phi, -999.0)),
-        #"LeadingRHadron_mass": ak.to_numpy(ak.fill_none(lead_final.mass, -999.0)),
-        #"SubleadingRHadron_pdgId": ak.to_numpy(ak.fill_none(sub_final.pdgId, -999)),
-        #"SubleadingRHadron_pt": ak.to_numpy(ak.fill_none(sub_final.pt, -999.0)),
-        #"SubleadingRHadron_eta": ak.to_numpy(ak.fill_none(sub_final.eta, -999.0)),
-        #"SubleadingRHadron_phi": ak.to_numpy(ak.fill_none(sub_final.phi, -999.0)),
-        #"SubleadingRHadron_mass": ak.to_numpy(ak.fill_none(sub_final.mass, -999.0)),
+        "SubleadingRHadron_pdgId": sub_pdgid,
+        "SubleadingRHadron_pt": sub_pt,
+        "SubleadingRHadron_eta": sub_eta,
+        "SubleadingRHadron_phi": sub_phi,
+        "SubleadingRHadron_mass": sub_mass,
     }
 
     with uproot.recreate(output_file) as fout:
         fout["Events"] = out
 
-    print(f"Total events in input          = {len(gen_pdgid)}")
-    #print(f"[DEBUG] Events with RHadron pair       = {int(ak.sum(has_valid_pair))}")
-    print(f"[DEBUG] Events passing trigger         = {int(ak.sum(trigger_event_mask))}")
-    print(f"[DEBUG] Events passing reco cuts       = {int(ak.sum(reco_event_mask))}")
-    print(f"[DEBUG] Events passing event cuts      = {int(ak.sum(event_quality_mask))}")
-    print(f"[DEBUG] Events passing final selection = {int(ak.sum(final_event_mask))}")
-    print(f"Wrote selected events to       = {output_file}")
+    print(f"\nWrote selected events to = {output_file}")
+
 
 if __name__ == "__main__":
     main()
