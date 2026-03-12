@@ -47,7 +47,7 @@ cuts = {
     "C": 0.5,  # Find 2024 C & K values!!!
     "K": 0.5,  # Find 2024 C & K values!!!
 
-    # GEN RHadron cuts
+    # GEN RHadron -- Not a cut in the final selection just for me to store information in the output file about GEN
     "Gen_abs_eta_max": 2.4,
     "Gen_pt_min": 55.0,
 }
@@ -186,7 +186,7 @@ def main():
     )
 
     # Final event selection
-    final_event_mask = has_valid_pair & reco_event_mask & trigger_event_mask & event_quality_mask
+    final_event_mask =  reco_event_mask & trigger_event_mask & event_quality_mask #& has_valid_pair -- has_valid_pair (GEN cut) is not applied
     lead_final = leading_rhadron[final_event_mask]
     sub_final = subleading_rhadron[final_event_mask]
 
@@ -239,7 +239,7 @@ def main():
         fout["Events"] = out
 
     print(f"Total events in input          = {len(gen_pdgid)}")
-    print(f"[DEBUG] Events with RHadron pair       = {int(ak.sum(has_valid_pair))}")
+    #print(f"[DEBUG] Events with RHadron pair       = {int(ak.sum(has_valid_pair))}")
     print(f"[DEBUG] Events passing trigger         = {int(ak.sum(trigger_event_mask))}")
     print(f"[DEBUG] Events passing reco cuts       = {int(ak.sum(reco_event_mask))}")
     print(f"[DEBUG] Events passing event cuts      = {int(ak.sum(event_quality_mask))}")
