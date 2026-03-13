@@ -4,16 +4,15 @@ import awkward as ak
 import numpy as np
 import ROOT
 
-sample_name = "HSCP-Gluino_Par-M-1800_xqcut150_MC"
+#sample_name = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_madgraphMLM-pythia8_xqcut150"
+sample_name = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_pythia8_xqcutNA"
 year = 2024
 GTAG = "150X_mcRun3_2024_realistic_v2"
 era = "D"
 tag = "MC"  # or DATA
 
-input_file = (
-    "/uscms/home/avendras/nobackup/HSCP/hscp_tutorial/CMSSW_15_0_16/src/ntuples/2024/HSCP-Gluino_Par-M-1800_xqcut150_MC.root"
-)
-
+#input_file = ("/uscms/home/avendras/nobackup/HSCP/hscp_tutorial/CMSSW_15_0_16/src/ntuples/2024/HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_madgraphMLM-pythia8_xqcut150_MC.root")
+input_file = ("/uscms/home/avendras/nobackup/HSCP/hscp_tutorial/CMSSW_15_0_16/src/ntuples/2024/HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_pythia8_xqcutNA_MC.root")
 output_file = f"{sample_name}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
 tree_path = "HSCPMiniAODAnalyzer/Events"
 
@@ -64,7 +63,7 @@ def build_tlorentz_vectors(lead_final, sub_final, max_print=10):
     GEN_dirhadron_sum = []
 
     n_selected = len(lead_final)
-    print(f"\n[DEBUG] Building TLorentzVectors for {n_selected} selected events")
+    print(f"\n Building TLorentzVectors for {n_selected} selected events")
 
     for i in range(n_selected):
         v1 = ROOT.TLorentzVector()
@@ -228,13 +227,7 @@ def main():
     )
 
     gen_pair_mask = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
-
-    final_event_mask = (
-        reco_event_mask
-        & trigger_event_mask
-        & event_quality_mask
-        & gen_pair_mask
-    )
+    final_event_mask = ( reco_event_mask & trigger_event_mask & event_quality_mask & gen_pair_mask)
 
     lead_final = leading_rhadron[final_event_mask]
     sub_final = subleading_rhadron[final_event_mask]
@@ -256,11 +249,7 @@ def main():
     print(f"[DEBUG] First selected leading pdgId          = {int(lead_final.pdgId[0])}")
     print(f"[DEBUG] First selected subleading pdgId       = {int(sub_final.pdgId[0])}")
 
-    lead_tlv, sub_tlv, GEN_dirhadron_sum = build_tlorentz_vectors(
-        lead_final,
-        sub_final,
-        max_print=cuts["max_events_to_print"]
-    )
+    lead_tlv, sub_tlv, GEN_dirhadron_sum = build_tlorentz_vectors( lead_final, sub_final, max_print=cuts["max_events_to_print"])
 
     out = {
         # Full saved GEN info for selected events
