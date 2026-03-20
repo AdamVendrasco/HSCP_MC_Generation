@@ -96,7 +96,7 @@ def draw_hist_collection(canvas, hists, labels, title, outname, logy=True,
     ymax = maxy * 2.0 if logy else maxy * 1.25
     line150 = ROOT.TLine(xline, ymin, xline, ymax)
     line150.SetLineColor(ROOT.kBlack)
-    line150.SetLineStyle(2)   # dashed
+    line150.SetLineStyle(2)
     line150.SetLineWidth(2)
     line150.Draw("same")
 
@@ -105,7 +105,6 @@ def draw_hist_collection(canvas, hists, labels, title, outname, logy=True,
     leg.SetFillStyle(0)
     for h, label in zip(hists, labels):
         leg.AddEntry(h, label, "l")
-    leg.AddEntry(line150, f"{int(xline)} GeV", "l")
     leg.Draw()
 
     canvas.SaveAs(outname)

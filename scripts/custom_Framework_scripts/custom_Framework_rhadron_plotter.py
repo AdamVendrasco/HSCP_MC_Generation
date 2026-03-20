@@ -22,6 +22,7 @@ tag = "MC"
 trigger_masks = [
     "HLT_MET",
     "HLT_FilterOR",
+    "HLT_Mu",
 ]
 
 sample_name_1 = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_madgraphMLM-pythia8_xqcut150"

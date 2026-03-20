@@ -21,11 +21,10 @@ samples = {
         "/uscms/home/avendras/nobackup/HSCP/hscp_tutorial/CMSSW_15_0_16/src/ntuples/2024/HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_pythia8_xqcutNA_MC.root",
 }
 
-# Choose which trigger combinations to run
 trigger_options = [
     "HLT_FilterOR",
     "HLT_MET",
-    # "HLT_Mu",
+    "HLT_Mu",
 ]
 
 rhadron_pdgids = {
@@ -280,19 +279,8 @@ def process_one(sample_name, input_file, TriggerMask):
 
     trigger_masks = {
         "HLT_FilterOR": HLT_FilterOR,
-        "HLT_MET": (
-            HLT_PFMET120_PFMHT120_IDTight
-            | HLT_PFHT500_PFMET100_PFMHT100_IDTight
-            | HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60
-            | HLT_MET105_IsoTrk50
-        ),
-        "HLT_Mu": (
-            HLT_Mu50
-            | HLT_IsoMu24
-            | HLT_IsoMu27
-            | HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ
-            | HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL
-        ),
+        "HLT_MET": (HLT_PFMET120_PFMHT120_IDTight | HLT_PFHT500_PFMET100_PFMHT100_IDTight | HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60 | HLT_MET105_IsoTrk50),
+        "HLT_Mu": (HLT_Mu50 | HLT_IsoMu24 | HLT_IsoMu27 | HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ | HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL),
     }
 
     if TriggerMask not in trigger_masks:
@@ -318,22 +306,9 @@ def process_one(sample_name, input_file, TriggerMask):
     )
 
     reco_event_mask = ak.any(reco_candidate_mask, axis=1)
-
-    event_quality_mask = (
-        (PV_npvsGood >= cuts["PV_npvsGood"])
-        & (HSCP_n >= cuts["HSCP_n"])
-        & (nIsoTrack >= cuts["nIsoTrack"])
-        & (nMuon >= cuts["nMuon"])
-    )
-
+    event_quality_mask = ((PV_npvsGood >= cuts["PV_npvsGood"]) & (HSCP_n >= cuts["HSCP_n"]) & (nIsoTrack >= cuts["nIsoTrack"]) & (nMuon >= cuts["nMuon"]))
     gen_pair_mask = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
-
-    final_event_mask = (
-        reco_event_mask
-        & trigger_event_mask
-        & event_quality_mask
-        & gen_pair_mask
-    )
+    final_event_mask = (reco_event_mask & trigger_event_mask & event_quality_mask & gen_pair_mask)
 
     lead_final = leading_rhadron[final_event_mask]
     sub_final = subleading_rhadron[final_event_mask]
@@ -392,16 +367,18 @@ def process_one(sample_name, input_file, TriggerMask):
         "HLT_FilterOR": {
             "pt_trg_HLT_FilterOR": HLT_FilterOR,
         },
+
         "HLT_MET": {
             "pt_trg_PFMET120_PFMHT120_IDTight": HLT_PFMET120_PFMHT120_IDTight,
             "pt_trg_PFHT500_PFMET100_PFMHT100_IDTight": HLT_PFHT500_PFMET100_PFMHT100_IDTight,
             "pt_trg_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60": HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60,
             "pt_trg_MET105_IsoTrk50": HLT_MET105_IsoTrk50,
-            "pt_trg_HLT_Mu50": HLT_Mu50,
         },
+
         "HLT_Mu": {
             "pt_trg_IsoMu24": HLT_IsoMu24,
             "pt_trg_IsoMu27": HLT_IsoMu27,
+            "pt_trg_HLT_Mu50": HLT_Mu50,
             "pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ": HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ,
             "pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL": HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL,
         },
@@ -436,7 +413,6 @@ def process_one(sample_name, input_file, TriggerMask):
 
     out = {}
 
-    # Save original event/gen/reco/trigger branches after final selection
     for name in gen_branches + event_branches + reco_branches + trigger_branches:
         out[name] = data[name][final_event_mask]
 
@@ -471,12 +447,10 @@ def process_one(sample_name, input_file, TriggerMask):
     print("[DEBUG] Saved leading/subleading/summed GEN 4-vectors as pt/eta/phi/mass branches")
     print("[DEBUG] Saved Cutflow tree with intermediate GEN diRHadron pT arrays\n")
 
-
 def main():
     for sample_name, input_file in samples.items():
         for TriggerMask in trigger_options:
             process_one(sample_name, input_file, TriggerMask)
-
 
 if __name__ == "__main__":
     main()
