@@ -26,6 +26,7 @@ tag = "MC"
 trigger_masks = [
     "HLT_MET",
     "HLT_FilterOR",
+    "HLT_Mu",
 ]
 
 samples = [
@@ -158,12 +159,8 @@ def process_one(sample_name, TriggerMask):
     pt_trg_HLT_Mu50 = safe_get_branch(arrays, "pt_trg_HLT_Mu50")
     pt_trg_IsoMu24 = safe_get_branch(arrays, "pt_trg_IsoMu24")
     pt_trg_IsoMu27 = safe_get_branch(arrays, "pt_trg_IsoMu27")
-    pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ = safe_get_branch(
-        arrays, "pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ"
-    )
-    pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL = safe_get_branch(
-        arrays, "pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL"
-    )
+    pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ = safe_get_branch(arrays, "pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ")
+    pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL = safe_get_branch(arrays, "pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL")
 
     print(f"Reading: {input_file}")
     print("")
@@ -223,13 +220,13 @@ def process_one(sample_name, TriggerMask):
         ]
         trg_title = f"{sample_name}: HLT_FilterOR breakdown"
 
-    else:  # HLT_Mu
+    elif TriggerMask == "HLT_Mu":
         trg_defs = [
             ("HLT_Mu50", pt_trg_HLT_Mu50, ROOT.kMagenta + 1),
             ("HLT_IsoMu24", pt_trg_IsoMu24, ROOT.kOrange + 7),
             ("HLT_IsoMu27", pt_trg_IsoMu27, ROOT.kCyan + 1),
-            ("HLT_Mu8_TrkIsoVVL_Ele23...", pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, ROOT.kBlue + 2),
-            ("HLT_Mu23_TrkIsoVVL_Ele12...", pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL, ROOT.kGreen + 2),
+            ("HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ3", pt_trg_HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, ROOT.kBlue + 2),
+            ("HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL", pt_trg_HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL, ROOT.kGreen + 2),
         ]
         trg_title = f"{sample_name}: muon trigger breakdown"
 
