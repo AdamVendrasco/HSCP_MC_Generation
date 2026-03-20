@@ -47,6 +47,7 @@ cuts = {
     "HSCP_n": 1,
     "nIsoTrack": 1,
     "nMuon": 1,
+    "PseudoMET_viaCaloJets": 170.0, #PseudoCaloMET  
 
     # Track-level cuts
     "IsoTrack_pt": 55.0,
@@ -62,6 +63,7 @@ cuts = {
     "IsoTrack_ptErrOverPt": 1.0,
     "IsoTrack_ptErrOverPt2": 0.0008,
     "DeDx_Ih": 1.0,
+
 }
 
 gen_branches = [
@@ -77,6 +79,7 @@ event_branches = [
     "HSCP_n",
     "nIsoTrack",
     "nMuon",
+    "PseudoMET_viaCaloJets",
 ]
 
 trigger_branches = [
@@ -106,6 +109,7 @@ reco_branches = [
     "IsoTrack_pfEnergyOverP",
     "IsoTrack_ptErrOverPt2",
     "IsoTrack_ptErrOverPt",
+
 ]
 
 all_branch_names = gen_branches + event_branches + trigger_branches + reco_branches
@@ -256,6 +260,7 @@ def process_one(sample_name, input_file, TriggerMask):
     IsoTrack_pfEnergyOverP = data["IsoTrack_pfEnergyOverP"]
     IsoTrack_ptErrOverPt = data["IsoTrack_ptErrOverPt"]
     IsoTrack_ptErrOverPt2 = data["IsoTrack_ptErrOverPt2"]
+    PseudoMET_viaCaloJets = data["PseudoMET_viaCaloJets"]
 
     rhadron_mask = jagged_isin(abs(gen_pdgid), rhadron_pdgids)
 
@@ -303,10 +308,18 @@ def process_one(sample_name, input_file, TriggerMask):
         & (IsoTrack_ptErrOverPt2 < cuts["IsoTrack_ptErrOverPt2"])
         & (IsoTrack_pfEnergyOverP < cuts["IsoTrack_pfEnergyOverP"])
         & (DeDx_Ih > cuts["DeDx_Ih"])
+    
     )
 
     reco_event_mask = ak.any(reco_candidate_mask, axis=1)
-    event_quality_mask = ((PV_npvsGood >= cuts["PV_npvsGood"]) & (HSCP_n >= cuts["HSCP_n"]) & (nIsoTrack >= cuts["nIsoTrack"]) & (nMuon >= cuts["nMuon"]))
+    event_quality_mask = (
+        (PV_npvsGood >= cuts["PV_npvsGood"])
+        & (HSCP_n >= cuts["HSCP_n"])
+        & (nIsoTrack >= cuts["nIsoTrack"])
+        & (nMuon >= cuts["nMuon"])  
+        & (PseudoMET_viaCaloJets > cuts["PseudoMET_viaCaloJets"])
+    )
+
     gen_pair_mask = ~ak.is_none(leading_rhadron) & ~ak.is_none(subleading_rhadron)
     final_event_mask = (reco_event_mask & trigger_event_mask & event_quality_mask & gen_pair_mask)
 
@@ -418,7 +431,7 @@ def process_one(sample_name, input_file, TriggerMask):
 
     out["reco_candidate_mask"] = reco_candidate_mask[final_event_mask]
 
-    # Save derived GEN RHadron objects
+    # Saving derived GEN RHadron objects
     out["GEN_LeadingRHadron_pdgId"] = np.array([int(x) for x in ak.to_list(lead_final.pdgId)], dtype=np.int32)
     out["GEN_LeadingRHadron_pt"] = np.array([v.Pt() for v in lead_tlv], dtype=np.float64)
     out["GEN_LeadingRHadron_eta"] = np.array([v.Eta() for v in lead_tlv], dtype=np.float64)

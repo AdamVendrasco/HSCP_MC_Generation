@@ -109,6 +109,21 @@ def clean_values(arr):
     values = values[np.isfinite(values)]
     return values
 
+def print_fraction_below_threshold(values, threshold, label):
+    total = len(values)
+    below = int(np.sum(values < threshold))
+    above = int(np.sum(values >= threshold))
+
+    frac_below = (below / total) if total > 0 else 0.0
+    frac_above = (above / total) if total > 0 else 0.0
+    print("")
+    print(f"[DEBUG] {label}")
+    print(f"[DEBUG]   total events              = {total}")
+    print(f"[DEBUG]   below {threshold} GeV             = {below}")
+    print(f"[DEBUG]   above {threshold} GeV             = {above}")
+    print(f"[DEBUG]   fraction below {threshold} GeV    = {frac_below:.6f}")
+    print(f"[DEBUG]   fraction above {threshold} GeV    = {frac_above:.6f}")
+
 def make_hist(branch, values, nbins, xmin, xmax, color=ROOT.kBlue + 1):
     hist = ROOT.TH1F(f"h_{branch}_{ROOT.TUUID().AsString()}", "", nbins, xmin, xmax)
 
@@ -417,6 +432,20 @@ def process_trigger(trigger_mask):
 
     cleaned_1 = make_individual_plots(sample_name_1, input_file_1, output_dir_1)
     cleaned_2 = make_individual_plots(sample_name_2, input_file_2, output_dir_2)
+
+    if "GEN_diRHadron_pt" in cleaned_1:
+        print_fraction_below_threshold(
+            cleaned_1["GEN_diRHadron_pt"],
+            150.0,
+            f"{sample_name_1} ({trigger_mask}) GEN_diRHadron_pt"
+        )
+
+    if "GEN_diRHadron_pt" in cleaned_2:
+        print_fraction_below_threshold(
+            cleaned_2["GEN_diRHadron_pt"],
+            150.0,
+            f"{sample_name_2} ({trigger_mask}) GEN_diRHadron_pt"
+        )
 
     global CMS_IPOS
     CMS_IPOS = 0
