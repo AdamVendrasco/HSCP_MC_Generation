@@ -10,45 +10,44 @@ ROOT.gROOT.SetBatch(True)
 ROOT.TH1.SetDefaultSumw2(True)
 ROOT.gStyle.SetOptStat(1110)
 
-sample_name_1 = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_madgraphMLM-pythia8_xqcut150"
-sample_name_2 = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_pythia8_xqcutNA"
-
 year = 2024
 GTAG = "150X_mcRun3_2024_realistic_v2"
 era = "D"
 tag = "MC"
 
+# Trigger options:
+# "HLT_FilterOR"
+# "HLT_MET"
+# "HLT_Mu"
+trigger_masks = [
+    "HLT_MET",
+    "HLT_FilterOR",
+]
+
+sample_name_1 = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_madgraphMLM-pythia8_xqcut150"
+sample_name_2 = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_pythia8_xqcutNA"
+
+preselected_dir = "/uscms/home/avendras/nobackup/HSCP/scripts/custom_Framework_scripts/preselected_rootfiles"
 tree_path = "Events"
 
-input_file_1 = f"{sample_name_1}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
-input_file_2 = f"{sample_name_2}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
-
-output_dir_1 = f"plots/{sample_name_1}_{year}_{era}_{tag}_{GTAG}_preselected_events"
-output_dir_2 = f"plots/{sample_name_2}_{year}_{era}_{tag}_{GTAG}_preselected_events"
-comparison_dir = f"plots/comparisons_{year}_{era}_{tag}_{GTAG}_preselected_events"
-
-os.makedirs(output_dir_1, exist_ok=True)
-os.makedirs(output_dir_2, exist_ok=True)
-os.makedirs(comparison_dir, exist_ok=True)
-
 plot_config = {
-    "GEN_LeadingRHadron_pt":   (150, 0.0, 3000.0, "Leading GEN RHadron p_{T} [GeV]"),
+    "GEN_LeadingRHadron_pt":   (150, 0.0, 4000.0, "Leading GEN RHadron p_{T} [GeV]"),
     "GEN_LeadingRHadron_eta":  (100, -5.0, 5.0, "Leading GEN RHadron #eta"),
     "GEN_LeadingRHadron_phi":  (100, -4.0, 4.0, "Leading GEN RHadron #phi"),
-    "GEN_LeadingRHadron_mass": (100, 0.0, 3000.0, "Leading GEN RHadron mass [GeV]"),
+    "GEN_LeadingRHadron_mass": (100, 0.0, 5000.0, "Leading GEN RHadron mass [GeV]"),
 
-    "GEN_SubleadingRHadron_pt":   (150, 0.0, 3000.0, "Subleading GEN RHadron p_{T} [GeV]"),
-    "GEN_SubleadingRHadron_eta":  (50, -5.0, 5.0, "Subleading GEN RHadron #eta"),
-    "GEN_SubleadingRHadron_phi":  (50, -3.2, 3.2, "Subleading GEN RHadron #phi"),
-    "GEN_SubleadingRHadron_mass": (60, 0.0, 3000.0, "Subleading GEN RHadron mass [GeV]"),
+    "GEN_SubleadingRHadron_pt":   (150, 0.0, 4000.0, "Subleading GEN RHadron p_{T} [GeV]"),
+    "GEN_SubleadingRHadron_eta":  (100, -5.0, 5.0, "Subleading GEN RHadron #eta"),
+    "GEN_SubleadingRHadron_phi":  (100, -4.0, 4.0, "Subleading GEN RHadron #phi"),
+    "GEN_SubleadingRHadron_mass": (60, 0.0, 5000.0, "Subleading GEN RHadron mass [GeV]"),
 
-    "GEN_diRHadron_pt":   (150, 0.0, 3000.0, "GEN diRHadron p_{T} [GeV]"),
-    "GEN_diRHadron_eta":  (50, -5.0, 5.0, "GEN diRHadron #eta"),
-    "GEN_diRHadron_phi":  (50, -3.2, 3.2, "GEN diRHadron #phi"),
-    "GEN_diRHadron_mass": (60, 0.0, 5000.0, "GEN diRHadron mass [GeV]"),
+    "GEN_diRHadron_pt":   (150, 0.0, 4000.0, "GEN diRHadron p_{T} [GeV]"),
+    "GEN_diRHadron_eta":  (100, -5.0, 5.0, "GEN diRHadron #eta"),
+    "GEN_diRHadron_phi":  (100, -4.0, 4.0, "GEN diRHadron #phi"),
+    "GEN_diRHadron_mass": (60, 2000.0, 5000.0, "GEN diRHadron mass [GeV]"),
 
-    "IsoTrack_pt": (150, 0.0, 3000.0, "IsoTrack p_{T} [GeV]"),
-    "IsoTrack_eta": (50, -5.0, 5.0, "IsoTrack #eta"),
+    "IsoTrack_pt": (150, 0.0, 4000.0, "IsoTrack p_{T} [GeV]"),
+    "IsoTrack_eta": (100, -5.0, 5.0, "IsoTrack #eta"),
     "IsoTrack_numberOfValidPixelHits": (20, 0, 20, "IsoTrack number of valid pixel hits"),
     "IsoTrack_fractionOfValidHits": (50, 0.0, 1.0, "IsoTrack fraction of valid hits"),
     "IsoTrack_numberOfValidHits": (20, 0, 20, "IsoTrack number of valid hits"),
@@ -61,6 +60,22 @@ plot_config = {
     "IsoTrack_ptErrOverPt2": (50, 0.0, 0.1, "IsoTrack p_{T} error / p_{T}^{2}"),
 }
 
+comparison_branches = [
+    "GEN_diRHadron_pt",
+    "GEN_diRHadron_eta",
+    "GEN_diRHadron_phi",
+    "GEN_diRHadron_mass",
+    "GEN_LeadingRHadron_pt",
+    "GEN_LeadingRHadron_eta",
+    "GEN_LeadingRHadron_phi",
+    "GEN_LeadingRHadron_mass",
+    "GEN_SubleadingRHadron_pt",
+    "GEN_SubleadingRHadron_eta",
+    "GEN_SubleadingRHadron_phi",
+    "GEN_SubleadingRHadron_mass",
+    "IsoTrack_pt",
+    "IsoTrack_eta",
+]
 
 def set_cms_style_for_sample(sample_name):
     global CMS_IPOS
@@ -75,7 +90,6 @@ def set_cms_style_for_sample(sample_name):
 
     CMS.SetLumi(None, run="Run 3")
     CMS.SetEnergy(13.6)
-
 
 def load_arrays(input_file, branches):
     tree = uproot.open(input_file)[tree_path]
@@ -108,20 +122,17 @@ def make_hist(branch, values, nbins, xmin, xmax, color=ROOT.kBlue + 1):
     hist.SetMarkerColor(0)
     return hist
 
-def draw_single_cmsstyle( name, xmin, xmax, hist, xtitle, ytitle, outpng, yoffset=1.15, titlesize=0.045, labelsize=0.040, logy=False, ymin_log=0.1, vline_x=None,):
+def draw_single_cmsstyle(
+    name, xmin, xmax, hist, xtitle, ytitle, outpng,
+    yoffset=1.15, titlesize=0.045, labelsize=0.040,
+    logy=False, ymin_log=0.1, vline_x=None
+):
     ymax = max(hist.GetMaximum(), 1.0) * (10.0 if logy else 1.35)
     ymin = ymin_log if logy else 0.0
 
     canv = CMS.cmsCanvas(
-        name,
-        xmin,
-        xmax,
-        ymin,
-        ymax,
-        xtitle,
-        ytitle,
-        square=False,
-        iPos=CMS_IPOS,
+        name, xmin, xmax, ymin, ymax, xtitle, ytitle,
+        square=False, iPos=CMS_IPOS
     )
 
     if logy:
@@ -151,7 +162,13 @@ def draw_single_cmsstyle( name, xmin, xmax, hist, xtitle, ytitle, outpng, yoffse
 
     canv.SaveAs(outpng)
 
-def draw_comparison_with_ratio( name, xmin, xmax, hist1, hist2, xtitle, ytitle, outpng, label1, label2, ratio_ymin=0.0, ratio_ymax=2.0, yoffset=1.01, titlesize=0.045, labelsize=0.040, logy=False, ymin_log=1e-6, normalize=False, include_overflow=True, vline_x=None,):
+def draw_comparison_with_ratio(
+    name, xmin, xmax, hist1, hist2, xtitle, ytitle, outpng,
+    label1, label2, ratio_ymin=0.0, ratio_ymax=2.0,
+    yoffset=.99, titlesize=0.045, labelsize=0.040,
+    logy=False, ymin_log=1e-6, normalize=False,
+    include_overflow=True, vline_x=None
+):
     h1 = hist1.Clone(f"{name}_h1")
     h2 = hist2.Clone(f"{name}_h2")
     h1.SetDirectory(0)
@@ -190,6 +207,7 @@ def draw_comparison_with_ratio( name, xmin, xmax, hist1, hist2, xtitle, ytitle, 
 
     top.Draw()
     bot.Draw()
+
     top.cd()
 
     hframe = h1.Clone(f"{name}_frame")
@@ -240,9 +258,9 @@ def draw_comparison_with_ratio( name, xmin, xmax, hist1, hist2, xtitle, ytitle, 
     topcap = ratio_ymax * 0.98
 
     for i in range(1, nb + 1):
-        a = h1.GetBinContent(i) #mg5
+        a = h1.GetBinContent(i)
         ea = h1.GetBinError(i)
-        b = h2.GetBinContent(i) #pythia
+        b = h2.GetBinContent(i)
         eb = h2.GetBinError(i)
 
         if a == 0 and b == 0:
@@ -267,7 +285,7 @@ def draw_comparison_with_ratio( name, xmin, xmax, hist1, hist2, xtitle, ytitle, 
     ratio.SetMinimum(min(ratio_ymin, -0.05))
     ratio.SetMaximum(ratio_ymax)
 
-    ratio.GetYaxis().SetTitle("Madgraph5/Pythia8")
+    ratio.GetYaxis().SetTitle("MadGraph5/Pythia8")
     ratio.GetYaxis().SetNdivisions(505)
     ratio.GetYaxis().SetTitleSize(0.11)
     ratio.GetYaxis().SetLabelSize(0.10)
@@ -334,13 +352,6 @@ def make_individual_plots(sample_name, input_file, output_dir):
         print(f"\n[DEBUG] Branch: {branch}")
         print(f"[DEBUG] Entries: {len(values)}")
 
-        if len(values) > 0:
-            print(f"[DEBUG] Min:   {values.min():.6f}")
-            print(f"[DEBUG] Max:   {values.max():.6f}")
-            print(f"[DEBUG] Mean:  {values.mean():.6f}")
-        else:
-            print("[DEBUG] No entries after cleaning")
-
         hist = make_hist(branch, values, nbins, xmin, xmax, ROOT.kBlue + 1)
 
         logy = should_use_logy(branch)
@@ -368,41 +379,101 @@ def make_individual_plots(sample_name, input_file, output_dir):
 
     return cleaned
 
-cleaned_1 = make_individual_plots(sample_name_1, input_file_1, output_dir_1)
-cleaned_2 = make_individual_plots(sample_name_2, input_file_2, output_dir_2)
+def process_trigger(trigger_mask):
+    input_file_1 = (
+        f"{preselected_dir}/"
+        f"{sample_name_1}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
+    )
+    input_file_2 = (
+        f"{preselected_dir}/"
+        f"{sample_name_2}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
+    )
 
+    output_dir_1 = f"plots/{sample_name_1}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
+    output_dir_2 = f"plots/{sample_name_2}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
+    comparison_dir = f"plots/comparisons_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
 
-comparison_branch = "GEN_diRHadron_pt"
-nbins, xmin, xmax, xtitle = plot_config[comparison_branch]
+    print("\n==================================================")
+    print(f"[DEBUG] TriggerMask     = {trigger_mask}")
+    print(f"[DEBUG] Input file 1    = {input_file_1}")
+    print(f"[DEBUG] Input file 2    = {input_file_2}")
+    print(f"[DEBUG] Output dir 1    = {output_dir_1}")
+    print(f"[DEBUG] Output dir 2    = {output_dir_2}")
+    print(f"[DEBUG] Comparison dir  = {comparison_dir}")
+    print("==================================================")
 
-CMS_IPOS = 0
-CMS.SetExtraText("Private Work: MC Simulation Comparison")
-CMS.SetLumi(None, run="Run 3")
-CMS.SetEnergy(13.6)
+    if not os.path.exists(input_file_1):
+        print(f"[WARN] Missing file, skipping trigger {trigger_mask}: {input_file_1}")
+        return
 
-hist1 = make_hist( f"{comparison_branch}_sample1", cleaned_1[comparison_branch], nbins, xmin, xmax, ROOT.kBlue + 1,)
-hist2 = make_hist( f"{comparison_branch}_sample2", cleaned_2[comparison_branch], nbins, xmin, xmax, ROOT.kRed + 1)
-comparison_outpng = f"{comparison_dir}/{comparison_branch}_comparison_ratio.png"
+    if not os.path.exists(input_file_2):
+        print(f"[WARN] Missing file, skipping trigger {trigger_mask}: {input_file_2}")
+        return
 
-draw_comparison_with_ratio(
-    name=f"c_{comparison_branch}_comparison_ratio",
-    xmin=xmin,
-    xmax=xmax,
-    hist1=hist1,
-    hist2=hist2,
-    xtitle=xtitle,
-    ytitle="Normalized Events",
-    outpng=comparison_outpng,
-    label1="MadGraph5: Ntuplizer + Preselection",
-    label2="Pythia8: Ntuplizer + Preselection",
-    ratio_ymin=0.0,
-    ratio_ymax=2.0,
-    logy=True,
-    ymin_log=1e-6,
-    normalize=True,
-    include_overflow=True,
-    vline_x=150.0,
-)
+    os.makedirs(output_dir_1, exist_ok=True)
+    os.makedirs(output_dir_2, exist_ok=True)
+    os.makedirs(comparison_dir, exist_ok=True)
 
-print(f"\n[DEBUG] Wrote comparison plot with ratio: {comparison_outpng}")
-print("\n[DEBUG] Done.")
+    cleaned_1 = make_individual_plots(sample_name_1, input_file_1, output_dir_1)
+    cleaned_2 = make_individual_plots(sample_name_2, input_file_2, output_dir_2)
+
+    global CMS_IPOS
+    CMS_IPOS = 0
+    CMS.SetExtraText(f"Private Work: MC Simulation Comparison ({trigger_mask})")
+    CMS.SetLumi(None, run="Run 3")
+    CMS.SetEnergy(13.6)
+
+    for comparison_branch in comparison_branches:
+        if comparison_branch not in cleaned_1 or comparison_branch not in cleaned_2:
+            print(f"[WARN] Skipping missing branch: {comparison_branch}")
+            continue
+
+        nbins, xmin, xmax, xtitle = plot_config[comparison_branch]
+
+        hist1 = make_hist(
+            f"{comparison_branch}_sample1_{trigger_mask}",
+            cleaned_1[comparison_branch],
+            nbins,
+            xmin,
+            xmax,
+            ROOT.kBlue + 1,
+        )
+
+        hist2 = make_hist(
+            f"{comparison_branch}_sample2_{trigger_mask}",
+            cleaned_2[comparison_branch],
+            nbins,
+            xmin,
+            xmax,
+            ROOT.kRed + 1,
+        )
+
+        comparison_outpng = f"{comparison_dir}/{comparison_branch}_comparison_ratio.png"
+
+        draw_comparison_with_ratio(
+            name=f"c_{comparison_branch}_comparison_ratio_{trigger_mask}",
+            xmin=xmin,
+            xmax=xmax,
+            hist1=hist1,
+            hist2=hist2,
+            xtitle=xtitle,
+            ytitle="Normalized Events",
+            outpng=comparison_outpng,
+            label1="MadGraph5: Ntuplizer + Preselection",
+            label2="Pythia8: Ntuplizer + Preselection",
+            ratio_ymin=0.0,
+            ratio_ymax=2.0,
+            logy=should_use_logy(comparison_branch),
+            ymin_log=1e-6,
+            normalize=True,
+            include_overflow=True,
+            vline_x=get_vline(comparison_branch),
+        )
+
+        print(f"[DEBUG] Wrote comparison plot with ratio: {comparison_outpng}")
+
+if __name__ == "__main__":
+    for trigger_mask in trigger_masks:
+        process_trigger(trigger_mask)
+
+    print("\n[DEBUG] Done.")
