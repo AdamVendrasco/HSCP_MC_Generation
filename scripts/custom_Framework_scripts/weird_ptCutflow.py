@@ -104,6 +104,9 @@ def draw_hist_collection(canvas, hists, labels, title, outname, logy=True,
     leg = ROOT.TLegend(*legend_coords)
     leg.SetBorderSize(0)
     leg.SetFillStyle(0)
+    leg.SetTextFont(42)
+    leg.SetTextSize(0.020)
+
     for h, label in zip(hists, labels):
         leg.AddEntry(h, label, "l")
     leg.Draw()
