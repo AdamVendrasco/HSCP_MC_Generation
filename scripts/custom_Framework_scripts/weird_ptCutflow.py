@@ -33,11 +33,8 @@ samples = [
     "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_madgraphMLM-pythia8_xqcut150",
     "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV_pythia8_xqcutNA",
 ]
-
+overall_label = "HSCP-Gluino_Par-M-1800_TuneCP5_13p6TeV"
 preselected_dir = "/uscms/home/avendras/nobackup/HSCP/scripts/custom_Framework_scripts/preselected_rootfiles"
-plot_dir = "cutflow_plots"
-os.makedirs(plot_dir, exist_ok=True)
-
 cutflow_tree = "Cutflow"
 
 def make_hist(name, title, values, nbins=120, xmin=0.0, xmax=3000.0):
@@ -54,9 +51,6 @@ def make_hist(name, title, values, nbins=120, xmin=0.0, xmax=3000.0):
 def get_branch_as_numpy(arrays, name):
     if name not in arrays.fields:
         raise KeyError(f"Missing branch in Cutflow tree: {name}")
-
-    # Each branch was written as ak.Array([variable_length_numpy_array])
-    # so the tree has one entry and we want that first entry.
     return ak.to_numpy(arrays[name][0])
 
 def style_hist(h, color):
@@ -64,9 +58,7 @@ def style_hist(h, color):
     h.SetMarkerColor(color)
     h.SetLineWidth(2)
 
-def draw_hist_collection(canvas, hists, labels, title, outname, logy=True,
-                         legend_coords=(0.52, 0.62, 0.88, 0.88),
-                         xline=150.0):
+def draw_hist_collection(canvas, hists, labels, title, outname, logy=True, legend_coords=(0.52, 0.62, 0.88, 0.88), xline=150.0):
     canvas.cd()
     if logy:
         canvas.SetLogy()
@@ -118,11 +110,12 @@ def safe_get_branch(arrays, name):
     return np.asarray([], dtype=np.float64)
 
 def process_one(sample_name, TriggerMask):
+    plot_dir = f"cutflow_plots/{overall_label}/{TriggerMask}/{sample_name}"
+    os.makedirs(plot_dir, exist_ok=True)
     input_file = (
         f"{preselected_dir}/"
         f"{sample_name}_{TriggerMask}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
     )
-
     output_png_main = (
         f"{plot_dir}/gen_dirhadron_cutflow_"
         f"{sample_name}_{TriggerMask}_{year}_{era}_{tag}_{GTAG}.png"
@@ -136,6 +129,7 @@ def process_one(sample_name, TriggerMask):
     print(f"[DEBUG] Sample       = {sample_name}")
     print(f"[DEBUG] TriggerMask  = {TriggerMask}")
     print(f"[DEBUG] Input file   = {input_file}")
+    print(f"[DEBUG] Plot dir     = {plot_dir}")
     print("==================================================")
 
     if not os.path.exists(input_file):
