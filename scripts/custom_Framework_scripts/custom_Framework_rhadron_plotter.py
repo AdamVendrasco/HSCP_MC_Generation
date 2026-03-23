@@ -406,9 +406,9 @@ def process_trigger(trigger_mask):
         f"{sample_name_2}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events.root"
     )
 
-    output_dir_1 = f"plots/{trigger_mask}/{overall_label}/{sample_name_1}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
-    output_dir_2 = f"plots/{trigger_mask}/{overall_label}/{sample_name_2}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
-    comparison_dir = f"plots/{trigger_mask}/{overall_label}/comparisons_{overall_label}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
+    output_dir_1 = f"plots/{overall_label}/{trigger_mask}/{sample_name_1}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
+    output_dir_2 = f"plots/{overall_label}/{trigger_mask}/{sample_name_2}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
+    comparison_dir = f"plots/{overall_label}/{trigger_mask}/comparisons_{overall_label}_{trigger_mask}_{year}_{era}_{tag}_{GTAG}_preselected_events"
 
     print("\n==================================================")
     print(f"[DEBUG] TriggerMask     = {trigger_mask}")
