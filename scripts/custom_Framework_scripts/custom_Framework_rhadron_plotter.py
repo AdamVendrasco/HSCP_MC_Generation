@@ -365,6 +365,10 @@ def make_individual_plots(sample_name, input_file, output_dir):
         arr = arrays[branch]
         values = clean_values(arr)
         cleaned[branch] = values
+        if branch == "IsoTrack_pt":
+            print(f"\nblah: First 5 IsoTrack_pt values for {sample_name}:")
+            print(values[:100])
+            print(f"blah: Total IsoTrack_pt entries: {len(values)}")
 
         print(f"\n[DEBUG] Branch: {branch}")
         print(f"[DEBUG] Entries: {len(values)}")
