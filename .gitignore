@@ -23,3 +23,5 @@ condor/condor_submit_files/DAGMAN_jobSubmitFile.dag.*
 optimal_xqcut_scan.csv
 mg-Rhadron_mGl-1800/
 plots&logs/
+DJR_plots/
+gridpack_LHE_LOGs/
